@@ -263,32 +263,32 @@ There are many options for using `docker` to "stress" your software in a contain
 
 __Replicating these issues are useful for testing and debugging cloud software.__
 
- ## Logging
+## Logging
  
- Logged data allows us to discover and review:
- + exact moments transactions failed, weeks after the event
- + provide the data to replicate the issue, and
- + support us with testing and validating fixes.
+Logged data allows us to discover and review:
++ exact moments transactions failed, weeks after the event
++ provide the data to replicate the issue, and
++ support us with testing and validating fixes.
  
- Many providers capture the `stdout` (i.e., anything that goes to the screen!) as logs associated with the execution of your container. By using [structured logging](https://www.structlog.org/) and including **context** around the logged events (variable values, program state, etc.) the output of your software -- running remotely at scale -- will be a useful source of insight.
+Many providers capture the `stdout` (i.e., anything that goes to the screen!) as logs associated with the execution of your container. By using [structured logging](https://www.structlog.org/) and including **context** around the logged events (variable values, program state, etc.) the output of your software -- running remotely at scale -- will be a useful source of insight.
 
-  for example, a plaintext log entry might look like:
- ```
- Error: Database connection failed at 3:45 PM on 2024-02-08
- ```
+For example, a plaintext log entry might look like:
+```
+Error: Database connection failed at 3:45 PM on 2024-02-08
+```
 
- whereas the corresponding structured log would be formatted:
- ```
- {
-  "timestamp": "2024-02-08T15:45:00Z",
-  "level": "error",
-  "message": "Database connection failed",
-  "context": {
-    "service": "user-service",
-    "operation": "database-connect",
-    "retryAttempt": "3",
-    "errorCode": "DB_CONN_FAIL"
-  }
+whereas the corresponding structured log would be formatted:
+```
+{
+ "timestamp": "2024-02-08T15:45:00Z",
+ "level": "error",
+ "message": "Database connection failed",
+ "context": {
+   "service": "user-service",
+   "operation": "database-connect",
+   "retryAttempt": "3",
+   "errorCode": "DB_CONN_FAIL"
+ }
 }
 ```
 
