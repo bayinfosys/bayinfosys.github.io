@@ -1,4 +1,4 @@
-# Introduction
+# Deploying Models to AWS Lambda
 
 For many businesses, AI/ML is a means to an end: usually one step a operational goal. However, the perceived high costs and associated risks of implementing such models often deter their adoption, prompting a fallback to conventional methods.
 
@@ -300,7 +300,7 @@ The three main benefits of terraform is:
 + version control of our infrastructure
 + ability to destroy exactly the resources you have created
 
-We can also leverage [Terraform Modules](https://registry.terraform.io/browse/modules) to add a layer of managment over the low-level resource definitions. An alternative is the AWS provided [SAM](https://aws.amazon.com/serverless/sam/) and [CDK](https://aws.amazon.com/cdk/).
+We can also leverage [Terraform Modules](https://registry.terraform.io/browse/modules) to add a layer of abstraction over the low-level resource definitions. An alternative is the AWS provided [SAM](https://aws.amazon.com/serverless/sam/) and [CDK](https://aws.amazon.com/cdk/).
 
 The following code creates a repository for our Lambda container image and describes a lambda function to host it:
 ```
