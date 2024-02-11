@@ -215,7 +215,7 @@ We have chosen AWS Lambda as our target environment. Since 2020 AWS Lambda has a
 + Read-only filesystem
 + 10Gb maximum image size
 + maximum 15 minute runtime
-It is important to note that AWS Lambda does not "run" containers in the traditional sense. Amazon provides a wealth of technical information to document the technicalities. See [this youtube](https://www.youtube.com/watch?v=0_jfH6qijVY) is a great example.
+It is important to note that AWS Lambda does not "run" containers in the traditional sense. Amazon provides a wealth of technical information to document the technicalities. See these videos about [serverless cold start](https://www.youtube.com/watch?v=PiQ_eZFO2GU) or [very technical VM loading details](https://www.youtube.com/watch?v=0_jfH6qijVY) as great examples.
 
 
 Our main big change is to update the base image of the `Dockerfile` to use the AWS lambda base images. These are documented [here](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) and [here]. The python base images are listed [here](https://gallery.ecr.aws/lambda/python).
