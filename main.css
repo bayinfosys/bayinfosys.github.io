@@ -1,0 +1,80 @@
+body {
+width: 913px;
+height: 100vh;
+align: center;
+margin-left: auto;
+margin-right: auto;
+font-family: "Felix Titling", "Bookman Old Style", Serif;
+color: #FFF;
+}
+
+video {
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+z-index: -1;
+}
+
+.header-img {
+width: 100%;
+}
+
+article {
+overflow-y: scroll;
+scroll-behavior: smooth;
+scroll-snap-type: y mandatory;
+display: flex;
+flex-direction: column;
+top: 60px;
+}
+
+article section {
+margain: 10px 30px 10px 30px;
+height: 100vh;
+scroll-snap-align: start;
+}
+
+article section h1 {
+font-size: 30pt;
+font-weight: normal;
+margin: 10px 30px 10px 30px;
+}
+
+article section div {
+margin: 10px 30px 10px 30px;
+font-family: inherit;
+font-size: 15pt;
+border-color: #AAA;
+border-width: 2px;
+border-style: solid;
+}
+
+article section div p {
+margin: 10px 20px 10px 20px;
+font-size: 20pt;
+}
+
+article section div h2 {
+font-size: 15pt;
+margin: 10px 10px 10px 10px;
+padding: 0px;
+font-weight: normal;
+display: inline;
+}
+
+/*
+a, a:hover, a:visited {
+color: #FFF;
+text-decoration: none;
+}
+
+a:hover {
+color: #FFF
+}
+
+.item .detail b {
+color: #FFF;
+}
+*/

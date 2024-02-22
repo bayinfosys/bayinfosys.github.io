@@ -1,0 +1,152 @@
+<html>
+<head>
+
+<title>Bay Information Systems</title>
+<link rel="stylesheet" type="text/css" href="sem.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript">
+function random_video() {
+  let srcs = [
+    ["img/Mountains in Sao Vicente, Portugal.mp4", "#444"],
+    ["img/pexels-taryn-elliott-8366008.mp4", "#FFF"],
+    ["img/Edge of a rocky mountain.mp4", "#FFF"],
+    ["img/Ripples in the sea.mp4", "#FFF"],
+    ["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
+    ["img/Beautiful rocky shoreline.mp4", "#FFF"]
+  ]
+
+  let video = document.getElementsByTagName("video")[0];
+  let source = video.getElementsByTagName("source")[0];
+  let idx = Math.floor(Math.random() * srcs.length);
+
+  source.src = srcs[idx][0];
+  document.documentElement.style.setProperty("--text", srcs[idx][1]);
+
+  video.load();
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <video autoplay muted loop>
+    <source src="img/Mountains in Sao Vicente, Portugal.mp4" type="video/mp4">
+  </video>
+
+  <img class="header-img" src="img/BayInfoLogow.png" />
+</header>
+
+<script type="text/javascript">
+random_video();
+</script>
+
+<main>
+<article>
+  <h1>AI and Machine Learning Consultancy</h1>
+
+  <section id="what-we-do">
+    <p>We work with seed-stage startups and SMEs to build ML pipelines from prototype to scale</p>
+    <div class="three items">
+      <ul>
+        <li><i class="fa fa-cogs"></i>Prototyping</li>
+        <li><i class="fa fa-users"></i>Production</li>
+        <li><i class="fa fa-line-chart"></i>Scaling</li>
+      </ul>
+    </div>
+    <p>Machine learning development is a wild and untamed landscape for many businesses, with few people who understand the costs and risks.</p>
+    <p>We can help you understand this venture, guide you through the process, and reduce risk by identifying working-system milestones along the path.</p>
+    <p><a href="#our-process">Learn more</a> about our process below and <a href="#contact-us">contact us</a> to discuss your project.</a>
+  </section>
+</article>
+
+
+<article id="our-process">
+  <h1>Our Process</h1>
+
+  <section>
+  <h2>Overview</h2>
+  <div class="three items">
+    <ul>
+      <li><i class="fa fa-database"></i>Data feasibility</li>
+      <li><i class="fa fa-filter"></i>AI/ML pipelines</li>
+      <li><i class="fa fa-cloud-upload"></i>Cloud deployment</li>
+    </ul>
+  </div>
+  </section>
+
+  <section>
+  <div class="split">
+    <i class="fa fa-database"></i>
+    <ul>
+      <li><b>Audit</b> origins, storage, and structure</li>
+      <li><b>ETL</b> extract, transform, and load data between components</li>
+      <li><b>Deploy</b> present data to sense-makers</li>
+    </ul>
+  </div>
+  </section>
+
+  <section>
+  <div class="split">
+    <i class="fa fa-filter"></i>
+    <ul>
+      <li><b>Hooks</b> integrate automated decision making into your business</li>
+      <li><b>Models</b> build models which extract useful decisions from data</li>
+      <li><b>Pipelines</b> automate model improvement with new data</li>
+    </ul>
+  </div>
+  </section>
+
+  <section>
+  <div class="split">
+    <i class="fa fa-cloud-upload"></i>
+    <ul>
+      <li><b>Scale</b> develop scalable, repeatable systems</li>
+      <li><b>Deploy</b> automate deployment and updates of components</li>
+      <li><b>API</b> grow your network effects with API integration</li>
+    </ul>
+  </div>
+  </section>
+</article>
+
+
+<article id="contact-us">
+  <h1>Contact</h1>
+  <section>
+  <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
+    <div>
+      <label for="contact-name">name:</label>
+      <input type="text" size="15" name="contact-name" id="contact-name" required />
+    </div>
+    <div>
+      <label for="contact-email">email:</label>
+      <input type="email" name="contact-email" id="contact-email" required />
+    </div>
+
+    <div>
+      <label for="contact-message">message:</label>
+      <textarea name="contact-message" id="contact-message" rows="6" cols="24"></textarea>
+    </div>
+
+    <div>
+      <label for="submit-button"></label>
+      <input type="submit" value="submit" />
+    </div>
+  </form>
+</article>
+
+<article>
+  <section>
+  <div class="two items">
+    <ul>
+      <li><a href="https://www.linkedin.com/in/edward-grundy-ai/"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="https://github.com/bayinfosys"><i class="fa fa-github"></i></a></li>
+    </ul>
+  </div>
+  </section>
+</article>
+
+</main>
+</body>
+</html>

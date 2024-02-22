@@ -1,0 +1,165 @@
+:root {
+--text: #444;
+--border: #AAA;
+--flat-bg: #FFF;
+}
+
+body {
+width: 913px;
+align: center;
+margin-left: auto;
+margin-right: auto;
+font-family: "Felix Titling", "Bookman Old Style", Serif;
+color: var(--text);
+}
+
+header video {
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+z-index: -1;
+}
+
+header img {
+width: 100%;
+}
+
+main {
+scroll-behavior: smooth;
+scroll-snap-type: y mandatory;
+display: flex;
+flex-direction: column;
+}
+
+article {
+margin: 10px 30px 10px 30px;
+}
+
+section {
+margin: 10px 30px 10px 30px;
+font-family: inherit;
+/*font-size: 15pt;*/
+border-color: var(--border);
+border-width: 2px;
+border-style: solid;
+}
+
+section h1 {
+font-weight: normal;
+margin: 10px 30px 10px 30px;
+}
+
+section p {
+margin: 10px 20px 10px 20px;
+}
+
+section h2 {
+margin: 10px 10px 10px 10px;
+padding: 0px;
+font-weight: normal;
+display: inline;
+}
+
+.items {
+grid-area: icons;
+justify-self: stretch;
+align-self: center;
+}
+
+.items ul {
+display:grid;
+}
+
+.three.items ul {
+grid-template-columns: repeat(3, auto);
+}
+
+.two.items ul {
+grid-template-columns: repeat(2, auto);
+}
+
+.items li {
+text-align: center;
+list-style-type: none;
+}
+
+.items li i {
+display: block;
+font-size: 400%;
+margin: 10px;
+}
+
+.split {
+display: flex;
+overflow: grid;
+vertical-align: middle;
+}
+
+.split i {
+font-size: 400%;
+margin: 10px;
+float: left;
+width: 80px;
+}
+
+.split ul {
+/*font-size: 200%;*/
+margain: 10px;
+padding: 0;
+left: 10px;
+}
+
+form {
+margin: 20px;
+}
+
+form div{
+width: 100%;
+}
+label {
+display: inline-block;
+text-align: right;
+width: 140px;
+margin: 0px;
+}
+input {
+width: 340px;
+background: var(--flat-bg);
+border-color: var(--border);
+padding: 6px;
+margin: 4px;
+}
+textarea {
+width: 340px;
+background: var(--flat-bg);
+border-color: var(--border);
+padding: 6px;
+margin: 4px;
+}
+
+.references {
+display: flex;
+align-items: center;
+text-align:center;
+margin: auto;
+align: center;
+}
+
+.references section a {
+display: block;
+}
+
+a, a:hover, a:visited {
+color: var(--text);
+text-decoration: none;
+}
+
+a:hover {
+color: var(--text);
+}
+
+.item .detail b {
+color: var(--text);
+}
