@@ -15,8 +15,9 @@ color: var(--text);
 
 header video {
 position: fixed;
+top: 0;
 right: 0;
-bottom: 0;
+/*bottom: 0;*/
 min-width: 100%;
 min-height: 100%;
 z-index: -1;
@@ -24,6 +25,14 @@ z-index: -1;
 
 header img {
 width: 100%;
+}
+
+.invert {
+filter: invert(100%);
+}
+
+.invert444 {
+filter: invert(75%) sepia(10%) brightness(60%);
 }
 
 main {

@@ -8,12 +8,13 @@
 <script type="text/javascript">
 function random_video() {
   let srcs = [
-    ["img/Mountains in Sao Vicente, Portugal.mp4", "#444"],
-    ["img/pexels-taryn-elliott-8366008.mp4", "#FFF"],
-    ["img/Edge of a rocky mountain.mp4", "#FFF"],
-    ["img/Ripples in the sea.mp4", "#FFF"],
-    ["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
-    ["img/Beautiful rocky shoreline.mp4", "#FFF"]
+    //["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
+
+    ["img/Mountains in Sao Vicente, Portugal.mp4", "#444", "header-img invert444"],
+    ["img/pexels-taryn-elliott-8366008.mp4", "#000", "header-img invert"],
+    ["img/Edge of a rocky mountain.mp4", "#FFF", "header-img"],
+    ["img/Ripples in the sea.mp4", "#FFF", "header-img"],
+    ["img/Beautiful rocky shoreline.mp4", "#FFF", "header-img"]
   ]
 
   let video = document.getElementsByTagName("video")[0];
@@ -22,6 +23,7 @@ function random_video() {
 
   source.src = srcs[idx][0];
   document.documentElement.style.setProperty("--text", srcs[idx][1]);
+  document.getElementById("header").className=srcs[idx][2];
 
   video.load();
 }
@@ -35,7 +37,7 @@ function random_video() {
     <source src="img/Mountains in Sao Vicente, Portugal.mp4" type="video/mp4">
   </video>
 
-  <img class="header-img" src="img/BayInfoLogow.png" />
+  <img id="header" class="header-img" src="img/BayInfoLogow.png" />
 </header>
 
 <script type="text/javascript">
@@ -47,17 +49,20 @@ random_video();
   <h1>AI and Machine Learning Consultancy</h1>
 
   <section id="what-we-do">
-    <p>We work with seed-stage startups and SMEs to build ML pipelines from prototype to scale</p>
+    <h2>What We Do</h2>
+    <p>We specialize in transforming cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups and SMEs.</p>
+    <p>We partner with you to navigate the complexities of AI and ML development, from ideation to implementation.</p>
+    <p>Our services include:</p>
     <div class="three items">
       <ul>
-        <li><i class="fa fa-cogs"></i>Prototyping</li>
-        <li><i class="fa fa-users"></i>Production</li>
-        <li><i class="fa fa-line-chart"></i>Scaling</li>
+        <li><i class="fa fa-cogs"></i><strong>Prototyping:</strong> Rapidly develop and test AI models to validate your ideas.</li>
+        <li><i class="fa fa-users"></i><strong>Production:</strong> Scale your AI solutions with robust infrastructure and deployment strategies.</li>
+        <li><i class="fa fa-line-chart"></i><strong>Scaling:</strong> Optimize your AI systems for growth, ensuring they remain efficient and effective.</li>
       </ul>
     </div>
-    <p>Machine learning development is a wild and untamed landscape for many businesses, with few people who understand the costs and risks.</p>
-    <p>We can help you understand this venture, guide you through the process, and reduce risk by identifying working-system milestones along the path.</p>
-    <p><a href="#our-process">Learn more</a> about our process below and <a href="#contact-us">contact us</a> to discuss your project.</a>
+    <p>Our approach demystifies the machine learning development process, allowing us to identify and mitigate
+      risks early.</p>
+    <p><a href="#our-process">Discover more</a> about our proven process and <a href="#contact-us">get in touch</a> to discuss how we can bring your project to life.</p>
   </section>
 </article>
 
@@ -111,29 +116,63 @@ random_video();
 </article>
 
 
-<article id="contact-us">
-  <h1>Contact</h1>
+<article id="tech-talks">
+  <h1>Tech Talks</h1>
+
   <section>
-  <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
-    <div>
-      <label for="contact-name">name:</label>
-      <input type="text" size="15" name="contact-name" id="contact-name" required />
+    <div class="split">
+      <p>Our Tech Talks are a series of articles based on talks and discussions we've had with companies over the years.</p>
+      <p>Explore our articles to gain a deeper understanding of what we do and how we think.</p>
     </div>
-    <div>
-      <label for="contact-email">email:</label>
-      <input type="email" name="contact-email" id="contact-email" required />
-    </div>
+    </section>
 
-    <div>
-      <label for="contact-message">message:</label>
-      <textarea name="contact-message" id="contact-message" rows="6" cols="24"></textarea>
+    <section>
+    <div class="split">
+      <a href="./01-docker-deep-dive/01-docker-deep-dive.md">
+      <h2>Docker Deep Dive</h2>
+      <p>Docker is a foundational technology for AI/ML and cloud in general,
+        yet many developers don't "get it" and certainly recieve no training.
+        In this article we explore the foundations of this transformative technology.</p>
+      </a>
     </div>
+  </section>
 
-    <div>
-      <label for="submit-button"></label>
-      <input type="submit" value="submit" />
+  <section>
+    <div class="split">
+      <a href="./02-deploy-simple-model/02-deploy-simple-model.md">
+      <h2>Simple Model Deployment</h2>
+      <p>Model deployment is often hidden behind expensive cloud services, or subscription APIs,
+        but did you know you can deploy models at a fraction of the cost?
+        In this article we go through the steps of cheap, robust deployment.</p>
+      </a>
     </div>
-  </form>
+  </section>
+</article>
+
+
+<article id="contact-us">
+  <h1>Contact Us</h1>
+  <p>Ready to explore how AI and machine learning can transform your business? We're here to help at any stage.</p>
+  <section>
+    <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
+      <div>
+        <label for="contact-name">Name:</label>
+        <input type="text" name="contact-name" id="contact-name" required />
+      </div>
+      <div>
+        <label for="contact-email">Email:</label>
+        <input type="email" name="contact-email" id="contact-email" required />
+      </div>
+      <div>
+        <label for="contact-message">Message:</label>
+        <textarea name="contact-message" id="contact-message" rows="6" required></textarea>
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <p>We aim to respond to all inquiries within 48 hours.</p>
+  </section>
 </article>
 
 <article>
