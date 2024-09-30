@@ -49,7 +49,6 @@ margin: 10px 30px 10px 30px;
 section {
 margin: 10px 30px 10px 30px;
 font-family: inherit;
-/*font-size: 15pt;*/
 border-color: var(--border);
 border-width: 2px;
 border-style: solid;
@@ -95,8 +94,8 @@ list-style-type: none;
 }
 
 .items li i {
-display: block;
 font-size: 400%;
+display: block;
 margin: 10px;
 }
 
@@ -110,14 +109,14 @@ vertical-align: middle;
 font-size: 400%;
 margin: 10px;
 float: left;
-width: 80px;
+width: 110px;
 }
 
 .split ul {
-/*font-size: 200%;*/
 margain: 10px;
 padding: 0;
 left: 10px;
+width: 100%;
 }
 
 form {
@@ -127,11 +126,13 @@ margin: 20px;
 form div{
 width: 100%;
 }
+
 label {
 display: inline-block;
 text-align: right;
 width: 140px;
 margin: 0px;
+vertical-align: top;
 }
 input {
 width: 340px;

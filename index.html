@@ -8,11 +8,11 @@
 <script type="text/javascript">
 function random_video() {
   let srcs = [
-    //["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
+    // ["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
+    // ["img/pexels-taryn-elliott-8366008.mp4", "#000", "header-img invert"],
+    // ["img/Edge of a rocky mountain.mp4", "#FFF", "header-img"],
 
-    ["img/Mountains in Sao Vicente, Portugal.mp4", "#444", "header-img invert444"],
-    ["img/pexels-taryn-elliott-8366008.mp4", "#000", "header-img invert"],
-    ["img/Edge of a rocky mountain.mp4", "#FFF", "header-img"],
+    ["img/Mountains in Sao Vicente, Portugal.mp4", "#000", "header-img invert444"],
     ["img/Ripples in the sea.mp4", "#FFF", "header-img"],
     ["img/Beautiful rocky shoreline.mp4", "#FFF", "header-img"]
   ]
@@ -49,7 +49,14 @@ random_video();
   <h1>AI and Machine Learning Consultancy</h1>
 
   <section id="what-we-do">
-    <h2>What We Do</h2>
+    <p>For 10 years we have transformed cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups, SMEs, and new product developments.</p>
+    <p>We can support you in discovery, exploration, feasibility, risk analysis and other non-functional or non-software based requirements of these projects.</p>
+
+    <p>Our expertise in computer vision, text, databases and analytics has delivered multiple projects for a diverse range of clients; from large banks to government bodies to seed-stage startups at incubators.</p>
+
+    <p>Your ability to progress with working, testable systems will match your goals.</p>
+
+<!--
     <p>We specialize in transforming cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups and SMEs.</p>
     <p>We partner with you to navigate the complexities of AI and ML development, from ideation to implementation.</p>
     <p>Our services include:</p>
@@ -60,8 +67,9 @@ random_video();
         <li><i class="fa fa-line-chart"></i><strong>Scaling:</strong> Optimize your AI systems for growth, ensuring they remain efficient and effective.</li>
       </ul>
     </div>
-    <p>Our approach demystifies the machine learning development process, allowing us to identify and mitigate
-      risks early.</p>
+    <p>Our approach demystifies the machine learning development process, allowing us to identify and mitigate risks early.</p>
+-->
+
     <p><a href="#our-process">Discover more</a> about our proven process and <a href="#contact-us">get in touch</a> to discuss how we can bring your project to life.</p>
   </section>
 </article>
@@ -71,12 +79,11 @@ random_video();
   <h1>Our Process</h1>
 
   <section>
-  <h2>Overview</h2>
   <div class="three items">
     <ul>
-      <li><i class="fa fa-database"></i>Data feasibility</li>
-      <li><i class="fa fa-filter"></i>AI/ML pipelines</li>
-      <li><i class="fa fa-cloud-upload"></i>Cloud deployment</li>
+      <li><i class="fa fa-database"></i>Feasibility</li>
+      <li><i class="fa fa-filter"></i>Pipelines</li>
+      <li><i class="fa fa-cloud-upload"></i>Deployment</li>
     </ul>
   </div>
   </section>
@@ -85,9 +92,9 @@ random_video();
   <div class="split">
     <i class="fa fa-database"></i>
     <ul>
-      <li><b>Audit</b> origins, storage, and structure</li>
-      <li><b>ETL</b> extract, transform, and load data between components</li>
-      <li><b>Deploy</b> present data to sense-makers</li>
+      <li><b>Audit</b> origins, storage, and structure of data</li>
+      <li><b>Relate</b> data to business value</li>
+      <li><b>Deliver</b> information to sense-makers</li>
     </ul>
   </div>
   </section>
@@ -96,9 +103,9 @@ random_video();
   <div class="split">
     <i class="fa fa-filter"></i>
     <ul>
-      <li><b>Hooks</b> integrate automated decision making into your business</li>
-      <li><b>Models</b> build models which extract useful decisions from data</li>
-      <li><b>Pipelines</b> automate model improvement with new data</li>
+      <li><b>Integrate</b> automated decision making into your business</li>
+      <li><b>Model</b> solutions which extract information from data</li>
+      <li><b>Automate</b> improvement of the process with new data</li>
     </ul>
   </div>
   </section>
@@ -107,11 +114,38 @@ random_video();
   <div class="split">
     <i class="fa fa-cloud-upload"></i>
     <ul>
-      <li><b>Scale</b> develop scalable, repeatable systems</li>
-      <li><b>Deploy</b> automate deployment and updates of components</li>
-      <li><b>API</b> grow your network effects with API integration</li>
+      <li><b>Build</b> scalable, repeatable systems</li>
+      <li><b>Deploy</b> usable, testable, functional components</li>
+      <li><b>Access</b> with modern API integration</li>
     </ul>
   </div>
+  </section>
+</article>
+
+
+<article id="contact-us">
+  <h1>Contact Us</h1>
+  <p>We're here to help at any stage.</p>
+  <section>
+    <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
+      <div>
+        <label for="contact-name">Name:</label>
+        <input type="text" name="contact-name" id="contact-name" required />
+      </div>
+      <div>
+        <label for="contact-email">Email:</label>
+        <input type="email" name="contact-email" id="contact-email" required />
+      </div>
+      <div>
+        <label for="contact-message">Message:</label>
+        <textarea name="contact-message" id="contact-message" rows="6" required></textarea>
+      </div>
+      <div>
+        <label for="submit"></label>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <p>We aim to respond to all inquiries within 48 hours.</p>
   </section>
 </article>
 
@@ -120,13 +154,10 @@ random_video();
   <h1>Tech Talks</h1>
 
   <section>
-    <div class="split">
-      <p>Our Tech Talks are a series of articles based on talks and discussions we've had with companies over the years.</p>
-      <p>Explore our articles to gain a deeper understanding of what we do and how we think.</p>
-    </div>
-    </section>
+    <p>Our Tech Talks are a growing knowledge base of articles based on discussions with companies over the years.</p>
+  </section>
 
-    <section>
+  <section>
     <div class="split">
       <a href="./01-docker-deep-dive/01-docker-deep-dive.html">
       <h2>Docker Deep Dive</h2>
@@ -149,31 +180,6 @@ random_video();
   </section>
 </article>
 
-
-<article id="contact-us">
-  <h1>Contact Us</h1>
-  <p>Ready to explore how AI and machine learning can transform your business? We're here to help at any stage.</p>
-  <section>
-    <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
-      <div>
-        <label for="contact-name">Name:</label>
-        <input type="text" name="contact-name" id="contact-name" required />
-      </div>
-      <div>
-        <label for="contact-email">Email:</label>
-        <input type="email" name="contact-email" id="contact-email" required />
-      </div>
-      <div>
-        <label for="contact-message">Message:</label>
-        <textarea name="contact-message" id="contact-message" rows="6" required></textarea>
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-    <p>We aim to respond to all inquiries within 48 hours.</p>
-  </section>
-</article>
 
 <article>
   <section>
