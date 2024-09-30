@@ -32,7 +32,7 @@ The easiest place to explore these models is [HuggingFace](https://huggingface.c
 
 __Note__: the size of a model directly affects computation time; as we are targetting CPU infrastructure we should aim to have a model which responds within a few seconds on CPU execution.
 
-__Note__: when developing a pipeline, process efficient outweights model performance. Go with a fast model to develop the pipeline, and refine for performance later. It is a classic error of misdirection to spend longer chosing the model than developing the pipeline.
+__Note__: when developing a pipeline, process efficiency outweighs model performance. Go with a fast model to develop the pipeline, and refine for performance later. It is a classic error of misdirection to spend longer choosing the model than developing the pipeline.
 
 
 ## Model Caching and Preloading
@@ -204,7 +204,7 @@ Hope you got a long list of numbers!
 __Note__: the `Content-Type` header is required, otherwise `curl` will submit the data as a url encoded string (see [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) for details.)
 
 
-Those of you who prefer a UI can try the cool `FastAPI` feature which automatically generates documetnation for your API. Two are available at: `http://localhost:8000/docs` and `http://localhost:8000/redoc`.
+Those of you who prefer a UI can try the cool `FastAPI` feature which automatically generates documentation for your API. Two are available at: `http://localhost:8000/docs` and `http://localhost:8000/redoc`.
 
 
 # Section 2: AWS Lambda Container
@@ -218,7 +218,7 @@ We have chosen AWS Lambda as our target environment. Since 2020 AWS Lambda has a
 It is important to note that AWS Lambda does not "run" containers in the traditional sense. Amazon provides a wealth of technical information to document the technicalities. See these videos about [serverless cold start](https://www.youtube.com/watch?v=PiQ_eZFO2GU) or [very technical VM loading details](https://www.youtube.com/watch?v=0_jfH6qijVY) as great examples.
 
 
-Our main big change is to update the base image of the `Dockerfile` to use the AWS lambda base images. These are documented [here](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) and [here]. The python base images are listed [here](https://gallery.ecr.aws/lambda/python).
+Our main big change is to update the base image of the `Dockerfile` to use the AWS lambda base images. These are documented [here](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html). The python base images are listed [here](https://gallery.ecr.aws/lambda/python).
 
 Our new `Dockerfile` looks like:
 ```

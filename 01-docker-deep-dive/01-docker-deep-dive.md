@@ -4,7 +4,7 @@ Docker is a technology which allows us to package software into **containers** w
 
 Such an impactful technology has also had economic benefits. These are discussed in a wonderful book called [Trillions](https://www.wiley.com/en-gb/Trillions%3A+Thriving+in+the+Emerging+Information+Ecology-p-9781118176078) by Peter Lucas et al.
 
-Since its introduction in 2013, docker has facilitied the rapid growth of cloud computing, supported the creation of new software fields (e.g., DevOps), and helped establish the software-as-a-service business model. For more history, see [here](https://en.wikipedia.org/wiki/Docker_(software)).
+Since its introduction in 2013, docker has facilitated the rapid growth of cloud computing, supported the creation of new software fields (e.g., DevOps), and helped establish the software-as-a-service business model. For more history, see [here](https://en.wikipedia.org/wiki/Docker_(software)).
 
 Since the technology is now well established, new cohorts of developers are entering the workforce every year without experiencing "life-before-docker" and, in my experience, the best ones ask "how exactly does this magical black box work?".
 
@@ -17,14 +17,14 @@ The article is in three sections:
 
 ## Section 1: Foundational Linux Primitives
 
-The [Unix Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) of "do one task well" results in a competitive and productive environment which produces solid foundations for future developmonet. Container technology, and docker especially, is founded on the virtualisation tools found in the `Linux` operating system -- itself built on Unix. These tools allow containers to run far more efficiently than traditional virtual machines.
+The [Unix Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) of "do one task well" results in a competitive and productive environment which produces solid foundations for future development. Container technology, and docker especially, is founded on the virtualisation tools found in the `Linux` operating system -- itself built on Unix. These tools allow containers to run far more efficiently than traditional virtual machines.
 
 In no particular order, the interesting tools in this area are:
 + `chroot` a way to change the root directory for a process, essentially creating a "box" within which the process operates and cannot leave.
     + https://linux.die.net/man/1/chroot
     + https://en.wikipedia.org/wiki/Chroot
 
-+ `cgroups` are mechanisms for restricing resources available to a process. Think of them like permissions for resources. This limits the effect of what happens inside our `chroot` box affecting the host.
++ `cgroups` are mechanisms for restricting resources available to a process. Think of them like permissions for resources. This limits the effect of what happens inside our `chroot` box affecting the host.
     + https://man7.org/linux/man-pages/man7/cgroups.7.html
     + https://en.wikipedia.org/wiki/Cgroups
 
@@ -34,7 +34,7 @@ In no particular order, the interesting tools in this area are:
 
 It is important to understand that a container is run by the `docker` process **in** the host operating system, and that the above methods attempt to isolate whatever is in the container -- and the effect of whatever is in the container -- from the host machine.
 
-This gives the appearence of a virtual machine, but is far more efficient. Meaning we have many, many more containers on a given system, and create and destroy the containers more rapidly.
+This gives the appearance of a virtual machine, but is far more efficient. Meaning we have many, many more containers on a given system, and create and destroy the containers more rapidly.
 
 ## Escaping
 
@@ -45,7 +45,7 @@ In general, trying to use `docker` inside a container is one of the big anti-pat
 
 ## Non-Linux Docker
 
-Operating systmes without a Unix-like kernel (i.e., Microsoft Windows) and non-Linux Unix kernels (MacOs, Android) struggle to replicate these processes completely, and often have bespoke software to support containers (usually called something like "Docker Desktop" and dependent on technology like Hyper-V or HyperKit). These can be a little flakey, and the unfamiliar terminology and technical concepts introduce barriers to docker based development on these systems.
+Operating systems without a Unix-like kernel (i.e., Microsoft Windows) and non-Linux Unix kernels (MacOs, Android) struggle to replicate these processes completely, and often have bespoke software to support containers (usually called something like "Docker Desktop" and dependent on technology like Hyper-V or HyperKit). These can be a little flakey, and the unfamiliar terminology and technical concepts introduce barriers to docker based development on these systems.
 
 This can introduce blockers and issues around deployment (see Section 3), for this reason I would always encourage developers and engineers to be familiar with Linux.
 
@@ -187,7 +187,7 @@ Let's look into the `Config` blob:
 }
 ```
 
-This is a history of the comands used to build the image described by our `Dockerfile` and a bunch of other things (some of which can be seen by running `docker inspect` on the image).
+This is a history of the commands used to build the image described by our `Dockerfile` and a bunch of other things (some of which can be seen by running `docker inspect` on the image).
 
 __Note__: we are able to see the exact command executed by our `RUN printf` statement. A common information security failure is to use secret keys in a `Dockerfile`. These keys then remain visible **even if they are not written to the container**. Removing secrets is a process called `scrubbing`. If you need to scrub a container, reconsider your process.
 
