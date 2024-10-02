@@ -145,6 +145,3 @@ In summary, the ChatGPT product operates through the integration of three key co
 Each has a specific, measureable quanities which reflect value and cost to the product as a whole.
 
 If you would like to discuss a breakdown of similar products, please contact us from our [main page](https://www.bayis.co.uk/#contact-us).
-
-Together, these elements form a powerful system that's transforming our interaction with technology.
-As AI continues to evolve, understanding how these products work becomes increasingly important.
