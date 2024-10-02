@@ -7,7 +7,7 @@ Recently, I delivered a talk dissecting ChatGPT, breaking down its components, p
 In this article, I'll breakdown the ChatGPT product from OpenAI.
 
 + __Section 1__ describes the user interface.
-+ __Section 2__ outlines the model, how they are trained, and the specific advancments which made the chat approach viable.
++ __Section 2__ outlines the model, how they are trained, and the specific advancements which made the chat approach viable.
 + __Section 3__ covers infrastructure which handles the deployment of this model to serve users.
 
 Whether you're a developer, a business professional exploring AI capabilities, or simply curious about how ChatGPT generates responses, this breakdown offers insight into the composition.
@@ -32,14 +32,14 @@ In this interface, the user types text into the input panel; that text is submit
 Notably, several things do not occur within the UI:
 
 + No pre-processing of input: When you type a message, it's submitted directly to the model without any preliminary changes or analysis.
-+ No continuous polling or uploading as you type: The response from the model is streamed back as an event, mirroring standard API call behavior.
++ No continuous polling or uploading as you type: The response from the model is streamed back as an event, mirroring standard API call behaviour.
 
 This form of user interface is designed to be lightweight and user-friendly, demonstrating the API's flexibility for integration into other applications.
 
 
 ## The Model
 
-In machine learning parlance, a __model__ consists of code, which describes the archicture of the model, and a file of parameters which adjusts how the code behaves. These files are often refered to as **weights** or **parameters** of the model, and can be many gigabytes in size. In the case of ChatGPT, they are not publicly available.
+In machine learning parlance, a __model__ consists of code, which describes the architecture of the model, and a file of parameters which adjusts how the code behaves. These files are often refered to as **weights** or **parameters** of the model, and can be many gigabytes in size. In the case of ChatGPT, they are not publicly available.
 
 Large-language models are typically __Transformer__ architectures: highly effective in processing sequential data.
 Text-based models are typically trained to predict the next word in a sentence.
@@ -55,11 +55,11 @@ These concepts are foundational in language modeling and are related to statisti
 
 ### Big Data
 
-Interestingly, due to the archecture of these models, they are not so prone to __over-fitting__, which was a significant bottleneck to using massive amounts of data to train massive models in the past -- in simple terms: the model would simply memorize the data.
+Interestingly, due to the architecture of these models, they are not so prone to __over-fitting__, which was a significant bottleneck to using massive amounts of data to train massive models in the past -- in simple terms: the model would simply memorize the data.
 
 Additionally, these models are capable of being trained on any sequential data: Genetic sequences, music, translation, machine code, etc. Providing the data can be sourced and formatted appropriately.
 
-The ability of Transformers to accept massive amounts of data led to rapid experiementation and discoveries around their ability to learn and relate concepts which are difficult for humans to discover. How this conceptual data is represented in the model is an interesting area of research. For introduction I would recommend:
+The ability of Transformers to accept massive amounts of data led to rapid experimentation and discoveries around their ability to learn and relate concepts which are difficult for humans to discover. How this conceptual data is represented in the model is an interesting area of research. For introduction I would recommend:
 + [Transformer Circuits](https://transformer-circuits.pub/2021/framework)
 + [Neal Nanda on Machine Learning StreetTalk](https://www.youtube.com/watch?v=cVBGjhN4-1g) discussing a whole host of insights in this area.
 
@@ -90,7 +90,7 @@ The use of __instruct fine-tuning__ has been a major innovation in machine learn
 
 ## Infrastructure
 
-Given the UI and the Model, the remaning challenge is coupling the Model to requests from the UI, in a scalable and performant manner.
+Given the UI and the Model, the remaining challenge is coupling the Model to requests from the UI, in a scalable and performant manner.
 
 The infrastructure has three main components:
 + __API__: providing access to the model's functionality and a typical tech problem.
@@ -108,7 +108,7 @@ Hardware challenges:
 
 Administration of these clusters is challenging indeed, and the main cost for building and running these products.
 
-However, once the model execution environment are established, scaling to meet increased demand becomes more managable.
+However, once the model execution environment are established, scaling to meet increased demand becomes more manageable.
 
 ![Scaling infrastructure](03-how-to-scale.png "Figure 3: How to scale")
 
@@ -142,6 +142,6 @@ In summary, the ChatGPT product operates through the integration of three key co
 + A Model that processes input and generates intelligent, context-aware responses.
 + An Infrastructure that ensures smooth operation at scale, efficiently handling millions of queries.
 
-Each has a specific, measureable quanities which reflect value and cost to the product as a whole.
+Each has a specific, measureable quantities which reflect value and cost to the product as a whole.
 
 If you would like to discuss a breakdown of similar products, please contact us from our [main page](https://www.bayis.co.uk/#contact-us).
