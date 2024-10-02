@@ -10,9 +10,9 @@ This article will demonstrate how understanding the costs associated with data (
 
 Machine learning can be summarised in a simple equation:
 
-\[
-\mathbf{F(X) = Y}
-\]
+```
+F(X) = Y
+```
 
 - **F (Model):** The algorithm or model which processes data.
 - **X (Data):** The input data used by the algorithm.
@@ -76,7 +76,7 @@ Let's compare the costs for service-hosted and self-hosted models.
   - **Total Cost per Event:** **$0.1578** (approx. **£0.12**).
   - **Profit per Event:** £0.50 - £0.12 = **£0.38**.
 
-The costs for these are drawn from the API costs given by providers, in the hosted model case from the OpenAI pricing [page](https://openai.com/api/pricing/) and in the self-hosted cast from the AWS instance pricing [page](https://aws.amazon.com/ec2/pricing/on-demand/).
+The costs for these are drawn from the API costs given by providers, in the hosted model case from the OpenAI pricing [page](https://openai.com/api/pricing/) and in the self-hosted case from the AWS instance pricing [page](https://aws.amazon.com/ec2/pricing/on-demand/).
 
 In both cases, prices may vary depending on specific usage (batch vs streaming), cost agreements (pricing tiers and capacity reservations) and so on.
 
