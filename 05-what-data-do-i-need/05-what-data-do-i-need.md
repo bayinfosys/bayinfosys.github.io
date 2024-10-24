@@ -31,7 +31,7 @@ The above table describes common modalities, uses, and challenges.
 All of these modalities can be sequential in time and presented as a time-series -- for example,**text** over time becomes change in sentiment, **Images** over time become monitoring -- which contains all the prior complexities and benefits, combined with the ability to monitor change and identify new opportunities.
 
 Key Questions:
-+ What data do we already have? - either the business already captures this or customers provide and it simply needs to be recorded -- is cruicial.
++ What data do we already have? - either the business already captures this or customers provide and it simply needs to be recorded -- is crucial.
 + What new data can we capture?
 + Does this change carry any regulatory issues?
 + Does this change carry any technical requirements?
@@ -45,13 +45,13 @@ Common tasks to develop from this analysis are:
 + In-place regulatory requirements -- encryption-at-rest, personal-private-information removal, etc.
 
 
-## Labeling
+## Labelling
 
 Once we understand the data we require for the problem, and have an initial dataset to reason about we can look at the next step: **Labelling**.
 
 This is a crucial stage which supports evaluation. In prior ML systems development, labelling was an expensive and time-consuming process required to train new models.
 
-In modern AI Engineering and the emergence of foundation models, businesses can now leverage pre-trained models to automate parts of the labeling process, reducing time and cost. In the table below we describe some of the models available for generating labelled data:
+In modern AI Engineering and the emergence of foundation models, businesses can now leverage pre-trained models to automate parts of the labelling process, reducing time and cost. In the table below we describe some of the models available for generating labelled data:
 
 | **Modality** | **Provider** | **Model** |
 |--------------|----------------|----------------|
@@ -99,10 +99,10 @@ To ensure you have the right data for your product, consider the following check
 4. **Do you label/annotate/respond to these interactions?**
 5. **Is the ML goal related to this response?**
 
-If you can answer yes to all these boxes you can achive your goals. If you are missing some elements, the project is still feasible but will need some consideration. In either case, please reach out to us at [Bay Information Sytems](https://www.bayis.co.uk/) for advice.
+If you can answer yes to all these boxes you can achieve your goals. If you are missing some elements, the project is still feasible but will need some consideration. In either case, please reach out to us at [Bay Information Systems](https://www.bayis.co.uk/) for advice.
 
 
 ## Conclusion
-In today's data-driven landscape, understanding what data you need is crucial for successfully integrating machine learning into your product development process. This article outlines a structured approach for business and product owners, focusing on data modalities and their use cases, the significance of labeling, and the steps necessary for bringing an ML feature to production. By answering key questions about data availability and regulatory requirements, and utilizing pre-trained models for efficient labeling, you can better position your organization for success.
+In today's data-driven landscape, understanding what data you need is crucial for successfully integrating machine learning into your product development process. This article outlines a structured approach for business and product owners, focusing on data modalities and their use cases, the significance of labelling, and the steps necessary for bringing an ML feature to production. By answering key questions about data availability and regulatory requirements, and utilizing pre-trained models for efficient labelling, you can better position your organization for success.
 
-Reach us at [Bay Information Sytems](https://www.bayis.co.uk/).
+Reach us at [Bay Information Systems](https://www.bayis.co.uk/).
