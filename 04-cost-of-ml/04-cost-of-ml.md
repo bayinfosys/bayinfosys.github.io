@@ -52,7 +52,7 @@ Our simple app converts a text description of a cake to an image and then rates 
 
 ## Hosting Cost Breakdown
 
-Once the system is running, we assuming each tweet generates **£0.50** in revenue.
+Once the system is running, we assume each tweet generates **£0.50** in revenue.
 Our goal is to get live as fast as possible, but we don't know whether to use a Model-as-a-service provider (like OpenAI) or whether to have a self-hosted solution.
 
 This choice has important implications for support, development time, availability requirements, etc, so understanding per-event cost differential can help inform those decisions.
@@ -88,7 +88,7 @@ Each user interaction (a twitter post) can incur known and predictable costs, an
 
 Occasionally a working ML system requires updates to either maintain or improve performance.
 
-+ **Adaptation:** New patterns have been observed in data or user behavior.
++ **Adaptation:** New patterns have been observed in data or user behaviour.
 + **Improvement:** New insights allow enhancement of model accuracy.
 + **Error Correction:** Existing errors can be rectified in model outputs.
 
