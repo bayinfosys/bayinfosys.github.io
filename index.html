@@ -1,227 +1,417 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bay Information Systems</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Variables */
+        :root {
+            --text: #444;
+            --border: #AAA;
+            --flat-bg: #FFF;
+            --dark-bg: #333; /* Navbar and footer background */
+            --light-bg: #EEE; /* Light text for contrast */
+            --link-hover: #FFF; /* Hover color for links */
+        }
 
-<title>Bay Information Systems</title>
-<link rel="stylesheet" type="text/css" href="sem.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        /* General Styles */
+        body {
+            font-family: "Felix Titling", "Bookman Old Style", Serif;
+            background-color: var(--flat-bg);
+            color: var(--text);
+        }
 
-<script type="text/javascript">
-function random_video() {
-  let srcs = [
-    // ["img/pexels-ruvim-miksanskiy-5896379.mp4", "#FFF"],
-    // ["img/pexels-taryn-elliott-8366008.mp4", "#000", "header-img invert"],
-    // ["img/Edge of a rocky mountain.mp4", "#FFF", "header-img"],
+        h1, h2 {
+            font-family: "Felix Titling", "Bookman Old Style", Serif;
+            color: var(--text);
+        }
 
-    ["img/Mountains in Sao Vicente, Portugal.mp4", "#000", "header-img invert444"],
-    ["img/Ripples in the sea.mp4", "#FFF", "header-img"],
-    ["img/Beautiful rocky shoreline.mp4", "#FFF", "header-img"]
-  ]
-
-  let video = document.getElementsByTagName("video")[0];
-  let source = video.getElementsByTagName("source")[0];
-  let idx = Math.floor(Math.random() * srcs.length);
-
-  source.src = srcs[idx][0];
-  document.documentElement.style.setProperty("--text", srcs[idx][1]);
-  document.getElementById("header").className=srcs[idx][2];
-
-  video.load();
+        /* Navbar Styling */
+.navbar-nav .nav-link {
+    color: var(--light-bg) !important; /* Force light text color */
+    text-decoration: none;
 }
-</script>
-</head>
 
+.navbar-nav .nav-link:hover {
+    color: var(--link-hover) !important; /* White on hover */
+}
+
+.navbar-toggler {
+    border-color: var(--light-bg) !important; /* Light border for burger button */
+    padding: 10px 15px; /* Add more padding */
+    height: 45px; /* Set consistent height */
+}
+
+.navbar-toggler-icon {
+    background-image: none; /* Remove Bootstrap default icon */
+    width: 30px; /* Adjust size for "fatter" appearance */
+    height: 3px; /* Thicker lines for more presence */
+    background-color: var(--light-bg); /* Light color */
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: inline-block;
+    width: 30px; /* Match width */
+    height: 3px; /* Thicker lines */
+    background-color: var(--light-bg); /* Same light color */
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px; /* Position above */
+}
+
+.navbar-toggler-icon::after {
+    top: 8px; /* Position below */
+}
+
+        nav {
+            background-color: var(--dark-bg); /* Dark background */
+        }
+
+        nav a {
+            color: var(--light-bg); /* Light text for contrast */
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--link-hover); /* White on hover */
+        }
+
+        .navbar-toggler {
+            border-color: var(--light-bg); /* Light border for burger button */
+        }
+
+        .navbar-toggler-icon {
+            background-image: none; /* Remove default Bootstrap icon */
+            color: var(--light-bg); /* Light color for custom icon */
+            font-size: 1.5rem; /* Adjust icon size */
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .btn-custom {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--border);
+            color: var(--dark-bg);
+        }
+
+        .logo-banner {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+        .section-light {
+            background-color: var(--light-bg);
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .section-dark {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+        }
+
+.card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Accordion Button Styles */
+.accordion-button {
+    background-color: var(--light-bg); /* Light background */
+    color: var(--text); /* Dark text */
+    border: 1px solid var(--border); /* Match your border color */
+    box-shadow: none; /* Remove default blue highlight */
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem var(--border); /* Custom subtle outline */
+    border-color: var(--border);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--flat-bg); /* Slightly different background when active */
+    color: var(--text);
+}
+
+.accordion-button::after {
+    color: var(--text); /* Icon color for toggle */
+}
+</style>
+</head>
 <body>
 
-<header>
-  <video autoplay muted loop>
-    <source src="img/Mountains in Sao Vicente, Portugal.mp4" type="video/mp4">
-  </video>
+<!-- Sticky Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="#">
+<img src="img/BayInfoLogo_narrow.png" alt="Bay Information Systems Logo" height="50">
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#what-we-do">What We Do</a></li>
+<li class="nav-item"><a class="nav-link" href="#our-process">Our Process</a></li>
+<li class="nav-item"><a class="nav-link" href="#tech-talks">Tech Talks</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact-us">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
 
-  <img id="header" class="header-img" src="img/BayInfoLogow.png" />
+<!-- Hero Section -->
+<header class="text-center py-5 section-dark">
+<img src="img/BayInfoLogow.png" alt="Bay Information Systems" class="logo-banner">
+<p class="mt-3" style="color: var(--light-bg); font-size: 1.2rem;">Experts in AI & ML Solutions for Startups, SMEs, and Enterprises</p>
 </header>
 
-<script type="text/javascript">
-random_video();
-</script>
-
+<!-- Content -->
 <main>
-<article>
-  <h1>AI and Machine Learning Consultancy</h1>
 
-  <section id="what-we-do">
-    <p>For 10 years we have transformed cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups, SMEs, and new product developments.</p>
-    <p>We can support you in discovery, exploration, feasibility, risk analysis and other non-functional or non-software based requirements of these projects.</p>
+<!-- What We Do Section -->
+<section id="what-we-do" class="py-5 section-light">
+<div class="container">
+<h2>What We Do</h2>
+<p class="mt-3">For 10 years, we have transformed cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups, SMEs, and new product developments.</p>
+<p>We help you transform raw data into actionable insights and deliver scalable AI/ML solutions tailored to your business needs.</p>
+</div>
+</section>
 
-    <p>Our expertise in computer vision, text, databases and analytics has delivered multiple projects for a diverse range of clients; from large banks to government bodies to seed-stage startups at incubators.</p>
+<!-- Our Expertise -->
+<section id="expertise" class="py-5 section-light">
+<div class="container">
+<h2>Our Expertise</h2>
+<p class="mt-3">Transforming ideas into scalable AI solutions with a focus on:</p>
+<div class="row mt-4">
+<div class="col-md-4">
+<h5>Computer Vision</h5>
+<p>Delivering systems that interpret and analyze visual data for automation and insights.</p>
+</div>
 
-    <p>Your ability to progress with working, testable systems will match your goals.</p>
+<div class="col-md-4">
+<h5>Medical Imaging</h5>
+<p>Developing diagnostic tools that assist healthcare professionals with AI-powered imaging analysis.</p>
+</div>
 
-<!--
-    <p>We specialize in transforming cutting-edge AI and machine learning technologies into scalable solutions for seed-stage startups and SMEs.</p>
-    <p>We partner with you to navigate the complexities of AI and ML development, from ideation to implementation.</p>
-    <p>Our services include:</p>
-    <div class="three items">
-      <ul>
-        <li><i class="fa fa-cogs"></i><strong>Prototyping:</strong> Rapidly develop and test AI models to validate your ideas.</li>
-        <li><i class="fa fa-users"></i><strong>Production:</strong> Scale your AI solutions with robust infrastructure and deployment strategies.</li>
-        <li><i class="fa fa-line-chart"></i><strong>Scaling:</strong> Optimize your AI systems for growth, ensuring they remain efficient and effective.</li>
-      </ul>
+<div class="col-md-4">
+<h5>Transaction Classifiers</h5>
+<p>Building models that classify financial transactions for fraud detection and risk management.</p>
+</div>
+</div>
+
+<div class="row mt-4">
+<div class="col-md-6">
+<h5>Retrieval-Augmented Generation (RAG)</h5>
+<p>Combining AI and knowledge bases to generate accurate, context-aware responses.</p>
+</div>
+
+<div class="col-md-6">
+<h5>Agent Workflow Design</h5>
+<p>Crafting intelligent agents to optimize and automate complex business workflows.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- Our Process Section -->
+<section id="our-process" class="py-5 section-light">
+    <div class="container">
+        <h2 class="text-center">Our Process</h2>
+        <p class="text-center mt-3">We focus on understanding your business, building practical solutions, and delivering results through a structured approach:</p>
+
+        <!-- Steps Overview with Expandable Details -->
+        <div class="accordion mt-4" id="processAccordion">
+            <!-- Step 1: Feasibility -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFeasibility">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFeasibility" aria-expanded="true" aria-controls="collapseFeasibility">
+                        <i class="fa fa-database me-2"></i>Step 1: Feasibility
+                    </button>
+                </h2>
+                <div id="collapseFeasibility" class="accordion-collapse collapse show" aria-labelledby="headingFeasibility" data-bs-parent="#processAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><b>Audit:</b> Understand the origins, storage, and structure of your data.</li>
+                            <li><b>Relate:</b> Align data with business value and strategic goals.</li>
+                            <li><b>Deliver:</b> Identify actionable information to guide decision-makers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Pipelines -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPipelines">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePipelines" aria-expanded="false" aria-controls="collapsePipelines">
+                        <i class="fa fa-filter me-2"></i>Step 2: Pipelines
+                    </button>
+                </h2>
+                <div id="collapsePipelines" class="accordion-collapse collapse" aria-labelledby="headingPipelines" data-bs-parent="#processAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><b>Integrate:</b> Merge automated decision-making with business workflows.</li>
+                            <li><b>Model:</b> Build AI/ML solutions to extract meaningful insights from data.</li>
+                            <li><b>Automate:</b> Enable iterative improvement using new data inputs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Deployment -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDeployment">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDeployment" aria-expanded="false" aria-controls="collapseDeployment">
+                        <i class="fa fa-cloud-upload me-2"></i>Step 3: Deployment
+                    </button>
+                </h2>
+                <div id="collapseDeployment" class="accordion-collapse collapse" aria-labelledby="headingDeployment" data-bs-parent="#processAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><b>Build:</b> Develop scalable, repeatable systems for reliability.</li>
+                            <li><b>Deploy:</b> Create usable, testable components ready for production.</li>
+                            <li><b>Access:</b> Provide APIs for seamless integration with your infrastructure.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>Our approach demystifies the machine learning development process, allowing us to identify and mitigate risks early.</p>
--->
-
-    <p><a href="#our-process">Discover more</a> about our proven process and <a href="#contact-us">get in touch</a> to discuss how we can bring your project to life.</p>
-  </section>
-</article>
+</section>
 
 
-<article id="our-process">
-  <h1>Our Process</h1>
+<!-- Tech Talks Section -->
+<section id="tech-talks" class="py-5 section-light">
+<div class="container">
+<h2>Tech Talks</h2>
+<p class="mt-3">Explore our in-depth technical articles:</p>
 
-  <section>
-  <div class="three items">
-    <ul>
-      <li><i class="fa fa-database"></i>Feasibility</li>
-      <li><i class="fa fa-filter"></i>Pipelines</li>
-      <li><i class="fa fa-cloud-upload"></i>Deployment</li>
-    </ul>
-  </div>
-  </section>
+<div class="row">
 
-  <section>
-  <div class="split">
-    <i class="fa fa-database"></i>
-    <ul>
-      <li><b>Audit</b> origins, storage, and structure of data</li>
-      <li><b>Relate</b> data to business value</li>
-      <li><b>Deliver</b> information to sense-makers</li>
-    </ul>
-  </div>
-  </section>
+<div class="col-md-6 mb-4">
+<a href="./01-docker-deep-dive/01-docker-deep-dive.html" class="stretched-link text-decoration-none">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Docker Deep Dive</h5>
+<p class="card-text">Explore the foundations of this transformative technology, essential for modern AI/ML solutions.</p>
+</div>
+</div>
+</a>
+</div>
 
-  <section>
-  <div class="split">
-    <i class="fa fa-filter"></i>
-    <ul>
-      <li><b>Integrate</b> automated decision making into your business</li>
-      <li><b>Model</b> solutions which extract information from data</li>
-      <li><b>Automate</b> improvement of the process with new data</li>
-    </ul>
-  </div>
-  </section>
+<div class="col-md-6 mb-4">
+<a href="./02-deploy-simple-model/02-deploy-simple-model.html" class="stretched-link text-decoration-none">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Simple Model Deployment</h5>
+<p class="card-text">A cost-efficient strategy for deploying a machine learning model.</p>
+</div>
+</div>
+</a>
+</div>
 
-  <section>
-  <div class="split">
-    <i class="fa fa-cloud-upload"></i>
-    <ul>
-      <li><b>Build</b> scalable, repeatable systems</li>
-      <li><b>Deploy</b> usable, testable, functional components</li>
-      <li><b>Access</b> with modern API integration</li>
-    </ul>
-  </div>
-  </section>
-</article>
+<div class="col-md-6 mb-4">
+<a href="./03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html" class="stretched-link text-decoration-none">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">How does ChatGPT work?</h5>
+<p class="card-text">A breakdown of the ChatGPT product from OpenAI.</p>
+</div>
+</div>
+</a>
+</div>
 
+<div class="col-md-6 mb-4">
+<a href="./04-cost-of-ml/04-cost-of-ml.html" class="stretched-link text-decoration-none">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Cost of ML</h5>
+<p class="card-text">Understanding the costs associated with data, models, and outputs can support decision making and define project goals.</p>
+</div>
+</div>
+</a>
+</div>
 
-<article id="contact-us">
-  <h1>Contact Us</h1>
-  <p>We're here to help at any stage.</p>
-  <section>
-    <form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" name="emailform">
-      <div>
-        <label for="contact-name">Name:</label>
-        <input type="text" name="contact-name" id="contact-name" required />
-      </div>
-      <div>
-        <label for="contact-email">Email:</label>
-        <input type="email" name="contact-email" id="contact-email" required />
-      </div>
-      <div>
-        <label for="contact-message">Message:</label>
-        <textarea name="contact-message" id="contact-message" rows="6" required></textarea>
-      </div>
-      <div>
-        <label for="submit"></label>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-    <p>We aim to respond to all inquiries within 48 hours.</p>
-  </section>
-</article>
+<div class="col-md-6 mb-4">
+<a href="./05-what-data-do-i-need/05-what-data-do-i-need.html" class="stretched-link text-decoration-none">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">What Data Do I Need?</h5>
+<p class="card-text">A checklist for making architectural change manageable and straightforward.</p>
+</div>
+</div>
+</a>
+</div>
+</div>
 
 
-<article id="tech-talks">
-  <h1>Tech Talks</h1>
+</div>
+</section>
 
-  <section>
-    <p>Our Tech Talks are a growing knowledge base of articles based on discussions with companies over the years.</p>
-  </section>
-
-  <section>
-    <div class="split">
-      <a href="./01-docker-deep-dive/01-docker-deep-dive.html">
-      <h2>Docker Deep Dive</h2>
-      <p>Docker is a foundational technology for AI/ML and cloud in general,
-        yet many developers don't "get it" and certainly recieve no training.
-        In this article we explore the foundations of this transformative technology.</p>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <div class="split">
-      <a href="./02-deploy-simple-model/02-deploy-simple-model.html">
-      <h2>Simple Model Deployment</h2>
-      <p>Model deployment is often hidden behind expensive cloud services, or subscription APIs,
-        but did you know you can deploy models at a fraction of the cost?
-        In this article we go through the steps of cheap, robust deployment.</p>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <div class="split">
-      <a href="./03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html">
-      <h2>How does ChatGPT work?</h2>
-      <p>Understanding of AI products is essential. In this article, I breakdown the ChatGPT product from OpenAI.</p>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <div class="split">
-      <a href="./04-cost-of-ml/04-cost-of-ml.html">
-      <h2>Cost of ML</h2>
-      <p>Machine learning is a well-defined problem with specific costs and roles.
-      In this article, we break down the machine learning process using the equation **F(X) = Y** to relate each component to costs and expertise.</p>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <div class="split">
-      <a href="./05-what-data-do-i-need/05-what-data-do-i-need.html">
-      <h2>What Data Do I Need? A Guide for Business and Product Owners</h2>
-      <p>As a business owner or product manager, you play a crucial role in driving product value. However, integrating machine learning into your processes can bring a sense of uncertainty.
-      In this article, we will develop a checklist for making this architectural change manageable and straightforward.</p>
-      </a>
-    </div>
-  </section>
-
-</article>
-
-
-<article>
-  <section>
-  <div class="two items">
-    <ul>
-      <li><a href="https://www.linkedin.com/in/edward-grundy-ai/"><i class="fa fa-linkedin"></i></a></li>
-      <li><a href="https://github.com/bayinfosys"><i class="fa fa-github"></i></a></li>
-    </ul>
-  </div>
-  </section>
-</article>
+<!-- Contact Us Section -->
+<section id="contact-us" class="py-5 section-light">
+<div class="container">
+<h2>Let's Build Something</h2>
+<p class="mt-3">We're here to help at any stage. Reach out using the form below:</p>
+<form action="mailto:ed@bayis.co.uk" method="POST" enctype="multipart/form-data" class="mt-4">
+<div class="mb-3">
+<label for="contact-name" class="form-label">Name:</label>
+<input type="text" class="form-control" id="contact-name" name="contact-name" required>
+</div>
+<div class="mb-3">
+<label for="contact-email" class="form-label">Email:</label>
+<input type="email" class="form-control" id="contact-email" name="contact-email" required>
+</div>
+<div class="mb-3">
+<label for="contact-message" class="form-label">Message:</label>
+<textarea class="form-control" id="contact-message" name="contact-message" rows="5" required></textarea>
+</div>
+<button type="submit" class="btn btn-custom">Submit</button>
+</form>
+</div>
+</section>
 
 </main>
+
+<!-- Footer -->
+<footer>
+<div class="d-flex justify-content-center gap-4 mt-3">
+
+<img src="img/BayInfoLogo_square.png" alt="Bay Information Systems Logo" height="50">
+
+<a href="https://uk.linkedin.com/company/bay-information-systems-ml" target="_blank" class="text-decoration-none">
+<i class="fa fa-linkedin fa-3x" style="color: var(--light-bg);"></i>
+</a>
+<a href="https://github.com/bayinfosys" target="_blank" class="text-decoration-none">
+<i class="fa fa-github fa-3x" style="color: var(--light-bg);"></i>
+</a>
+</div>
+
+<p>&copy; 2024 Bay Information Systems. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
