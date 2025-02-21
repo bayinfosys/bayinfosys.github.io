@@ -2,7 +2,7 @@
 
 Machine learning isn't just about choosing the right model -- it's about applying the right design pattern to a problem. Design patterns originated in architecture: bridges, towers, doorways are all patterns; how they look in practice is a matter of the particular.
 
-Let's break down key ML design patterns with a focus on applications to marketing, where ML can help optimize audience engagement, improve revenue generation, and gain customer insights. Once we understand the goal, applying the right ML design pattern will reduce the challenge from difficult to forecast R&D to predictable engineering.
+Let's break down key ML design patterns with a focus on applications to marketing, where ML can help optimise audience engagement, improve revenue generation, and gain customer insights. Once we understand the goal, applying the right ML design pattern will reduce the challenge from difficult to forecast R&D to predictable engineering.
 
 ## What Are ML Design Patterns?
 
@@ -10,7 +10,7 @@ Design patterns in ML are reusable solutions to common problems. Just like archi
 
 + Recommender Pattern
     + Overview: Given a single observation, a recommender will suggest associations based on its training.
-    + Examples: Next purchase suggestions, personalized content recommendations, discount recommendation.
+    + Examples: Next purchase suggestions, personalised content recommendations, discount recommendation.
     + Marketing example: To all customers, recommend an appropriate set of adverts.
 
 + Classifier Pattern
@@ -20,18 +20,18 @@ Design patterns in ML are reusable solutions to common problems. Just like archi
 
 + Segmentation Pattern
     + Overview: Given a set of observations, separate them into distinct groups based on properties defined in the training process.
-    + Examples: Customer segmentation by spending behavior, identification of tissue type in medical scans.
+    + Examples: Customer segmentation by spending behaviour, identification of tissue type in medical scans.
     + Marketing example: Separate customers by spending habits.
 
 + Regression/Forecasting Pattern
     + Overview: Given a history of values, suggest future new values which follow the pattern.
     + Examples: Weather prediction, expected failure of parts in manufacturing processes, dynamic pricing.
-    + Marketing example: For each customer, forecast future engagement based on previous behavior.
+    + Marketing example: For each customer, forecast future engagement based on previous behaviour.
 
 + Anomaly Detection
     + Overview: Given a set of observations, discover patterns to expect, then monitor for deviation.
-    + Examples: Unexpected behavior indicating identity theft or bot traffic, loss-of-customer prediction.
-    + Marketing example: For each audience segment, monitor for changes in behavior which suggest new approaches are needed.
+    + Examples: Unexpected behaviour indicating identity theft or bot traffic, loss-of-customer prediction.
+    + Marketing example: For each audience segment, monitor for changes in behaviour which suggest new approaches are needed.
 
 + Similarity Discovery
     + Overview: Given a set of observations, discover aspects of similarity or contrast.
@@ -41,9 +41,9 @@ Design patterns in ML are reusable solutions to common problems. Just like archi
 ## Observations 
 While all patterns are grounded in mathematical principles, their adoption and evolution have followed different historical paths:
 
-+ Classifiers and Regression have been extensively studied in traditional statistics for decades, forming the foundation of many predictive modeling techniques.
++ Classifiers and Regression have been extensively studied in traditional statistics for decades, forming the foundation of many predictive modelling techniques.
 
-+ Recommender Systems, though viable much earlier, surged in popularity with the rise of e-commerce and social media in the late 1990s and early 2000s, where personalized recommendations became a core competitive advantage.
++ Recommender Systems, though viable much earlier, surged in popularity with the rise of e-commerce and social media in the late 1990s and early 2000s, where personalised recommendations became a core competitive advantage.
 
 + Anomaly Detection, Similarity Discovery, and Segmentation only became widely practical with the advent of large-scale data collection and increased computational power, allowing businesses to extract deeper insights from vast datasets.
 
