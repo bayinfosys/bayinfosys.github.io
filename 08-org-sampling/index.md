@@ -2,7 +2,7 @@
 
 In a recent move, the U.S. meme department DOGE required all staff to send an email describing their recent tasks while copying in their supervisors. Many viewed this as an attack on government workers, while Elon Musk (self-professed "DOGEfather") claimed it was meant to verify that employees existed and were actively working.
 
-However, beyond these interpretations, this email response mechanism serves as an excellent method for sampling the entire U.S. government and its activities in a structured and actionable manner.
+Beyond these interpretations, this email response mechanism serves as an excellent method for sampling the entire U.S. government and its activities in a structured and actionable manner.
 
 ## The Challenge of Large Organisations
 
