@@ -7,9 +7,9 @@ Below is a streamlined breakdown of key risks in publicly accessible AI systems.
 
 ## **1. Data Risks**
 
-- **Poisoning**: Malicious actors can inject biased or deceptive data into training pipelines, skewing model behavior. This is especially dangerous in models that incorporate user feedback into retraining.
+- **Poisoning**: Malicious actors can inject biased or deceptive data into training pipelines, skewing model behaviour. This is especially dangerous in models that incorporate user feedback into retraining.
 - **Inference Leakage**: Sensitive data from training can inadvertently surface in AI outputs. Attackers may extract private details through systematic queries (*e.g., membership inference*).
-- **Model Inversion**: Attackers can reconstruct private training data by analyzing AI responses, potentially exposing confidential information (*e.g., reversing vector embeddings*).
+- **Model Inversion**: Attackers can reconstruct private training data by analysing AI responses, potentially exposing confidential information (*e.g., reversing vector embeddings*).
 - **Dataset Exposure**: Misconfigured storage or APIs can accidentally leak training data, exposing proprietary datasets, personal records, or trade secrets.
 
 
