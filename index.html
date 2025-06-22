@@ -504,6 +504,7 @@ Engineers often work with APIs which are metered, restricted, or rate limited. T
       const data = {
         project: CLIENTLOG_PROJECT,
         action: "page_view",
+        session: "new",
         payload: JSON.stringify({
           url: window.location.href,
           referrer: document.referrer
