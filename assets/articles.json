@@ -1,0 +1,127 @@
+[
+  {
+    "topic": "AI Systems",
+    "articles": [
+      {
+        "title": "How Does ChatGPT Work?",
+        "description": "Breaks down the ChatGPT product stack: user interface, transformer model, and GPU-backed infrastructure for real-time inference.",
+        "keywords": ["chatgpt", "transformer", "llm", "api", "product", "gpu"],
+        "link": "./03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html"
+      },
+      {
+        "title": "Memory in Agentic AI",
+        "description": "Introduces structured memory layers for AI agents — from per-interaction to long-term memory — and their implications for system design.",
+        "keywords": ["agent", "memory", "context", "vector", "architecture"],
+        "link": "./10-agent-memory/index.html"
+      }
+    ]
+  },
+  {
+    "topic": "Product & Strategy",
+    "articles": [
+      {
+        "title": "Cost of ML",
+        "description": "Breaks down the F(X)=Y structure of ML projects, covering data, compute, labelling, and how to make financially sound deployment decisions.",
+        "keywords": ["ml costs", "infrastructure", "hosting", "openai", "roi"],
+        "link": "./04-cost-of-ml/04-cost-of-ml.html"
+      },
+      {
+        "title": "Machine Learning Design Patterns",
+        "description": "Outlines reusable solution patterns in ML engineering — like classification, recommendation, and segmentation — and how they relate to business goals.",
+        "keywords": ["design patterns", "forecasting", "anomaly detection", "similarity"],
+        "link": "./index.html"
+      },
+      {
+        "title": "Alignment: Semantics in the AI/ML Era",
+        "description": "Explores how abstraction in AI systems has shifted semantic responsibility from code syntax to goal alignment, and how engineers must adapt to this new landscape.",
+        "keywords": ["alignment", "semantics", "ai safety", "developer guidance"],
+        "link": "./index.html"
+      },
+      {
+        "title": "From Idea to MVP in 6 Weeks",
+        "description": "Outlines a six-week structure for taking an AI product from concept to working prototype, with weekly checkpoints for clarity and progress.",
+        "keywords": ["mvp", "roadmap", "startup", "iteration", "ai prototyping"],
+        "link": "./index.html"
+      },
+      {
+        "title": "5 Mistakes to Avoid When Building Your First AI Product",
+        "description": "Highlights common pitfalls in early AI product development, from overbuilding to ignoring deployment and cost structure.",
+        "keywords": ["ai product", "startup advice", "common errors", "first build"],
+        "link": "./index.html"
+      },
+      {
+        "title": "How to Brief a Developer on a Feature Without Being Technical",
+        "description": "A practical guide for business and product owners to communicate clearly with AI engineers without needing to write code.",
+        "keywords": ["briefing", "communication", "stakeholders", "alignment", "requirements"],
+        "link": "./index.html"
+      }
+    ]
+  },
+  {
+    "topic": "Data Strategy",
+    "articles": [
+      {
+        "title": "What Data Do I Need?",
+        "description": "Provides a structured approach for assessing data availability, modality, labelling strategy, and how to turn datasets into ML-ready resources.",
+        "keywords": ["data audit", "labelling", "metrics", "modality", "compliance"],
+        "link": "./05-what-data-do-i-need/05-what-data-do-i-need.html"
+      },
+      {
+        "title": "Leveraging AI for Organisational Intelligence",
+        "description": "Shows how communication metadata and structured extraction can reveal organisational structure, workforce engagement, and leadership alignment.",
+        "keywords": ["organisations", "internal analytics", "graphs", "workforce", "visualisation"],
+        "link": "./index.html"
+      }
+    ]
+  },
+  {
+    "topic": "Security & Resilience",
+    "articles": [
+      {
+        "title": "Security Risks in AI Systems with Public Access",
+        "description": "Summarises the threat landscape for public-facing AI: prompt injection, inference attacks, persistent memory exploits, and adversarial queries.",
+        "keywords": ["security", "prompt injection", "rag", "memory attacks", "api abuse"],
+        "link": "./index.html"
+      }
+    ]
+  },
+  {
+    "topic": "Architecture & Deployment",
+    "articles": [
+      {
+        "title": "SaaS Architecture 101 for Scalability - A Guide for Non-CTOs",
+        "description": "Provides non-technical founders with a structured overview of architectural choices in SaaS products, including stack selection, microservices, and cost trade-offs.",
+        "keywords": ["saas", "architecture", "cloud", "infrastructure", "startup guide"],
+        "link": "./index.html"
+      }
+    ]
+  },
+  {
+    "topic": "Infrastructure",
+    "articles": [
+      {
+        "title": "Docker Deep Dive",
+        "description": "Explores the foundational Linux primitives, internals of container images, and key deployment considerations for using Docker in real environments.",
+        "keywords": ["docker", "containers", "chroot", "cgroups", "cloud", "deployment"],
+        "link": "./01-docker-deep-dive/01-docker-deep-dive.html"
+      },
+      {
+        "title": "Deploying Models to AWS Lambda",
+        "description": "Shows how to wrap an ML model in FastAPI, package it with Docker, and deploy it as a container-based Lambda function with Terraform.",
+        "keywords": ["fastapi", "lambda", "aws", "docker", "ml ops"],
+        "link": "./02-deploy-simple-model/02-deploy-simple-model.html"
+      }
+    ]
+  },
+  {
+    "topic": "Developer Tools",
+    "articles": [
+      {
+        "title": "Developing with APIs Without Rate Limits: Introducing APICache",
+        "description": "Describes a lightweight caching proxy for structured API development, with examples from OpenAI, GitHub, and public APIs.",
+        "keywords": ["api", "cache", "ratelimit", "offline", "testing"],
+        "link": "./index.html"
+      }
+    ]
+  }
+]

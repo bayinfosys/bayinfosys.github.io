@@ -1,0 +1,150 @@
+        /* Variables */
+        :root {
+            --text: #444;
+            --border: #AAA;
+            --flat-bg: #FFF;
+            --dark-bg: #333; /* Navbar and footer background */
+            --light-bg: #EEE; /* Light text for contrast */
+            --link-hover: #FFF; /* Hover color for links */
+        }
+
+        /* General Styles */
+        body {
+            font-family: "Felix Titling", "Bookman Old Style", Serif;
+            background-color: var(--flat-bg);
+            color: var(--text);
+        }
+
+        h1, h2 {
+            font-family: "Felix Titling", "Bookman Old Style", Serif;
+            color: var(--text);
+        }
+
+        /* Navbar Styling */
+.navbar-nav .nav-link {
+    color: var(--light-bg) !important; /* Force light text color */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--link-hover) !important; /* White on hover */
+}
+
+.navbar-toggler {
+    border-color: var(--light-bg) !important; /* Light border for burger button */
+    padding: 10px 15px; /* Add more padding */
+    height: 45px; /* Set consistent height */
+}
+
+.navbar-toggler-icon {
+    background-image: none; /* Remove Bootstrap default icon */
+    width: 30px; /* Adjust size for "fatter" appearance */
+    height: 3px; /* Thicker lines for more presence */
+    background-color: var(--light-bg); /* Light color */
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: inline-block;
+    width: 30px; /* Match width */
+    height: 3px; /* Thicker lines */
+    background-color: var(--light-bg); /* Same light color */
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px; /* Position above */
+}
+
+.navbar-toggler-icon::after {
+    top: 8px; /* Position below */
+}
+
+        nav {
+            background-color: var(--dark-bg); /* Dark background */
+        }
+
+        nav a {
+            color: var(--light-bg); /* Light text for contrast */
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--link-hover); /* White on hover */
+        }
+
+        .navbar-toggler {
+            border-color: var(--light-bg); /* Light border for burger button */
+        }
+
+        .navbar-toggler-icon {
+            background-image: none; /* Remove default Bootstrap icon */
+            color: var(--light-bg); /* Light color for custom icon */
+            font-size: 1.5rem; /* Adjust icon size */
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .btn-custom {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--border);
+            color: var(--dark-bg);
+        }
+
+        .logo-banner {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+        .section-light {
+            background-color: var(--light-bg);
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .section-dark {
+            background-color: var(--dark-bg);
+            color: var(--flat-bg);
+        }
+
+.card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Accordion Button Styles */
+.accordion-button {
+    background-color: var(--light-bg); /* Light background */
+    color: var(--text); /* Dark text */
+    border: 1px solid var(--border); /* Match your border color */
+    box-shadow: none; /* Remove default blue highlight */
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem var(--border); /* Custom subtle outline */
+    border-color: var(--border);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--flat-bg); /* Slightly different background when active */
+    color: var(--text);
+}
+
+.accordion-button::after {
+    color: var(--text); /* Icon color for toggle */
+}

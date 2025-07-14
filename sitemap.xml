@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main page sections -->
+  <url>
+    <loc>https://www.bayis.co.uk/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/#what-we-do</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/#examples-in-practice</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/#our-process</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/#tech-talks</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/#contact-us</loc>
+  </url>
+
+  <!-- Standalone articles (numbered) -->
+  <url>
+    <loc>https://www.bayis.co.uk/01-docker-deep-dive/01-docker-deep-dive.html</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/02-deploy-simple-model/02-deploy-simple-model.html</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/04-cost-of-ml/04-cost-of-ml.html</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/05-what-data-do-i-need/05-what-data-do-i-need.html</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/10-agent-memory/</loc>
+  </url>
+
+  <!-- Newer articles rendered from index.md -->
+  <url>
+    <loc>https://www.bayis.co.uk/alignment/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/ai-briefing/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/ai-product-mistakes/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/mvp-6-weeks/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/saas-architecture/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/security-risks/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/org-intelligence/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/ml-design-patterns/</loc>
+  </url>
+  <url>
+    <loc>https://www.bayis.co.uk/apicache/</loc>
+  </url>
+</urlset>
