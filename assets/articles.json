@@ -29,31 +29,31 @@
         "title": "Machine Learning Design Patterns",
         "description": "Outlines reusable solution patterns in ML engineering — like classification, recommendation, and segmentation — and how they relate to business goals.",
         "keywords": ["design patterns", "forecasting", "anomaly detection", "similarity"],
-        "link": "./index.html"
+        "link": "./07-design-patterns/index.html"
       },
       {
         "title": "Alignment: Semantics in the AI/ML Era",
         "description": "Explores how abstraction in AI systems has shifted semantic responsibility from code syntax to goal alignment, and how engineers must adapt to this new landscape.",
         "keywords": ["alignment", "semantics", "ai safety", "developer guidance"],
-        "link": "./index.html"
-      },
-      {
-        "title": "From Idea to MVP in 6 Weeks",
-        "description": "Outlines a six-week structure for taking an AI product from concept to working prototype, with weekly checkpoints for clarity and progress.",
-        "keywords": ["mvp", "roadmap", "startup", "iteration", "ai prototyping"],
-        "link": "./index.html"
+        "link": "./12-alignment/index.html"
       },
       {
         "title": "5 Mistakes to Avoid When Building Your First AI Product",
         "description": "Highlights common pitfalls in early AI product development, from overbuilding to ignoring deployment and cost structure.",
         "keywords": ["ai product", "startup advice", "common errors", "first build"],
-        "link": "./index.html"
+        "link": "./14-5-mistakes-to-avoid/index.html"
       },
       {
         "title": "How to Brief a Developer on a Feature Without Being Technical",
         "description": "A practical guide for business and product owners to communicate clearly with AI engineers without needing to write code.",
         "keywords": ["briefing", "communication", "stakeholders", "alignment", "requirements"],
-        "link": "./index.html"
+        "link": "./13-how-to-brief/index.html"
+      },
+      {
+        "title": "MLE vs SWE",
+        "description": "In software engineering, success is defined by delivery. Machine learning projects rarely follow this pattern. Success is based on iteration.",
+        "keywords": ["engineering", "machine learning", "project planning"],
+        "link": "./18-mle-vs-swe/index.html"
       }
     ]
   },
@@ -70,7 +70,13 @@
         "title": "Leveraging AI for Organisational Intelligence",
         "description": "Shows how communication metadata and structured extraction can reveal organisational structure, workforce engagement, and leadership alignment.",
         "keywords": ["organisations", "internal analytics", "graphs", "workforce", "visualisation"],
-        "link": "./index.html"
+        "link": "./08-org-sampling/index.html"
+      },
+      {
+        "title": "What is Data Maturity?",
+        "description": "Data maturity refers to the degree to which an organisation can trust, access, and make use of its data in consistent, scalable, and repeatable ways.",
+        "keywords": ["organisations", "data", "maturity", "metrics", "data audit", "internal analytics"],
+        "link": "./17-data-maturity/index.html"
       }
     ]
   },
@@ -81,7 +87,7 @@
         "title": "Security Risks in AI Systems with Public Access",
         "description": "Summarises the threat landscape for public-facing AI: prompt injection, inference attacks, persistent memory exploits, and adversarial queries.",
         "keywords": ["security", "prompt injection", "rag", "memory attacks", "api abuse"],
-        "link": "./index.html"
+        "link": "./09-data-risks/index.html"
       }
     ]
   },
@@ -92,7 +98,7 @@
         "title": "SaaS Architecture 101 for Scalability - A Guide for Non-CTOs",
         "description": "Provides non-technical founders with a structured overview of architectural choices in SaaS products, including stack selection, microservices, and cost trade-offs.",
         "keywords": ["saas", "architecture", "cloud", "infrastructure", "startup guide"],
-        "link": "./index.html"
+        "link": "./15-saas-architecture-101/index.html"
       }
     ]
   },
@@ -120,7 +126,7 @@
         "title": "Developing with APIs Without Rate Limits: Introducing APICache",
         "description": "Describes a lightweight caching proxy for structured API development, with examples from OpenAI, GitHub, and public APIs.",
         "keywords": ["api", "cache", "ratelimit", "offline", "testing"],
-        "link": "./index.html"
+        "link": "./11-apicache/index.html"
       }
     ]
   }
