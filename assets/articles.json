@@ -13,6 +13,12 @@
         "description": "Introduces structured memory layers for AI agents — from per-interaction to long-term memory — and their implications for system design.",
         "keywords": ["agent", "memory", "context", "vector", "architecture"],
         "link": "./10-agent-memory/index.html"
+      },
+      {
+        "title": "RAG Strategy and Tooling",
+        "description": "In this article, we walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.",
+        "keywords": ["RAG", "LLM", "Context", "Vector database", "semantic search"],
+        "link": "./19-rag-strategy/index.html"
       }
     ]
   },
