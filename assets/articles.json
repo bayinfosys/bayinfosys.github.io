@@ -17,8 +17,14 @@
       {
         "title": "RAG Strategy and Tooling",
         "description": "In this article, we walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.",
-        "keywords": ["RAG", "LLM", "Context", "Vector database", "semantic search"],
+        "keywords": ["RAG", "LLM", "Context", "vector", "semantic search"],
         "link": "./19-rag-strategy/index.html"
+      },
+      {
+        "title": "Why are Vector Databases Difficult? A Deep Dive",
+        "description": "This article explores the core difficulties of vector databases.",
+        "keywords": ["vector", "semantic search", "databases", "technical"],
+        "link": "./20-vector-db-deepdive/index.html",
       }
     ]
   },
