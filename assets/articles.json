@@ -24,7 +24,7 @@
         "title": "Why are Vector Databases Difficult? A Deep Dive",
         "description": "This article explores the core difficulties of vector databases.",
         "keywords": ["vector", "semantic search", "databases", "technical"],
-        "link": "./20-vector-db-deepdive/index.html",
+        "link": "./20-vector-db-deepdive/index.html"
       }
     ]
   },
