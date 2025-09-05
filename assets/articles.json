@@ -25,6 +25,12 @@
         "description": "This article explores the core difficulties of vector databases.",
         "keywords": ["vector", "semantic search", "databases", "technical"],
         "link": "./20-vector-db-deepdive/index.html"
+      },
+      {
+        "title": "Categorical Encoding for Machine Learning",
+        "description": "A guide to choosing the right categorical encoding method for your ML model.",
+        "keywords": ["categorical encoding", "feature engineering", "machine learning", "preprocessing", "target encoding", "one-hot encoding"],
+        "link": "./22-encoding/index.html"
       }
     ]
   },
