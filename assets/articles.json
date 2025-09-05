@@ -72,6 +72,12 @@
         "description": "In software engineering, success is defined by delivery. Machine learning projects rarely follow this pattern. Success is based on iteration.",
         "keywords": ["engineering", "machine learning", "project planning"],
         "link": "./18-mle-vs-swe/index.html"
+      },
+      {
+        "title": "Metrics for Business Goals",
+        "description": "How to choose evaluation metrics that align with business objectives. Covers precision vs recall trade-offs, cost-sensitive evaluation, and business-specific metrics with practical examples.",
+        "keywords": ["model evaluation", "precision", "recall", "business metrics", "ml metrics", "cost-sensitive"],
+        "link": "./23-business-goals/index.html"
       }
     ]
   },
