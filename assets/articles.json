@@ -24,25 +24,25 @@
         "title": "Why are Vector Databases Difficult? A Deep Dive",
         "description": "This article explores the core difficulties of vector databases.",
         "keywords": ["vector", "semantic search", "databases", "technical"],
-        "link": "./20-vector-db-deepdive/index.html"
+        "link": "./library/20-vector-db-deepdive.html"
       },
       {
         "title": "Categorical Encoding for Machine Learning",
         "description": "A guide to choosing the right categorical encoding method for your ML model.",
         "keywords": ["categorical encoding", "feature engineering", "machine learning", "preprocessing", "target encoding", "one-hot encoding"],
-        "link": "./22-encoding/index.html"
+        "link": "./library/22-encoding.html"
       },
       {
         "title": "LLM Evaluation Metrics",
         "description": "Evaluating large language models remains one of the more challenging aspects of deploying AI systems in production.",
         "keywords": ["metrics", "evaluation", "machine learning"],
-        "link": "./25-llm-evaluation/index.html"
+        "link": "./library/25-llm-evaluation.html"
       },
       {
         "title": "Sampling Strategies",
         "description": "Imbalanced datasets create a fundamental challenge: machine learning models naturally gravitate towards predicting the majority class.",
         "keywords": ["data", "sampling", "unbalanced data"],
-        "link": "./26-sampling-strategies/index.html"
+        "link": "./library/26-sampling-strategies.html"
       }
     ]
   },
@@ -89,7 +89,7 @@
         "title": "Metrics for Business Goals",
         "description": "How to choose evaluation metrics that align with business objectives. Covers precision vs recall trade-offs, cost-sensitive evaluation, and business-specific metrics with practical examples.",
         "keywords": ["model evaluation", "precision", "recall", "business metrics", "ml metrics", "cost-sensitive"],
-        "link": "./23-business-goals/index.html"
+        "link": "./library/23-business-goals.html"
       }
     ]
   },
