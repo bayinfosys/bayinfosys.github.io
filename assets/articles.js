@@ -12,9 +12,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const cardsHTML = group.articles.map(article => {
       return template
         .replace("{{title}}", article.title)
+        .replace(/{{title}}/g, article.title)  // Replace all occurrences for data-attribute
         .replace("{{description}}", article.description)
         .replace("{{keywords}}", article.keywords.join(", "))
-        .replace("{{link}}", article.link);
+        .replace("{{link}}", article.link)
+        .replace("{{topic}}", group.topic);  // Add this line
     }).join("");
 
     const accordionItem = document.createElement("div");
@@ -34,5 +36,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
     container.appendChild(accordionItem);
+  });
+
+  // after creating all accordion items, add event listeners
+  document.querySelectorAll('.article-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const title = e.target.dataset.articleTitle;
+      const topic = e.target.dataset.articleTopic;
+
+      if (window.logger) {
+        logger.log({
+          event: 'article_click',
+          article_title: title,
+          article_topic: topic,
+          article_url: e.target.href
+        });
+      }
+    });
   });
 });
