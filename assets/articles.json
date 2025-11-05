@@ -145,13 +145,13 @@
         "title": "Docker Deep Dive",
         "description": "Explores the foundational Linux primitives, internals of container images, and key deployment considerations for using Docker in real environments.",
         "keywords": ["docker", "containers", "chroot", "cgroups", "cloud", "deployment"],
-        "link": "./01-docker-deep-dive/01-docker-deep-dive.html"
+        "link": "./library/01-docker-deep-dive.html"
       },
       {
         "title": "Deploying Models to AWS Lambda",
         "description": "Shows how to wrap an ML model in FastAPI, package it with Docker, and deploy it as a container-based Lambda function with Terraform.",
         "keywords": ["fastapi", "lambda", "aws", "docker", "ml ops"],
-        "link": "./02-deploy-simple-model/02-deploy-simple-model.html"
+        "link": "./library/02-deploy-simple-model.html"
       }
     ]
   },
