@@ -18,7 +18,7 @@
         "title": "RAG Strategy and Tooling",
         "description": "In this article, we walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.",
         "keywords": ["rag", "llm", "context", "vector", "semantic search"],
-        "link": "./19-rag-strategy/index.html"
+        "link": "./library/19-rag-strategy.html"
       },
       {
         "title": "Why are Vector Databases Difficult? A Deep Dive",
@@ -83,7 +83,7 @@
         "title": "MLE vs SWE",
         "description": "In software engineering, success is defined by delivery. Machine learning projects rarely follow this pattern. Success is based on iteration.",
         "keywords": ["engineering", "machine learning", "project planning"],
-        "link": "./18-mle-vs-swe/index.html"
+        "link": "./library/18-mle-vs-swe.html"
       },
       {
         "title": "Metrics for Business Goals",
@@ -112,7 +112,7 @@
         "title": "What is Data Maturity?",
         "description": "Data maturity refers to the degree to which an organisation can trust, access, and make use of its data in consistent, scalable, and repeatable ways.",
         "keywords": ["organisations", "data", "maturity", "metrics", "data audit", "internal analytics"],
-        "link": "./17-data-maturity/index.html"
+        "link": "./library/17-data-maturity.html"
       }
     ]
   },
@@ -134,7 +134,7 @@
         "title": "SaaS Architecture 101 for Scalability - A Guide for Non-CTOs",
         "description": "Provides non-technical founders with a structured overview of architectural choices in SaaS products, including stack selection, microservices, and cost trade-offs.",
         "keywords": ["saas", "architecture", "cloud", "infrastructure", "startup guide"],
-        "link": "./15-saas-architecture-101/index.html"
+        "link": "./library/15-saas-architecture-101.html"
       }
     ]
   },
