@@ -12,7 +12,7 @@
         "title": "Memory in Agentic AI",
         "description": "Introduces structured memory layers for AI agents — from per-interaction to long-term memory — and their implications for system design.",
         "keywords": ["agent", "memory", "context", "vector", "architecture"],
-        "link": "./10-agent-memory/index.html"
+        "link": "./library/10-agent-memory.html"
       },
       {
         "title": "RAG Strategy and Tooling",
@@ -53,31 +53,31 @@
         "title": "Cost of ML",
         "description": "Breaks down the F(X)=Y structure of ML projects, covering data, compute, labelling, and how to make financially sound deployment decisions.",
         "keywords": ["ml costs", "infrastructure", "hosting", "openai", "roi"],
-        "link": "./04-cost-of-ml/04-cost-of-ml.html"
+        "link": "./library/04-cost-of-ml.html"
       },
       {
         "title": "Machine Learning Design Patterns",
         "description": "Outlines reusable solution patterns in ML engineering — like classification, recommendation, and segmentation — and how they relate to business goals.",
         "keywords": ["design patterns", "forecasting", "anomaly detection", "similarity"],
-        "link": "./07-design-patterns/index.html"
+        "link": "./library/07-design-patterns.html"
       },
       {
         "title": "Alignment: Semantics in the AI/ML Era",
         "description": "Explores how abstraction in AI systems has shifted semantic responsibility from code syntax to goal alignment, and how engineers must adapt to this new landscape.",
         "keywords": ["alignment", "semantics", "ai safety", "developer guidance"],
-        "link": "./12-alignment/index.html"
+        "link": "./library/12-alignment.html"
       },
       {
         "title": "5 Mistakes to Avoid When Building Your First AI Product",
         "description": "Highlights common pitfalls in early AI product development, from overbuilding to ignoring deployment and cost structure.",
         "keywords": ["ai product", "startup advice", "common errors", "first build"],
-        "link": "./14-5-mistakes-to-avoid/index.html"
+        "link": "./library/14-5-mistakes-to-avoid.html"
       },
       {
         "title": "How to Brief a Developer on a Feature Without Being Technical",
         "description": "A practical guide for business and product owners to communicate clearly with AI engineers without needing to write code.",
         "keywords": ["briefing", "communication", "stakeholders", "alignment", "requirements"],
-        "link": "./13-how-to-brief/index.html"
+        "link": "./library/13-how-to-brief.html"
       },
       {
         "title": "MLE vs SWE",
@@ -100,13 +100,13 @@
         "title": "What Data Do I Need?",
         "description": "Provides a structured approach for assessing data availability, modality, labelling strategy, and how to turn datasets into ML-ready resources.",
         "keywords": ["data audit", "labelling", "metrics", "modality", "compliance"],
-        "link": "./05-what-data-do-i-need/05-what-data-do-i-need.html"
+        "link": "./library/05-what-data-do-i-need.html"
       },
       {
         "title": "Leveraging AI for Organisational Intelligence",
         "description": "Shows how communication metadata and structured extraction can reveal organisational structure, workforce engagement, and leadership alignment.",
         "keywords": ["organisations", "internal analytics", "graphs", "workforce", "visualisation"],
-        "link": "./08-org-sampling/index.html"
+        "link": "./library/08-org-sampling.html"
       },
       {
         "title": "What is Data Maturity?",
@@ -123,7 +123,7 @@
         "title": "Security Risks in AI Systems with Public Access",
         "description": "Summarises the threat landscape for public-facing AI: prompt injection, inference attacks, persistent memory exploits, and adversarial queries.",
         "keywords": ["security", "prompt injection", "rag", "memory attacks", "api abuse"],
-        "link": "./09-data-risks/index.html"
+        "link": "./library/09-data-risks.html"
       }
     ]
   },
@@ -162,7 +162,7 @@
         "title": "Developing with APIs Without Rate Limits: Introducing APICache",
         "description": "Describes a lightweight caching proxy for structured API development, with examples from OpenAI, GitHub, and public APIs.",
         "keywords": ["api", "cache", "ratelimit", "offline", "testing"],
-        "link": "./11-apicache/index.html"
+        "link": "./library/11-apicache.html"
       }
     ]
   }
