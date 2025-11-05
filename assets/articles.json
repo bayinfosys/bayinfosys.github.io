@@ -90,6 +90,12 @@
         "description": "How to choose evaluation metrics that align with business objectives. Covers precision vs recall trade-offs, cost-sensitive evaluation, and business-specific metrics with practical examples.",
         "keywords": ["model evaluation", "precision", "recall", "business metrics", "ml metrics", "cost-sensitive"],
         "link": "./library/23-business-goals.html"
+      },
+      {
+        "title": "The Indirection Problem: How Programming Concepts Explain Modern Frustrations",
+        "description": "Explores how C programming's indirection pattern mirrors modern platform economy issues with accountability and complexity.",
+        "keywords": ["software patterns", "platform economy", "accountability", "systems thinking"],
+        "link": "./library/21-indirection.html"
       }
     ]
   },
@@ -113,6 +119,12 @@
         "description": "Data maturity refers to the degree to which an organisation can trust, access, and make use of its data in consistent, scalable, and repeatable ways.",
         "keywords": ["organisations", "data", "maturity", "metrics", "data audit", "internal analytics"],
         "link": "./library/17-data-maturity.html"
+      },
+      {
+        "title": "How to Isolate Bad Training Data",
+        "description": "Using cross-validation as a diagnostic tool to systematically identify problematic records in training datasets.",
+        "keywords": ["cross-validation", "data quality", "outliers", "model evaluation"],
+        "link": "./library/24-cross-validation.html"
       }
     ]
   },

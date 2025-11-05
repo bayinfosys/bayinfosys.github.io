@@ -1,72 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main page sections -->
-  <url>
-    <loc>https://www.bayis.co.uk/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/#what-we-do</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/#examples-in-practice</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/#our-process</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/#tech-talks</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/#contact-us</loc>
-  </url>
+  <url><loc>https://www.bayis.co.uk/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.bayis.co.uk/#what-we-do</loc></url>
+  <url><loc>https://www.bayis.co.uk/#examples-in-practice</loc></url>
+  <url><loc>https://www.bayis.co.uk/#our-process</loc></url>
+  <url><loc>https://www.bayis.co.uk/#tech-talks</loc></url>
+  <url><loc>https://www.bayis.co.uk/#contact-us</loc></url>
 
-  <!-- Standalone articles (numbered) -->
-  <url>
-    <loc>https://www.bayis.co.uk/01-docker-deep-dive/01-docker-deep-dive.html</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/02-deploy-simple-model/02-deploy-simple-model.html</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/04-cost-of-ml/04-cost-of-ml.html</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/05-what-data-do-i-need/05-what-data-do-i-need.html</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/10-agent-memory/</loc>
-  </url>
-
-  <!-- Newer articles rendered from index.md -->
-  <url>
-    <loc>https://www.bayis.co.uk/alignment/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/ai-briefing/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/ai-product-mistakes/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/mvp-6-weeks/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/saas-architecture/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/security-risks/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/org-intelligence/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/ml-design-patterns/</loc>
-  </url>
-  <url>
-    <loc>https://www.bayis.co.uk/apicache/</loc>
-  </url>
+  <!-- Infrastructure -->
+  <url><loc>https://www.bayis.co.uk/library/01-docker-deep-dive.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/02-deploy-simple-model.html</loc></url>
+  
+  <!-- AI Systems -->
+  <url><loc>https://www.bayis.co.uk/03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/10-agent-memory.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/19-rag-strategy.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/20-vector-db-deepdive.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/22-encoding.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/25-llm-evaluation.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/26-sampling-strategies.html</loc></url>
+  
+  <!-- Product & Strategy -->
+  <url><loc>https://www.bayis.co.uk/library/04-cost-of-ml.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/07-design-patterns.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/12-alignment.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/13-how-to-brief.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/14-5-mistakes-to-avoid.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/18-mle-vs-swe.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/21-indirection.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/23-business-goals.html</loc></url>
+  
+  <!-- Data Strategy -->
+  <url><loc>https://www.bayis.co.uk/library/05-what-data-do-i-need.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/08-org-sampling.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/17-data-maturity.html</loc></url>
+  <url><loc>https://www.bayis.co.uk/library/24-cross-validation.html</loc></url>
+  
+  <!-- Security & Resilience -->
+  <url><loc>https://www.bayis.co.uk/library/09-data-risks.html</loc></url>
+  
+  <!-- Architecture & Deployment -->
+  <url><loc>https://www.bayis.co.uk/library/15-saas-architecture-101.html</loc></url>
+  
+  <!-- Developer Tools -->
+  <url><loc>https://www.bayis.co.uk/library/11-apicache.html</loc></url>
 </urlset>
