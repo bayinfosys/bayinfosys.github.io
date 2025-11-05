@@ -31,6 +31,12 @@
         "description": "A guide to choosing the right categorical encoding method for your ML model.",
         "keywords": ["categorical encoding", "feature engineering", "machine learning", "preprocessing", "target encoding", "one-hot encoding"],
         "link": "./22-encoding/index.html"
+      },
+      {
+        "title": "LLM Evaluation Metrics",
+        "description": "Evaluating large language models remains one of the more challenging aspects of deploying AI systems in production.",
+        "keywords": ["metrics", "evaluation", "machine learning"],
+        "link": "./25-llm-evaluation/index.html"
       }
     ]
   },
