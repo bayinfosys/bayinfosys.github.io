@@ -17,7 +17,7 @@
       {
         "title": "RAG Strategy and Tooling",
         "description": "In this article, we walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.",
-        "keywords": ["RAG", "LLM", "Context", "vector", "semantic search"],
+        "keywords": ["rag", "llm", "context", "vector", "semantic search"],
         "link": "./19-rag-strategy/index.html"
       },
       {
@@ -37,6 +37,12 @@
         "description": "Evaluating large language models remains one of the more challenging aspects of deploying AI systems in production.",
         "keywords": ["metrics", "evaluation", "machine learning"],
         "link": "./25-llm-evaluation/index.html"
+      },
+      {
+        "title": "Sampling Strategies",
+        "description": "Imbalanced datasets create a fundamental challenge: machine learning models naturally gravitate towards predicting the majority class.",
+        "keywords": ["data", "sampling", "unbalanced data"],
+        "link": "./26-sampling-strategies/index.html"
       }
     ]
   },
