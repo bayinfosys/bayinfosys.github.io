@@ -96,6 +96,12 @@
         "description": "Explores how C programming's indirection pattern mirrors modern platform economy issues with accountability and complexity.",
         "keywords": ["software patterns", "platform economy", "accountability", "systems thinking"],
         "link": "./library/21-indirection.html"
+      },
+      {
+        "title": "Capital, Labour, and the Productivity Question",
+        "description": "The capital-labour productivity dynamic, the distinction between exploration and exploitation phases, and what this framework reveals about automation adoption and economic structure.",
+        "keywords": ["productivity"],
+        "link": "./library/31-productivity.md"
       }
     ]
   },
@@ -125,6 +131,12 @@
         "description": "Using cross-validation as a diagnostic tool to systematically identify problematic records in training datasets.",
         "keywords": ["cross-validation", "data quality", "outliers", "model evaluation"],
         "link": "./library/24-cross-validation.html"
+      },
+      {
+        "title": "SQL Schema Documentation for RAG Pipelines",
+        "description": "Well-documented schemas serve as a practical form of data governance and provide a semantic layer between raw database structures and their business meaning.",
+        "keywords": ["data governance", "semantic layer", "documentation"],
+        "link": "./library/27-schema-docs.html"
       }
     ]
   },
@@ -147,6 +159,24 @@
         "description": "Provides non-technical founders with a structured overview of architectural choices in SaaS products, including stack selection, microservices, and cost trade-offs.",
         "keywords": ["saas", "architecture", "cloud", "infrastructure", "startup guide"],
         "link": "./library/15-saas-architecture-101.html"
+      },
+      {
+        "title": "AI Tooling and the Separation Between Coders and Programming",
+        "description": "AI tooling makes the separation between writing code and building systems more visible and, sometimes, more problematic.",
+        "keywords": ["architecture", "tools", "pace"],
+        "link": "./library/28-coding-vs-programming.html"
+      },
+      {
+        "title": "Platforms vs Pipelines: Engineering for Compounding Returns",
+        "description": "Choose to build platforms rather than optimise pipelines. The distinction matters because it determines whether engineering effort produces linear or exponential returns.",
+        "keywords": ["platforms", "pipelines", "product strategy", "user experience", "architecture"],
+        "link": "./library/29-platforms-vs-pipelines.md"
+      },
+      {
+        "title": "Scaling Databases: Lessons from Facebook's MySQL Journey",
+        "description": "Most businesses will never face the scaling challenges that Facebook encountered in its early years. Yet the decisions Facebook made while scaling from thousands to millions of users contain lessons relevant to any growing system",
+        "keywords": ["architecture", "databases", "deepdive"],
+        "link": "./library/30-facebook-db.md"
       }
     ]
   },
