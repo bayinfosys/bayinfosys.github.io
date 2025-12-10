@@ -35,7 +35,7 @@
       {
         "title": "LLM Evaluation Metrics",
         "description": "Evaluating large language models remains one of the more challenging aspects of deploying AI systems in production.",
-        "keywords": ["metrics", "evaluation", "machine learning"],
+        "keywords": ["LLM", "metrics", "evaluation", "machine learning"],
         "link": "./library/25-llm-evaluation.html"
       },
       {
@@ -43,6 +43,12 @@
         "description": "Imbalanced datasets create a fundamental challenge: machine learning models naturally gravitate towards predicting the majority class.",
         "keywords": ["data", "sampling", "unbalanced data"],
         "link": "./library/26-sampling-strategies.html"
+      },
+      {
+        "title": "LLM Training Fundamentals: From Tokens to Human Preference",
+        "description": "Explores the mathematical foundations of language model training (tokens, embeddings, softmax) and how human preference ranking introduces alignment biases that cannot be captured by statistical metrics.",
+        "keywords": ["LLM", "training", "RLHF", "alignment"],
+        "link": "./library/32-training-llm.html"
       }
     ]
   },
