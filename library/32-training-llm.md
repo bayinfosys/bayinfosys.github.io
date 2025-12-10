@@ -63,7 +63,7 @@ The softmax function ensures this:
 
 The softmax function and cross-entropy loss are not specific to language models. These are standard techniques in machine learning, used across image classification, speech recognition, and countless other prediction tasks. Any model that needs to output a probability distribution over discrete classes uses similar approaches.
 
-What makes language models distinctive is not the mathematics but the scale (billions of parameters, trillions of tokens) and the sequential nature of the task (each prediction depends on all previous predictions). The core training objective remains the same: maximize the probability of observing the ground truth sequence.
+What makes language models distinctive is not the mathematics but the scale (billions of parameters, trillions of tokens) and the sequential nature of the task (each prediction depends on all previous predictions). The core training objective remains the same: maximise the probability of observing the ground truth sequence.
 
 ## Part 2: From Base Models to Chat Models
 
@@ -71,11 +71,11 @@ Modern chat models typically progress through three distinct training phases:
 
 1. **Base training**: Next-word prediction on large text corpora (discussed in Part 1)
 2. **Instruction tuning**: Supervised learning on instruction-response examples
-3. **Preference optimization**: Learning from human preference comparisons (RLHF or similar)
+3. **Preference optimisation**: Learning from human preference comparisons (RLHF or similar)
 
 Models released after only Phase 1 are called **base models** (such as GPT-J, LLaMA base, or Mistral base). They predict plausible text continuations but don't follow instructions reliably. Models that complete Phase 2 and 3 are called **instruct models** (such as GPT-4, Claude, or LLaMA-2-Chat). They respond to user queries appropriately.
 
-This article focuses on the contrast between Phase 1 (base training with mathematical metrics) and Phase 3 (preference optimization with human judgment), as this best illustrates how different training objectives produce different model behaviours.
+This article focuses on the contrast between Phase 1 (base training with mathematical metrics) and Phase 3 (preference optimisation with human judgment), as this best illustrates how different training objectives produce different model behaviours.
 
 ### The Limitation of Statistical Metrics
 
@@ -129,7 +129,7 @@ This is where behaviours like sycophancy and excessive agreeableness originate:
 If human raters consistently prefer:
 - Responses that agree with the user ("You're absolutely right...")
 - Responses that flatter the user ("That's an excellent question...")
-- Responses that are apologetic ("I apologize if my previous response...")
+- Responses that are apologetic ("I apologise if my previous response...")
 
 Then the model learns to produce these patterns because they win pairwise comparisons, even when more direct or challenging responses might be more helpful.
 
@@ -165,7 +165,7 @@ Alternatively, we could use automated metrics:
 
 But these correlate poorly with human judgments of quality for open-ended generation. A response can score well on ROUGE while being inappropriate, repetitive, or unhelpful.
 
-The field has largely concluded that human preference data, despite its biases and limitations, provides the most robust signal for training chat models. The question becomes: whose preferences should we optimize for, and how do we mitigate systematic biases in those preferences?
+The field has largely concluded that human preference data, despite its biases and limitations, provides the most robust signal for training chat models. The question becomes: whose preferences should we optimise for, and how do we mitigate systematic biases in those preferences?
 
 ## Open Source Datasets
 
@@ -249,10 +249,10 @@ The field has largely concluded that human preference data, despite its biases a
 
 Language model training progresses through distinct phases, each with different measurement approaches:
 
-**Base training** relies on mathematical metrics. Tokens are discrete. Embeddings learn similarity through context. Log probabilities measure confidence. Softmax penalizes incorrect predictions. These metrics evaluate fluency and coherence.
+**Base training** relies on mathematical metrics. Tokens are discrete. Embeddings learn similarity through context. Log probabilities measure confidence. Softmax penalises incorrect predictions. These metrics evaluate fluency and coherence.
 
 **Preference training** relies on human judgment. Pairwise comparisons create rankings through Elo systems (based on the Bradley-Terry statistical model). This captures qualities (helpfulness, appropriateness, tone) that cannot be measured by statistical metrics alone. It also introduces systematic biases that reflect rater preferences and social expectations.
 
-The challenge for researchers examining LLM behaviour is recognizing which phenomena originate from base training (statistical patterns in text) versus preference training (aggregated human judgments). Sycophancy, verbosity, and apologetic tendencies typically emerge from preference data, not from mathematical optimization of next-token prediction.
+The challenge for researchers examining LLM behaviour is recognising which phenomena originate from base training (statistical patterns in text) versus preference training (aggregated human judgments). Sycophancy, verbosity, and apologetic tendencies typically emerge from preference data, not from mathematical optimisation of next-token prediction.
 
 Understanding these distinct training objectives helps explain why certain model behaviours resist simple technical fixes. If a behaviour originates from human preference data, changing the base model architecture or training corpus will have limited effect. The bias is in the ground truth itself.
