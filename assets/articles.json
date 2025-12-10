@@ -49,6 +49,12 @@
         "description": "Explores the mathematical foundations of language model training (tokens, embeddings, softmax) and how human preference ranking introduces alignment biases that cannot be captured by statistical metrics.",
         "keywords": ["LLM", "training", "RLHF", "alignment"],
         "link": "./library/32-training-llm.html"
+      },
+      {
+        "title": "Filtered Vector Search",
+        "description": "Examines how metadata integration in vector indexes affects query execution and how multiple ranking signals can be combined in production systems.",
+        "keywords": ["vector", "semantic search", "databases"],
+        "link": "./library/33-vector-db-filters.html"
       }
     ]
   },
@@ -107,7 +113,7 @@
         "title": "Capital, Labour, and the Productivity Question",
         "description": "The capital-labour productivity dynamic, the distinction between exploration and exploitation phases, and what this framework reveals about automation adoption and economic structure.",
         "keywords": ["productivity"],
-        "link": "./library/31-productivity.md"
+        "link": "./library/31-productivity.html"
       }
     ]
   },
@@ -176,13 +182,13 @@
         "title": "Platforms vs Pipelines: Engineering for Compounding Returns",
         "description": "Choose to build platforms rather than optimise pipelines. The distinction matters because it determines whether engineering effort produces linear or exponential returns.",
         "keywords": ["platforms", "pipelines", "product strategy", "user experience", "architecture"],
-        "link": "./library/29-platforms-vs-pipelines.md"
+        "link": "./library/29-platforms-vs-pipelines.html"
       },
       {
         "title": "Scaling Databases: Lessons from Facebook's MySQL Journey",
         "description": "Most businesses will never face the scaling challenges that Facebook encountered in its early years. Yet the decisions Facebook made while scaling from thousands to millions of users contain lessons relevant to any growing system",
         "keywords": ["architecture", "databases", "deepdive"],
-        "link": "./library/30-facebook-db.md"
+        "link": "./library/30-facebook-db.html"
       }
     ]
   },
