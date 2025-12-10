@@ -88,8 +88,6 @@ Neither approach is universally superior. The trade-offs depend on specific quer
 
 The practical implications emerge when query patterns and data scale become clear. If filters typically reduce the candidate set by 50-80 percent, integrated filtering saves substantial work. If filters are either very selective (reducing to less than one percent of data) or not very selective (most candidates pass), the difference matters less.
 
-For PostgreSQL specifically, query structure significantly affects whether the planner chooses the vector index. The Clarvo article referenced earlier provides detailed guidance: keep WHERE clauses simple, place ORDER BY distance as the final clause before LIMIT, use EXISTS for related table filters, and consider denormalizing frequently filtered columns to avoid joins.
-
 The constraint is structural. HNSW graphs in PostgreSQL maintain vector connectivity only. Metadata lives elsewhere. This is not a limitation of SQL but a consequence of index architecture.
 
 ## Combining Ranking Signals
@@ -136,14 +134,14 @@ ORDER BY (
 LIMIT 10;
 ```
 
-The SQL remains clear and expressive. The challenge lies in signal normalization and query planner behavior.
+The SQL remains clear and expressive. The challenge lies in signal normalisation and query planner behaviour.
 
 Different signals operate on different scales:
-- Vector distance: 0 to 2 for cosine distance on normalized vectors
+- Vector distance: 0 to 2 for cosine distance on normalised vectors
 - Text rank: 0 to approximately 1 depending on document length and query complexity
 - View count: unbounded, hence the log transformation
 
-Without normalization, one signal dominates. The popularity score in the example uses log scaling and division to bring values into a comparable range. More sophisticated approaches might use min-max normalization, z-scores, or percentile ranks computed from dataset statistics.
+Without normalisation, one signal dominates. The popularity score in the example uses log scaling and division to bring values into a comparable range. More sophisticated approaches might use min-max normalisation, z-scores, or percentile ranks computed from dataset statistics.
 
 The query planner faces new challenges when ORDER BY contains complex expressions combining multiple signals. Simple vector ordering with a single distance calculation can use the HNSW index efficiently. Combined ranking with multiple signals and arithmetic operations may cause the planner to abandon the vector index entirely, opting for a sequential scan instead.
 
@@ -226,9 +224,9 @@ for doc in candidates:
 results = sorted(candidates, key=lambda d: d.final_score)[:10]
 ```
 
-Application-level ranking allows dynamic weight adjustment, A/B testing of ranking functions, incorporation of user-specific signals (personalization), and complex business logic that would be awkward to express in SQL.
+Application-level ranking allows dynamic weight adjustment, A/B testing of ranking functions, incorporation of user-specific signals (personalisation), and complex business logic that would be awkward to express in SQL.
 
-The trade-off is latency. Network round-trips and data serialization add overhead. For most applications processing hundreds of candidates, this overhead is negligible compared to the flexibility gained. For applications requiring single-digit millisecond latency, keeping ranking in the database may be necessary.
+The trade-off is latency. Network round-trips and data serialisation add overhead. For most applications processing hundreds of candidates, this overhead is negligible compared to the flexibility gained. For applications requiring single-digit millisecond latency, keeping ranking in the database may be necessary.
 
 Signal composition requires understanding both the mathematical properties of the signals being combined and the execution characteristics of the system performing the combination. SQL provides clear expression. Physical execution depends on index capabilities and query complexity.
 
@@ -238,6 +236,6 @@ SQL syntax remains consistent across filtered and ranked vector search implement
 
 Physical execution diverges based on index architecture. PostgreSQL separates vectors from metadata, requiring post-filtering of candidates. Dedicated vector databases integrate metadata into the graph structure, enabling filtering during traversal. Neither is universally better. The choice depends on filter selectivity patterns and infrastructure constraints.
 
-Ranking signal composition introduces normalization challenges and query planner complexity. Simple vector ordering leverages indexes efficiently. Combined multi-signal ranking may require staged execution or application-level processing to maintain performance while supporting flexible ranking functions.
+Ranking signal composition introduces normalisation challenges and query planner complexity. Simple vector ordering leverages indexes efficiently. Combined multi-signal ranking may require staged execution or application-level processing to maintain performance while supporting flexible ranking functions.
 
-Understanding this progression from SQL syntax to index structure to signal composition helps match implementation to requirements. Start with PostgreSQL for most use cases, optimize query structure, and introduce additional complexity only when measurements indicate it is needed.
+Understanding this progression from SQL syntax to index structure to signal composition helps match implementation to requirements. Start with PostgreSQL for most use cases, optimise query structure, and introduce additional complexity only when measurements indicate it is needed.
