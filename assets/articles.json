@@ -5,55 +5,104 @@
       {
         "title": "How Does ChatGPT Work?",
         "description": "Breaks down the ChatGPT product stack: user interface, transformer model, and GPU-backed infrastructure for real-time inference.",
-        "keywords": ["chatgpt", "transformer", "llm", "api", "product", "gpu"],
+        "keywords": [
+          "chatgpt",
+          "transformer",
+          "llm",
+          "api",
+          "product",
+          "gpu"
+        ],
         "link": "./03-how-does-chat-gpt-work/03-how-does-chat-gpt-work.html"
       },
       {
         "title": "Memory in Agentic AI",
         "description": "Introduces structured memory layers for AI agents — from per-interaction to long-term memory — and their implications for system design.",
-        "keywords": ["agent", "memory", "context", "vector", "architecture"],
+        "keywords": [
+          "agent",
+          "memory",
+          "context",
+          "vector",
+          "architecture"
+        ],
         "link": "./library/10-agent-memory.html"
       },
       {
         "title": "RAG Strategy and Tooling",
         "description": "In this article, we walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.",
-        "keywords": ["rag", "llm", "context", "vector", "semantic search"],
+        "keywords": [
+          "rag",
+          "llm",
+          "context",
+          "vector",
+          "semantic search"
+        ],
         "link": "./library/19-rag-strategy.html"
       },
       {
         "title": "Why are Vector Databases Difficult? A Deep Dive",
         "description": "This article explores the core difficulties of vector databases.",
-        "keywords": ["vector", "semantic search", "databases", "technical"],
+        "keywords": [
+          "vector",
+          "semantic search",
+          "databases",
+          "technical"
+        ],
         "link": "./library/20-vector-db-deepdive.html"
       },
       {
         "title": "Categorical Encoding for Machine Learning",
         "description": "A guide to choosing the right categorical encoding method for your ML model.",
-        "keywords": ["categorical encoding", "feature engineering", "machine learning", "preprocessing", "target encoding", "one-hot encoding"],
+        "keywords": [
+          "categorical encoding",
+          "feature engineering",
+          "machine learning",
+          "preprocessing",
+          "target encoding",
+          "one-hot encoding"
+        ],
         "link": "./library/22-encoding.html"
       },
       {
         "title": "LLM Evaluation Metrics",
         "description": "Evaluating large language models remains one of the more challenging aspects of deploying AI systems in production.",
-        "keywords": ["LLM", "metrics", "evaluation", "machine learning"],
+        "keywords": [
+          "LLM",
+          "metrics",
+          "evaluation",
+          "machine learning"
+        ],
         "link": "./library/25-llm-evaluation.html"
       },
       {
         "title": "Sampling Strategies",
         "description": "Imbalanced datasets create a fundamental challenge: machine learning models naturally gravitate towards predicting the majority class.",
-        "keywords": ["data", "sampling", "unbalanced data"],
+        "keywords": [
+          "data",
+          "sampling",
+          "unbalanced data"
+        ],
         "link": "./library/26-sampling-strategies.html"
       },
       {
         "title": "LLM Training Fundamentals: From Tokens to Human Preference",
         "description": "Explores the mathematical foundations of language model training (tokens, embeddings, softmax) and how human preference ranking introduces alignment biases that cannot be captured by statistical metrics.",
-        "keywords": ["LLM", "training", "RLHF", "alignment"],
+        "keywords": [
+          "LLM",
+          "training",
+          "RLHF",
+          "alignment"
+        ],
         "link": "./library/32-training-llm.html"
       },
       {
         "title": "Filtered Vector Search",
         "description": "Examines how metadata integration in vector indexes affects query execution and how multiple ranking signals can be combined in production systems.",
-        "keywords": ["vector", "semantic search", "databases"],
+        "keywords": [
+          "vector",
+          "semantic search",
+          "databases"
+        ],
         "link": "./library/33-vector-db-filters.html"
       }
     ]
@@ -64,55 +113,100 @@
       {
         "title": "Cost of ML",
         "description": "Breaks down the F(X)=Y structure of ML projects, covering data, compute, labelling, and how to make financially sound deployment decisions.",
-        "keywords": ["ml costs", "infrastructure", "hosting", "openai", "roi"],
+        "keywords": [
+          "ml costs",
+          "infrastructure",
+          "hosting",
+          "openai",
+          "roi"
+        ],
         "link": "./library/04-cost-of-ml.html"
       },
       {
         "title": "Machine Learning Design Patterns",
         "description": "Outlines reusable solution patterns in ML engineering — like classification, recommendation, and segmentation — and how they relate to business goals.",
-        "keywords": ["design patterns", "forecasting", "anomaly detection", "similarity"],
+        "keywords": [
+          "design patterns",
+          "forecasting",
+          "anomaly detection",
+          "similarity"
+        ],
         "link": "./library/07-design-patterns.html"
       },
       {
         "title": "Alignment: Semantics in the AI/ML Era",
         "description": "Explores how abstraction in AI systems has shifted semantic responsibility from code syntax to goal alignment, and how engineers must adapt to this new landscape.",
-        "keywords": ["alignment", "semantics", "ai safety", "developer guidance"],
+        "keywords": [
+          "alignment",
+          "semantics",
+          "ai safety",
+          "developer guidance"
+        ],
         "link": "./library/12-alignment.html"
       },
       {
         "title": "5 Mistakes to Avoid When Building Your First AI Product",
         "description": "Highlights common pitfalls in early AI product development, from overbuilding to ignoring deployment and cost structure.",
-        "keywords": ["ai product", "startup advice", "common errors", "first build"],
+        "keywords": [
+          "ai product",
+          "startup advice",
+          "common errors",
+          "first build"
+        ],
         "link": "./library/14-5-mistakes-to-avoid.html"
       },
       {
         "title": "How to Brief a Developer on a Feature Without Being Technical",
         "description": "A practical guide for business and product owners to communicate clearly with AI engineers without needing to write code.",
-        "keywords": ["briefing", "communication", "stakeholders", "alignment", "requirements"],
+        "keywords": [
+          "briefing",
+          "communication",
+          "stakeholders",
+          "alignment",
+          "requirements"
+        ],
         "link": "./library/13-how-to-brief.html"
       },
       {
         "title": "MLE vs SWE",
         "description": "In software engineering, success is defined by delivery. Machine learning projects rarely follow this pattern. Success is based on iteration.",
-        "keywords": ["engineering", "machine learning", "project planning"],
+        "keywords": [
+          "engineering",
+          "machine learning",
+          "project planning"
+        ],
         "link": "./library/18-mle-vs-swe.html"
       },
       {
         "title": "Metrics for Business Goals",
         "description": "How to choose evaluation metrics that align with business objectives. Covers precision vs recall trade-offs, cost-sensitive evaluation, and business-specific metrics with practical examples.",
-        "keywords": ["model evaluation", "precision", "recall", "business metrics", "ml metrics", "cost-sensitive"],
+        "keywords": [
+          "model evaluation",
+          "precision",
+          "recall",
+          "business metrics",
+          "ml metrics",
+          "cost-sensitive"
+        ],
         "link": "./library/23-business-goals.html"
       },
       {
         "title": "The Indirection Problem: How Programming Concepts Explain Modern Frustrations",
         "description": "Explores how C programming's indirection pattern mirrors modern platform economy issues with accountability and complexity.",
-        "keywords": ["software patterns", "platform economy", "accountability", "systems thinking"],
+        "keywords": [
+          "software patterns",
+          "platform economy",
+          "accountability",
+          "systems thinking"
+        ],
         "link": "./library/21-indirection.html"
       },
       {
         "title": "Capital, Labour, and the Productivity Question",
         "description": "The capital-labour productivity dynamic, the distinction between exploration and exploitation phases, and what this framework reveals about automation adoption and economic structure.",
-        "keywords": ["productivity"],
+        "keywords": [
+          "productivity"
+        ],
         "link": "./library/31-productivity.html"
       }
     ]
@@ -123,31 +217,59 @@
       {
         "title": "What Data Do I Need?",
         "description": "Provides a structured approach for assessing data availability, modality, labelling strategy, and how to turn datasets into ML-ready resources.",
-        "keywords": ["data audit", "labelling", "metrics", "modality", "compliance"],
+        "keywords": [
+          "data audit",
+          "labelling",
+          "metrics",
+          "modality",
+          "compliance"
+        ],
         "link": "./library/05-what-data-do-i-need.html"
       },
       {
         "title": "Leveraging AI for Organisational Intelligence",
         "description": "Shows how communication metadata and structured extraction can reveal organisational structure, workforce engagement, and leadership alignment.",
-        "keywords": ["organisations", "internal analytics", "graphs", "workforce", "visualisation"],
+        "keywords": [
+          "organisations",
+          "internal analytics",
+          "graphs",
+          "workforce",
+          "visualisation"
+        ],
         "link": "./library/08-org-sampling.html"
       },
       {
         "title": "What is Data Maturity?",
         "description": "Data maturity refers to the degree to which an organisation can trust, access, and make use of its data in consistent, scalable, and repeatable ways.",
-        "keywords": ["organisations", "data", "maturity", "metrics", "data audit", "internal analytics"],
+        "keywords": [
+          "organisations",
+          "data",
+          "maturity",
+          "metrics",
+          "data audit",
+          "internal analytics"
+        ],
         "link": "./library/17-data-maturity.html"
       },
       {
         "title": "How to Isolate Bad Training Data",
         "description": "Using cross-validation as a diagnostic tool to systematically identify problematic records in training datasets.",
-        "keywords": ["cross-validation", "data quality", "outliers", "model evaluation"],
+        "keywords": [
+          "cross-validation",
+          "data quality",
+          "outliers",
+          "model evaluation"
+        ],
         "link": "./library/24-cross-validation.html"
       },
       {
         "title": "SQL Schema Documentation for RAG Pipelines",
         "description": "Well-documented schemas serve as a practical form of data governance and provide a semantic layer between raw database structures and their business meaning.",
-        "keywords": ["data governance", "semantic layer", "documentation"],
+        "keywords": [
+          "data governance",
+          "semantic layer",
+          "documentation"
+        ],
         "link": "./library/27-schema-docs.html"
       }
     ]
@@ -158,7 +280,13 @@
       {
         "title": "Security Risks in AI Systems with Public Access",
         "description": "Summarises the threat landscape for public-facing AI: prompt injection, inference attacks, persistent memory exploits, and adversarial queries.",
-        "keywords": ["security", "prompt injection", "rag", "memory attacks", "api abuse"],
+        "keywords": [
+          "security",
+          "prompt injection",
+          "rag",
+          "memory attacks",
+          "api abuse"
+        ],
         "link": "./library/09-data-risks.html"
       }
     ]
@@ -169,25 +297,45 @@
       {
         "title": "SaaS Architecture 101 for Scalability - A Guide for Non-CTOs",
         "description": "Provides non-technical founders with a structured overview of architectural choices in SaaS products, including stack selection, microservices, and cost trade-offs.",
-        "keywords": ["saas", "architecture", "cloud", "infrastructure", "startup guide"],
+        "keywords": [
+          "saas",
+          "architecture",
+          "cloud",
+          "infrastructure",
+          "startup guide"
+        ],
         "link": "./library/15-saas-architecture-101.html"
       },
       {
         "title": "AI Tooling and the Separation Between Coders and Programming",
         "description": "AI tooling makes the separation between writing code and building systems more visible and, sometimes, more problematic.",
-        "keywords": ["architecture", "tools", "pace"],
+        "keywords": [
+          "architecture",
+          "tools",
+          "pace"
+        ],
         "link": "./library/28-coding-vs-programming.html"
       },
       {
         "title": "Platforms vs Pipelines: Engineering for Compounding Returns",
         "description": "Choose to build platforms rather than optimise pipelines. The distinction matters because it determines whether engineering effort produces linear or exponential returns.",
-        "keywords": ["platforms", "pipelines", "product strategy", "user experience", "architecture"],
+        "keywords": [
+          "platforms",
+          "pipelines",
+          "product strategy",
+          "user experience",
+          "architecture"
+        ],
         "link": "./library/29-platforms-vs-pipelines.html"
       },
       {
         "title": "Scaling Databases: Lessons from Facebook's MySQL Journey",
         "description": "Most businesses will never face the scaling challenges that Facebook encountered in its early years. Yet the decisions Facebook made while scaling from thousands to millions of users contain lessons relevant to any growing system",
-        "keywords": ["architecture", "databases", "deepdive"],
+        "keywords": [
+          "architecture",
+          "databases",
+          "deepdive"
+        ],
         "link": "./library/30-facebook-db.html"
       }
     ]
@@ -198,13 +346,26 @@
       {
         "title": "Docker Deep Dive",
         "description": "Explores the foundational Linux primitives, internals of container images, and key deployment considerations for using Docker in real environments.",
-        "keywords": ["docker", "containers", "chroot", "cgroups", "cloud", "deployment"],
+        "keywords": [
+          "docker",
+          "containers",
+          "chroot",
+          "cgroups",
+          "cloud",
+          "deployment"
+        ],
         "link": "./library/01-docker-deep-dive.html"
       },
       {
         "title": "Deploying Models to AWS Lambda",
         "description": "Shows how to wrap an ML model in FastAPI, package it with Docker, and deploy it as a container-based Lambda function with Terraform.",
-        "keywords": ["fastapi", "lambda", "aws", "docker", "ml ops"],
+        "keywords": [
+          "fastapi",
+          "lambda",
+          "aws",
+          "docker",
+          "ml ops"
+        ],
         "link": "./library/02-deploy-simple-model.html"
       }
     ]
@@ -215,8 +376,45 @@
       {
         "title": "Developing with APIs Without Rate Limits: Introducing APICache",
         "description": "Describes a lightweight caching proxy for structured API development, with examples from OpenAI, GitHub, and public APIs.",
-        "keywords": ["api", "cache", "ratelimit", "offline", "testing"],
+        "keywords": [
+          "api",
+          "cache",
+          "ratelimit",
+          "offline",
+          "testing"
+        ],
         "link": "./library/11-apicache.html"
+      }
+    ]
+  },
+  {
+    "topic": "Perspectives",
+    "articles": [
+      {
+        "title": "The Problem with Faster Horses",
+        "description": "Reframes foundation models as non-deterministic data stores rather than accelerated human workers, and asks what operations that framing permits.",
+        "keywords": [
+          "foundation models",
+          "llm",
+          "data store",
+          "reframing",
+          "distribution"
+        ],
+        "link": "./library/35-faster-horses.html"
+      },
+      {
+        "title": "PMFOps: The Missing Pipeline",
+        "description": "Proposes a third operational layer alongside DevOps and MLOps, built around the synthetic audience as a versioned artefact for testing product-market-fit.",
+        "keywords": [
+          "pmfops",
+          "devops",
+          "mlops",
+          "synthetic audience",
+          "product",
+          "evals",
+          "roles"
+        ],
+        "link": "./library/36-pmfops.html"
       }
     ]
   }
