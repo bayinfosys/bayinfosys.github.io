@@ -1,0 +1,33 @@
+---
+layout: base
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ page.title | escape }}",
+  "description": "{{ page.description | escape }}",
+  "keywords": "{{ page.keywords | join: ', ' }}",
+  "url": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bay Information Systems",
+    "url": "https://www.bayis.co.uk"
+  }
+}
+</script>
+
+<main class="container py-5">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <a href="/library">&larr; All Articles</a>
+  </nav>
+
+  <article class="article-body">
+    {{ content }}
+  </article>
+
+  <hr class="mt-5">
+  <p class="text-muted">
+    Questions about this? <a href="/#contact-us">Get in touch.</a>
+  </p>
+</main>

@@ -1,0 +1,12 @@
+url: "https://www.bayis.co.uk"
+baseurl: ""
+
+plugins:
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: "library"
+      type: "pages"
+    values:
+      layout: article
