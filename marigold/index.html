@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marigold hosts open-weight models on private infrastructure. Build typed multi-step inference workflows and measure output quality against task specifications built from your own data.">
+  <meta name="author" content="Bay Information Systems">
+  <link rel="canonical" href="https://www.bayis.co.uk/marigold/">
   <title>Marigold -- Typed Inference Pipelines</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/junction@5/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,13 +24,14 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="hero-eyebrow">Typed inference pipelines</p>
-    <h1 class="slogan">Production AI pipelines done properly.</h1>
-    <p class="hero-tagline">Define your task. Build your pipeline. Measure and improve.</p>
+<p class="hero-eyebrow">Private model hosting. Workflows. Evals.</p>
+<h1 class="slogan">Production AI pipelines done properly.</h1>
+<p class="hero-tagline">Define your task. Build your pipeline. Measure and improve.</p>
 <p class="hero-sub">
-  Marigold hosts open-weight models on private infrastructure. Compose them
-  into typed multi-step workflows and measure output quality against task
-  specifications built from your own data.
+  Marigold hosts open-weight models on private infrastructure and exposes
+  them through a typed workflow engine. Build multi-step inference pipelines,
+  then measure and refine their output against task specifications built
+  from your own data.
 </p>
     <div class="hero-actions">
       <a href="#usecases" class="btn-primary">See what it runs</a>
@@ -40,16 +44,16 @@
   <div class="wrap">
 <p>
   Most AI pipeline infrastructure is built <strong>bespoke, on every
-  engagement, and thrown away.</strong> Marigold is the inference layer
-  you bring once: privately hosted open-weight models, a declarative
-  workflow engine, and an eval surface that grows with production use.
+  engagement, and thrown away.</strong> Marigold is the layer you bring
+  once: privately hosted open-weight models, a declarative workflow engine,
+  and an eval surface that grows with production use.
 </p>
   </div>
 </section>
 
 <section class="pillars">
   <div class="wrap">
-    <p class="section-label">Three surfaces</p>
+<p class="section-label">Hosting. Workflows. Evals.</p>
     <div class="pillar-grid">
       <div class="pillar">
         <p class="pillar-num">01</p>
@@ -207,6 +211,16 @@
     <p><a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a></p>
   </div>
 </footer>
+
+
+<script src="https://www.dev.clientlog.bayis.co.uk/clientlog.js"></script>
+<script>
+  const logger = clientlog.createLogger({
+    endpoint: "https://api.dev.clientlog.bayis.co.uk/v1/event",
+    project: "bayis/marigold",
+    options: { session: true, navigation: true }
+  });
+</script>
 
 </body>
 </html>
