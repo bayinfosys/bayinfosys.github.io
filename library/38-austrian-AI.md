@@ -1,0 +1,64 @@
+---
+title: "The Austrian Case for AI Investment"
+description: "The Chicago school asks what AI allows you to stop paying for. The Austrian school asks what latent structure already exists in your accumulated data, waiting to be read."
+keywords: ["ai investment", "austrian economics", "data strategy", "latent structure", "chicago school"]
+last_modified_at: 2025-01-01
+---
+
+# The Austrian Case for AI Investment
+
+Most AI investment decisions rest on a single question: what does this allow us to stop paying for?
+The question is not wrong, but it answers a narrow problem while leaving the more consequential questions unasked.
+
+The frame behind it comes from a particular tradition in economics: The Chicago School (Friedman, Stigler, Becker).
+Decompose the business into measurable activities, price each one, eliminate whatever costs more than it returns.
+Applied to AI, this produces the substitution thesis: AI replaces labour, compresses unit economics, improves margins.
+Clear logic and measurable cost reductions. The limitation is that this framing cannot see what it cannot measure.
+A different tradition asks a different question, and for established businesses it is the more useful one.
+
+## Value, Knowledge, and Capital
+
+Carl Menger's foundational insight is that value is not a property of things.
+It is a property of relationships between things and purposes.
+A barrel of water is worthless at the edge of a lake and everything at the edge of a desert.
+Data assets are routinely valued by volume, schema completeness, or recency -- properties of the data itself not the purposes it can serve.
+A company with three years of transaction records holds something that cannot be straightforwardly priced, because its value depends entirely on what questions are asked of it and what methods are applied.
+
+Hayek extends this into something more specific.
+The knowledge that generates value in a functioning economy is dispersed, tacit, and largely inarticulate.
+It lives in practices, routines, and relationships that cannot be fully written down or transferred without loss.
+When a business accumulates operational data over years (customer transactions, product interactions, support queries, usage patterns) it encodes tacit knowledge about its own market in a form that can, with the right methods, be made explicit.
+The data is not the knowledge; it is the record from which knowledge can be recovered.
+
+Bohm-Bawerk adds a third layer.
+Capital goods are not independent units but links in chains of production, and the value of any single link depends on the integrity of the chain it belongs to.
+An isolated embedding is not an asset.
+An embedding inside a retrieval system, connected to a query interface, connected to a workflow which a team depends on forms a capital chain whose value exceeds the sum of its components.
+The investment question is not what each component is worth individually but what the chain enables.
+
+## What the Audit Reveals
+
+The first step in most AI engagements is some version of a data audit.
+The Chicago framing treats this as inventory: what assets exist, what are they worth individually, which justify the cost of a model.
+The Austrian framing produces a different audit which searches for latent structures.
+
+Latent means hidden, not absent.
+
+Most organisations hold data in silos that reflect organisational history rather than analytical logic -- a product catalogue here, a user database there, transaction records somewhere else.
+Each in isolation is a list.
+With appropriate methods applied, they encode something not visible in any single component: the actual structure of relationships between products, between users, and between both.
+
+A great example of this is the application of network analysis to co-purchase data, content interaction, or communication patterns.
+This approach will surface communities within an audience the company did not know it had, and gaps in provision that no single data source could reveal.
+This is emergent value in a precise sense: present in the relationships between things, not designed for, arising from accumulated activity over time.
+
+A company that has operated for several years has been generating signal about its market continuously, encoded in its data, invisible in its silos, recoverable once those silos connect.
+A startup does not have this. It accrues through operation.
+The data is not the asset; the latent structure encoded within the data is the asset.
+
+## The Question Worth Asking
+
+The cost reductions which AI enables are real and often significant, but the added value is often far greater.
+Find it by asking what the business could not previously see about itself, and what structure already exists in accumulated history waiting to be read.
+
+Bay Information Systems data audits start with the latent structure question. If you are trying to work out what AI investment is worth pursuing, get in touch, we can help.

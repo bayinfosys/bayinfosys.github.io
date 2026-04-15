@@ -1,3 +1,10 @@
+---
+title: "The Problem with Faster Horses"
+description: "Foundation models are not fast humans. Treating them as a non-deterministic data store opens more useful questions than the labour displacement framing does."
+keywords: ["foundation models", "llm", "ai framing", "data store", "prompting"]
+last_modified_at: 2025-01-01
+---
+
 **The Problem with Faster Horses**
 
 There is a quote, often attributed to Henry Ford, that runs: "If I had asked people what they wanted, they would have said faster horses." The point is that people tend to frame new things in terms of what they already know. A horse is what moves you from A to B, so a better version of that is what you reach for first.

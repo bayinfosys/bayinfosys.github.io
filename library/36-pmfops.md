@@ -1,3 +1,10 @@
+---
+title: "PMFOps: Operationalising Product-Market Fit"
+description: "DevOps operationalised code. MLOps operationalised models. PMFOps is the emerging third layer -- treating the audience as a testable, versioned artefact."
+keywords: ["product market fit", "mlops", "devops", "synthetic audience", "ai product", "eval"]
+last_modified_at: 2025-01-01
+---
+
 # PMFOps
 
 DevOps gave us a pipeline for code. MLOps gave us a pipeline for data modelling. Neither accounts for the thing that fails first in a product: the audience. Foundation models change this, because for the first time we have the raw material to encode audience behaviour as a queryable, testable artefact.
