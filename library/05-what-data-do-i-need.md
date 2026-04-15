@@ -1,3 +1,11 @@
+---
+layout: article
+title: "What Data Do I Need? A Guide for Business and Product Owners"
+description: "A checklist for integrating machine learning into a product without overcommitting data infrastructure before you know what the problem is."
+keywords: ["data strategy", "data requirements", "machine learning", "product management", "data audit"]
+last_modified_at: 2024-11-01
+---
+
 # What Data Do I Need? A Guide for Business and Product Owners
 
 As a business owner or product manager, you play a crucial role in driving product value. However, integrating machine learning into your processes can bring a sense of uncertainty. It’s common to wonder how to effectively leverage data for optimal results.

@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Filtered Vector Search"
+description: "Vector search in production needs metadata filters, business rules, and combined ranking signals. How index structure determines what actually executes efficiently."
+keywords: ["vector search", "filtered search", "metadata filtering", "hybrid search", "vector database"]
+last_modified_at: 2024-11-01
+---
+
 # Filtered Vector Search
 
 Vector search rarely operates in isolation. Production systems need to filter by category, date ranges, user permissions, or other metadata. They often combine vector similarity with text relevance, popularity signals, or business rules. SQL can express all of these operations clearly, but the physical structure of indexes determines what executes efficiently.

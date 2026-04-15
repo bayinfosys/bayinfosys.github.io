@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Machine Learning Engineer vs Software Engineer: Three Key Differences"
+description: "ML projects do not behave like software projects. Three structural differences that affect how ML is built, managed, and delivered."
+keywords: ["machine learning engineer", "software engineer", "mle vs swe", "ml engineering", "mlops"]
+last_modified_at: 2024-11-01
+---
+
 # MLE vs SWE
 
 In traditional software engineering, success is often defined by delivery. A feature is scoped, built, tested, and shipped. The outcome is a working system that behaves as expected. Machine learning projects, by contrast, rarely follow this pattern. Success is conditional, behaviour is probabilistic, and iteration is central.

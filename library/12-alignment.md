@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Alignment: Semantics in the AI/ML Era"
+description: "LLMs introduced a new kind of problem into software: the model's interpretation of intent can diverge from the developer's. What alignment actually means in practice."
+keywords: ["alignment", "llm", "semantics", "ai development", "prompt engineering"]
+last_modified_at: 2024-11-01
+---
+
 # Alignment: Semantics in the AI/ML era
 
 A common question we encounter is: what is different about AI/ML development today, especially after the advent of large-language models (LLMs)?

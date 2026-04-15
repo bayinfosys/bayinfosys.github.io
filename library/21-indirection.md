@@ -1,3 +1,11 @@
+---
+layout: article
+title: "The Indirection Problem"
+description: "Indirection -- accessing something through a reference rather than directly -- is a C programming concept. It also explains a surprising number of modern frustrations."
+keywords: ["indirection", "software engineering", "programming concepts", "abstraction", "systems thinking"]
+last_modified_at: 2024-11-01
+---
+
 # The Indirection Problem: How Programming Concepts Explain Modern Frustrations
 
 Back in ancient times there was a programming language called C, which allowed a method called "indirection". This method is practically impossible in modern languages due to the errors caused by misuse, over complication, and lack of clarity. However, I, of course, am an expert in this! And more and more this pattern is visible in modern life.

@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Memory in Agentic AI"
+description: "Memory is what separates an AI agent from a stateless function. The types of memory available, how they work, and when each is appropriate."
+keywords: ["agentic ai", "agent memory", "llm agents", "context window", "vector memory"]
+last_modified_at: 2024-11-01
+---
+
 # **Memory in Agentic AI**
 
 Agentic AI refers to AI systems that exhibit autonomy, decision-making capabilities, and memory persistence over interactions.

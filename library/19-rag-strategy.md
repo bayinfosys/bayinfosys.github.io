@@ -1,3 +1,11 @@
+---
+layout: article
+title: "RAG Strategy and Tooling"
+description: "RAG is not one technique. A breakdown of retrieval-augmented generation approaches by complexity, and how to match tooling to the technique you actually need."
+keywords: ["rag", "retrieval augmented generation", "vector database", "llm", "enterprise ai"]
+last_modified_at: 2024-11-01
+---
+
 # RAG Strategy and Tooling
 
 Retrieval-Augmented Generation (RAG) has become a cornerstone of modern AI systems, especially for enterprise applications where large language models need grounding in domain-specific knowledge.

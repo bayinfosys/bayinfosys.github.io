@@ -1,3 +1,11 @@
+---
+layout: article
+title: "How to Isolate Bad Training Data Using Cross-Validation"
+description: "Cross-validation is usually framed as a model evaluation technique. It is also the most reliable way to find which training examples are hurting your model."
+keywords: ["cross validation", "training data", "bad data", "machine learning", "data quality"]
+last_modified_at: 2024-11-01
+---
+
 # How to Isolate Bad Training Data
 
 Cross-validation is typically presented as a method for model evaluation.

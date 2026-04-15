@@ -1,3 +1,11 @@
+---
+layout: article
+title: "What Is Data Maturity?"
+description: "Data maturity is a spectrum from ad hoc storage to strategic data infrastructure. What it is, how to assess it, and why it determines what AI is actually feasible."
+keywords: ["data maturity", "data strategy", "data infrastructure", "data governance", "ai readiness"]
+last_modified_at: 2024-11-01
+---
+
 # What Is Data Maturity?
 
 Data maturity refers to the degree to which an organisation can trust, access, and make use of its data in consistent, scalable, and repeatable ways. It is not a single milestone but a spectrum, moving from ad hoc storage and reactive use of data to intentional, systematic, and strategic data practices.

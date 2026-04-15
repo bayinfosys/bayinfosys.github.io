@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Platforms vs Pipelines: Engineering for Compounding Returns"
+description: "AWS, Borg, chaos engineering -- successful organisations build platforms rather than optimise pipelines. The distinction determines whether engineering effort compounds."
+keywords: ["platform engineering", "pipelines", "software architecture", "engineering strategy", "devops"]
+last_modified_at: 2024-11-01
+---
+
 # Platforms vs Pipelines: Engineering for Compounding Returns
 
 The pattern repeats across successful organisations. Amazon built AWS. Google built Borg (which became Kubernetes). Netflix built chaos engineering tools. In each case, the investment in platform preceded the return, but the return compounded.

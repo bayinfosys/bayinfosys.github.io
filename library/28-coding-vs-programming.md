@@ -1,3 +1,11 @@
+---
+layout: article
+title: "AI Tooling and the Separation Between Coding and Programming"
+description: "AI-assisted development accelerates a long-running separation between writing code and building systems. Why that distinction matters and what it means for teams."
+keywords: ["ai coding", "programming", "software engineering", "copilot", "ai tools"]
+last_modified_at: 2024-11-01
+---
+
 # AI Tooling and the Separation Between Coders and Programming
 
 The rise of AI-assisted development tools has accelerated a trend that predates them by decades: the separation between writing code and building systems. This separation is not new, but AI tooling makes it more visible and, in some contexts, more problematic.

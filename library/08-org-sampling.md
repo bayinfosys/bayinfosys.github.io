@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Leveraging AI for Organisational Intelligence"
+description: "Communication metadata is a structured sample of how an organisation actually works. What AI methods can surface from it."
+keywords: ["organisational intelligence", "communication data", "network analysis", "ai", "org structure"]
+last_modified_at: 2024-11-01
+---
+
 # Leveraging AI for Organisational Intelligence
 
 In a recent move, the U.S. meme department DOGE required all staff to send an email describing their recent tasks while copying in their supervisors. Many viewed this as an attack on government workers, while Elon Musk (self-professed "DOGEfather") claimed it was meant to verify that employees existed and were actively working.

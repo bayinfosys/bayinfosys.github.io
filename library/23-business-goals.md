@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Metrics for Business Goals"
+description: "A model with 95% accuracy can destroy business value. How to choose evaluation metrics that reflect what the business actually needs."
+keywords: ["ml metrics", "business goals", "accuracy", "precision recall", "model evaluation"]
+last_modified_at: 2024-11-01
+---
+
 # Metrics for Business Goals
 
 Accuracy is the most misunderstood metric in machine learning. A model with 95% accuracy can still destroy business value, while a model with 70% accuracy might generate millions in revenue. The difference lies in choosing evaluation metrics that align with actual business objectives.

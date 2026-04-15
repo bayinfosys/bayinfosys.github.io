@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Machine Learning Design Patterns"
+description: "Choosing the right ML design pattern matters more than choosing the right model. Key patterns with applications to marketing and audience intelligence."
+keywords: ["ml design patterns", "machine learning", "marketing ai", "classification", "recommendation systems"]
+last_modified_at: 2024-11-01
+---
+
 # Machine Learning Design Patterns
 
 Machine learning isn't just about choosing the right model -- it's about applying the right design pattern to a problem. Design patterns originated in architecture: bridges, towers, doorways are all patterns; how they look in practice is a matter of the particular.

@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Scaling Databases: Lessons from Facebook's MySQL Journey"
+description: "Facebook's progression from a single database to a sharded architecture contains practical lessons for any system that needs to grow. The constraints that drove each decision."
+keywords: ["database scaling", "mysql", "sharding", "facebook", "distributed systems"]
+last_modified_at: 2024-11-01
+---
+
 # Scaling Databases: Lessons from Facebook's MySQL Journey
 
 Most businesses will never face the scaling challenges that Facebook encountered in its early years. Yet the decisions Facebook made while scaling from thousands to millions of users contain lessons relevant to any growing system. This article examines Facebook's progression from a simple database to a sharded architecture, focusing on the practical constraints and trade-offs that drove each decision.

@@ -1,3 +1,11 @@
+---
+layout: article
+title: "What is Docker? A Deep Dive into Containers"
+description: "The Linux primitives behind Docker containers -- namespaces, cgroups, and how they make containers faster than virtual machines."
+keywords: ["docker", "containers", "linux", "namespaces", "cgroups", "deployment"]
+last_modified_at: 2024-11-01
+---
+
 # What is Docker? A Deep Dive into Containers
 
 Docker is a technology which allows us to package software into **containers** which can more easily be distributed for use by others. Much like shipping containers revolutionised the transport of goods by standardising ships, ports, and other infrastructure; software containers have revolutionised the deployment of software.

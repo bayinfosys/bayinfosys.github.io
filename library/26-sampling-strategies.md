@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Sampling Strategies for Imbalanced Data"
+description: "Imbalanced datasets cause models to ignore the minority class. The sampling strategies that actually work for fraud detection, medical diagnosis, and quality control."
+keywords: ["imbalanced data", "sampling strategies", "oversampling", "smote", "class imbalance"]
+last_modified_at: 2024-11-01
+---
+
 # Sampling Strategies for Imbalanced Data
 
 Real-world datasets rarely provide perfect class distributions. Fraud detection systems encounter thousands of legitimate transactions for every fraudulent one. Medical diagnostic tools process countless normal cases for each rare condition. Quality control systems monitor production lines where defects represent a tiny fraction of output.

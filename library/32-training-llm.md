@@ -1,3 +1,11 @@
+---
+layout: article
+title: "LLM Training Fundamentals: From Tokens to Human Preference"
+description: "LLMs are trained in stages with different objectives. How the shift from statistical training to human preference ranking produces behaviours that metrics alone cannot explain."
+keywords: ["llm training", "rlhf", "language model", "pretraining", "human feedback"]
+last_modified_at: 2024-11-01
+---
+
 # LLM Training Fundamentals: From Tokens to Human Preference
 
 Large language models are trained in stages, each with different objectives and measurement approaches. Understanding how these stages relate to evaluation helps explain why certain behaviours (like sycophancy or excessive politeness) emerge in chat models despite appearing nowhere in the base training data.

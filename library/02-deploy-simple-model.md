@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Deploying Models to AWS Lambda"
+description: "Open-source models on serverless infrastructure cost less than incumbent AI services. A practical guide to deploying on AWS Lambda."
+keywords: ["aws lambda", "model deployment", "serverless", "open source models", "mlops"]
+last_modified_at: 2024-11-01
+---
+
 # Deploying Models to AWS Lambda
 
 For many businesses, AI/ML is a means to an end: usually one step a operational goal. However, the perceived high costs and associated risks of implementing such models often deter their adoption, prompting a fallback to conventional methods.

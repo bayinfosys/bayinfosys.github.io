@@ -1,3 +1,11 @@
+---
+layout: article
+title: "How to Brief a Developer on a Feature Without Being Technical"
+description: "A practical guide for business and product owners who need to communicate clearly with AI engineers without speaking code."
+keywords: ["product management", "developer brief", "ai engineering", "non-technical", "feature scoping"]
+last_modified_at: 2024-11-01
+---
+
 # How to Brief a Developer on a Feature Without Being Technical
 
 As a business or product owner, you don't need to speak code to collaborate with an AI engineer - just communicate clearly.

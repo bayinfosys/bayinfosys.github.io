@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Security Risks in AI Systems with Public Access"
+description: "Publicly deployed AI systems introduce specific vulnerabilities. A breakdown of the key risks and what to do about them."
+keywords: ["ai security", "llm security", "prompt injection", "data risks", "chatbot security"]
+last_modified_at: 2024-11-01
+---
+
 # Security Risks in AI Systems with Public Access
 
 Modern AI systems deployed for public use (such as chatbots and generative AI services) bring immense value but also introduce significant **security risks** which must be addressed.

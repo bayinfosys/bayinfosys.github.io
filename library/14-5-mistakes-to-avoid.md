@@ -1,3 +1,11 @@
+---
+layout: article
+title: "5 Mistakes to Avoid When Building Your First AI Product"
+description: "The traps that derail early AI products are predictable. Five failure modes from years of helping startups build and ship."
+keywords: ["ai product", "startup", "machine learning", "product mistakes", "ai development"]
+last_modified_at: 2024-11-01
+---
+
 # 5 Mistakes to Avoid When Building Your First AI Product
 
 Your first AI product build is an exciting space full of promise but also full of traps.

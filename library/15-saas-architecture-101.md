@@ -1,3 +1,11 @@
+---
+layout: article
+title: "SaaS Architecture 101 for Non-CTOs"
+description: "LAMP, JAMstack, microservices, serverless -- what these terms actually mean and how to navigate architecture decisions without a technical co-founder."
+keywords: ["saas architecture", "non-technical founder", "cloud architecture", "serverless", "microservices"]
+last_modified_at: 2024-11-01
+---
+
 # SaaS Architecture 101 for Scalability - A Guide for Non-CTOs
 
 If you're a non-technical founder building a SaaS product, conversations about architecture can feel like alphabet soup: LAMP, MERN, JAMstack, microservices, serverless—you name it.

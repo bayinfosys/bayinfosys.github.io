@@ -1,3 +1,11 @@
+---
+layout: article
+title: "The Cost of Machine Learning"
+description: "ML is a well-defined problem with specific costs. Using F(X)=Y to break down what you are actually paying for and who needs to do it."
+keywords: ["cost of machine learning", "ml budget", "ml roles", "ml engineering", "ai costs"]
+last_modified_at: 2024-11-01
+---
+
 # Cost of ML
 
 Machine learning is a well-defined problem with specific costs and roles.

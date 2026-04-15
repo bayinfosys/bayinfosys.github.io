@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Developing with APIs Without Rate Limits: Introducing APICache"
+description: "Rate limits slow down early-stage development. APICache is an open-source library that caches API responses locally so you can iterate without hitting limits."
+keywords: ["api cache", "rate limiting", "developer tools", "python", "api development"]
+last_modified_at: 2024-11-01
+---
+
 # Developing with APIs Without Rate Limits: Introducing `APICache`
 
 Data researchers and engineers often work with APIs that are **metered, restricted**, or prone to **rate limits**. These constraints can slow down development, especially in the **early exploration and prototyping** phase - when developers want to experiment, iterate, and understand how the API behaves.

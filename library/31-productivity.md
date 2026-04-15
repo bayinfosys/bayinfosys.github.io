@@ -1,3 +1,11 @@
+---
+layout: article
+title: "Capital, Labour, and the Productivity Question"
+description: "Productivity growth has slowed across OECD economies. One explanation: the statistics measure the wrong competition. Capital and labour are not on the same curve."
+keywords: ["productivity", "capital", "labour", "economics", "ai economy"]
+last_modified_at: 2024-11-01
+---
+
 # Capital, Labour, and the Productivity Question
 
 Worker productivity growth has slowed across OECD economies since the 1970s. Various explanations circulate: declining business dynamism, measurement problems in the service sector, exhaustion of low-hanging technological fruit. These accounts share a common assumption: something has gone wrong with productivity.

@@ -1,3 +1,11 @@
+---
+layout: article
+title: "SQL Schema Documentation for RAG Pipelines"
+description: "Structured databases contain context that LLMs need to generate accurate queries. How to expose schema information in a way that preserves relationships and business logic."
+keywords: ["sql schema", "rag", "llm", "text to sql", "database documentation"]
+last_modified_at: 2024-11-01
+---
+
 # SQL Schema Documentation for RAG Pipelines
 
 Retrieval-augmented generation systems typically focus on unstructured text documents.

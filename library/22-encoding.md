@@ -1,3 +1,11 @@
+---
+layout: article
+title: "A Complete Guide to Categorical Encoding for Machine Learning"
+description: "One-hot, ordinal, target, embedding -- categorical encoding choices affect model performance significantly. A practical guide with model-specific recommendations."
+keywords: ["categorical encoding", "one-hot encoding", "machine learning", "feature engineering", "preprocessing"]
+last_modified_at: 2024-11-01
+---
+
 # A Complete Guide to Categorical Encoding for Machine Learning
 
 Categorical encoding remains one of the most crucial preprocessing steps in machine learning, yet choosing the right method often feels like guesswork. This guide provides specific model recommendations, concrete examples, and practical datasets to demonstrate when and why each encoding method works best.
