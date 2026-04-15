@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "The Fat Protocol Thesis Applied to AI"
 description: "Model weights are the fat layer -- general, beneath everything, available at marginal cost. Workflows are thin clients. Most AI infrastructure is built the wrong way round."
 keywords: ["fat protocol", "ai infrastructure", "model weights", "workflow orchestration", "llm", "foundation models"]

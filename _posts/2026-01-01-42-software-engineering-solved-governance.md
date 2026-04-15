@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Software Engineering Solved Governance"
 description: "Single source of truth, idempotency, rollback, least privilege -- software engineers formalised governance problems that other institutions still handle by convention."
 keywords: ["software engineering", "governance", "single source of truth", "idempotency", "data governance"]

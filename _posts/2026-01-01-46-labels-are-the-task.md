@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Task Specification is the Primary Artefact"
 description: "Foundation models changed the cost of the mechanism. They did not change the first question: where are the labels? A labelled dataset is a measurement instrument, not training fuel."
 keywords: ["task specification", "labelled data", "llm evaluation", "evals", "ml pipeline", "foundation models"]
