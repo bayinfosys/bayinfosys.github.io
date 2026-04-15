@@ -10,3 +10,5 @@ defaults:
       type: "pages"
     values:
       layout: article
+
+permalink: /library/:title.html

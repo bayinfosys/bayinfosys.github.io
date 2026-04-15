@@ -5,7 +5,7 @@ description: "Bay Information Systems helps organisations identify and solve the
 
 <header class="text-center py-5 section-dark">
   <img src="/img/BayInfoLogow.png" alt="Bay Information Systems" class="logo-banner">
-  <p class="mt-3" style="color: var(--light-bg); font-size: 1.2rem;">Independent AI/ML consultancy.</p>
+  <p class="mt-3" style="color: var(--light-bg); font-size: 1.2rem;">Independent AI/ML Engineering.</p>
 </header>
 
 <section id="what-we-do" class="py-5 section-light">
@@ -79,11 +79,11 @@ description: "Bay Information Systems helps organisations identify and solve the
     <h2>Technical Articles</h2>
     <p>Structured knowledge from client work, explorations, and deployment challenges.</p>
     <ul class="mt-3">
-      <li><a href="/library/40-private-inference.html">Private Inference: Running AI Inside Your Own Infrastructure</a></li>
-      <li><a href="/library/44-static-vs-dynamic-planning.html">Static vs Dynamic Planning in AI Pipelines</a></li>
-      <li><a href="/library/19-rag-strategy.html">RAG Strategy and Tooling</a></li>
-      <li><a href="/library/17-data-maturity.html">Data Maturity and AI Readiness</a></li>
+      {% for post in site.posts limit: 4 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
     </ul>
+
     <p class="mt-3"><a href="/library" class="btn btn-custom">All articles &rarr;</a></p>
   </div>
 </section>
