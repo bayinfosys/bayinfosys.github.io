@@ -7,7 +7,7 @@ topic: "Perspectives"
 last_modified_at: 2026-04-17
 ---
 
-**Content Negotiation Was a Good Idea**
+# Content Negotiation Was a Good Idea
 
 When your browser requests a web page, it sends an `Accept` header: a declaration of what it can handle. `text/html`, `application/json`, `image/webp`. The server reads this and returns the best match from whatever it has. The mechanism is called content negotiation, and it has been part of HTTP since 1996.
 
@@ -15,7 +15,7 @@ It was designed to decouple content from form. In practice, it decouples content
 
 That approach is now available.
 
-**The cache miss problem**
+## The cache miss problem
 
 Pre-generated content systems have a hard failure mode: the variant does not exist. A device requests a format the pipeline never produced, and the server either returns the wrong thing or nothing. A cache miss is a failure.
 
@@ -25,7 +25,7 @@ The cache still exists. Content generated for a device on first request is store
 
 Model upgrades are handled cleanly. Invalidate the cache on model version change and let demand rebuild it. The cache reflects the current model's output rather than a snapshot from whenever the pipeline last ran. No migration strategy, no stale variants.
 
-**What capability declaration actually means**
+## What capability declaration actually means
 
 HTTP `Accept` headers describe format. A richer capability declaration describes the rendering surface: colour depth, audio support, display dimensions, interaction model, bandwidth. These are different questions, and the answers determine not just which file to serve but what to generate.
 
@@ -37,7 +37,7 @@ A marketing display inverts the usual assumption. A 4K screen is not a limited d
 
 Each of these cases involves adapting content downward or sideways from some canonical form. The holographic display breaks that pattern entirely.
 
-**The case that makes the argument**
+## The case that makes the argument
 
 Spinning-arm holographic displays and depth-enabled screens cannot receive existing content. Not in a degraded form -- at all. There are no cached variants because nobody has produced any. The pre-generative pipeline has no answer. A cache miss is not a slow hit; it is a permanent gap.
 
@@ -45,7 +45,7 @@ Marigold has an image-to-depth workflow. It converts video to 3D video and image
 
 This is what content negotiation was designed to do. The infrastructure to complete the original intention now exists.
 
-**What changes**
+## What changes
 
 Content, in the current model, is the artefact -- the video file, the article HTML, the image asset. In this model, content is the meaning, and the artefact is produced on demand for the device that receives it. One canonical source, one generation layer, one cache that populates on demand.
 
