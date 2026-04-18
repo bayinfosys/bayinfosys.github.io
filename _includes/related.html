@@ -5,12 +5,13 @@ first slug: {{ page.related | first }}
 first post name: {{ site.posts | first | map: "name" }}
 post count: {{ site.posts | size }}
 match test: {{ site.posts | where_exp: "post", "post.name contains '37-bitcoin-21M'" | map: "name" }}
+first post keys: {{ site.posts | first | inspect }}
 </pre>
 <section class="related-articles mt-5 pt-4 border-top">
   <h3 class="h6 text-muted text-uppercase mb-3">Related articles</h3>
   <ul class="list-unstyled">
     {% for slug in page.related %}
-      {% assign rel = site.posts | where_exp: "post", "post.name contains slug" | first %}
+      {% assign rel = site.posts | where: "slug", slug | first %}
       {% if rel %}
       <li class="mb-2">
         <a href="{{ rel.url | relative_url }}">{{ rel.title }}</a>
