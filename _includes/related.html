@@ -3,8 +3,7 @@
   <h3 class="h6 text-muted text-uppercase mb-3">Related articles</h3>
   <ul class="list-unstyled">
     {% for slug in page.related %}
-      {% assign filename = slug | append: ".md" %}
-      {% assign rel = site.pages | where: "name", filename | first %}
+      {% assign rel = site.posts | where_exp: "post", "post.name contains slug" | first %}
       {% if rel %}
       <li class="mb-2">
         <a href="{{ rel.url | relative_url }}">{{ rel.title }}</a>
