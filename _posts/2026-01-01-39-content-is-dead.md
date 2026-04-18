@@ -5,6 +5,12 @@ description: "Generative AI removed the cost constraint that forced editorial di
 keywords: ["generative ai", "content strategy", "curation", "ai content", "lemon market"]
 topic: "Perspectives"
 last_modified_at: 2025-01-01
+seo_title: "Why Generative AI Killed Content and Made Curation the New Scarcity"
+related:
+  - 47-geo
+  - 48-adtech-ml
+  - 35-faster-horses
+  - 45-fat-protocols-for-ai
 ---
 
 # Content is Dead: The Curation Inversion

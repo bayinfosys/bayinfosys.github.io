@@ -5,6 +5,11 @@ description: "Single source of truth, idempotency, rollback, least privilege -- 
 keywords: ["software engineering", "governance", "single source of truth", "idempotency", "data governance"]
 topic: "Perspectives"
 last_modified_at: 2025-01-01
+seo_title: "How Software Engineering Solved Governance Problems Other Fields Still Have"
+related:
+  - 29-platforms-vs-pipelines
+  - 28-coding-vs-programming
+  - 21-indirection
 ---
 
 # Software Engineering Solved Governance

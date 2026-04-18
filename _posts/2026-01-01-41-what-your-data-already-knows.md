@@ -5,6 +5,12 @@ description: "Siloed data is a list. Connected data encodes structure -- communi
 keywords: ["data strategy", "latent structure", "embeddings", "community detection", "data audit", "vector search"]
 topic: "Data Strategy"
 last_modified_at: 2025-01-01
+seo_title: "How to Find Hidden Structure in Your Organisation's Data"
+related:
+  - 17-data-maturity
+  - 08-org-sampling
+  - 20-vector-db-deepdive
+  - 38-austrian-AI
 ---
 
 # What Your Data Already Knows

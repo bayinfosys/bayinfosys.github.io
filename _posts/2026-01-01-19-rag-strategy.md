@@ -5,6 +5,12 @@ description: "RAG is not one technique. A breakdown of retrieval-augmented gener
 keywords: ["rag", "retrieval augmented generation", "vector database", "llm", "enterprise ai"]
 topic: "AI Systems"
 last_modified_at: 2024-11-01
+seo_title: "How RAG Works: Retrieval-Augmented Generation Strategies Explained"
+related:
+  - 20-vector-db-deepdive
+  - 33-vector-db-filters
+  - 27-schema-docs
+  - 10-agent-memory
 ---
 
 # RAG Strategy and Tooling

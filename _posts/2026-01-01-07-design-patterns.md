@@ -5,6 +5,12 @@ description: "Choosing the right ML design pattern matters more than choosing th
 keywords: ["ml design patterns", "machine learning", "marketing ai", "classification", "recommendation systems"]
 topic: "Product & Strategy"
 last_modified_at: 2024-11-01
+seo_title: "Machine Learning Design Patterns: How to Choose the Right Architecture"
+related:
+  - 15-saas-architecture-101
+  - 29-platforms-vs-pipelines
+  - 44-static-vs-dynamic-planning
+  - 19-rag-strategy
 ---
 
 # Machine Learning Design Patterns

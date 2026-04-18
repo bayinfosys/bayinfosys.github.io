@@ -5,6 +5,12 @@ description: "Foundation models are not fast humans. Treating them as a non-dete
 keywords: ["foundation models", "llm", "ai framing", "data store", "prompting"]
 topic: "Perspectives"
 last_modified_at: 2025-01-01
+seo_title: "Foundation Models Are Not Fast Humans: A Better Framing"
+related:
+  - 32-training-llm
+  - 38-austrian-AI
+  - 45-fat-protocols-for-ai
+  - 41-what-your-data-already-knows
 ---
 
 **The Problem with Faster Horses**

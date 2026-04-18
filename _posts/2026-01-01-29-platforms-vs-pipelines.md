@@ -5,6 +5,12 @@ description: "AWS, Borg, chaos engineering -- successful organisations build pla
 keywords: ["platform engineering", "pipelines", "software architecture", "engineering strategy", "devops"]
 topic: "Architecture & Deployment"
 last_modified_at: 2024-11-01
+seo_title: "Platforms vs Pipelines: How Engineering Effort Compounds"
+related:
+  - 07-design-patterns
+  - 15-saas-architecture-101
+  - 30-facebook-db
+  - 42-software-engineering-solved-governance
 ---
 
 # Platforms vs Pipelines: Engineering for Compounding Returns

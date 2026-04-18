@@ -5,6 +5,12 @@ description: "Productivity growth has slowed across OECD economies. One explanat
 keywords: ["productivity", "capital", "labour", "economics", "ai economy"]
 topic: "Product & Strategy"
 last_modified_at: 2024-11-01
+seo_title: "AI and Productivity: Why the Statistics Miss the Point"
+related:
+  - 38-austrian-AI
+  - 35-faster-horses
+  - 28-coding-vs-programming
+  - 18-mle-vs-swe
 ---
 
 # Capital, Labour, and the Productivity Question

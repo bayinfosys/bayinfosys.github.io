@@ -5,6 +5,12 @@ description: "A checklist for integrating machine learning into a product withou
 keywords: ["data strategy", "data requirements", "machine learning", "product management", "data audit"]
 topic: "Data Strategy"
 last_modified_at: 2024-11-01
+seo_title: "How to Assess What Data You Need for Machine Learning"
+related:
+  - 17-data-maturity
+  - 04-cost-of-ml
+  - 46-labels-are-the-task
+  - 09-data-risks
 ---
 
 # What Data Do I Need? A Guide for Business and Product Owners

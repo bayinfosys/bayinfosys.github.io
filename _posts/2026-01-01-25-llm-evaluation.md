@@ -5,6 +5,12 @@ description: "LLM outputs are probabilistic and context-dependent. A structured 
 keywords: ["llm evaluation", "language model", "ai metrics", "production ai", "model assessment"]
 topic: "AI Systems"
 last_modified_at: 2024-11-01
+seo_title: "How to Evaluate an LLM in Production"
+related:
+  - 32-training-llm
+  - 46-labels-are-the-task
+  - 23-business-goals
+  - 33-vector-db-filters
 ---
 
 # LLM Evaluation Metrics

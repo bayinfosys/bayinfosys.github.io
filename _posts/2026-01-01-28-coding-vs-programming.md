@@ -5,6 +5,11 @@ description: "AI-assisted development accelerates a long-running separation betw
 keywords: ["ai coding", "programming", "software engineering", "copilot", "ai tools"]
 topic: "Architecture & Deployment"
 last_modified_at: 2024-11-01
+seo_title: "Coding vs Programming: Why the Distinction Matters Now"
+related:
+  - 18-mle-vs-swe
+  - 42-software-engineering-solved-governance
+  - 31-productivity
 ---
 
 # AI Tooling and the Separation Between Coders and Programming

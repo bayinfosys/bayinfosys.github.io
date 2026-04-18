@@ -5,6 +5,11 @@ description: "The Linux primitives behind Docker containers -- namespaces, cgrou
 keywords: ["docker", "containers", "linux", "namespaces", "cgroups", "deployment"]
 topic: "Infrastructure"
 last_modified_at: 2024-11-01
+seo_title: "How Docker Works: Containers, Namespaces, and cgroups Explained"
+related:
+  - 02-deploy-simple-model
+  - 15-saas-architecture-101
+  - 40-private-inference
 ---
 
 # What is Docker? A Deep Dive into Containers

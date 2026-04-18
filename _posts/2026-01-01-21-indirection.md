@@ -5,6 +5,11 @@ description: "Indirection -- accessing something through a reference rather than
 keywords: ["indirection", "software engineering", "programming concepts", "abstraction", "systems thinking"]
 topic: "Product & Strategy"
 last_modified_at: 2024-11-01
+seo_title: "What Is Indirection in Programming? A Practical Explanation"
+related:
+  - 28-coding-vs-programming
+  - 42-software-engineering-solved-governance
+  - 07-design-patterns
 ---
 
 # The Indirection Problem: How Programming Concepts Explain Modern Frustrations

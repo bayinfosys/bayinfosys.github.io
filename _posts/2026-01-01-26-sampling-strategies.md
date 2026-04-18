@@ -5,6 +5,11 @@ description: "Imbalanced datasets cause models to ignore the minority class. The
 keywords: ["imbalanced data", "sampling strategies", "oversampling", "smote", "class imbalance"]
 topic: "AI Systems"
 last_modified_at: 2024-11-01
+seo_title: "How to Handle Imbalanced Training Data: Sampling Strategies"
+related:
+  - 24-cross-validation
+  - 22-encoding
+  - 05-what-data-do-i-need
 ---
 
 # Sampling Strategies for Imbalanced Data

@@ -5,6 +5,12 @@ description: "A model with 95% accuracy can destroy business value. How to choos
 keywords: ["ml metrics", "business goals", "accuracy", "precision recall", "model evaluation"]
 topic: "Product & Strategy"
 last_modified_at: 2024-11-01
+seo_title: "How to Choose Machine Learning Metrics That Match Business Goals"
+related:
+  - 25-llm-evaluation
+  - 46-labels-are-the-task
+  - 17-data-maturity
+  - 14-5-mistakes-to-avoid
 ---
 
 # Metrics for Business Goals

@@ -5,6 +5,12 @@ description: "Open-source models on serverless infrastructure cost less than inc
 keywords: ["aws lambda", "model deployment", "serverless", "open source models", "mlops"]
 topic: "Infrastructure"
 last_modified_at: 2024-11-01
+seo_title: "How to Deploy a Machine Learning Model on AWS Lambda"
+related:
+  - 01-docker-deep-dive
+  - 40-private-inference
+  - 04-cost-of-ml
+  - 11-apicache
 ---
 
 # Deploying Models to AWS Lambda

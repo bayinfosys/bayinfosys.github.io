@@ -5,6 +5,12 @@ description: "Communication metadata is a structured sample of how an organisati
 keywords: ["organisational intelligence", "communication data", "network analysis", "ai", "org structure"]
 topic: "Data Strategy"
 last_modified_at: 2024-11-01
+seo_title: "How to Use AI to Surface Organisational Intelligence"
+related:
+  - 41-what-your-data-already-knows
+  - 10-agent-memory
+  - 20-vector-db-deepdive
+  - 07-design-patterns
 ---
 
 # Leveraging AI for Organisational Intelligence

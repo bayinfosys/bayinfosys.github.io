@@ -5,6 +5,11 @@ description: "Cross-validation is usually framed as a model evaluation technique
 keywords: ["cross validation", "training data", "bad data", "machine learning", "data quality"]
 topic: "Data Strategy"
 last_modified_at: 2024-11-01
+seo_title: "How to Find Bad Training Data Using Cross-Validation"
+related:
+  - 26-sampling-strategies
+  - 22-encoding
+  - 25-llm-evaluation
 ---
 
 # How to Isolate Bad Training Data

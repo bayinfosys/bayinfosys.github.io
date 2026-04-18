@@ -5,6 +5,12 @@ description: "LLMs are trained in stages with different objectives. How the shif
 keywords: ["llm training", "rlhf", "language model", "pretraining", "human feedback"]
 topic: "AI Systems"
 last_modified_at: 2024-11-01
+seo_title: "How LLMs Are Trained: From Tokens to Human Preference"
+related:
+  - 25-llm-evaluation
+  - 46-labels-are-the-task
+  - 12-alignment
+  - 35-faster-horses
 ---
 
 # LLM Training Fundamentals: From Tokens to Human Preference

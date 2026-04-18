@@ -5,6 +5,12 @@ description: "Most production AI workloads are high-volume and fixed-task. Dynam
 keywords: ["ai pipelines", "static planning", "dynamic planning", "agentic ai", "workflow orchestration", "mlops"]
 topic: "AI Systems"
 last_modified_at: 2025-01-01
+seo_title: "Static vs Dynamic Planning in AI Pipelines: How to Choose"
+related:
+  - 43-agent-alloys
+  - 07-design-patterns
+  - 29-platforms-vs-pipelines
+  - 10-agent-memory
 ---
 
 # Static vs Dynamic Planning

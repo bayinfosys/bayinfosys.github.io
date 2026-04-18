@@ -5,6 +5,11 @@ description: "Vector databases are harder than they look. A technical examinatio
 keywords: ["vector database", "similarity search", "embeddings", "rag", "ann indexing"]
 topic: "AI Systems"
 last_modified_at: 2024-11-01
+seo_title: "How Vector Databases Work: A Technical Deep Dive"
+related:
+  - 33-vector-db-filters
+  - 19-rag-strategy
+  - 27-schema-docs
 ---
 
 # Why Are Vector Databases Difficult? A Deep Dive

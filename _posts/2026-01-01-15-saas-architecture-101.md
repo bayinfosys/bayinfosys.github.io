@@ -5,6 +5,11 @@ description: "LAMP, JAMstack, microservices, serverless -- what these terms actu
 keywords: ["saas architecture", "non-technical founder", "cloud architecture", "serverless", "microservices"]
 topic: "Architecture & Deployment"
 last_modified_at: 2024-11-01
+seo_title: "SaaS Architecture Explained: LAMP, JAMstack, Microservices, and Serverless"
+related:
+  - 01-docker-deep-dive
+  - 29-platforms-vs-pipelines
+  - 07-design-patterns
 ---
 
 # SaaS Architecture 101 for Scalability - A Guide for Non-CTOs

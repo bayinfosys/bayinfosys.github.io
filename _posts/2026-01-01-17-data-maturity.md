@@ -5,6 +5,12 @@ description: "Data maturity is a spectrum from ad hoc storage to strategic data 
 keywords: ["data maturity", "data strategy", "data infrastructure", "data governance", "ai readiness"]
 topic: "Data Strategy"
 last_modified_at: 2024-11-01
+seo_title: "How to Assess Your Organisation's Data Maturity"
+related:
+  - 05-what-data-do-i-need
+  - 41-what-your-data-already-knows
+  - 04-cost-of-ml
+  - 23-business-goals
 ---
 
 # What Is Data Maturity?

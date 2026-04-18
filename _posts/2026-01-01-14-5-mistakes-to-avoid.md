@@ -5,6 +5,12 @@ description: "The traps that derail early AI products are predictable. Five fail
 keywords: ["ai product", "startup", "machine learning", "product mistakes", "ai development"]
 topic: "Product & Strategy"
 last_modified_at: 2024-11-01
+seo_title: "5 Mistakes to Avoid When Building Your First AI Product"
+related:
+  - 13-how-to-brief
+  - 05-what-data-do-i-need
+  - 17-data-maturity
+  - 04-cost-of-ml
 ---
 
 # 5 Mistakes to Avoid When Building Your First AI Product

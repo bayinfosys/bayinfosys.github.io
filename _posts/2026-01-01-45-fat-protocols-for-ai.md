@@ -5,6 +5,12 @@ description: "Model weights are the fat layer -- general, beneath everything, av
 keywords: ["fat protocol", "ai infrastructure", "model weights", "workflow orchestration", "llm", "foundation models"]
 topic: "Perspectives"
 last_modified_at: 2025-01-01
+seo_title: "The Fat Protocol Thesis Applied to AI: Where the Value Sits"
+related:
+  - 34-bitcoin-ai-economics
+  - 35-faster-horses
+  - 29-platforms-vs-pipelines
+  - 38-austrian-AI
 ---
 
 # The Fat Protocol Thesis Applied to AI
