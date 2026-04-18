@@ -1,14 +1,6 @@
 {% if page.related %}
-<pre style="font-size:11px; overflow:auto;">
-page.related: {{ page.related | inspect }}
-first slug: {{ page.related | first }}
-first post name: {{ site.posts | first | map: "name" }}
-post count: {{ site.posts | size }}
-match test: {{ site.posts | where_exp: "post", "post.name contains '37-bitcoin-21M'" | map: "name" }}
-first post keys: {{ site.posts | first | inspect }}
-</pre>
 <section class="related-articles mt-5 pt-4 border-top">
-  <h3 class="h6 text-muted text-uppercase mb-3">Related articles</h3>
+  <p class="text-muted mb-3" style="font-size: 0.8rem; letter-spacing: 0.05em;">Related articles</p>
   <ul class="list-unstyled">
     {% for slug in page.related %}
       {% assign rel = site.posts | where: "slug", slug | first %}
