@@ -11,6 +11,9 @@ related:
   - 40-private-inference
   - 04-cost-of-ml
   - 11-apicache
+redirect_from:
+  - /02-deploy-simple-model/02-deploy-simple-model.html
+  - http://www.bayis.co.uk/02-deploy-simple-model/02-deploy-simple-model.html
 ---
 
 # Deploying Models to AWS Lambda

@@ -11,6 +11,8 @@ related:
   - 33-vector-db-filters
   - 27-schema-docs
   - 10-agent-memory
+redirect_from:
+  - /19-rag-strategy/index.html
 ---
 
 # RAG Strategy and Tooling

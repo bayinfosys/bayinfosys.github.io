@@ -3,6 +3,7 @@ baseurl: ""
 
 plugins:
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 defaults:
   - scope:

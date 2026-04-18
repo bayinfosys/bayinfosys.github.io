@@ -11,6 +11,9 @@ related:
   - 46-labels-are-the-task
   - 17-data-maturity
   - 14-5-mistakes-to-avoid
+redirect_from:
+  - /23-business-goals/
+  - /23-business-goals/index.html
 ---
 
 # Metrics for Business Goals

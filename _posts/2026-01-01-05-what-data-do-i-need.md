@@ -11,6 +11,8 @@ related:
   - 04-cost-of-ml
   - 46-labels-are-the-task
   - 09-data-risks
+redirect_from:
+  - /05-what-data-do-i-need/05-what-data-do-i-need.html
 ---
 
 # What Data Do I Need? A Guide for Business and Product Owners

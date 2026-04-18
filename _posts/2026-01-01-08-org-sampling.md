@@ -11,6 +11,9 @@ related:
   - 10-agent-memory
   - 20-vector-db-deepdive
   - 07-design-patterns
+redirect_from:
+  - /08-org-sampling/
+  - /08-org-sampling/index.html
 ---
 
 # Leveraging AI for Organisational Intelligence

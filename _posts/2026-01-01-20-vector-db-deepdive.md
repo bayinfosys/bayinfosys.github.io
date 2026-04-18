@@ -10,6 +10,8 @@ related:
   - 33-vector-db-filters
   - 19-rag-strategy
   - 27-schema-docs
+redirect_from:
+  - /20-vector-db-deepdive/index.html
 ---
 
 # Why Are Vector Databases Difficult? A Deep Dive

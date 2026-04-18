@@ -10,6 +10,9 @@ related:
   - 19-rag-strategy
   - 43-agent-alloys
   - 44-static-vs-dynamic-planning
+redirect_from:
+  - /10-agent-memory/
+  - /10-agent-memory/index.html
 ---
 
 # **Memory in Agentic AI**

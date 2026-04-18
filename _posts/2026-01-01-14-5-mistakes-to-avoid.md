@@ -11,6 +11,8 @@ related:
   - 05-what-data-do-i-need
   - 17-data-maturity
   - 04-cost-of-ml
+redirect_from:
+  - /14-5-mistakes-to-avoid/index.html
 ---
 
 # 5 Mistakes to Avoid When Building Your First AI Product

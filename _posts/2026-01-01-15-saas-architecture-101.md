@@ -10,6 +10,8 @@ related:
   - 01-docker-deep-dive
   - 29-platforms-vs-pipelines
   - 07-design-patterns
+redirect_from:
+  - /15-saas-architecture-101/index.html
 ---
 
 # SaaS Architecture 101 for Scalability - A Guide for Non-CTOs

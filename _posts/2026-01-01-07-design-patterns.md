@@ -11,6 +11,9 @@ related:
   - 29-platforms-vs-pipelines
   - 44-static-vs-dynamic-planning
   - 19-rag-strategy
+redirect_from:
+  - /07-design-patterns/
+  - /07-design-patterns/index.html
 ---
 
 # Machine Learning Design Patterns

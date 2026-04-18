@@ -11,6 +11,8 @@ related:
   - 41-what-your-data-already-knows
   - 04-cost-of-ml
   - 23-business-goals
+redirect_from:
+  - /17-data-maturity/index.html
 ---
 
 # What Is Data Maturity?

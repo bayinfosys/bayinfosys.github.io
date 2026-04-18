@@ -10,6 +10,8 @@ related:
   - 02-deploy-simple-model
   - 15-saas-architecture-101
   - 40-private-inference
+redirect_from:
+  - /01-docker-deep-dive/01-docker-deep-dive.html
 ---
 
 # What is Docker? A Deep Dive into Containers
