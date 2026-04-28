@@ -1,179 +1,204 @@
 # Bay Information Systems Website
 
-AI/ML consultancy company website featuring technical articles, service information, and client analytics.
+AI/ML consultancy website featuring a technical article library, service descriptions,
+and open source project listings.
 
-**Live Site**: [https://www.bayis.co.uk](https://www.bayis.co.uk)
+**Live site**: https://www.bayis.co.uk
 
-## Project Overview
+---
 
-Static website built with HTML, Bootstrap, and Jekyll (GitHub Pages). The site showcases Bay Information Systems' expertise through technical articles on AI/ML topics, service descriptions, and structured consulting processes.
+## Overview
 
-Solo developer project with automatic deployment on push to master.
+Static site built with Jekyll and Bootstrap, hosted on GitHub Pages. Articles are
+markdown files with front matter; Jekyll builds everything on push to master.
+No manual build steps, no staging environment.
+
+---
 
 ## Architecture
 
-### Core Components
-
 ```
-├── index.html              # Homepage with services, process, article listing
+├── _posts/                  # Article source files (markdown)
+├── _layouts/
+│   ├── default.html         # Base layout
+│   └── article.html         # Article layout with JSON-LD and related articles
+├── _includes/
+│   └── related.html         # Related articles component
+├── _data/
+│   └── topics.yml           # Topic labels and display order for library page
+├── img/                     # Logos and brand assets
+├── marigold/                # Marigold product page
+├── index.html               # Homepage
+├── library.html             # Article library index
+├── main.css                 # Global styles
 ├── assets/
-│   ├── articles.json      # Article metadata database
-│   ├── articles.js        # Dynamic article card generation
-│   └── styles.css         # Custom styles
-├── library/               # Technical articles (markdown)
-│   ├── 01-docker-deep-dive.md
-│   ├── 19-rag-strategy.md
-│   └── ...
-├── img/                   # Logos and images
-├── sitemap.xml           # SEO sitemap
-└── robots.txt            # Search engine directives
+│   └── styles.css           # Component styles
+├── _config.yml              # Jekyll configuration
+└── robots.txt
 ```
 
-### Technology Stack
+---
 
-- **Frontend**: Bootstrap 5.3, vanilla JavaScript
-- **Static Site Generator**: Jekyll (GitHub Pages default)
-- **Markdown Processor**: Kramdown with GitHub Flavoured Markdown
-- **Analytics**: Custom clientlog system (private dev project)
+## Technology Stack
+
+- **Frontend**: Bootstrap 5.3 (CDN), vanilla JavaScript
+- **Icons**: Font Awesome 4.7
+- **Static site generator**: Jekyll (GitHub Pages)
+- **Markdown processor**: Kramdown with GitHub Flavoured Markdown
+- **Plugins**: jekyll-sitemap (automatic), jekyll-redirect-from
+- **Analytics**: Clientlog (custom, bayis internal)
 - **Hosting**: GitHub Pages
-- **CI/CD**: Automatic deployment on push to master
+- **Deployment**: Automatic on push to master
 
-## Content Structure
+---
 
-### Articles
+## Article System
 
-Articles exist as markdown files in `/library/*.md`. GitHub Pages converts them to HTML during build. 
+### How it works
 
-The homepage displays articles through `articles.json`, which contains metadata and links to the generated HTML files. The `articles.js` script reads this JSON and dynamically generates the accordion sections and article cards.
+Articles are Jekyll posts in `_posts/`. The filename convention is:
 
-**Note**: `articles.json` links reference `.html` files (post-Jekyll conversion), even though source files are `.md`.
-
-#### articles.json Structure
-
-Located in `/assets/articles.json` (historical location):
-
-```json
-[
-  {
-    "topic": "AI Systems",
-    "articles": [
-      {
-        "title": "Article Title",
-        "description": "Short description for card",
-        "keywords": ["keyword1", "keyword2"],
-        "link": "./library/article-name.html"
-      }
-    ]
-  }
-]
+```
+_posts/YYYY-MM-DD-NN-slug.md
 ```
 
-### Legacy Structure
+where `NN` is a two-digit sequence number. Jekyll converts each file to HTML at
+`/library/NN-slug.html` per the permalink rule in `_config.yml`.
 
-Articles 01, 02, and 03 use subdirectory structure (`/01-docker-deep-dive/01-docker-deep-dive.html`). Article 03 maintains this because it contains images. New articles use the flat `/library/*.md` structure.
+The homepage shows the four most recent posts via `site.posts limit: 4`.
+The library page groups all posts by `topic` via `site.data.topics`.
+Sitemaps are generated automatically by jekyll-sitemap from the posts collection.
 
-## Article Creation Workflow
+### Front matter fields
 
-1. Develop article content (often with LLM assistance from client discussions or industry news)
-2. Write markdown file in `/library/`
-3. Update `assets/articles.json` manually
-4. Update `sitemap.xml` manually
-5. Commit and push to master (automatic deployment)
-6. Schedule LinkedIn post manually for Thursday 9:30 AM
+All fields except `layout` are consumed by templates or SEO tooling.
 
-**Automation note**: The LinkedIn scheduling step could potentially be automated via Buffer API, Zapier, or direct LinkedIn API integration.
+```yaml
+---
+layout: article
+title: "Display title"
+seo_title: "Search-optimised title (optional, overrides title in head)"
+description: "One or two sentences. Used in library cards, meta description, and JSON-LD."
+keywords: ["keyword one", "keyword two"]
+topic: "Topic Label"          # Must match an entry in _data/topics.yml
+last_modified_at: YYYY-MM-DD  # Used for cache-busting and freshness signals
+related:                       # Slugs of related posts (without date prefix)
+  - 19-rag-strategy
+  - 20-vector-db-deepdive
+---
+```
+
+The `description` field is the most important for SEO and GEO. It should name a
+concrete problem, not describe the topic in general terms.
+
+### Adding an article
+
+1. Create `_posts/YYYY-MM-DD-NN-slug.md` with complete front matter
+2. Confirm `topic` matches an entry in `_data/topics.yml` (add one if needed)
+3. Write the article body in markdown below the front matter
+4. Push to master -- Jekyll builds and deploys within a minute or two
+
+No other files need updating. The sitemap, library index, and homepage update
+automatically.
+
+### Related articles
+
+The `related` field takes a list of post slugs (the filename without the date prefix
+and without the extension). The `related.html` include resolves these against
+`site.posts` and renders linked titles with descriptions. A post must exist and
+have a matching slug for the link to appear.
+
+---
+
+## Library Page
+
+`library.html` groups articles by the `topic` front matter field. The display order
+of topic groups is controlled by `_data/topics.yml`. Articles without a `topic` field
+do not appear on the library page.
+
+---
+
+## Styling and Branding
+
+### Design tokens (main.css)
+
+```css
+--dark-bg:  #333
+--light-bg: #EEE
+--text:     #444
+--border:   #AAA
+```
+
+### Typography
+
+- Headings: Felix Titling
+- Body: Bookman Old Style, serif fallback
+- Framework: Bootstrap 5.3
+
+### Logo assets
+
+```
+img/BayInfoLogo_narrow.png          # Navbar
+img/BayInfoLogo_square.png          # Footer, social sharing
+img/BayInfoLogow.png                # Banner (white variant)
+```
+
+---
 
 ## Analytics
 
-### ClientLog Integration
-
-Custom analytics platform (private development project, not yet public) tracks user behaviour:
+Clientlog is a Bay Information Systems internal product. It tracks session and
+navigation events via a JavaScript snippet included in the default layout.
 
 ```javascript
 const logger = clientlog.createLogger({
   endpoint: "https://api.dev.clientlog.bayis.co.uk/v1/event",
   project: "bayis/home",
-  options: {
-    session: true,
-    navigation: true
-  }
+  options: { session: true, navigation: true }
 });
 ```
 
-#### Events Tracked
-
-- `article_click` - User clicks article card on homepage (via `articles.js`)
-- Navigation and session data via clientlog library
-
-**Current status**: Dev endpoints only. Plan to launch publicly and migrate to production endpoints.
-
-## Styling & Branding
-
-### Design System
-
-Defined in `styles.css`:
-- **Colours**: CSS variables (`--dark-bg: #333`, `--light-bg: #EEE`, `--text: #444`, `--border: #AAA`)
-- **Typography**: "Felix Titling", "Bookman Old Style", Serif fallback
-- **Framework**: Bootstrap 5.3 via CDN
-- **Icons**: Font Awesome 4.7
-
-### Logo Assets
-
-- `BayInfoLogo_narrow.png` - Navbar
-- `BayInfoLogo_square.png` - Footer and social sharing
-- `BayInfoLogow.png` - Banner
-
-## Content Guidelines
-
-### Writing Voice
-
-- Calm, measured, declarative and exploratory rather than persuasive
-- Technical clarity with accessible writing
-- Logical argument structure without rhetorical flourishes
-
-### Technical Conventions
-
-- British English
-- Brackets for subclauses, not em-dashes
-- Avoid grammatical emphasis by contrast (antithesis)
-- Minimal rhetorical devices
-
-### Article Approach
-
-- Start with problem statement or context
-- Concrete examples from real projects (anonymised)
-- Code snippets for technical content
-- Practical takeaways
-- Internal cross-references where relevant
-- Technical depth for engineers, accessible to product managers
-
-## Deployment
-
-Automatic via GitHub Pages. Push to master triggers Jekyll build and deployment within 1-2 minutes. No manual build steps or staging environment.
-
-## Future Considerations
-
-### Planned Enhancements
-
-- Jekyll layout templates for articles (SEO metadata, related articles, structured data)
-- Automated articles.json generation from markdown front matter
-- LinkedIn posting automation
-- Production clientlog endpoints when platform launches
-- RSS feed generation
-
-### Structural Notes
-
-- `articles.json` location in `/assets/` is historical, could move to `/library/`
-- Manual metadata updates could be automated with build scripts
-- Related articles could be generated via keyword matching
-
-## Project Information
-
-- **Developer**: Ed (Bay Information Systems)
-- **Repository**: GitHub (private)
-- **Status**: Active production
-- **License**: © 2024 Bay Information Systems. All rights reserved.
+The endpoint is currently the dev instance. This will move to a production endpoint
+when Clientlog launches publicly.
 
 ---
 
-**Last Updated**: November 2024
+## Content Guidelines
+
+### Voice
+
+Calm, measured, declarative. Exploratory rather than persuasive. No rhetorical
+emphasis by contrast. Technical clarity with an accessible register. British English
+throughout. ASCII only.
+
+### Structure
+
+Open with context or a concrete observation. Develop the argument in prose. End on
+the argument's own terms. Calls to action belong inside the body in brackets, not
+as a dedicated closing section.
+
+### Technical conventions
+
+- Brackets for subclauses, not em-dashes
+- Bullet points and headers only where the content requires them
+- Prose transitions between sections, not headers substituting for them
+- Short, common words over longer compounds
+- Active verbs; weak verbs ("brings", "creates") signal an unfinished argument
+
+---
+
+## Deployment
+
+Push to master triggers a GitHub Pages Jekyll build. Deployment typically completes
+within one to two minutes. There is no staging environment; check the build status
+in the GitHub Actions tab if a change does not appear.
+
+---
+
+## Project Information
+
+- **Developer**: Edward Grundy, Bay Information Systems
+- **Repository**: GitHub
+- **Status**: Active production
+- **License**: Copyright 2024 Bay Information Systems. All rights reserved.
+- **Last updated**: April 2026
