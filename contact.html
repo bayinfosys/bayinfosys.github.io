@@ -1,0 +1,68 @@
+---
+layout: default
+title: "Contact"
+description: "Get in touch with Bay Information Systems to discuss your project or enquire about working with us."
+---
+
+<header class="text-center py-5 section-dark">
+  <img src="/img/BayInfoLogow.png" alt="Bay Information Systems" class="logo-banner">
+  <p class="mt-3" style="color: var(--light-bg); font-size: 1.2rem;">Get In Touch</p>
+</header>
+
+<section class="py-5 section-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Contact Us</h2>
+        <p class="mt-3">If you have a project you would like to discuss, a question
+        about our services, or want to explore whether we might be able to help,
+        drop us a message.</p>
+        <p class="mt-3">You can also reach us directly at
+        <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a>.</p>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Your name">
+        </div>
+        <div class="mb-3">
+          <label for="organisation" class="form-label">Organisation</label>
+          <input type="text" class="form-control" id="organisation" placeholder="Your organisation">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="5"
+            placeholder="Describe your project or question briefly."></textarea>
+        </div>
+        <button class="btn btn-custom" onclick="handleContact()">Send &rarr;</button>
+        <p id="contact-confirmation" class="mt-3" style="display:none; color: var(--dark-bg);">
+          Message received. We will be in touch within one working day.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function handleContact() {
+    const name = document.getElementById("name").value.trim();
+    const organisation = document.getElementById("organisation").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !message) {
+      alert("Please enter your name and a message.");
+      return;
+    }
+
+    logger.event("signup", {
+      name: name,
+      organisation: organisation,
+      message: message
+    });
+
+    document.getElementById("contact-confirmation").style.display = "block";
+    document.getElementById("name").value = "";
+    document.getElementById("organisation").value = "";
+    document.getElementById("message").value = "";
+  }
+</script>
