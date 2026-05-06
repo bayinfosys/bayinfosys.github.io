@@ -18,9 +18,9 @@ related:
 
 OpenAI's GDPval benchmark covers 44 occupations across the top nine sectors of US GDP. Each task was built from actual work product by professionals with an average of 14 years of experience; tasks took seven to nine hours for a domain expert to complete. The primary evaluation metric is blind pairwise comparison by other domain experts.
 
-The engineering effort went into specifying the tasks correctly. A labelled dataset is a formal statement of what correct looks like; without it, there is no definition of success and no way to measure whether the model produces it. (The longer version of this argument is in [Task Specification is the Primary Artefact](/2026-01-01-46-labels-are-the-task).)
+The engineering effort went into specifying the tasks correctly. A labelled dataset is a formal statement of what correct looks like; without it, there is no definition of success and no way to measure whether the model produces it. (The longer version of this argument is in [Task Specification is the Primary Artefact](/library/46-labels-are-the-task.html).)
 
-Herein, we provode a reference guide to evaluation datasets, metrics, and methodology, organised first by output type and then by professional domain. For each category, the question is the same: what does correct look like, and how do you measure the distance from it?
+Herein, we provide a reference guide to evaluation datasets, metrics, and methodology, organised first by output type and then by professional domain. For each category, the question is the same: what does correct look like, and how do you measure the distance from it?
 
 *([Marigold](https://www.bayis.co.uk/marigold/) runs pipelines against labelled datasets, scores outputs, and accumulates corrected production outputs into a persistent task specification -- the artefact that makes a pipeline transferable and improvable. https://bayis.co.uk/marigold)*
 
