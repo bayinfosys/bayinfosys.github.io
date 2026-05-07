@@ -13,3 +13,7 @@ defaults:
       layout: article
 
 permalink: /library/:title.html
+
+author:
+  name: "Edward Grundy"
+  url: "https://www.bayis.co.uk/about#edward-grundy"
