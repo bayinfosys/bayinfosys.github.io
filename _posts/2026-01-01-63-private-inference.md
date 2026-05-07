@@ -122,35 +122,42 @@ the same API surface.
 
 ## Layer 4: Managed private inference services
 
-Above the self-hosted layer sit managed private inference services:
-providers that run inference infrastructure on your behalf within a
-defined, compliant boundary. The essential property is that your data
-does not leave that boundary -- requests are not logged for training,
-not processed by third-party telemetry, not visible to the model
-provider's operations team. The provider's compliance posture (SOC 2,
-ISO 27001, or sector-specific certifications) covers the infrastructure
-rather than your own.
+Above the self-hosted layer, a range of managed services host open-weight
+models on GPU infrastructure and expose them via API. They split into two
+meaningfully different categories.
 
-This matters in regulated environments. A healthcare organisation cannot
-send patient data to a public API endpoint regardless of what the
-provider's data processing agreement says. A law firm cannot route
-confidential correspondence through an external service. A managed
-private provider inserts a compliant infrastructure layer without
-requiring the organisation to operate GPU hardware itself.
+**API inference providers** -- Together AI, Groq, Cerebras, DeepInfra,
+Fireworks AI -- serve open-weight models over a shared API. Your data
+passes through their servers, but because the underlying models are
+public weights, the claim "we do not train on your data" is auditable
+in a way it is not with closed-model providers: you can run the same
+Llama or Qwen weights locally and verify that outputs match the API.
+These providers compete on infrastructure speed rather than model
+exclusivity, and they are appropriate for organisations that want API
+convenience with the option to migrate to self-hosted later. They are
+not appropriate where the constraint is data egress itself.
 
-The tradeoff is that you depend on the provider's compliance posture
-and infrastructure reliability rather than your own. For organisations
-without a GPU operations capability, or where the compliance requirement
-is the constraint rather than cost, this is often the correct trade.
+**Private deployment services** -- HuggingFace Inference Endpoints with
+private networking, Baseten with region-locked HIPAA and SOC 2 Type II
+certified deployments, Scaleway for EU-only data residency -- run
+inference on dedicated infrastructure within a defined boundary. Your
+data does not share infrastructure with other customers and does not
+leave the agreed region. The provider's compliance posture substitutes
+for your own, which is useful for organisations without a GPU operations
+capability but with genuine data sovereignty requirements. The cloud
+providers offer equivalent options: AWS SageMaker with private VPC
+endpoints, Azure AI in a managed VNet.
 
-[Marigold](https://marigold.run) operates at this layer,
-adding typed pipeline definitions, a declarative workflow engine, and
-an eval surface above the inference backend. Where a raw managed
-inference API returns completions, Marigold defines tasks, composes
-multi-step pipelines, measures outputs against labelled datasets, and
-accumulates corrections from production runs. The inference layer and
-the pipeline layer are separate concerns; Marigold addresses the second
-once the first is in place.
+The simplest way to distinguish the two categories: with an API inference
+provider, your data travels to their infrastructure. With a private
+deployment service, your data stays within a boundary you have
+contractually defined. For regulated sectors, that distinction is
+usually determinative.
+
+[Marigold](https://bayis.co.uk/marigold) operates at this second layer,
+adding typed pipeline definitions, a declarative workflow engine, and an
+eval surface above the inference backend. Where a private inference API
+returns completions, Marigold defines tasks and composes pipelines.
 
 ## Choosing a layer
 
