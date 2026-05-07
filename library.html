@@ -9,6 +9,26 @@ redirect_from:
 permalink: /library
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Technical Articles",
+  "description": "{{ page.description }}",
+  "url": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bay Information Systems",
+    "url": "https://www.bayis.co.uk"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.author.url }}"
+  }
+}
+</script>
+
 <main class="container py-5">
   <h1>Technical Articles</h1>
   <p>Structured knowledge from client work, explorations, and observation.</p>
