@@ -42,4 +42,6 @@ Private inference does not resolve every constraint. Output governance -- audit 
 
 These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing.
 
+These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing. ([Marigold](https://marigold.run) is our infrastructure platform for deploying and managing private inference pipelines -- the operational layer on top of the architecture described here.)
+
 (Bay Information Systems designs and deploys private inference infrastructure for regulated sector clients. If the data egress constraint has blocked an AI initiative, the architecture conversation is the right starting point.)
