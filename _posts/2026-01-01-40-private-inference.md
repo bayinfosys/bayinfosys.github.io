@@ -7,9 +7,11 @@ keywords: ["private inference", "self-hosted llm", "aws vpc", "data sovereignty"
 topic: "Architecture & Deployment"
 seo_title: "How to Run AI Models Inside Your Own Infrastructure"
 related:
+  - 63-private-inference
+  - 65-why-private-inference
+  - 66-open-weights-separate-concerns
+  - 64-marigold
   - 09-data-risks
-  - 02-deploy-simple-model
-  - 04-cost-of-ml
 ---
 
 # Private Inference: Running AI Inside Your Own Infrastructure
@@ -42,6 +44,8 @@ Private inference does not resolve every constraint. Output governance -- audit 
 
 These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing.
 
-These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing. ([Marigold](https://marigold.run) is our infrastructure platform for deploying and managing private inference pipelines -- the operational layer on top of the architecture described here.)
-
-(Bay Information Systems designs and deploys private inference infrastructure for regulated sector clients. If the data egress constraint has blocked an AI initiative, the architecture conversation is the right starting point.)
+(The rest of the private inference series: [The Private Inference Stack](/library/63-private-inference.html)
+covers the tooling choices from raw framework code through to managed providers;
+[Why Private Inference](/library/65-why-private-inference.html) sets out the three
+risk categories that drive the architectural decision; [Open Weight Models and the Separation of Concerns](/library/66-open-weights-separate-concerns.html) unpacks what open weights actually change about the compliance picture.
+[Marigold](https://marigold.run) is the managed private inference platform built on this architecture -- privately hosted open-weight models on AWS, typed pipelines, and an eval surface.)
