@@ -1,4 +1,5 @@
 ---
+date: 2026-05-05
 layout: article
 title: "Context is a Build Step"
 description: "Every approach to context generation -- from basic chunking to knowledge
@@ -7,7 +8,6 @@ determines what your agent can do at runtime."
 keywords: ["rag", "context engineering", "vector database", "agentic ai",
 "knowledge compilation", "llm", "retrieval", "chunking", "semantic search"]
 topic: "AI Systems"
-last_modified_at: 2026-05-05
 related:
   - 46-labels-are-the-task
   - 20-vector-db-deepdive

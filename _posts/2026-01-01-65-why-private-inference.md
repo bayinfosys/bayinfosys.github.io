@@ -1,4 +1,5 @@
 ---
+date: 2026-05-10
 layout: article
 title: "Why Private Inference"
 description: "Three risk categories that make private inference the right
@@ -9,7 +10,6 @@ keywords: ["private inference", "data sovereignty", "ai data risk",
 "private ai hosting", "gdpr ai", "open weight models", "self-hosted llm",
 "ai training data risk", "private cloud inference", "data leakage ai"]
 topic: "Infrastructure"
-last_modified_at: 2026-05-10
 related:
   - 40-private-inference
   - 63-private-inference

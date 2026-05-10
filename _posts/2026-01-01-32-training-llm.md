@@ -1,10 +1,10 @@
 ---
+date: 2025-12-10
 layout: article
 title: "LLM Training Fundamentals: From Tokens to Human Preference"
 description: "LLMs are trained in stages with different objectives. How the shift from statistical training to human preference ranking produces behaviours that metrics alone cannot explain."
 keywords: ["llm training", "rlhf", "language model", "pretraining", "human feedback"]
 topic: "AI Systems"
-last_modified_at: 2024-11-01
 seo_title: "How LLMs Are Trained: From Tokens to Human Preference"
 related:
   - 25-llm-evaluation

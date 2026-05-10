@@ -1,4 +1,5 @@
 ---
+date: 2026-04-28
 layout: article
 title: "Event-Driven Embeddings in PostgreSQL: LISTEN/NOTIFY and the Async Pattern"
 seo_title: "How to Generate Embeddings Automatically in PostgreSQL Using LISTEN/NOTIFY"
@@ -7,7 +8,6 @@ the moment a row is inserted, without polling, without a separate scheduler, and
 coupling your embedding service to your database schema."
 keywords: ["embeddings", "listen notify postgresql", "postgres triggers", "vector database", "pgvector", "automated ml pipeline"]
 topic: "Architecture & Deployment"
-last_modified_at: 2026-04-28
 related:
   - 20-vector-db-deepdive
   - 33-vector-db-filters

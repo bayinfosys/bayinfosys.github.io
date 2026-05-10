@@ -1,10 +1,10 @@
 ---
+date: 2026-04-17
 layout: article
 title: "The Embedding is the Message"
 description: "AI communication inherited natural language from human communication. That constraint is not a technical necessity."
 keywords: ["embeddings", "ai communication", "multimodal", "marigold", "llm", "content delivery"]
 topic: "Perspectives"
-last_modified_at: 2026-04-02
 ---
 
 # The Embedding is the Message

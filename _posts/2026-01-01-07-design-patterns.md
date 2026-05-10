@@ -1,10 +1,10 @@
 ---
+date: 2025-02-21
 layout: article
 title: "Machine Learning Design Patterns"
 description: "Choosing the right ML design pattern matters more than choosing the right model. Key patterns with applications to marketing and audience intelligence."
 keywords: ["ml design patterns", "machine learning", "marketing ai", "classification", "recommendation systems"]
 topic: "Product & Strategy"
-last_modified_at: 2024-11-01
 seo_title: "Machine Learning Design Patterns: How to Choose the Right Architecture"
 related:
   - 15-saas-architecture-101

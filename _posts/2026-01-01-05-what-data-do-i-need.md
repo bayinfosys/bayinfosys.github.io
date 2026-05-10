@@ -1,10 +1,10 @@
 ---
+date: 2024-10-24
 layout: article
 title: "What Data Do I Need? A Guide for Business and Product Owners"
 description: "A checklist for integrating machine learning into a product without overcommitting data infrastructure before you know what the problem is."
 keywords: ["data strategy", "data requirements", "machine learning", "product management", "data audit"]
 topic: "Data Strategy"
-last_modified_at: 2024-11-01
 seo_title: "How to Assess What Data You Need for Machine Learning"
 related:
   - 17-data-maturity

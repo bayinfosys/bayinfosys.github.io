@@ -1,10 +1,10 @@
 ---
+date: 2024-02-09
 layout: article
 title: "Deploying Models to AWS Lambda"
 description: "Open-source models on serverless infrastructure cost less than incumbent AI services. A practical guide to deploying on AWS Lambda."
 keywords: ["aws lambda", "model deployment", "serverless", "open source models", "mlops"]
 topic: "Infrastructure"
-last_modified_at: 2024-11-01
 seo_title: "How to Deploy a Machine Learning Model on AWS Lambda"
 related:
   - 01-docker-deep-dive

@@ -1,10 +1,10 @@
 ---
+date: 2025-12-04
 layout: article
 title: "Capital, Labour, and the Productivity Question"
 description: "Productivity growth has slowed across OECD economies. One explanation: the statistics measure the wrong competition. Capital and labour are not on the same curve."
 keywords: ["productivity", "capital", "labour", "economics", "ai economy"]
 topic: "Product & Strategy"
-last_modified_at: 2024-11-01
 seo_title: "AI and Productivity: Why the Statistics Miss the Point"
 related:
   - 38-austrian-AI

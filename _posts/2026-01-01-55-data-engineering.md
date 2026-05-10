@@ -1,4 +1,5 @@
 ---
+date: 2026-04-28
 layout: article
 title: "What Is Data Engineering? Two Jobs, One Title"
 seo_title: "What Is Data Engineering? The Infrastructure vs Product Split Explained"
@@ -7,7 +8,6 @@ and produce different failures when confused. Understanding the split is the fir
 hiring and structuring a data team that actually works."
 keywords: ["data engineering", "analytics engineer", "data infrastructure", "dimensional modelling", "dbt", "data quality", "data pipeline", "data team structure"]
 topic: "Data Strategy"
-last_modified_at: 2026-04-28
 related:
   - 05-what-data-do-i-need
   - 17-data-maturity

@@ -1,10 +1,10 @@
 ---
+date: 2025-08-06
 layout: article
 title: "What Is Data Maturity?"
 description: "Data maturity is a spectrum from ad hoc storage to strategic data infrastructure. What it is, how to assess it, and why it determines what AI is actually feasible."
 keywords: ["data maturity", "data strategy", "data infrastructure", "data governance", "ai readiness"]
 topic: "Data Strategy"
-last_modified_at: 2024-11-01
 seo_title: "How to Assess Your Organisation's Data Maturity"
 related:
   - 05-what-data-do-i-need

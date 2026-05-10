@@ -1,10 +1,10 @@
 ---
+date: 2026-04-15
 layout: article
 title: "Content is Dead: The Curation Inversion"
 description: "Generative AI removed the cost constraint that forced editorial discipline. When creation is free and unlimited, the signal collapses. Curation is the new scarcity."
 keywords: ["generative ai", "content strategy", "curation", "ai content", "lemon market"]
 topic: "Perspectives"
-last_modified_at: 2025-01-01
 seo_title: "Why Generative AI Killed Content and Made Curation the New Scarcity"
 related:
   - 47-geo

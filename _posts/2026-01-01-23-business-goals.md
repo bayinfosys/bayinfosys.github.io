@@ -1,10 +1,10 @@
 ---
+date: 2025-09-06
 layout: article
 title: "Metrics for Business Goals"
 description: "A model with 95% accuracy can destroy business value. How to choose evaluation metrics that reflect what the business actually needs."
 keywords: ["ml metrics", "business goals", "accuracy", "precision recall", "model evaluation"]
 topic: "Product & Strategy"
-last_modified_at: 2024-11-01
 seo_title: "How to Choose Machine Learning Metrics That Match Business Goals"
 related:
   - 25-llm-evaluation

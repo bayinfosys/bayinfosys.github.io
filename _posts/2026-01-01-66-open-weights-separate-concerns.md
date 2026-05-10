@@ -1,4 +1,5 @@
 ---
+date: 2026-05-10
 layout: article
 title: "Open Weight Models and the Separation of Concerns in AI"
 description: "Vertically integrated AI companies collect data, train models,
@@ -8,7 +9,6 @@ keywords: ["open weight models", "open source ai", "model training",
 "private inference", "data sovereignty", "ai strategy",
 "foundation models", "self-hosted llm", "ai commoditisation"]
 topic: "Product & Strategy"
-last_modified_at: 2026-05-10
 related:
   - 40-private-inference
   - 64-marigold

@@ -1,10 +1,10 @@
 ---
+date: 2025-08-06
 layout: article
 title: "RAG Strategy and Tooling"
 description: "RAG is not one technique. A breakdown of retrieval-augmented generation approaches by complexity, and how to match tooling to the technique you actually need."
 keywords: ["rag", "retrieval augmented generation", "vector database", "llm", "enterprise ai"]
 topic: "AI Systems"
-last_modified_at: 2024-11-01
 seo_title: "How RAG Works: Retrieval-Augmented Generation Strategies Explained"
 related:
   - 20-vector-db-deepdive

@@ -1,11 +1,11 @@
 ---
+date: 2026-05-01
 layout: article
 title: "How to Evaluate an AI Pipeline"
 description: "A reference guide to evaluation datasets, metrics, and methodology organised by output type and professional domain."
 keywords: ["llm evaluation", "ai benchmarks", "evals", "task specification", "gdpval", "legalbench",
            "financebench", "medqa", "swe-bench", "ragas", "marigold"]
 topic: "AI Systems"
-last_modified_at: 2026-05-01
 seo_title: "How to Evaluate an AI Pipeline: Datasets and Metrics by Task Type"
 related:
   - 46-labels-are-the-task

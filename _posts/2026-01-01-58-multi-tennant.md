@@ -1,4 +1,5 @@
 ---
+date: 2026-04-28
 layout: article
 title: "Multi-Tenant Architecture: A Practical Spectrum"
 seo_title: "Multi-Tenant Architecture Patterns: From Shared Database to Full Isolation"
@@ -8,7 +9,6 @@ varies between tenants, where your operational complexity budget sits, and what 
 looks like."
 keywords: ["multi-tenant architecture", "multi-tenancy", "saas architecture", "tenant isolation", "database per tenant", "schema per tenant", "row-level security"]
 topic: "Architecture & Deployment"
-last_modified_at: 2026-04-28
 related:
   - 15-saas-architecture-101
   - 21-indirection

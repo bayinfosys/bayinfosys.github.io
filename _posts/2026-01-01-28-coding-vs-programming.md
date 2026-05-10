@@ -1,10 +1,10 @@
 ---
+date: 2025-12-04
 layout: article
 title: "AI Tooling and the Separation Between Coding and Programming"
 description: "AI-assisted development accelerates a long-running separation between writing code and building systems. Why that distinction matters and what it means for teams."
 keywords: ["ai coding", "programming", "software engineering", "copilot", "ai tools"]
 topic: "Architecture & Deployment"
-last_modified_at: 2024-11-01
 seo_title: "Coding vs Programming: Why the Distinction Matters Now"
 related:
   - 18-mle-vs-swe

@@ -1,10 +1,10 @@
 ---
+date: 2026-05-07
 layout: article
 title: "The Private Inference Stack: A Field Guide"
 description: "From raw PyTorch to managed private API services. What each layer of the inference stack does, where the tools come from, and how they relate."
 keywords: ["private inference", "ollama", "vllm", "pytorch", "huggingface", "self-hosted llm", "inference stack", "open-weight models"]
 topic: "Architecture & Deployment"
-last_modified_at: 2026-05-07
 seo_title: "Ollama vs vLLM vs Managed Providers: The Private Inference Stack Explained"
 related:
   - 40-private-inference

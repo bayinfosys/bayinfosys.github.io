@@ -1,10 +1,10 @@
 ---
+date: 2026-04-15
 layout: article
 title: "Similarities in the Bitcoin and AI Economies"
 description: "Bitcoin and AI both convert electrical energy into discrete computational units via open protocols. The economic structure is closer than it first appears."
 keywords: ["bitcoin", "ai economics", "tokens", "hashing", "energy", "llm"]
 topic: "Perspectives"
-last_modified_at: 2025-01-01
 seo_title: "Bitcoin and AI: How Their Economic Structures Converge"
 related:
   - 37-bitcoin-21M

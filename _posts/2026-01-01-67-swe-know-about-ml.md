@@ -1,4 +1,5 @@
 ---
+date: 2026-05-10
 layout: article
 title: "What Software Engineers Already Know About Machine Learning"
 seo_title: "What Software Engineers Already Know About Machine Learning"
@@ -9,7 +10,6 @@ keywords: ["machine learning engineer", "software engineer", "mle vs swe",
 "ml evals", "eval dataset", "ml testing", "mlops", "ci cd machine learning",
 "ml deployment", "software engineering machine learning"]
 topic: "Product & Strategy"
-last_modified_at: 2026-05-10
 related:
   - 18-mle-vs-swe
   - 28-coding-vs-programming

@@ -1,10 +1,10 @@
 ---
+date: 2025-05-12
 layout: article
 title: "5 Mistakes to Avoid When Building Your First AI Product"
 description: "The traps that derail early AI products are predictable. Five failure modes from years of helping startups build and ship."
 keywords: ["ai product", "startup", "machine learning", "product mistakes", "ai development"]
 topic: "Product & Strategy"
-last_modified_at: 2024-11-01
 seo_title: "5 Mistakes to Avoid When Building Your First AI Product"
 related:
   - 13-how-to-brief

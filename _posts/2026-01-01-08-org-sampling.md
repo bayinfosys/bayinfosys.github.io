@@ -1,10 +1,10 @@
 ---
+date: 2025-03-03
 layout: article
 title: "Leveraging AI for Organisational Intelligence"
 description: "Communication metadata is a structured sample of how an organisation actually works. What AI methods can surface from it."
 keywords: ["organisational intelligence", "communication data", "network analysis", "ai", "org structure"]
 topic: "Data Strategy"
-last_modified_at: 2024-11-01
 seo_title: "How to Use AI to Surface Organisational Intelligence"
 related:
   - 41-what-your-data-already-knows

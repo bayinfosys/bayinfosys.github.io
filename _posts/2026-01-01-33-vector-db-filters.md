@@ -1,10 +1,10 @@
 ---
+date: 2025-12-10
 layout: article
 title: "Filtered Vector Search"
 description: "Vector search in production needs metadata filters, business rules, and combined ranking signals. How index structure determines what actually executes efficiently."
 keywords: ["vector search", "filtered search", "metadata filtering", "hybrid search", "vector database"]
 topic: "AI Systems"
-last_modified_at: 2024-11-01
 seo_title: "How to Filter Vector Search Results in Production"
 related:
   - 20-vector-db-deepdive
