@@ -4,6 +4,7 @@ baseurl: ""
 plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll-feed
 
 defaults:
   - scope:

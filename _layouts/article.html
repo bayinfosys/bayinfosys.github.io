@@ -10,6 +10,8 @@ layout: default
   "description": "{{ page.description | escape }}",
   "keywords": "{{ page.keywords | join: ', ' }}",
   "url": "{{ page.url | absolute_url }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
   "publisher": {
     "@type": "Organization",
     "name": "Bay Information Systems",
