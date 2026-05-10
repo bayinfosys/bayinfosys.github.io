@@ -5,9 +5,8 @@ seo_title: "Embedding-Based Relationship Discovery with Community Detection in P
 description: "Most organisations have a formal model of their customer relationships and
 a real one that differs from it. Embeddings and community detection surface the real
 structure. Here is how the pattern works and where it applies."
-keywords: ["embedding relationship discovery", "community detection", "graph neural networks",
-"customer graph", "network analysis", "companies house", "co-purchase network",
-"unsupervised clustering", "entity relationships"]
+keywords: ["embedding relationship discovery", "community detection", "graph neural networks", "network analysis", "co-purchase network", "clustering", "entity relationships"]
+topic: "AI Systems"
 last_modified_at: 2026-04-28
 related:
   - 20-vector-db-deepdive

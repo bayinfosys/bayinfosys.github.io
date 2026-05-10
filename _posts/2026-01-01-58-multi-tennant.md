@@ -6,8 +6,8 @@ description: "Multi-tenancy is not a single pattern. It is a spectrum from share
 to fully separate infrastructure, and the right point on that spectrum depends on what
 varies between tenants, where your operational complexity budget sits, and what failure
 looks like."
-keywords: ["multi-tenant architecture", "multi-tenancy", "saas architecture", "tenant isolation",
-"database per tenant", "schema per tenant", "row-level security", "saas database design"]
+keywords: ["multi-tenant architecture", "multi-tenancy", "saas architecture", "tenant isolation", "database per tenant", "schema per tenant", "row-level security"]
+topic: "Architecture & Deployment"
 last_modified_at: 2026-04-28
 related:
   - 15-saas-architecture-101

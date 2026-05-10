@@ -4,6 +4,7 @@ title: "Why JSON Logic Needs JSONPath: Adding the vars Operator"
 seo_title: "How to Use JSONPath Variables in JSON Logic Rules"
 description: "Standard JSON Logic resolves single values via dot notation. When rules need to match against lists -- model outputs, tag arrays, multi-value fields -- dot notation is the wrong tool. json-logic-path adds a vars operator backed by JSONPath."
 keywords: ["json logic", "jsonpath", "python", "rules engine", "json-logic-path", "vars operator"]
+topic: "Developer Tools"
 last_modified_at: 2026-04-01
 related:
   - 44-static-vs-dynamic-planning

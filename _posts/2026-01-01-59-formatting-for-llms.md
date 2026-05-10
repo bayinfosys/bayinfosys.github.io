@@ -5,9 +5,8 @@ seo_title: "JSON vs XML vs Plain Text for LLMs: Format Choice and Performance"
 description: "The format you use to pass data to a language model affects reliability
 and cost more than most practitioners expect. This is a taxonomy of the main options
 and the conditions under which each performs well."
-keywords: ["llm prompt format", "json vs xml llm", "prompt engineering formats",
-"structured output llm", "llm input format", "yaml json xml plain text llm",
-"llm token efficiency"]
+keywords: ["llm prompt format", "json vs xml", "prompt engineering", "structured output llm", "yaml json xml plain text llm", "llm token efficiency"]
+topic: "AI Systems"
 last_modified_at: 2026-04-28
 related:
   - 25-llm-evaluation

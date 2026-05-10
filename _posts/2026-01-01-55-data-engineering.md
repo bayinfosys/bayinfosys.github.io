@@ -5,8 +5,8 @@ seo_title: "What Is Data Engineering? The Infrastructure vs Product Split Explai
 description: "Data engineering describes two distinct disciplines that require different skills
 and produce different failures when confused. Understanding the split is the first step to
 hiring and structuring a data team that actually works."
-keywords: ["data engineering", "analytics engineer", "data infrastructure", "dimensional modelling",
-"dbt", "data quality", "data pipeline", "data team structure"]
+keywords: ["data engineering", "analytics engineer", "data infrastructure", "dimensional modelling", "dbt", "data quality", "data pipeline", "data team structure"]
+topic: "Data Strategy"
 last_modified_at: 2026-04-28
 related:
   - 05-what-data-do-i-need

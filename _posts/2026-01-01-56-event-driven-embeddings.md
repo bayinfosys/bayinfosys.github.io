@@ -5,9 +5,8 @@ seo_title: "How to Generate Embeddings Automatically in PostgreSQL Using LISTEN/
 description: "PostgreSQL's LISTEN/NOTIFY mechanism lets you trigger embedding generation
 the moment a row is inserted, without polling, without a separate scheduler, and without
 coupling your embedding service to your database schema."
-keywords: ["postgresql embeddings", "listen notify postgresql", "event-driven embeddings",
-"async embedding generation", "postgres triggers", "vector database", "pgvector",
-"automated ml pipeline"]
+keywords: ["embeddings", "listen notify postgresql", "postgres triggers", "vector database", "pgvector", "automated ml pipeline"]
+topic: "Architecture & Deployment"
 last_modified_at: 2026-04-28
 related:
   - 20-vector-db-deepdive
