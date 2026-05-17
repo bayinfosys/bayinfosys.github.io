@@ -154,7 +154,7 @@ deployment service, your data stays within a boundary you have
 contractually defined. For regulated sectors, that distinction is
 usually determinative.
 
-[Marigold](https://bayis.co.uk/marigold) operates at this second layer,
+[Marigold](https://marigold.run) operates at this second layer,
 adding typed pipeline definitions, a declarative workflow engine, and an
 eval surface above the inference backend. Where a private inference API
 returns completions, Marigold defines tasks and composes pipelines.
