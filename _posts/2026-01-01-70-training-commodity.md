@@ -15,8 +15,6 @@ related:
   - 46-labels-are-the-task
   - 04-cost-of-ml
   - 65-why-private-inference
-redirect_from:
-  - /when-training-is-a-commodity/
 ---
 
 # When Training is a Commodity

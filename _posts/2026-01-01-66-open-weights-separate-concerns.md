@@ -14,8 +14,6 @@ related:
   - 64-marigold
   - 46-labels-are-the-task
   - 61-eval-datasets
-redirect_from:
-  - /open-weight-models-separation-of-concerns/
 ---
 
 # Open Weight Models and the Separation of Concerns in AI

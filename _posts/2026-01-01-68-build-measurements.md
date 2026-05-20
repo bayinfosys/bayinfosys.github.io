@@ -17,8 +17,6 @@ related:
   - 67-swe-know-about-ml
   - 18-mle-vs-swe
   - 61-eval-datasets
-redirect_from:
-  - /dont-build-models-build-measurements/
 ---
 
 # Don't Build Models, Build Measurements

@@ -17,8 +17,6 @@ related:
   - 67-swe-know-about-ml
   - 61-eval-datasets
   - 04-cost-of-ml
-redirect_from:
-  - /ml-measurement-framework/
 ---
 
 # A Measurement Framework for Machine Learning Projects
