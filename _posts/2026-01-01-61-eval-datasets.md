@@ -2,7 +2,7 @@
 date: 2026-05-01
 layout: article
 title: "How to Evaluate an AI Pipeline"
-description: "A reference guide to evaluation datasets, metrics, and methodology organised by output type and professional domain."
+description: "Practical methods for scoring classification, RAG, and generation pipelines -- with dataset references by task type and domain."
 keywords: ["llm evaluation", "ai benchmarks", "evals", "task specification", "gdpval", "legalbench",
            "financebench", "medqa", "swe-bench", "ragas", "marigold"]
 topic: "AI Systems"
