@@ -44,7 +44,7 @@ Private inference does not resolve every constraint. Output governance -- audit 
 
 These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing.
 
-(The rest of the private inference series: [The Private Inference Stack](/library/63-private-inference.html)
+(The rest of the private inference series: [The Private Inference Stack](/library/63-private-inference-stack.html)
 covers the tooling choices from raw framework code through to managed providers;
 [Why Private Inference](/library/65-why-private-inference.html) sets out the three
 risk categories that drive the architectural decision; [Open Weight Models and the Separation of Concerns](/library/66-open-weights-separate-concerns.html) unpacks what open weights actually change about the compliance picture.
