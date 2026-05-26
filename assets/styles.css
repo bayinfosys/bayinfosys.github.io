@@ -148,3 +148,24 @@
 .accordion-button::after {
     color: var(--text); /* Icon color for toggle */
 }
+
+.quiz-ribbon {
+  background-color: var(--light-bg);
+  color: var(--text);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.quiz-ribbon__link {
+  color: var(--text);
+  font-weight: 600;
+  margin-left: 0.4rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.quiz-ribbon__link:hover {
+  color: #000;
+}
