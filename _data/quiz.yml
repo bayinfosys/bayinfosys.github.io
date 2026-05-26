@@ -1,0 +1,136 @@
+title: "Where should you start?"
+intro: "Three questions. No contact details required."
+
+questions:
+  - id: q1
+    text: "Which of these best describes your situation?"
+    options:
+      - label: A
+        text: "We have data and a potential use case, but have not committed to a project yet."
+        profile: readiness
+      - label: B
+        text: "We have a clear use case but data sovereignty or compliance is the main constraint."
+        profile: sovereignty
+      - label: C
+        text: "We have an AI system running but cannot tell whether it is performing well."
+        profile: measurement
+      - label: D
+        text: "We are building AI-native products and working through architecture decisions."
+        profile: agentic
+
+  - id: q2
+    text: "What is the most pressing question for your organisation right now?"
+    options:
+      - label: A
+        text: "What would this cost, and is our data actually good enough to start?"
+        profile: readiness
+      - label: B
+        text: "How do we use AI without data leaving our own infrastructure?"
+        profile: sovereignty
+      - label: C
+        text: "How do we know our model is working, and how do we improve it systematically?"
+        profile: measurement
+      - label: D
+        text: "How should retrieval, memory, and agent pipelines fit together?"
+        profile: agentic
+
+  - id: q3
+    text: "Where does most of the uncertainty sit?"
+    options:
+      - label: A
+        text: "Whether the conditions for success exist -- data quality, team capability, realistic timeline."
+        profile: readiness
+      - label: B
+        text: "Whether we can meet compliance requirements and still use modern AI tools."
+        profile: sovereignty
+      - label: C
+        text: "In production -- we shipped something but cannot measure its real-world behaviour."
+        profile: measurement
+      - label: D
+        text: "In system design -- how the components should fit together at scale."
+        profile: agentic
+
+scoring:
+  intro: "The letter that comes up most often points to your profile below."
+  rules:
+    - label: "Mostly A"
+      profile: readiness
+      name: "Data Readiness"
+    - label: "Mostly B"
+      profile: sovereignty
+      name: "Data Sovereignty"
+    - label: "Mostly C"
+      profile: measurement
+      name: "Measurement and Evaluation"
+    - label: "Mostly D"
+      profile: agentic
+      name: "Architecture and Agentic Systems"
+
+profiles:
+  - id: readiness
+    label: "Profile A -- Data Readiness"
+    heading: "You have data. The question is whether the conditions for success exist."
+    body: >
+      Most organisations at this stage have more data than they think and less
+      structure than they need. The right first step is a clear-eyed assessment
+      of what you have, what it would take to use it, and whether the expected
+      return justifies the investment. That assessment prevents the more expensive
+      mistake of committing budget before the conditions for success are understood.
+    articles:
+      - title: "The Cost of ML"
+        url: "/library/04-cost-of-ml.html"
+      - title: "What Data Do I Need?"
+        url: "/library/05-what-data-do-i-need.html"
+      - title: "What Is Data Maturity?"
+        url: "/library/17-data-maturity.html"
+
+  - id: sovereignty
+    label: "Profile B -- Data Sovereignty"
+    heading: "You have a use case. The constraint is keeping your data inside your own infrastructure."
+    body: >
+      This is a solvable architecture problem, not a reason to abandon the use
+      case. Open-weight models run inside your own infrastructure -- the same
+      network boundary that already governs your databases and application
+      servers. The data stays where it is. The compliance objection dissolves
+      before it reaches legal review.
+    articles:
+      - title: "Private Inference: Running AI Inside Your Own Infrastructure"
+        url: "/library/40-private-inference.html"
+      - title: "Why Private Inference"
+        url: "/library/65-why-private-inference.html"
+      - title: "Marigold: Privately Hosted AI Inference on AWS"
+        url: "/library/64-marigold.html"
+
+  - id: measurement
+    label: "Profile C -- Measurement and Evaluation"
+    heading: "You have a system in production. The problem is knowing whether it works."
+    body: >
+      A model without a measurement framework is a liability. The eval dataset --
+      not the model -- is the primary artefact of any production AI system. It
+      persists across model versions, provides the deployment gate, and makes the
+      difference between a system that improves systematically and one that
+      degrades silently.
+    articles:
+      - title: "Build Measurements, Not Models"
+        url: "/library/68-build-measurements.html"
+      - title: "A Measurement Framework for Production AI"
+        url: "/library/69-measurement-framework.html"
+      - title: "Labels Are the Task"
+        url: "/library/46-labels-are-the-task.html"
+
+  - id: agentic
+    label: "Profile D -- Architecture and Agentic Systems"
+    heading: "You are building AI-native systems and working through how the components fit together."
+    body: >
+      Agentic systems introduce design problems that single model calls do not:
+      memory across sessions, retrieval strategy, pipeline composition, failure
+      modes that compound across steps. The architecture decisions made early are
+      expensive to reverse. Getting the structure right before scale is where
+      the leverage is.
+    articles:
+      - title: "Agent Memory"
+        url: "/library/10-agent-memory.html"
+      - title: "RAG Strategy"
+        url: "/library/19-rag-strategy.html"
+      - title: "Static vs Dynamic Planning"
+        url: "/library/44-static-vs-dynamic-planning.html"
