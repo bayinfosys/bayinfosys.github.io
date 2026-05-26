@@ -13,7 +13,7 @@ related:
   - 36-pmfops
 ---
 
-# Office Politics and the ML Project
+# Friction Builders and Friction Removers
 
 Technical people locate power in the ability to build things: develop new solutions, explore technologies, refine processes.
 In most organisations, the ability to deliver a product and the ability to prevent one from shipping carry considerably more weight, and neither requires technical understanding.
@@ -64,8 +64,8 @@ A product that never reaches the customer generates nothing and teaches nobody a
 If the path to production is blocked, clearing it is the project's first task.
 If it cannot be cleared, the project must be terminated.
 
-The obvious question is why friction builders are tolerated.
-The answer is that externally, the same structures that slow internal delivery are how organisations negotiate with markets, competitors, and regulators.
+The obvious question is "why are friction builders tolerated?".
+The same structures that slow internal delivery are how organisations negotiate with markets, competitors, and regulators.
 A business is not a pure delivery machine, and the people who manage its relationships, politics, and positioning serve a real function -- even when that function is visibly expensive from the inside.
 
 If your company is struggling to deliver product and ship due to internal structures, we cannot help, we're not that type of consultancy!
