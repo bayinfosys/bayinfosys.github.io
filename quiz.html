@@ -1,22 +1,62 @@
 ---
 layout: default
 title: "Where Should You Start?"
-description: "A short anonymous quiz to help you work out where AI might fit your organisation, and what to do first."
+description: "Three questions to identify where AI fits your organisation and what to read first. No contact details required."
 permalink: /quiz
-hide_quiz_ribbon: true
 ---
 
 <main class="container py-5">
   <div class="row justify-content-center">
     <div class="col-lg-7">
-      <h1>Where should you start?</h1>
-      <p class="lead mt-3">
-        A few questions about your organisation, your data, and what you are trying to
-        achieve. No contact details required. The results go nowhere except your screen.
+
+      <h1>{{ site.data.quiz.title }}</h1>
+      <p class="text-muted mt-2">{{ site.data.quiz.intro }}</p>
+
+      {% for question in site.data.quiz.questions %}
+      <section class="mt-5">
+        <p class="quiz-question">{{ forloop.index }}. {{ question.text }}</p>
+        <div class="d-flex flex-column gap-2 mt-3">
+          {% for option in question.options %}
+          <label class="quiz-option">
+            <input type="radio" name="{{ question.id }}" value="{{ option.profile }}">
+            <span class="quiz-option__body">
+              <strong>{{ option.label }}</strong> &mdash; {{ option.text }}
+            </span>
+          </label>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+
+      <p class="quiz-scoring mt-5">
+        {{ site.data.quiz.scoring.intro }}
+        {% for rule in site.data.quiz.scoring.rules %}
+        {{ rule.label }}: <a href="#profile-{{ rule.profile }}">{{ rule.name }}</a>.{% unless forloop.last %} {% endunless %}
+        {% endfor %}
       </p>
-      <hr class="my-4">
-      <!-- Quiz content goes here -->
-      <p class="text-muted">Quiz coming soon.</p>
+
+      <hr class="my-5">
+
+      <h2>The profiles</h2>
+
+      {% for profile in site.data.quiz.profiles %}
+      <section id="profile-{{ profile.id }}" class="quiz-profile mt-4">
+        <p class="quiz-profile__label">{{ profile.label }}</p>
+        <h3>{{ profile.heading }}</h3>
+        <p>{{ profile.body }}</p>
+        <ul class="quiz-profile__articles mt-3">
+          {% for article in profile.articles %}
+          <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endfor %}
+
+      <p class="text-muted mt-5">
+        (If you would like to talk through what these suggest for your situation,
+        <a href="/contact">get in touch</a>.)
+      </p>
+
     </div>
   </div>
 </main>
