@@ -150,16 +150,15 @@
 }
 
 .quiz-ribbon {
-  background-color: var(--light-bg);
-  color: var(--text);
+  background-color: var(--dark-bg);
+  color: var(--light-bg);
   text-align: center;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  border-bottom: 1px solid var(--border);
 }
 
 .quiz-ribbon__link {
-  color: var(--text);
+  color: var(--light-bg);
   font-weight: 600;
   margin-left: 0.4rem;
   text-decoration: underline;
@@ -167,5 +166,5 @@
 }
 
 .quiz-ribbon__link:hover {
-  color: #000;
+  color: #fff;
 }
