@@ -22,15 +22,12 @@ redirect_from:
 
 # Memory in Agentic AI
 
-An AI agent differs from a stateless model call in one specific way:
-it accumulates. It takes an action, observes a result, and that result
-shapes what it does next. Memory is the mechanism that makes
-accumulation possible. Without it, each call starts from the same
-place and the system has no continuity across interactions, sessions,
-or tasks.
+An AI agent differs from a stateless model call in one specific way: it accumulates state.
+It takes an action, observes a result, and that result shapes what it does next.
+Memory is the mechanism that makes accumulation possible.
+Without it, each call starts from the same place and the system has no continuity across interactions, sessions, or tasks.
 
-There are four timescales at which memory operates in agentic systems,
-each requiring different storage and retrieval approaches: within a
+There are four timescales at which memory operates in agentic systems, each requiring different storage and retrieval approaches: within a
 single call (context and caching), within a session (coherence and
 state), across sessions with a user (intent understanding and
 refinement), and across all users (agent behaviour and self-improvement).
