@@ -10,8 +10,8 @@ related:
   - 63-private-inference
   - 65-why-private-inference
   - 66-open-weights-separate-concerns
+  - 72-private-inference-fhe
   - 64-marigold
-  - 09-data-risks
 ---
 
 # Private Inference: Running AI Inside Your Own Infrastructure

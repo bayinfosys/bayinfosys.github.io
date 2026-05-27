@@ -11,6 +11,7 @@ related:
   - 02-deploy-simple-model
   - 04-cost-of-ml
   - 32-training-llm
+  - 72-private-inference-fhe
 ---
 
 # The Private Inference Stack: A Field Guide

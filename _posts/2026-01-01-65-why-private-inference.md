@@ -15,6 +15,7 @@ related:
   - 63-private-inference
   - 09-data-risks
   - 64-marigold
+  - 72-private-inference-fhe
 ---
 
 # Why Private Inference?

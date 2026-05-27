@@ -14,6 +14,7 @@ related:
   - 64-marigold
   - 46-labels-are-the-task
   - 61-eval-datasets
+  - 72-private-inference-fhe
 ---
 
 # Open Weight Models and the Separation of Concerns in AI
