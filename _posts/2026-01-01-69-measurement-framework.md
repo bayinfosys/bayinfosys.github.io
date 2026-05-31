@@ -12,7 +12,7 @@ keywords: ["machine learning evaluation framework", "ml success metrics",
 topic: "Product & Strategy"
 last_modified_at: 2026-05-20
 related:
-  - 68-dont-build-models-build-measurements
+  - 68-build-measurements
   - 46-labels-are-the-task
   - 67-swe-know-about-ml
   - 61-eval-datasets
@@ -26,7 +26,7 @@ The model may run and it may even produce plausible outputs.
 Whether it is doing what the business requires is a different question, and without a formal answer to that question the project cannot be signed off, cannot be defended to a regulator, and cannot be maintained after deployment.
 
 This article sets out the components of a measurement framework and the order in which to build them.
-It is the practical complement to [Don't Build Models, Build Measurements](/library/68-dont-build-models-build-measurements.html), which covers the reasoning.
+It is the practical complement to [Don't Build Models, Build Measurements](/library/68-build-measurements.html), which covers the reasoning.
 This article covers the implementation.
 
 ## Ground truth
