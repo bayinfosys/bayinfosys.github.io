@@ -11,6 +11,7 @@ related:
   - 48-adtech-ml
   - 35-faster-horses
   - 45-fat-protocols-for-ai
+  - 75-algorithm-lottery
 ---
 
 # Content is Dead: The Curation Inversion

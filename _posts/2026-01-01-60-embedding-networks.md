@@ -13,6 +13,7 @@ related:
   - 33-vector-db-filters
   - 08-org-sampling
   - 49-embedding-is-the-message
+  - 76-reheat
 ---
 
 # Embedding-Based Relationship Discovery: Finding the Real Network in Your Data

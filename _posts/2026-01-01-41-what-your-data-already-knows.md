@@ -10,7 +10,7 @@ related:
   - 17-data-maturity
   - 08-org-sampling
   - 20-vector-db-deepdive
-  - 38-austrian-AI
+  - 76-reheat
 ---
 
 # What Your Data Already Knows

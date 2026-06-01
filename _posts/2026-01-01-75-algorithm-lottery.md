@@ -11,6 +11,7 @@ related:
   - 26-sampling-strategies
   - 08-org-sampling
   - 25-llm-evaluation
+  - 76-reheat
 ---
 
 # The Algorithm Lottery
