@@ -15,9 +15,9 @@ related:
 
 # The Algorithm Lottery
 
-![Channel analytics screenshot](/img/posts/75-algorithm-lottery.png)
-
 The YouTube channel in the screenshot has not been uploaded to in years. No new content, no replies, no scheduled releases. At some point in early 2024 the algorithm selected one of its videos and sent it to several thousand people. Watch time accumulated. Seven subscribers arrived. Then it went quiet again.
+
+![Channel analytics screenshot](/img/posts/75-algorithm-lottery.png)
 
 This is not an anomaly. It is how recommendation systems manage one of their central problems.
 
