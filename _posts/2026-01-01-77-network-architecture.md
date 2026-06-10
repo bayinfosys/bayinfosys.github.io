@@ -97,7 +97,7 @@ and the dot product between them determines how much attention to pay. The
 routing pattern is computed from the content of the input, fresh for each
 forward pass.
 
-[The Query-Key-Value and Feed-Forward-Network of transformer attention heads separates attention and memory](/img/posts/77-03.gif)
+![The Query-Key-Value and Feed-Forward-Network of transformer attention heads separates attention and memory](/img/posts/77-03.gif)
 
 The CNN learns what patterns to look for. The transformer learns what
 patterns to look for and how to route information between positions based
@@ -131,7 +131,7 @@ stays constant. Mixtral 8x7B (Mistral AI, 2023) has 47 billion total
 parameters and 13 billion active per token: the knowledge capacity of a
 large model at the inference cost of a much smaller one.
 
-[Mixture of Expert models dynamically route attention to different FFN "experts" to increase memory capacity](/img/posts/77-04.gif)
+![Mixture of Expert models dynamically route attention to different FFN "experts" to increase memory capacity](/img/posts/77-04.gif)
 
 The experts specialise through training pressure rather than architectural
 constraint. No rule assigns expert 4 to grammar and expert 7 to chemistry.
