@@ -1,0 +1,74 @@
+---
+layout: default
+title: "Reheat -- Open Source Intent Clustering for Google Search Console"
+description: "Reheat pulls your Search Console queries, embeds them as vectors, clusters by semantic intent, and surfaces content gaps and opportunities. Open source, local-first, pip install."
+keywords: ["search console", "intent clustering", "content gap analysis", "semantic clustering", "open source", "python", "seo"]
+permalink: /reheat
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Reheat",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS, Windows",
+  "description": "{{ page.description | escape }}",
+  "url": "{{ page.url | absolute_url }}",
+  "downloadUrl": "https://pypi.org/project/reheat/",
+  "codeRepository": "https://github.com/bayinfosys/reheat",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "Bay Information Systems",
+    "url": "https://www.bayis.co.uk"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  }
+}
+</script>
+
+<main class="container py-5">
+  <article class="container">
+
+<h1>Reheat</h1>
+
+<p>Search Console tells you which queries arrived. It does not tell you how those queries relate to each other, which intent clusters dominate your impressions, or where your content is thin relative to actual demand. Reheat makes that structure legible.</p>
+
+<p>Reheat is an open-source Python CLI. It pulls query data from Google Search Console, embeds each query as a vector, clusters by semantic intent, and produces a ranked report of content gaps and opportunities. A local web dashboard shows the full intent landscape as a scatter plot, with a coverage summary and an opportunities table ranked by impression potential.</p>
+
+<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/high-value-topics.png" alt="Reheat high-value topics report">
+
+<h2>Install</h2>
+
+<pre><code>pip install reheat</code></pre>
+
+<p>Configure a Search Console source with your OAuth2 credentials, run the pipeline, and open the dashboard at <code>http://localhost:8000</code>. Full setup and pipeline documentation is at <a href="https://bayinfosys.github.io/reheat">bayinfosys.github.io/reheat</a>.</p>
+
+<h2>How it works</h2>
+
+<p>Each stage of the pipeline enriches the previous output and writes to a local state file. An interrupted run resumes from the last completed stage. Embedding runs locally via <a href="https://github.com/qdrant/fastembed">fastembed</a> -- no API calls, no data leaving your machine. Clustering uses k-means; the cluster count defaults to 32 and is configurable.</p>
+
+<p>Each cluster receives a natural language label from an inference provider of your choice: OpenAI, Anthropic, or <a href="https://www.bayis.co.uk/marigold">Marigold</a>. An optional SerpAPI enrichment pass pulls related queries and People Also Ask results into the same embedding space, widening the model's view of the intent landscape around your existing queries.</p>
+
+<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/intent-map.png" alt="Intent map scatter plot showing query clusters">
+
+<p>Persistence uses <a href="https://www.bayis.co.uk/library/51-dynawrap.html">dynawrap</a>, which provides a consistent interface over a local JSON file, PostgreSQL, and DynamoDB. The default backend is a JSON file at <code>~/.reheat/state.json</code>. Switching to a hosted database is a configuration change; the pipeline stays identical.</p>
+
+<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/content-schedule.png" alt="Content schedule report">
+
+<h2>Links</h2>
+
+<ul>
+  <li><a href="https://github.com/bayinfosys/reheat">GitHub -- bayinfosys/reheat</a></li>
+  <li><a href="https://pypi.org/project/reheat/">PyPI -- reheat</a></li>
+  <li><a href="https://bayinfosys.github.io/reheat">Documentation</a></li>
+</ul>
+
+<p>For more on the technique, see the <a href="/library/76-reheat.html">technical writeup</a> in the library.</p>
+
+  </article>
+</main>
