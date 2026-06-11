@@ -39,7 +39,7 @@ keywords: ["search console", "intent clustering", "content gap analysis", "seman
 
 <p>Reheat is an open-source Python CLI. It pulls query data from Google Search Console, embeds each query as a vector, clusters by semantic intent, and produces a ranked report of content gaps and opportunities. A local web dashboard shows the full intent landscape as a scatter plot, with a coverage summary and an opportunities table ranked by impression potential.</p>
 
-<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/high-value-topics.png" alt="Reheat high-value topics report">
+<img src="/img/posts/reheat-high-value-topics.gif" alt="Reheat high-value topics report">
 
 <h2>Install</h2>
 
@@ -53,18 +53,17 @@ keywords: ["search console", "intent clustering", "content gap analysis", "seman
 
 <p>Each cluster receives a natural language label from an inference provider of your choice: OpenAI, Anthropic, or <a href="https://www.bayis.co.uk/marigold">Marigold</a>. An optional SerpAPI enrichment pass pulls related queries and People Also Ask results into the same embedding space, widening the model's view of the intent landscape around your existing queries.</p>
 
-<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/intent-map.png" alt="Intent map scatter plot showing query clusters">
+<img src="/img/posts/reheat-intent-map.gif" alt="Intent map scatter plot showing query clusters">
 
 <p>Persistence uses <a href="https://www.bayis.co.uk/library/51-dynawrap.html">dynawrap</a>, which provides a consistent interface over a local JSON file, PostgreSQL, and DynamoDB. The default backend is a JSON file at <code>~/.reheat/state.json</code>. Switching to a hosted database is a configuration change; the pipeline stays identical.</p>
 
-<img src="https://github.com/bayinfosys/reheat/raw/main/imgs/content-schedule.png" alt="Content schedule report">
+<img src="/img/posts/reheat-content-schedule.gif" alt="Content schedule report">
 
 <h2>Links</h2>
 
 <ul>
-  <li><a href="https://github.com/bayinfosys/reheat">GitHub -- bayinfosys/reheat</a></li>
-  <li><a href="https://pypi.org/project/reheat/">PyPI -- reheat</a></li>
-  <li><a href="https://bayinfosys.github.io/reheat">Documentation</a></li>
+  <li><a href="https://github.com/bayinfosys/reheat">GitHub</a></li>
+  <li><a href="https://pypi.org/project/reheat/">PyPI</a></li>
 </ul>
 
 <p>For more on the technique, see the <a href="/library/76-reheat.html">technical writeup</a> in the library.</p>
