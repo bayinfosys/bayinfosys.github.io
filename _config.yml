@@ -8,12 +8,15 @@ plugins:
 
 defaults:
   - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /library/:title.html
+  - scope:
       path: "library"
       type: "pages"
     values:
       layout: article
-
-permalink: /library/:title.html
 
 author:
   name: "Edward Grundy"
