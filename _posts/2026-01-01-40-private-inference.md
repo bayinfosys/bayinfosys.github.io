@@ -12,6 +12,7 @@ related:
   - 66-open-weights-separate-concerns
   - 72-private-inference-fhe
   - 64-marigold
+  - 80-falling-token-prices
 ---
 
 # Private Inference: Running AI Inside Your Own Infrastructure
