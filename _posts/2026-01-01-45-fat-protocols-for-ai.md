@@ -11,6 +11,7 @@ related:
   - 35-faster-horses
   - 29-platforms-vs-pipelines
   - 38-austrian-AI
+  - 81-exponential-engineering
 ---
 
 # The Fat Protocol Thesis Applied to AI

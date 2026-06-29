@@ -11,6 +11,7 @@ related:
   - 48-adtech-ml
   - 46-labels-are-the-task
   - 36-pmfops
+  - 81-exponential-engineering
 ---
 
 # Friction Builders and Friction Removers
