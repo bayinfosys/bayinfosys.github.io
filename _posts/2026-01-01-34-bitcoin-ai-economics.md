@@ -6,6 +6,8 @@ description: "Bitcoin and AI both convert electrical energy into discrete comput
 keywords: ["bitcoin", "ai economics", "tokens", "hashing", "energy", "llm"]
 topic: "Perspectives"
 seo_title: "Bitcoin and AI: How Their Economic Structures Converge"
+noindex: true
+sitemap: false
 related:
   - 37-bitcoin-21M
   - 45-fat-protocols-for-ai
