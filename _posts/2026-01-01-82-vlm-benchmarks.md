@@ -23,7 +23,7 @@ This article presents measurements from a structured benchmark: four open-weight
 Power draw and processing time were recorded on every request via NVML.
 The data quantifies the output length bias and its effect on cost at scale.
 
-The full benchmark, including per-request telemetry and methodology, is published at [marigold.run/blog/vllm-inference-benchmark/](https://marigold.run/blog/vllm-inference-benchmark/)
+The full benchmark, including per-request telemetry and methodology, is published at [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark/)
 
 ## The models
 
@@ -151,6 +151,6 @@ The benchmark harness is published under `img2txt-providers` in the `marigold-be
 Images are sourced from COCO val2017 via a generator function with MD5-keyed local caching.
 The raw results CSV, conversion script, and per-request telemetry are included.
 
-Full benchmark with interactive charts: [marigold.run/blog/vllm-inference-benchmark/](https://marigold.run/blog/vllm-inference-benchmark/)
+Full benchmark with interactive charts: [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark/)
 
 (If VLM deployment cost is a live question for your team, [get in touch](/#contact-us).)
