@@ -27,7 +27,7 @@ In practice an ML project has a sequential setup phase, an iterative development
 
 ## Setup
 
-After a proposal which identifies the business case, the must be a data audit to verify the availability of quality of data against the requirements.
+After a proposal which identifies the business case, there must be a data audit to verify the availability and quality of data against the requirements.
 Pipelines should be identified to move this data around as needed.
 Labelling strategy and annotation tooling need to be decided, where labelling is part of the work.
 Training and evaluation infrastructure needs to be built, so that results are repeatable and reproducable.
@@ -49,7 +49,7 @@ It differs in the "definition of done".
 A SW feature is done when it passes its functionality and user acceptance testing.
 A model is done when its performance against a baseline is good enough for the operating context (a negotiated threshold rather than a binary pass).
 Teams that carry the software definition of done into this phase tend to either ship too early or never ship at all.
-Usually stuck chasing marginal gains or writing code to accomodate edge cases in model outputs.
+Usually stuck chasing marginal gains or writing code to accommodate edge cases in model outputs.
 
 ## Delivery
 
@@ -58,7 +58,7 @@ Once a model is deployed it must be monitored for drift from expected baselines,
 Instrumentation at deployment captures whether the drift is related to unseen data (new training required) or trend changes which are normal seasonality in the process.
 
 This is where an ML project's timeline is often under-estimated.
-The most effective projects ship a basic model into production quickly, tolerate some level of poor performance to exercise the monitoring and retraining process; and then optimise the Iteration and Delivery steps with confidence.
+The most effective projects ship a basic model into production quickly, tolerate some level of poor performance to exercise the monitoring and retraining process, and then optimise the Iteration and Delivery steps with confidence.
 
 ---
 
