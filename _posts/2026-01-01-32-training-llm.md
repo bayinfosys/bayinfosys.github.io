@@ -11,6 +11,7 @@ related:
   - 46-labels-are-the-task
   - 12-alignment
   - 35-faster-horses
+  - 85-vlm-datasets
 ---
 
 # LLM Training Fundamentals: From Tokens to Human Preference
