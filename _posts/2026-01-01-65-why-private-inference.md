@@ -12,7 +12,8 @@ keywords: ["private inference", "data sovereignty", "ai data risk",
 topic: "Infrastructure"
 related:
   - 40-private-inference
-  - 63-private-inference
+  - 63-private-inference-stack
+  - 87-inference-infrastructure
   - 09-data-risks
   - 64-marigold
   - 72-private-inference-fhe

@@ -9,6 +9,7 @@ seo_title: "How to Run AI Models Inside Your Own Infrastructure"
 related:
   - 63-private-inference
   - 65-why-private-inference
+  - 87-inference-infrastructure
   - 66-open-weights-separate-concerns
   - 72-private-inference-fhe
   - 64-marigold
