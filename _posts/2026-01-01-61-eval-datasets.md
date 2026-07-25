@@ -22,7 +22,7 @@ The engineering effort went into specifying the tasks correctly. A labelled data
 
 Herein, we provide a reference guide to evaluation datasets, metrics, and methodology, organised first by output type and then by professional domain. For each category, the question is the same: what does correct look like, and how do you measure the distance from it?
 
-*([Marigold](https://www.bayis.co.uk/marigold/) runs pipelines against labelled datasets, scores outputs, and accumulates corrected production outputs into a persistent task specification -- the artefact that makes a pipeline transferable and improvable. https://bayis.co.uk/marigold)*
+*([Marigold](https://marigold.run/) runs pipelines against labelled datasets, scores outputs, and accumulates corrected production outputs into a persistent task specification -- the artefact that makes a pipeline transferable and improvable.)*
 
 ## Classification and Extraction
 
