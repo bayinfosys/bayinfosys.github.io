@@ -1,116 +1,64 @@
 ---
 date: 2025-08-06
+last_modified_at: 2026-07-26
 layout: article
-title: "RAG Strategy and Tooling"
-description: "RAG is not one technique. A breakdown of retrieval-augmented generation approaches by complexity, and how to match tooling to the technique you actually need."
-keywords: ["rag", "retrieval augmented generation", "vector database", "llm", "enterprise ai"]
+title: "The Components of RAG"
+description: "RAG is not one architecture but four independent decisions: how you chunk, how you index, how you retrieve, and how you generate. A component breakdown, with the tooling that matches each one."
+keywords: ["rag components", "rag indexing", "rag strategy", "retrieval augmented generation architecture", "vector database", "llm", "enterprise ai"]
 topic: "AI Systems"
-seo_title: "How RAG Works: Retrieval-Augmented Generation Strategies Explained"
+seo_title: "RAG Architecture Explained: Chunking, Indexing, Retrieval, Generation"
 related:
+  - 97-what-is-rag
   - 20-vector-db-deepdive
   - 33-vector-db-filters
   - 27-schema-docs
   - 10-agent-memory
 ---
 
-# RAG Strategy and Tooling
+# The Components of RAG
 
-Retrieval-Augmented Generation (RAG) has become a cornerstone of modern AI systems, especially for enterprise applications where large language models need grounding in domain-specific knowledge.
+RAG gets discussed as though it were a single architecture with a name, chosen once and then built. It is better understood as four independent decisions, made separately and revisited on different schedules: how documents get broken into chunks, how those chunks get indexed and stored, how a query retrieves candidates from that index, and how a model turns the retrieved candidates into an answer. Treating these as one choice is where most RAG projects lose time, because a team commits to "a RAG system" when they should be committing to a chunking approach this month and a retrieval strategy next quarter, upgradable independently.
 
-But "RAG" isn't one thing. There are several techniques of varying complexity, and the tools chosen, particularly databases and indexing strategies, should reflect that technique.
+## Chunking and ingestion
 
-In this article, I’ll walk through three types of RAG strategies, the tradeoffs behind each, and how to choose appropriate tooling for your context.
+Before anything is stored, a document has to be broken into pieces small enough to embed and retrieve individually. Fixed-size chunking (splitting by token count, with some overlap between chunks) is the simplest version and makes one decision at build time: chunk size. It is fast to set up and brittle wherever a topic boundary falls in the middle of a chunk. Semantic chunking, hierarchical chunking that preserves the relationship between a paragraph and its parent section, and enrichment steps that add context to a chunk before it is embedded, are all more capable alternatives with a real cost in engineering time. This is a large enough topic to deserve its own treatment, which the next article in this series covers in full, including the multimodal case: retrieving directly from document images rather than text extracted from them first.
 
----
+## Indexing and storage
 
-## Three Types of RAG Systems
+Once chunks exist, they need somewhere to live that supports similarity search at query time. This is an infrastructure decision, and the options differ enough that picking the wrong one shows up later as a rebuild.
 
-**1. Naive RAG**
-The simplest setup: embed your documents, store them in a vector database, and query using nearest-neighbour search. It is fast to implement and sufficient for many internal search tasks, though often brittle when queries are vague or abstract.
+| Store | Indexing | Deployment | Best for |
+|---|---|---|---|
+| FAISS | IVF, HNSW, PQ | Self-hosted, custom deployment | High performance where you control the whole stack |
+| Qdrant | HNSW, Flat | Self-hosted or managed | Metadata filtering and hybrid search |
+| Weaviate | HNSW with plugins | Helm, Terraform, or SaaS | Structured search, modular pipelines |
+| Milvus | IVF, HNSW, ANNOY | Helm or managed | Multi-billion vector, high-scale workloads |
+| Pinecone | Proprietary, HNSW-like | Managed only | Reliability without operating the infrastructure yourself |
+| pgvector | Cosine, L2, inner product | Self-hosted or cloud Postgres | Business data that already lives in a relational schema |
+| Chroma | Dense similarity | Local container | Prototyping and small-scale experiments |
 
-**2. Reranking RAG**
-This approach retrieves a broad candidate set (for example, the top 100 results) and reranks them using a more capable model that examines full content, such as a cross-encoder. It increases relevance but adds computational cost and latency.
+Two things narrow this list quickly in practice. If your source data is already relational, pgvector keeps the vector index next to the tables it describes rather than in a separate system, and a fuller treatment of that path, including how to expose schema information for RAG over structured data, is in [SQL Schema Documentation for RAG Pipelines](/library/27-schema-docs.html). If you expect production traffic with metadata filters (by user, category, or date) rather than pure similarity search, the indexing trade-offs are covered in full in [Why Are Vector Databases Difficult?](/library/20-vector-db-deepdive.html) and [Filtered Vector Search](/library/33-vector-db-filters.html), which is worth reading before committing to a store, since the choice between them depends on filter selectivity in a way that is easy to get wrong from a features table alone.
 
-**3. LLM-Enabled or Agentic RAG**
-In this case, LLMs participate earlier in the process: rewriting queries, generating document summaries during ingestion, or dynamically shaping retrieval. It is often the only way to maintain high quality when questions are complex or ambiguous.
+## Retrieval
 
----
+Retrieval is the step that turns a query into a set of candidate chunks, and it is where most of the complexity in a RAG system actually lives, independent of which database sits underneath it.
 
-## How Do Databases Support RAG?
+The simplest form embeds the query and returns the nearest neighbours by vector distance. It is fast, cheap, and brittle against vague or abstractly phrased questions, because the query embedding and the answer embedding are not guaranteed to sit close together in the vector space just because a human would recognise one as the answer to the other.
 
-You cannot run an effective RAG system without making infrastructure decisions. Below is a comparison of common vector databases and retrieval tools:
+Reranking retrieves a wider candidate set (the top 100, say) using cheap similarity search, then reorders that set with a more expensive model that reads full passage content rather than comparing vectors. This recovers much of the accuracy that pure vector similarity loses, at the cost of an extra model call on every query.
 
-### FAISS
+Query rewriting and agentic retrieval move a language model earlier into the process: rewriting an ambiguous query before it is embedded, generating summaries at ingestion time so retrieval matches against a cleaner target, or deciding dynamically which source to query at all. This is often the only way to hold quality up when questions are complex or multi-part, and it is the retrieval strategy most likely to need the kind of build-step thinking laid out in [Context Is a Build Step](/library/62-context-compilation.html).
 
-* **Indexing**: IVF, HNSW, PQ
-* **Deployment**: Fully self-hosted; requires custom cloud deployment
-* **Strength**: High performance and control
-* **Limitation**: No built-in metadata filtering
+Naive retrieval pairs well with pgvector or Chroma, since both are fast to reason about and the retrieval logic stays simple. Reranking wants a store built for high-recall candidate sets, which is where FAISS, Qdrant, and Milvus earn their keep. Agentic retrieval tends to need schema-aware, flexible storage, which points back towards Weaviate or Qdrant rather than the simpler options.
 
-### Qdrant
+## Generation
 
-* **Indexing**: HNSW, Flat
-* **Deployment**: Self-hosted or managed; supports Helm/Kubernetes on AWS and GCP
-* **Strength**: Metadata filtering and hybrid search
-* **Best for**: Flexible, mid-scale projects
+The final component is the model call that turns retrieved chunks plus the original query into an answer. This is the step most existing RAG writing focuses on almost exclusively, which understates its share of where things go wrong; retrieval quality determines what the model has to work with, and a fluent answer built on the wrong passage is a harder failure to catch than a search index simply returning nothing.
 
-### Weaviate
+It is also the step where the third-party question becomes unavoidable. A generation call to a commercial API sends the retrieved context, which by construction contains the parts of your document set the system judged most relevant to the query, to whichever company operates that endpoint, on every single question asked. What that means for data exposure and for the shape of your bill is substantial enough to need its own treatment, which is next in this series.
 
-* **Indexing**: HNSW with plugin modules
-* **Deployment**: Available via Helm, Terraform, or SaaS
-* **Strength**: GraphQL interface and modular pipeline support
-* **Best for**: Structured search and integration with external services
+## Choosing a starting point
 
-### Milvus
+None of these four decisions needs to be made at maximum sophistication on day one. A naive chunking approach, a simple vector store, similarity-only retrieval, and a single generation call is a reasonable starting system for an internal search tool with well-structured source documents. Each component can be upgraded independently once you know which one is actually limiting quality, which is a more tractable question than "is our RAG good enough", because it points at a specific piece of the pipeline rather than the whole thing at once.
 
-* **Indexing**: IVF, HNSW, ANNOY
-* **Deployment**: Available via Helm or managed service
-* **Strength**: High-scale, multi-billion vector workloads
-* **Best for**: Performance-sensitive deployments
-
-### Pinecone
-
-* **Indexing**: Proprietary, HNSW-like
-* **Deployment**: Managed service only
-* **Strength**: Reliable and scalable
-* **Limitation**: No self-hosting option
-
-### pgvector (Postgres extension)
-
-* **Indexing**: Cosine, L2, inner product
-* **Deployment**: Self-hosted or cloud Postgres (e.g. RDS, Aurora)
-* **Strength**: SQL-native; supports hybrid queries
-* **Best for**: Business data with existing relational structure
-
-### Chroma
-
-* **Indexing**: Dense similarity
-* **Deployment**: Local container or lightweight self-hosted use
-* **Strength**: Simplicity; supports basic filters
-* **Best for**: Prototyping and experiments
-
----
-
-## Matching Tooling to RAG Strategy
-
-* **Naive RAG** works well with `pgvector`, `Chroma`, or `DuckDB`. These are fast to set up, easy to reason about, and integrate with structured or tabular data.
-
-* **Reranking RAG** benefits from `FAISS`, `Qdrant`, or `Milvus`. These support high-recall candidate sets, which rerankers require.
-
-* **LLM-Enabled RAG** often depends on flexible pipelines and schema-aware storage. `Weaviate` and `Qdrant` are particularly suitable here, as they accommodate structured enrichment and allow dynamic querying.
-
-Structured filters and clean metadata are important, and especially relevant when the LLM is orchestrating retrieval steps based on intermediate reasoning.
-
----
-
-## Summary
-
-RAG systems are not one-size-fits-all. The difference between a frustrating chatbot and a useful AI application often comes down to retrieval quality. That quality, in turn, depends on how you structure, index, rank, and augment the content behind your models.
-
-By understanding your RAG architecture (naive, reranking, or LLM-enhanced) you can:
-
-* Select the right retrieval and storage tooling
-* Prioritise the evaluation points that matter
-* Iterate effectively and deliver grounded, performant systems
-
-If you're working in this space or exploring how to apply RAG techniques, I’d be interested to hear how you’re approaching the tradeoffs.
+(If you're scoping a RAG build and want a second opinion on which components are worth the engineering time, [get in touch](/contact).)
