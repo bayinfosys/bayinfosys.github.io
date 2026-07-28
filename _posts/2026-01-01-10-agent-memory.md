@@ -1,13 +1,17 @@
 ---
 date: 2026-05-27
+last_modified_at: 2026-07-26
 layout: article
 title: "Memory in Agentic AI"
 description: "The types of memory available to an AI agent, how they
 work, when each is appropriate, and what breaks when the wrong type
-is used or the memory layer is absent."
+is used or the memory layer is absent. Includes a survey of named
+systems: A-MEM, Karpathy's LLM Wiki, Letta, Zep, Mem0, and Cognee."
 keywords: ["agentic ai", "agent memory", "llm agents", "context window",
 "vector memory", "agentic memory", "ai agent memory architecture",
-"agent memory systems", "llm agent memory", "role of memory in agentic ai"]
+"agent memory systems", "llm agent memory", "role of memory in agentic ai",
+"a-mem agentic memory for llm agents", "karpathy llm wiki",
+"agentic ai memory management"]
 topic: "AI Systems"
 seo_title: "Memory in Agentic AI: Types, Storage, and Failure Modes"
 related:
@@ -121,6 +125,22 @@ memory holds specific instances. The absence of the latter produces
 an agent that knows general things but cannot reason about its own
 history of particular cases.
 
+## Named systems
+
+The five categories above describe what memory needs to do. They say little about how a given system actually does it, and the current landscape sorts into a small number of real strategies, most of them descending from one paper: Park et al.'s Generative Agents (2023), which introduced a chronological memory stream retrieved by a weighted combination of recency, importance, and relevance. Most systems below are a variation on that idea rather than a departure from it.
+
+**Vector-first, drop-in.** Mem0 and LangMem store memories as embeddings and retrieve by similarity, the same mechanism as naive RAG applied to an agent's own history. This is the simplest strategy to reason about and the easiest to add to an existing agent, and it inherits vector search's usual weakness: a query phrased differently from the stored memory can miss it entirely.
+
+**Temporal knowledge graphs.** Zep, built on its Graphiti engine, stores facts as a graph with time attached, so it can answer not just what happened but what used to be true and when it stopped being true. This matters specifically for episodic memory in domains where facts change: a customer's plan tier, a project's status, a policy's current version. A pure vector store has no native way to represent that a fact has been superseded; a temporal graph does.
+
+**OS-inspired, self-editing.** Letta (formerly MemGPT) treats the context window as RAM and everything else as disk. A small core memory block stays always in context and the agent edits it directly; a larger archival store gets paged in and out on the agent's own initiative. The distinguishing feature is that the agent manages its own memory hierarchy, rather than a fixed pipeline deciding on its behalf what gets kept in view.
+
+**Compile, don't just retrieve.** Two systems reject the retrieval framing outright, and both are worth understanding on their own terms because they answer the Search Console queries that led to this update. A-MEM organises memories as Zettelkasten-style notes: each new entry can trigger re-linking of existing entries, so the memory structure evolves as new information arrives rather than being filed once and left alone. Karpathy's LLM Wiki takes a related but distinct approach: raw sources stay immutable, an LLM maintains a linked markdown wiki derived from them, and a periodic lint pass checks the wiki for gaps and stale entries. The core claim behind both is the same one made in [Context Is a Build Step](/library/62-context-compilation.html): memory should be synthesised once and then maintained, not re-derived from scratch on every query. Where they differ is what gets maintained. A-MEM organises discrete memory notes; the LLM Wiki compiles an entire knowledge base, with human-legible files a person can read and edit directly, which is the more direct fit for the per-agent, long-term memory category above.
+
+**Local-first, graph reasoning.** Cognee applies knowledge-graph memory in a deployment aimed specifically at privacy-critical, self-hosted use, which makes it the clearest example of what a private memory layer looks like in practice: the graph, the extraction pipeline, and the storage all running on infrastructure you control rather than a managed API.
+
+None of this changes which of the five memory types a given task needs. It changes which tool actually implements that type well, and the choice between them tends to come down to one question: does the task need to reason about how a fact changed over time (reach for a temporal graph), does it need the agent editing its own memory as it works (reach for the OS-inspired model), or is a maintained, human-readable knowledge base the actual deliverable (reach for a compiled wiki rather than a retrieval index).
+
 ## A note on memory quality
 
 The things an agent writes to memory may be wrong. Text entering a
@@ -142,6 +162,8 @@ before committing to long-term memory is the most reliable mitigation
 where accuracy matters. Versioned memory records with confidence scores
 and provenance references allow downstream retrieval to filter
 uncertain facts, though neither approach eliminates the problem.
+
+This is precisely the failure mode A-MEM's re-linking and the LLM Wiki's lint pass are designed to catch: a periodic check of the memory structure itself, rather than trusting that whatever was extracted at write time stays correct indefinitely.
 
 ## Memory and learning
 
