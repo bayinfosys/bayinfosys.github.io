@@ -40,4 +40,4 @@ This is not how most AI infrastructure is built. Most pipelines are wired direct
 
 The fat protocol framing makes the design objective explicit: build the protocol, keep it stable, and grow the model catalogue, make it fatter. The applications -- the workflows -- stay thin.
 
-*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. https://bayis.co.uk/marigold)*
+*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. https://marigold.run)*
