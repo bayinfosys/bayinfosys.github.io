@@ -125,6 +125,6 @@ This is the separation of concerns that matters. Model training is one
 activity, performed by specialists on declared data. Inference is another.
 Keeping them separate is not a preference, it is architecture.
 
-([Marigold](https://marigold.run) hosts open-weight models on private AWS
-infrastructure in London. We do not train models. The ICO's guidance on
+([Marigold](https://marigold.run) hosts open-weight models on infrastructure
+we control. We do not train models. The ICO's guidance on
 processor liability is at [ico.org.uk](https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/).)

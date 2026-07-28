@@ -50,4 +50,4 @@ These are all tractable engineering problems. They are also different problems f
 covers the tooling choices from raw framework code through to managed providers;
 [Why Private Inference](/library/65-why-private-inference.html) sets out the three
 risk categories that drive the architectural decision; [Open Weight Models and the Separation of Concerns](/library/66-open-weights-separate-concerns.html) unpacks what open weights actually change about the compliance picture.
-[Marigold](https://marigold.run) is the managed private inference platform built on this architecture -- privately hosted open-weight models on AWS, typed pipelines, and an eval surface.)
+[Marigold](https://marigold.run) is the managed private inference platform built on this architecture -- privately hosted open-weight models on infrastructure it controls, typed pipelines, and an eval surface.)
