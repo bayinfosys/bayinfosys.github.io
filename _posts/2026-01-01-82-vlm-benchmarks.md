@@ -23,7 +23,7 @@ This article presents measurements from a structured benchmark: four open-weight
 Power draw and processing time were recorded on every request via NVML.
 The data quantifies the output length bias and its effect on cost at scale.
 
-The full benchmark, including per-request telemetry and methodology, is published at [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark/)
+The full benchmark, including per-request telemetry and methodology, is published at [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark.html)
 
 ## The models
 

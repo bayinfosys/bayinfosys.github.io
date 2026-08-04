@@ -23,7 +23,7 @@ The stack was a single RTX 3060, a Postgres-backed queue, and one worker process
 
 Two findings from the same telemetry are worth keeping, because they show what a measured run catches that an estimate cannot. Output length, not parameter count, was the strongest predictor of how long a request took: the two slowest models in the set were not the largest, but the ones that wrote the longest completions. And one model, `dolphin-2.9-llama3-8b`, hit its 256-token cap on all 86 of its requests without exception, a stop-token configuration that had silently stopped working, visible only because the benchmark recorded completion length per request rather than averaging it into a summary statistic.
 
-(The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark/) and on GitHub.)
+(The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html) and on GitHub.)
 
 ## What the small number says about the large one
 

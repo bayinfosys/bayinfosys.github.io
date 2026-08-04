@@ -34,7 +34,7 @@ Total electricity drawn across the entire run, all 14 models, all 1,204 requests
 Two findings from the same telemetry are worth keeping, because they show what a measured run catches that an estimate cannot.
 Output length, not parameter count, was the strongest predictor of how long a request took: the two slowest models in the set were not the largest, but the ones that wrote the longest completions.
 
-The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark/).
+The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html).
 
 ## What the small number says about the large one
 

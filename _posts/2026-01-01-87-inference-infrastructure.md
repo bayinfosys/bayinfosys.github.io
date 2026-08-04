@@ -49,7 +49,7 @@ A GPU with limited memory cannot run the model at all, regardless of other numbe
 NVIDIA remains the default choice for most deployments due to ecosystem maturity: CUDA support across every major inference framework, mature driver and monitoring tooling, and a used and cloud rental market deep enough to size capacity flexibly.
 Alternatives (AMD's MI-series, for one) close the raw hardware gap but still lag on framework support, which matters more in practice than a spec sheet comparison suggests.
 Quantisation, running a model at reduced numerical precision, is common for managed or self-hosted deployments:
-it can cut VRAM requirements substantially, as our own benchmark across [14 models on a single consumer GPU](https://marigold.run/blog/self-hosted-inference-benchmark/) shows in practice.
+it can cut VRAM requirements substantially, as our own benchmark across [14 models on a single consumer GPU](https://marigold.run/blog/self-hosted-inference-benchmark.html) shows in practice.
 
 ## Multi-machine and enterprise deployment
 
@@ -69,6 +69,6 @@ vLLM has become the default choice for multi-user, production inference, largely
 Ollama and direct HuggingFace `transformers` pipelines are simpler to run and well suited to single-user or low-concurrency use, local development, prototyping, personal deployment, but were not built for multi-user throughput.
 Performance degrades once concurrent load increases.
 
-We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers/) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
+We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
 
 (If you're weighing hosted against self-hosted inference for a specific workload, [get in touch](/contact) to talk through the tradeoff.)

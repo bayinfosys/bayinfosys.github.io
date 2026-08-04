@@ -1,4 +1,4 @@
----
+	---
 date: 2026-04-25
 layout: article
 title: "The Facade Pattern Is What Makes a Cloud Migration Survivable"
@@ -51,7 +51,7 @@ The alternative (a second function that does almost the same thing, called from 
 
 ## Where We've Taken This Further
 
-This is the premise behind [dynawrap](/articles/51-dynawrap), a library built around this problem for DynamoDB: define access patterns on a class, and swap the backend implementation, DynamoDB or PostgreSQL when AWS is not available, without touching the code that calls it.
+This is the premise behind [dynawrap](/library/51-dynawrap.html), a library built around this problem for DynamoDB: define access patterns on a class, and swap the backend implementation, DynamoDB or PostgreSQL when AWS is not available, without touching the code that calls it.
 DynamoDB in particular punishes you for skipping this discipline, because `boto3` enforces none of the access-pattern thinking the database actually needs.
 The facade is where that discipline has to live, if it is going to live anywhere.
 
