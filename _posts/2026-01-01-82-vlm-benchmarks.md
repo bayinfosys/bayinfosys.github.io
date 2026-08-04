@@ -151,6 +151,6 @@ The benchmark harness is published under `img2txt-providers` in the `marigold-be
 Images are sourced from COCO val2017 via a generator function with MD5-keyed local caching.
 The raw results CSV, conversion script, and per-request telemetry are included.
 
-Full benchmark with interactive charts: [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark/)
+Full benchmark with interactive charts: [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark.html)
 
 (If VLM deployment cost is a live question for your team, [get in touch](/#contact-us).)
