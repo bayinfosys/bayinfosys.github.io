@@ -122,6 +122,8 @@ application with latency requirements at scale warrants vLLM. Application
 code typically moves between them without changes, because both expose
 the same API surface.
 
+Marigold packages this same self-hosted layer with typed pipeline definitions and a declarative workflow engine on top, for teams that want the orchestration a managed service would normally provide without handing the inference itself to one. See our [Marigold](https://marigold.run) platform for more options.
+
 ## Layer 4: Managed private inference services
 
 Above the self-hosted layer, a range of managed services host open-weight
@@ -155,11 +157,6 @@ provider, your data travels to their infrastructure. With a private
 deployment service, your data stays within a boundary you have
 contractually defined. For regulated sectors, that distinction is
 usually determinative.
-
-[Marigold](https://marigold.run) operates at this second layer,
-adding typed pipeline definitions, a declarative workflow engine, and an
-eval surface above the inference backend. Where a private inference API
-returns completions, Marigold defines tasks and composes pipelines.
 
 ## Choosing a layer
 

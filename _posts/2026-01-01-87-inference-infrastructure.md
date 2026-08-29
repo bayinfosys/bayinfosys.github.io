@@ -73,8 +73,7 @@ We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £17
 Three recurring patterns cover most inference deployments, and each points to a different combination of the choices above.
 
 **Batch document processing** (extracting, summarising, or classifying documents in bulk, with no one waiting on a live response) tolerates queuing.
-A single GPU sized to the model's VRAM footprint is normally enough; there's no concurrent-user load.
-There is no concurrent-user load to justify vLLM's operational overhead.
+A single GPU sized to the model's VRAM footprint is normally enough; there's no concurrent-user load to justify vLLM's operational overhead.
 
 **Concurrent user-facing APIs** (a chat interface, an internal tool several people use at once) are the case vLLM exists for.
 PagedAttention and continuous batching keep response times stable as concurrent requests increase.

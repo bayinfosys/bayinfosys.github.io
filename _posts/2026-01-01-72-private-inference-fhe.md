@@ -198,6 +198,4 @@ Substanially better than uploading sensitive data and disclosing information to 
 
 ---
 
-([Marigold](https://marigold.run) is our private inference platform.
-The `public_key` parameter and the multi-party routing pattern are available on the API.
-For organisations working through the compliance architecture for a specific use case, [get in touch](/contact).)
+See our [Marigold](https://marigold.run) platform for more options. For organisations working through the compliance architecture for a specific use case, [get in touch](/contact).
