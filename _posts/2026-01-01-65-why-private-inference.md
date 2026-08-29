@@ -2,13 +2,9 @@
 date: 2026-05-10
 layout: article
 title: "Why Private Inference"
-description: "Three risk categories that make private inference the right
-architectural choice -- regulatory constraint, exposure risk, and the
-largely unacknowledged risk of your data appearing in someone else's
-model output."
-keywords: ["private inference", "data sovereignty", "ai data risk",
-"private ai hosting", "gdpr ai", "open weight models", "self-hosted llm",
-"ai training data risk", "private cloud inference", "data leakage ai"]
+seo_title: "Regulatory and Exposure Risk: Why Private Inference for Compliance"
+description: "The specific regulatory (NHS, FCA, GDPR) and exposure risks that make private inference necessary for regulated data, distinct from the general architectural case for self-hosting AI models."
+keywords: ["private inference", "data sovereignty", "ai data risk", "private ai hosting", "gdpr ai", "open weight models", "self-hosted llm", "ai training data risk", "private cloud inference", "data leakage ai"]
 topic: "Infrastructure"
 related:
   - 40-private-inference
@@ -21,19 +17,15 @@ related:
 
 # Why Private Inference?
 
-Sending data to a commercial AI API is, structurally, the same decision
-as sending it to any third-party processor. The data leaves your
-infrastructure, travels to someone else's servers, and something happens
-to it. What exactly happens depends on the provider's policies -- and
-policies change.
+Whether private inference is necessary for your organisation usually
+comes down to two different kinds of risk.
+Regulatory risk is a binary constraint imposed from outside: a
+framework either prohibits sending certain data to a third-party
+processor or it does not. Exposure risk is a probabilistic one you set
+for yourself: what happens if sensitive but unregulated data ends up
+somewhere it shouldn't. A third, less discussed risk is that data submitted to a commercial API becomes training material, and reappears somewhere else entirely.
 
-Private inference keeps the data inside your infrastructure. The model
-runs where the data lives. Nothing crosses that boundary.
-
-The case for doing this falls into three distinct risk categories:
-Regulatory risk, Exposure risk, and Plagarism risk.
-Each behaves differently, and knowing which applies to you determines
-the conversation.
+These three categories: Regulatory risk, Exposure risk, and Plagarism risk each behave differently.
 
 ## Regulatory risk - you know if you have this
 

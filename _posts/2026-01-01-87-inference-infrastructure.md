@@ -2,11 +2,8 @@
 date: 2026-07-15
 layout: article
 title: "AI Inference Infrastructure: A Decision Framework"
-seo_title: "AI Inference Infrastructure: Best Practices for Deployment"
-description: "Running a model in production means choosing between hosted
-and self-hosted inference, sizing hardware around VRAM rather than raw
-compute, and picking serving software built for concurrent load. A
-decision-level overview of all four."
+seo_title: "How to Choose AI Inference Infrastructure for Production (2026 Guide)"
+description: "How to choose AI inference infrastructure for production: hosted vs. self-hosted, sizing GPUs by VRAM, and serving software like vLLM for handling many concurrent API users. A four-part decision framework."
 keywords: ["ai inference infrastructure", "ai inference infrastructure best
 practices", "ai inference hosting", "ai inference deployment", "ai inference
 servers", "ai model inference hosting", "ai inference api", "local ai",
@@ -47,7 +44,7 @@ A model's weights, plus the key-value cache that grows with context length and c
 A GPU with limited memory cannot run the model at all, regardless of other numbers.
 
 NVIDIA remains the default choice for most deployments due to ecosystem maturity: CUDA support across every major inference framework, mature driver and monitoring tooling, and a used and cloud rental market deep enough to size capacity flexibly.
-Alternatives (AMD's MI-series, for one) close the raw hardware gap but still lag on framework support, which matters more in practice than a spec sheet comparison suggests.
+Alternatives exist: AMD, Apple Silicon, and a handful of Chinese vendors close the raw hardware gap in places but bring their own framework and container constraints, covered in full in [our GPU options guide](/library/78-gpu-market-2026.html).
 Quantisation, running a model at reduced numerical precision, is common for managed or self-hosted deployments:
 it can cut VRAM requirements substantially, as our own benchmark across [14 models on a single consumer GPU](https://marigold.run/blog/self-hosted-inference-benchmark.html) shows in practice.
 
@@ -70,5 +67,22 @@ Ollama and direct HuggingFace `transformers` pipelines are simpler to run and we
 Performance degrades once concurrent load increases.
 
 We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
+
+## Matching systems to workload
+
+Three recurring patterns cover most inference deployments, and each points to a different combination of the choices above.
+
+**Batch document processing** (extracting, summarising, or classifying documents in bulk, with no one waiting on a live response) tolerates queuing.
+A single GPU sized to the model's VRAM footprint is normally enough; there's no concurrent-user load.
+There is no concurrent-user load to justify vLLM's operational overhead.
+
+**Concurrent user-facing APIs** (a chat interface, an internal tool several people use at once) are the case vLLM exists for.
+PagedAttention and continuous batching keep response times stable as concurrent requests increase.
+Ollama and Marigolds one-request-at-a-time model degrades quickly under this load, regardless of hardware.
+
+**Single-developer prototyping** (testing a model, building a workflow before a production decision has been made) doesn't need production-grade serving at all.
+Ollama's simplicity outweighs its throughput ceiling here, and GPU choice matters less than reaching a working prototype quickly.
+
+Mapping a project onto one of these three narrows the hardware and serving-software decision from four independent questions to one.
 
 (If you're weighing hosted against self-hosted inference for a specific workload, [get in touch](/contact) to talk through the tradeoff.)
