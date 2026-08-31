@@ -3,7 +3,7 @@
 <head>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://www.dev.clientlog.bayis.co.uk">
+  <link rel="dns-prefetch" href="https://www.clientlog.bayis.co.uk">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,8 @@
 <script>
   const logger = clientlog.createLogger({
     endpoint: "https://api.dev.clientlog.bayis.co.uk/v1/event",
-    project: "bayis/home"
+    project: "bayis/home",
+    debug: true
   });
 </script>
 
