@@ -1,5 +1,6 @@
 ---
 layout: article
+date: 2026-05-20
 title: "Don't Build Models, Build Measurements"
 seo_title: "Don't Build Models, Build Measurements: AI Project Evaluation"
 description: "Most AI projects fail before the model is built. The question

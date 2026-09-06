@@ -1,5 +1,6 @@
 ---
 layout: article
+date: 2026-01-01
 title: "Friction Builders and Friction Removers"
 description: "Technical people locate power in the ability to build things. In most organisations, the ability to deliver and the ability to block have considerably more impact."
 keywords: ["ml project failure", "office politics", "zombie project", "ml deployment", "organisational structure", "staff attrition"]

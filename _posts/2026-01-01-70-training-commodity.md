@@ -1,5 +1,6 @@
 ---
 layout: article
+date: 2026-05-20
 title: "When Training is a Commodity"
 seo_title: "When AI Training is a Commodity: Every Organisation Becomes a Model Provider"
 description: "Inference is already a commodity. Training is next. When it

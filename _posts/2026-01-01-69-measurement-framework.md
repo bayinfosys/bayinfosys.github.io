@@ -1,5 +1,6 @@
 ---
 layout: article
+date: 2026-05-20
 title: "A Measurement Framework for Machine Learning Projects"
 seo_title: "Machine Learning Measurement Framework: Eval Datasets and Scoring"
 description: "A practical framework for defining, building, and maintaining
