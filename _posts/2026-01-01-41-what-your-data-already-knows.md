@@ -8,7 +8,6 @@ topic: "Data Strategy"
 seo_title: "Community Detection on Business Data: Finding Structure You Already Have"
 related:
   - 17-data-maturity
-  - 08-org-sampling
   - 20-vector-db-deepdive
   - 76-reheat
   - 60-embedding-networks

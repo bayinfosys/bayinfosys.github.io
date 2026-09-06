@@ -9,7 +9,6 @@ date: 2026-06-01
 last_modified_at: 2026-06-01
 related:
   - 26-sampling-strategies
-  - 08-org-sampling
   - 25-llm-evaluation
   - 76-reheat
 ---

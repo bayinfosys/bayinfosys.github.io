@@ -11,7 +11,6 @@ topic: "Data Strategy"
 related:
   - 05-what-data-do-i-need
   - 17-data-maturity
-  - 08-org-sampling
   - 20-vector-db-deepdive
   - 57-medallion
 ---

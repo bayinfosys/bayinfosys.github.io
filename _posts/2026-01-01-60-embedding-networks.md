@@ -11,7 +11,6 @@ topic: "AI Systems"
 related:
   - 20-vector-db-deepdive
   - 33-vector-db-filters
-  - 08-org-sampling
   - 49-embedding-is-the-message
   - 76-reheat
 ---
