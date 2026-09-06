@@ -7,7 +7,6 @@ keywords: ["generative ai", "content strategy", "curation", "ai content", "lemon
 topic: "Perspectives"
 seo_title: "AI Content Saturation: Why Curation Became the Scarce Resource"
 related:
-  - 47-geo
   - 48-adtech-ml
   - 35-faster-horses
   - 45-fat-protocols-for-ai
