@@ -5,7 +5,7 @@ title: "What Your Data Already Knows"
 description: "Siloed data is a list. Connected data encodes structure -- communities, gaps, relationships -- that accumulated through ordinary operation and has never been made visible."
 keywords: ["data strategy", "latent structure", "embeddings", "community detection", "data audit", "vector search"]
 topic: "Data Strategy"
-seo_title: "How to Find Hidden Structure in Your Organisation's Data"
+seo_title: "Community Detection on Business Data: Finding Structure You Already Have"
 related:
   - 17-data-maturity
   - 08-org-sampling

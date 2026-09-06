@@ -2,6 +2,7 @@
 date: 2026-04-17
 layout: article
 title: "Content Negotiation Was a Good Idea"
+seo_title: "HTTP Content Negotiation and Generative Inference"
 description: "HTTP content negotiation was designed to decouple content from form. It stopped at format selection. Generative inference completes the original intention."
 keywords: ["content negotiation", "generative ai", "marigold", "device capability", "inference", "content delivery"]
 topic: "Perspectives"

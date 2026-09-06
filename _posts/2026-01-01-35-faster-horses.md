@@ -5,7 +5,7 @@ title: "The Problem with Faster Horses"
 description: "Foundation models are not fast humans. Treating them as a non-deterministic data store opens more useful questions than the labour displacement framing does."
 keywords: ["foundation models", "llm", "ai framing", "data store", "prompting"]
 topic: "Perspectives"
-seo_title: "Foundation Models Are Not Fast Humans: A Better Framing"
+seo_title: "How to Think About Foundation Models: A Non-Deterministic Data Store"
 related:
   - 32-training-llm
   - 38-austrian-AI

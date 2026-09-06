@@ -2,6 +2,7 @@
 date: 2026-04-17
 layout: article
 title: "The Embedding is the Message"
+seo_title: "Why AI Systems Talk in Text: Embeddings as a Communication Layer"
 description: "AI communication inherited natural language from human communication. That constraint is not a technical necessity."
 keywords: ["embeddings", "ai communication", "multimodal", "marigold", "llm", "content delivery"]
 topic: "Perspectives"

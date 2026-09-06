@@ -2,11 +2,8 @@
 layout: article
 date: 2026-05-20
 title: "When Training is a Commodity"
-seo_title: "When AI Training is a Commodity: Every Organisation Becomes a Model Provider"
-description: "Inference is already a commodity. Training is next. When it
-arrives, every organisation that has spent the intervening period curating
-its own data will have a model. The AI provider will be as unremarkable
-as the web host."
+seo_title: "Should You Train Your Own Model? What Changes When Training Gets Cheap"
+description: "Inference is already a commodity. Training is next. When it arrives, every organisation that has spent the intervening period curating its own data will have a model. The AI provider will be as unremarkable as the web host."
 keywords: ["ai commodity", "foundation models", "open weight models", "machine learning training", "ai strategy", "digital twin ai", "private ai", "data moat", "ai competitive advantage"]
 topic: "Product & Strategy"
 last_modified_at: 2026-05-20

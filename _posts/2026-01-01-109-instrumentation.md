@@ -2,7 +2,7 @@
 date: 2026-09-04
 layout: article
 title: "Instrumentation Is the Deliverable"
-seo_title: "Instrumentation Is the Deliverable: Debug-Tooling as Process Documentation"
+seo_title: "AI Pipeline Observability: What Debug Logs Reveal About Your Process"
 description: "The records written to debug a generation pipeline describe the process the pipeline replaced. That description is the artefact most organisations lack, and it can be produced before any model is bought."
 keywords: ["ai observability", "pipeline instrumentation", "process mining", "ai pilot failure", "audit trail", "llm pipeline debugging"]
 topic: "AI Systems"

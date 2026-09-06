@@ -6,7 +6,7 @@ description: "Technical people locate power in the ability to build things. In m
 keywords: ["ml project failure", "office politics", "zombie project", "ml deployment", "organisational structure", "staff attrition"]
 topic: "Product & Strategy"
 last_modified_at: 2026-01-01
-seo_title: "Friction Builders and Friction Removers"
+seo_title: "Why Machine Learning Projects Fail: The People Who Block Delivery"
 related:
   - 18-mle-vs-swe
   - 48-adtech-ml
