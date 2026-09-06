@@ -17,6 +17,7 @@ related:
   - 04-cost-of-ml
   - 17-data-maturity
   - 05-what-data-do-i-need
+  - 107-notebooks
 ---
 
 # How to Structure an ML Team

@@ -11,6 +11,7 @@ related:
   - 46-labels-are-the-task
   - 17-data-maturity
   - 14-5-mistakes-to-avoid
+  - 96-funnels-vs-bandits
 redirect_from:
   - /23-business-goals/
   - /23-business-goals/index.html

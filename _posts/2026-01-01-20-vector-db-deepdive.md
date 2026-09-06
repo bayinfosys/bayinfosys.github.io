@@ -10,6 +10,7 @@ related:
   - 33-vector-db-filters
   - 19-rag-strategy
   - 27-schema-docs
+  - 60-embedding-networks
 redirect_from:
   - /20-vector-db-deepdive/index.html
 ---

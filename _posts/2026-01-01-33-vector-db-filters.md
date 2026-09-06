@@ -10,6 +10,7 @@ related:
   - 20-vector-db-deepdive
   - 19-rag-strategy
   - 25-llm-evaluation
+  - 60-embedding-networks
 ---
 
 # Filtered Vector Search

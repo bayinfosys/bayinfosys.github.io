@@ -14,6 +14,7 @@ related:
   - 19-rag-strategy
   - 55-what-is-data-engineering
   - 11-apicache
+  - 57-medallion
 ---
 
 # Event-Driven Embeddings in PostgreSQL: LISTEN/NOTIFY and the Async Pattern

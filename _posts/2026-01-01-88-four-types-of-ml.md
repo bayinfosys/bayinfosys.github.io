@@ -14,6 +14,7 @@ related:
   - 24-cross-validation
   - 26-sampling-strategies
   - 89-backprop
+  - 77-network-architecture
 ---
 
 # What Is Machine Learning? F(X) = Y, Explained

@@ -13,6 +13,7 @@ related:
   - 17-data-maturity
   - 08-org-sampling
   - 20-vector-db-deepdive
+  - 57-medallion
 ---
 
 # What Is Data Engineering? Two Jobs, One Title

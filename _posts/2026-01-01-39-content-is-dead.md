@@ -12,6 +12,7 @@ related:
   - 35-faster-horses
   - 45-fat-protocols-for-ai
   - 75-algorithm-lottery
+  - 91-generative-video-breaks-editorial-control
 ---
 
 # Content is Dead: The Curation Inversion

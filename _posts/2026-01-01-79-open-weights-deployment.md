@@ -11,6 +11,7 @@ related:
   - 64-marigold
   - 66-open-weights-separate-concerns
   - 65-why-private-inference
+  - 70-training-commodity
 ---
 
 # Open Weights Mean the Tier Is a Deployment Decision, Not a Lock-In

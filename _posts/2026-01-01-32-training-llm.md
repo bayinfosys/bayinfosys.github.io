@@ -12,6 +12,8 @@ related:
   - 12-alignment
   - 35-faster-horses
   - 85-vlm-datasets
+  - 70-training-commodity
+  - 77-network-architecture
 ---
 
 # LLM Training Fundamentals: From Tokens to Human Preference

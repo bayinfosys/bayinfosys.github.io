@@ -15,6 +15,7 @@ related:
   - 28-coding-vs-programming
   - 42-software-engineering-solved-governance
   - 61-eval-datasets
+  - 107-notebooks
 ---
 
 # What Software Engineers Already Know About Machine Learning

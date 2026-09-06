@@ -10,6 +10,7 @@ related:
   - 61-eval-datasets
   - 46-labels-are-the-task
   - 25-llm-evaluation
+  - 82-vlm-benchmarks
 ---
 
 # Open Datasets for Training Vision-Language Models

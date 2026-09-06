@@ -12,6 +12,7 @@ related:
   - 29-platforms-vs-pipelines
   - 38-austrian-AI
   - 81-exponential-engineering
+  - 108-exponential-engineering-mcp
 ---
 
 # The Fat Protocol Thesis Applied to AI

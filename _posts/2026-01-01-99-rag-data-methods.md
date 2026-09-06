@@ -12,6 +12,7 @@ related:
   - 98-rag-risks-and-costs
   - 62-context-compilation
   - 20-vector-db-deepdive
+  - 59-formatting-for-llms
 ---
 
 # Data Methods for RAG

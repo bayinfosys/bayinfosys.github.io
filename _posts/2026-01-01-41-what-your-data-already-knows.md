@@ -11,6 +11,7 @@ related:
   - 08-org-sampling
   - 20-vector-db-deepdive
   - 76-reheat
+  - 60-embedding-networks
 ---
 
 # What Your Data Already Knows

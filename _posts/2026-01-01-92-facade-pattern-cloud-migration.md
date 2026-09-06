@@ -12,6 +12,8 @@ related:
   - 30-facebook-db
   - 52-fastapi-aws
   - 29-platforms-vs-pipelines
+  - 58-multi-tennant
+  - 93-serverless-aws-to-azure
 ---
 
 # The Facade Pattern Is What Makes a Cloud Migration Survivable

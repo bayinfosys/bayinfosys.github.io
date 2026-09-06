@@ -15,6 +15,7 @@ related:
   - 19-rag-strategy
   - 25-llm-evaluation
   - 10-agent-memory
+  - 59-formatting-for-llms
 ---
 
 # Context is a Build Step

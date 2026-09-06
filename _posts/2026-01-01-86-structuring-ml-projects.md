@@ -16,6 +16,7 @@ related:
   - 17-data-maturity
   - 04-cost-of-ml
   - 14-5-mistakes-to-avoid
+  - 107-notebooks
 ---
 
 # How to Structure an ML Project

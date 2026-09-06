@@ -18,6 +18,7 @@ related:
   - 66-open-weights-separate-concerns
   - 63-private-inference
   - 64-marigold
+  - 73-ner-and-pii
 ---
 
 # Why Private Inference Is Not Fully Private (Yet)

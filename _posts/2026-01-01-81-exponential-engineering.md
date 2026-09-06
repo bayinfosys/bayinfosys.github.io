@@ -11,6 +11,8 @@ related:
   - 42-software-engineering-solved-governance
   - 35-faster-horses
   - 71-friction-builders
+  - 91-generative-video-breaks-editorial-control
+  - 108-exponential-engineering-mcp
 ---
 
 # Engineering in the Exponential Age

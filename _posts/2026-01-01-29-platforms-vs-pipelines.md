@@ -11,6 +11,7 @@ related:
   - 15-saas-architecture-101
   - 30-facebook-db
   - 42-software-engineering-solved-governance
+  - 92-facade-pattern-cloud-migration
 ---
 
 # Platforms vs Pipelines: Engineering for Compounding Returns

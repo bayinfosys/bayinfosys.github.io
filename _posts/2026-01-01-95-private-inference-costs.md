@@ -11,6 +11,8 @@ related:
   - 40-private-inference
   - 78-gpu-market-2026
   - 65-why-private-inference
+  - 82-vlm-benchmarks
+  - 90-aws-bedrock-costs
 ---
 
 # Self-Hosted Inference, Measured: 14 Models, One GPU, Five Pence

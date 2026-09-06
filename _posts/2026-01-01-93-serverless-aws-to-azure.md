@@ -11,6 +11,7 @@ related:
   - 15-saas-architecture-101
   - 29-platforms-vs-pipelines
   - 01-docker-deep-dive
+  - 92-facade-pattern-cloud-migration
 ---
 
 # Serverless on AWS vs Azure: The Real Differences

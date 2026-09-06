@@ -18,6 +18,7 @@ related:
   - 67-swe-know-about-ml
   - 18-mle-vs-swe
   - 61-eval-datasets
+  - 109-instrumentation
 ---
 
 # Don't Build Models, Build Measurements

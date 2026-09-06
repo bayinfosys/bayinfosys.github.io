@@ -13,6 +13,7 @@ related:
   - 95-private-inference-costs
   - 64-marigold
   - 97-what-is-rag
+  - 73-ner-and-pii
 ---
 
 # RAG Risks and Costs

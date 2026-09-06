@@ -11,6 +11,7 @@ related:
   - 65-why-private-inference
   - 78-gpu-market-2026
   - 64-marigold
+  - 90-aws-bedrock-costs
 ---
 
 # Falling Token Prices and the Cost of Inference You Already Own

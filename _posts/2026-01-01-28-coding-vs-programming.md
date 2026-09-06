@@ -10,6 +10,7 @@ related:
   - 18-mle-vs-swe
   - 42-software-engineering-solved-governance
   - 31-productivity
+  - 91-generative-video-breaks-editorial-control
 ---
 
 # AI Tooling and the Separation Between Coders and Programming
