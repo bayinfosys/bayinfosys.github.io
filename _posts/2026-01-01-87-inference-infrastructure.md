@@ -10,10 +10,15 @@ servers", "ai model inference hosting", "ai inference api", "local ai",
 "vllm", "gpu vram inference"]
 topic: "Architecture & Deployment"
 related:
+  - 65-why-private-inference
   - 40-private-inference
   - 63-private-inference-stack
+  - 95-private-inference-costs
   - 65-why-private-inference
-  - 04-cost-of-ml
+  - 110-inference-hosting-decision
+  - 111-inference-without-cuda
+  - 113-sizing-inference-deployment
+  - 78-gpu-market-2026
 ---
 
 # AI Inference Infrastructure: A Decision Framework
@@ -36,6 +41,7 @@ or when usage is consistent enough that dedicated hardware costs less than per-t
 
 None of these is universally correct.
 The decision follows from data sensitivity and usage pattern, in that order, not from which option is newest or best-known.
+[/library/110-inference-hosting-decision.html](Self-hosted or managed works) through that decision on its own, including the contractual position each option puts you in.
 
 ## Hardware: why VRAM is the binding constraint
 
@@ -47,6 +53,7 @@ NVIDIA remains the default choice for most deployments due to ecosystem maturity
 Alternatives exist: AMD, Apple Silicon, and a handful of Chinese vendors close the raw hardware gap in places but bring their own framework and container constraints, covered in full in [our GPU options guide](/library/78-gpu-market-2026.html).
 Quantisation, running a model at reduced numerical precision, is common for managed or self-hosted deployments:
 it can cut VRAM requirements substantially, as our own benchmark across [14 models on a single consumer GPU](https://marigold.run/blog/self-hosted-inference-benchmark.html) shows in practice.
+Concurrency changes the arithmetic, because the KV cache grows with simultaneous requests while the weights do not: [sizing an inference deployment](/library/113-sizing-inference-deployment.html) covers that calculation.
 
 ## Multi-machine and enterprise deployment
 
@@ -58,6 +65,7 @@ Networking between GPUs matters once a model or a workload spans more than one m
 InfiniBand's low latency and high bandwidth matter for multi-GPU training but are usually unnecessary for inference-only deployments, where the bottleneck is serving throughput rather than inter-GPU communication.
 Storage matters for model weights and checkpoints, which benefit from fast local disk rather than network storage.
 Access control, authenticating model calls, and dispatching requests, is where most of the operational complexity in enterprise deployment exists.
+Consultants deploying this on a client's premises face a different version of the same problem, covered in [deploying private AI on behalf of a client](/library/112-deploying-private-ai-for-clients.html).
 
 ## Serving software: how requests get dispatched
 
@@ -67,6 +75,7 @@ Ollama and direct HuggingFace `transformers` pipelines are simpler to run and we
 Performance degrades once concurrent load increases.
 
 We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
+Every option above assumes CUDA, and so assumes NVIDIA. [Running inference without CUDA](/library/111-inference-without-cuda.html) covers what works on AMD, Apple silicon and non-x86 hosts, and what breaks.
 
 ## Matching systems to workload
 
