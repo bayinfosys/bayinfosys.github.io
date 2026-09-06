@@ -1,0 +1,224 @@
+---
+layout: default
+permalink: /tools/vram-calculator/
+title: "Inference VRAM Calculator"
+seo_title: "LLM Inference VRAM Calculator: Model Weights and KV Cache"
+description: "Work out how much GPU memory a self-hosted LLM deployment needs. Weights plus KV cache, sized for your model, context length and number of concurrent requests."
+keywords: ["vram calculator", "llm vram calculator", "how much vram to run llama", "kv cache size", "gpu memory for llm inference", "llm gpu sizing", "self hosted llm hardware requirements"]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Inference VRAM Calculator",
+  "url": "https://www.bayis.co.uk/tools/vram-calculator/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "description": "Calculates GPU memory required to serve a large language model, covering model weights, KV cache across concurrent requests, and runtime overhead.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bay Information Systems",
+    "url": "https://www.bayis.co.uk"
+  }
+}
+</script>
+
+<style>
+  .calc-panel { border: 1px solid var(--border); background: var(--flat-bg); }
+  .calc-panel h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .07em; }
+  .calc-total { font-family: ui-monospace, Menlo, Consolas, monospace;
+                font-size: 2.4rem; font-weight: 600; line-height: 1.1; }
+  .calc-total.over { color: #9a3412; }
+  .calc-num { font-family: ui-monospace, Menlo, Consolas, monospace; text-align: right; }
+  .calc-bar { height: 26px; display: flex; overflow: hidden;
+              border: 1px solid var(--border); background: var(--light-bg); }
+  .calc-bar span { display: block; }
+  .cb1 { background: #333; } .cb2 { background: #777; } .cb3 { background: #ccc; }
+  .calc-key i { width: 10px; height: 10px; display: inline-block; margin-right: 6px; }
+  .calc-formula { font-family: ui-monospace, Menlo, Consolas, monospace;
+                  font-size: .8rem; background: var(--light-bg); overflow-x: auto; }
+  .calc-fit { font-weight: 600; color: var(--text); }
+  .calc-nofit { color: var(--border); }
+  .form-label { font-size: .85rem; margin-bottom: .25rem; }
+</style>
+
+<div class="container my-5">
+
+  <div class="row">
+    <div class="col-lg-9">
+      <h1>Inference VRAM Calculator</h1>
+      <p class="lead">How much GPU memory a self-hosted deployment needs. Model weights are
+      the part everyone estimates. The KV cache is the part that decides whether it survives
+      concurrent users, because it grows with context length and with every request in flight.</p>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-2">
+
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Workload</h2>
+
+        <label class="form-label" for="calcModel">Model</label>
+        <select class="form-select mb-3" id="calcModel">
+        {%- for m in site.data.inference_hardware.models %}
+          <option value="{{ forloop.index0 }}"
+                  data-p="{{ m.params }}" data-l="{{ m.layers }}"
+                  data-kv="{{ m.kv_heads }}" data-d="{{ m.head_dim }}"
+                  {% if m.name == "Llama 3.1 8B" %}selected{% endif %}>{{ m.name }}</option>
+        {%- endfor %}
+          <option value="custom">Custom...</option>
+        </select>
+
+        <div id="calcCustom" class="d-none">
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label class="form-label" for="calcParams">Parameters (B)</label>
+              <input type="number" class="form-control" id="calcParams" value="8" min="0.1" step="0.1">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="calcLayers">Layers</label>
+              <input type="number" class="form-control" id="calcLayers" value="32" min="1">
+            </div>
+          </div>
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label class="form-label" for="calcKvHeads">KV heads</label>
+              <input type="number" class="form-control" id="calcKvHeads" value="8" min="1">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="calcHeadDim">Head dim</label>
+              <input type="number" class="form-control" id="calcHeadDim" value="128" min="1">
+            </div>
+          </div>
+          <p class="small text-muted mb-3">From the model's <code>config.json</code>:
+          <code>num_hidden_layers</code>, <code>num_key_value_heads</code>, and
+          <code>hidden_size / num_attention_heads</code>.</p>
+        </div>
+
+        <div class="row g-2">
+          <div class="col-6">
+            <label class="form-label" for="calcQuant">Weight precision</label>
+            <select class="form-select mb-3" id="calcQuant">
+              <option value="2">FP16 / BF16</option>
+              <option value="1" selected>INT8 / FP8</option>
+              <option value="0.5">INT4 / AWQ</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="form-label" for="calcKvQuant">KV precision</label>
+            <select class="form-select mb-3" id="calcKvQuant">
+              <option value="2" selected>FP16</option>
+              <option value="1">FP8</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="form-label" for="calcCtx">Context length per request (tokens)</label>
+        <input type="number" class="form-control mb-3" id="calcCtx" value="8192" min="128" step="128">
+
+        <label class="form-label" for="calcConc">Concurrent requests</label>
+        <input type="number" class="form-control" id="calcConc" value="8" min="1">
+        <p class="small text-muted mt-2 mb-3">Requests in flight at once, not daily users.
+        A support tool with 200 daily users may only see three at a time.</p>
+
+        <label class="form-label" for="calcGpu">Compare against</label>
+        <select class="form-select" id="calcGpu">
+        {%- for g in site.data.inference_hardware.gpus %}
+          <option value="{{ forloop.index0 }}" data-v="{{ g.vram }}"
+                  {% if g.name == "RTX 4090" %}selected{% endif %}>{{ g.name }} ({{ g.vram }} GB)</option>
+        {%- endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Memory required</h2>
+        <div class="calc-total" id="calcTotal">--</div>
+        <p class="text-muted mb-3" id="calcVerdict">&nbsp;</p>
+
+        <div class="calc-bar mb-2" id="calcBar"></div>
+        <p class="small text-muted calc-key mb-4">
+          <span class="me-3"><i class="cb1"></i>Weights</span>
+          <span class="me-3"><i class="cb2"></i>KV cache</span>
+          <span><i class="cb3"></i>Overhead</span>
+        </p>
+
+        <table class="table table-sm">
+          <thead><tr><th>Component</th><th class="text-end">GB</th></tr></thead>
+          <tbody>
+            <tr><td>Model weights</td><td class="calc-num" id="calcW">--</td></tr>
+            <tr><td>KV cache (all requests)</td><td class="calc-num" id="calcK">--</td></tr>
+            <tr><td>Runtime overhead</td><td class="calc-num" id="calcO">--</td></tr>
+            <tr><td><strong>Total</strong></td><td class="calc-num" id="calcT"><strong>--</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p class="small text-muted mb-0" id="calcPerReq">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-panel p-4 mt-4">
+    <h2 class="text-muted">What fits</h2>
+    <table class="table table-sm mb-3" id="calcFit">
+      <thead>
+        <tr>
+          <th>GPU</th>
+          <th class="text-end">Nameplate</th>
+          <th class="text-end">Usable</th>
+          <th class="text-end">Max concurrency</th>
+          <th class="text-end">Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+      {%- for g in site.data.inference_hardware.gpus %}
+        <tr data-vram="{{ g.vram }}">
+          <td>{{ g.name }}</td>
+          <td class="calc-num">{{ g.vram }} GB</td>
+          <td class="calc-num">{{ g.vram | times: 0.9 | round: 1 }} GB</td>
+          <td class="calc-num calc-maxc">--</td>
+          <td class="calc-num calc-result">--</td>
+        </tr>
+      {%- endfor %}
+      </tbody>
+    </table>
+    <p class="small text-muted mb-0">Usable memory is 90% of nameplate VRAM, which is vLLM's
+    default <code>gpu_memory_utilization</code>. Multi-GPU rows assume tensor parallelism and
+    do not model its communication overhead.</p>
+  </div>
+
+  <div class="calc-panel p-4 mt-4">
+    <h2 class="text-muted">Method</h2>
+    <p>Weights are parameters multiplied by bytes per parameter. The KV cache holds two
+    tensors, keys and values, for every layer, for every token in context, for every request
+    in flight:</p>
+    <p class="calc-formula p-3 mb-3">kv_bytes = 2 &times; layers &times; kv_heads &times; head_dim &times; precision &times; context &times; concurrency</p>
+    <p>Overhead covers the CUDA context, activations and allocator fragmentation, estimated
+    at 1 GB plus 6% of weights.</p>
+    <p class="mb-0">Two results tend to surprise people. Models using grouped-query attention
+    have far fewer KV heads than attention heads, so Llama 3.1 8B (8 KV heads) holds a longer
+    context than Phi-3 mini 3.8B (32 KV heads) despite being twice the size. And quantising
+    weights from FP16 to INT4 shrinks the weights by four but leaves the cache untouched, so
+    on a high-concurrency deployment the saving is smaller than the headline suggests.</p>
+  </div>
+
+  <p class="mt-4">
+    Background on the decisions this feeds into:
+    <a href="/library/87-inference-infrastructure.html">choosing inference infrastructure</a>,
+    <a href="/library/78-gpu-market-2026.html">GPU options for local inference</a>, and
+    <a href="/library/95-private-inference-costs.html">what self-hosted inference costs</a>.
+    (If you want this sized against a real workload,
+    <a href="/contact">get in touch</a>.)
+  </p>
+
+</div>
+
+<script type="module">
+  import { init } from '/assets/vram-calculator.js';
+  init();
+</script>

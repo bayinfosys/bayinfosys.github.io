@@ -1,0 +1,364 @@
+---
+layout: default
+permalink: /tools/embedding-storage-calculator/
+title: "Embedding Storage Calculator"
+seo_title: "Embedding Storage Calculator: Vector Database Size and RAM"
+description: "Estimate disk and memory for a vector database. Text chunks or image embeddings, single-vector or late interaction, with HNSW index overhead and stored payload."
+keywords: ["embedding storage calculator", "vector database size", "how much storage for embeddings", "hnsw memory requirements", "pgvector index size", "colpali storage", "clip embedding storage", "late interaction storage", "rag storage cost"]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Embedding Storage Calculator",
+  "url": "https://www.bayis.co.uk/tools/embedding-storage-calculator/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "description": "Estimates disk and memory for a vector database, covering vector data, HNSW or IVF index overhead, stored payload and metadata, for text chunks and image embeddings including late-interaction models.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bay Information Systems",
+    "url": "https://www.bayis.co.uk"
+  }
+}
+</script>
+
+<style>
+  .calc-panel { border: 1px solid var(--border); background: var(--flat-bg); }
+  .calc-panel h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .07em; }
+  .calc-total { font-family: ui-monospace, Menlo, Consolas, monospace;
+                font-size: 2.4rem; font-weight: 600; line-height: 1.1; }
+  .calc-sub { font-family: ui-monospace, Menlo, Consolas, monospace;
+              font-size: 1.2rem; font-weight: 600; }
+  .calc-num { font-family: ui-monospace, Menlo, Consolas, monospace; text-align: right; }
+  .calc-bar { height: 26px; display: flex; overflow: hidden;
+              border: 1px solid var(--border); background: var(--light-bg); }
+  .calc-bar span { display: block; }
+  .cb1 { background: #333; } .cb2 { background: #666; }
+  .cb3 { background: #999; } .cb4 { background: #ccc; }
+  .calc-key i { width: 10px; height: 10px; display: inline-block; margin-right: 6px; }
+  .calc-formula { font-family: ui-monospace, Menlo, Consolas, monospace;
+                  font-size: .8rem; background: var(--light-bg); overflow-x: auto; }
+  .calc-here { background: var(--light-bg); font-weight: 600; }
+  .calc-warn { color: #9a3412; }
+  .form-label { font-size: .85rem; margin-bottom: .25rem; }
+  .table-sm td, .table-sm th { padding: .35rem .5rem; }
+</style>
+
+<div class="container my-5">
+
+  <div class="row">
+    <div class="col-lg-9">
+      <h1>Embedding Storage Calculator</h1>
+      <p class="lead">What a vector database costs to hold. The driver is vector count
+      multiplied by dimensions, and vector count is where the surprises live: a small corpus
+      chunked finely at 3,072 dimensions lands where a large one summarised at 384 does, and
+      a late-interaction model storing one vector per image patch lands two orders of
+      magnitude above both.</p>
+    </div>
+  </div>
+
+  <div class="btn-group mt-3" role="group" aria-label="Content type">
+    <input type="radio" class="btn-check" name="embMode" id="embModeText" value="text" checked>
+    <label class="btn btn-outline-secondary" for="embModeText">Text</label>
+    <input type="radio" class="btn-check" name="embMode" id="embModeImage" value="image">
+    <label class="btn btn-outline-secondary" for="embModeImage">Images and pages</label>
+  </div>
+
+  <div class="row g-4 mt-1">
+
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Corpus</h2>
+
+        <div data-mode="text">
+          <label class="form-label" for="embDocs">Documents</label>
+          <input type="number" class="form-control mb-3" id="embDocs" value="10000" min="1">
+
+          <label class="form-label" for="embWords">Average words per document</label>
+          <input type="number" class="form-control mb-2" id="embWords" value="1200" min="1">
+          <p class="small text-muted mb-3">Estimated at 1.33 tokens per word. Length spread
+          across documents does not change the answer, except where documents are shorter
+          than one chunk.</p>
+
+          <label class="form-label" for="embChunk">Chunk size (tokens)</label>
+          <input type="number" class="form-control mb-3" id="embChunk" value="512" min="16">
+
+          <label class="form-label" for="embOverlap">Chunk overlap (tokens)</label>
+          <input type="number" class="form-control mb-2" id="embOverlap" value="64" min="0">
+          <p class="small text-muted mb-0">Overlap raises the vector count and duplicates
+          stored text, so the payload exceeds the size of the original corpus.</p>
+        </div>
+
+        <div data-mode="image" hidden>
+          <label class="form-label" for="embItems">Images or pages</label>
+          <input type="number" class="form-control mb-3" id="embItems" value="50000" min="1">
+
+          <label class="form-label" for="embPayloadKb">Stored payload per item (KB)</label>
+          <input type="number" class="form-control mb-2" id="embPayloadKb" value="40" min="0">
+          <p class="small text-muted mb-0">A thumbnail or rendered page held next to the
+          vectors. Originals usually stay in object storage and are not counted here.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Index</h2>
+
+        <label class="form-label" for="embModelText" data-mode="text">Embedding model</label>
+        <select class="form-select mb-2" id="embModelText" data-mode="text">
+        {%- for m in site.data.embedding_models.text_models %}
+          <option value="{{ forloop.index0 }}"
+                  data-d="{{ m.dims }}"
+                  data-mt="{{ m.max_tokens }}"
+                  data-vpi="{{ m.vectors_per_item | default: 1 }}"
+                  data-unit="{{ m.unit | default: 'chunk' }}"
+                  data-note="{{ m.note }}"
+                  {% if m.name == "bge-base-en-v1.5" %}selected{% endif %}>{{ m.name }} &mdash; {{ m.dims }}d</option>
+        {%- endfor %}
+          <option value="custom">Custom dimensions...</option>
+        </select>
+
+        <label class="form-label" for="embModelImage" data-mode="image" hidden>Embedding model</label>
+        <select class="form-select mb-2" id="embModelImage" data-mode="image" hidden>
+        {%- for m in site.data.embedding_models.image_models %}
+          <option value="{{ forloop.index0 }}"
+                  data-d="{{ m.dims }}"
+                  data-vpi="{{ m.vectors_per_item | default: 1 }}"
+                  data-unit="{{ m.unit | default: 'image' }}"
+                  data-note="{{ m.note }}"
+                  {% if m.name == "SigLIP So400m" %}selected{% endif %}>{{ m.name }} &mdash; {{ m.dims }}d{% if m.vectors_per_item > 1 %} &times; {{ m.vectors_per_item }}{% endif %}</option>
+        {%- endfor %}
+          <option value="custom">Custom dimensions...</option>
+        </select>
+
+        <p class="small text-muted mb-3" id="embModelNote">&nbsp;</p>
+
+        <div id="embCustom" class="d-none mb-3">
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label" for="embDims">Dimensions</label>
+              <input type="number" class="form-control" id="embDims" value="768" min="1">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="embVpi">Vectors per item</label>
+              <input type="number" class="form-control" id="embVpi" value="1" min="1">
+            </div>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Models trained with Matryoshka representation
+          can be truncated to a shorter prefix with limited accuracy loss.</p>
+        </div>
+
+        <label class="form-label" for="embPrec">Vector precision</label>
+        <select class="form-select mb-3" id="embPrec">
+          <option value="4" selected>float32 (4 bytes)</option>
+          <option value="2">float16 (2 bytes)</option>
+          <option value="1">int8 scalar quantised (1 byte)</option>
+          <option value="0.125">binary (1 bit)</option>
+        </select>
+
+        <label class="form-label" for="embIndex">Index type</label>
+        <select class="form-select mb-3" id="embIndex">
+          <option value="hnsw" selected>HNSW</option>
+          <option value="ivf">IVF flat</option>
+          <option value="flat">Flat / brute force</option>
+        </select>
+
+        <div class="row g-2">
+          <div class="col-6" id="embMBox">
+            <label class="form-label" for="embM">HNSW M</label>
+            <input type="number" class="form-control" id="embM" value="16" min="4">
+          </div>
+          <div class="col-6">
+            <label class="form-label" for="embMeta">Metadata bytes per row</label>
+            <input type="number" class="form-control" id="embMeta" value="64" min="0">
+          </div>
+        </div>
+
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="embStorePayload" checked>
+          <label class="form-check-label" for="embStorePayload">Store payload alongside vectors</label>
+        </div>
+
+        <label class="form-label mt-3" for="embCopies">Copies (replicas plus backups)</label>
+        <input type="number" class="form-control" id="embCopies" value="1" min="1">
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-1">
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Total on disk</h2>
+        <div class="calc-total" id="embTotal">--</div>
+        <p class="text-muted mb-3" id="embCount">&nbsp;</p>
+
+        <div class="calc-bar mb-2" id="embBar"></div>
+        <p class="small text-muted calc-key mb-3">
+          <span class="me-3"><i class="cb1"></i>Vectors</span>
+          <span class="me-3"><i class="cb2"></i>Index</span>
+          <span class="me-3"><i class="cb3"></i>Payload</span>
+          <span><i class="cb4"></i>Metadata</span>
+        </p>
+
+        <table class="table table-sm mb-0">
+          <thead><tr><th>Component</th><th class="text-end">Size</th></tr></thead>
+          <tbody>
+            <tr><td>Vector data</td><td class="calc-num" id="embVec">--</td></tr>
+            <tr><td>Index structure</td><td class="calc-num" id="embIdx">--</td></tr>
+            <tr><td id="embPayloadLabel">Payload</td><td class="calc-num" id="embPay">--</td></tr>
+            <tr><td>Metadata and ids</td><td class="calc-num" id="embMet">--</td></tr>
+            <tr><td><strong>Total</strong></td><td class="calc-num" id="embTot"><strong>--</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="calc-panel p-4 h-100">
+        <h2 class="text-muted">Resident memory for low latency</h2>
+        <div class="calc-sub" id="embRam">--</div>
+        <p class="text-muted small mb-3" id="embRamNote">&nbsp;</p>
+        <p>The graph is traversed on every query, so it stays in memory whatever the vectors
+        do. Quantising to int8 shrinks the vectors and leaves the graph untouched, which is why
+        the saving is smaller than the ratio suggests at low dimensions.</p>
+        <ul class="small mb-0 ps-3" id="embWarnings"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-panel p-4 mt-4">
+    <h2 class="text-muted">Same corpus, different dimensions</h2>
+    <p class="small text-muted">Total on disk for the current vector count, holding everything
+    else fixed. Truncating a Matryoshka model from 1,536 to 384 dimensions moves you three
+    rows up this table.</p>
+    <div class="table-responsive">
+      <table class="table table-sm mb-0" id="embDimTable">
+        <thead>
+          <tr>
+            <th>Dimensions</th>
+            <th class="text-end">float32</th>
+            <th class="text-end">float16</th>
+            <th class="text-end">int8</th>
+            <th class="text-end">binary</th>
+          </tr>
+        </thead>
+        <tbody>
+        {%- for d in site.data.embedding_models.comparison_dims %}
+          <tr data-dims="{{ d }}">
+            <td data-field="label">{{ d }}</td>
+            <td class="calc-num" data-field="b4">--</td>
+            <td class="calc-num" data-field="b2">--</td>
+            <td class="calc-num" data-field="b1">--</td>
+            <td class="calc-num" data-field="b0">--</td>
+          </tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="calc-panel p-4 mt-4">
+    <h2 class="text-muted" id="embVaryHeading">Same corpus, different chunking</h2>
+    <p class="small text-muted" id="embVaryNote">Vector count and total at the current
+    dimensions and precision. Halving the chunk size roughly doubles everything.</p>
+    <div class="table-responsive">
+      <table class="table table-sm mb-0" id="embVaryTable">
+        <thead>
+          <tr>
+            <th data-field="head">Chunk size</th>
+            <th class="text-end">Vectors</th>
+            <th class="text-end">Vector data</th>
+            <th class="text-end">Total on disk</th>
+          </tr>
+        </thead>
+        <tbody>
+        {%- for c in site.data.embedding_models.comparison_chunks %}
+          <tr data-vary="{{ c }}">
+            <td data-field="label">{{ c }} tokens</td>
+            <td class="calc-num" data-field="count">--</td>
+            <td class="calc-num" data-field="vectors">--</td>
+            <td class="calc-num" data-field="total">--</td>
+          </tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="calc-panel p-4 mt-4">
+    <h2 class="text-muted">Method</h2>
+    <p>Everything reduces to vector count multiplied by dimensions. For text, vectors per item
+    is the number of chunks a document produces; for images it is one, unless the model keeps
+    a vector per patch or per token:</p>
+    <p class="calc-formula p-3 mb-3">chunks_per_doc = max(1, ceil((doc_tokens - overlap) / (chunk_size - overlap)))<br>
+vector_count = items &times; vectors_per_item<br>
+vector_bytes = vector_count &times; dimensions &times; precision_bytes</p>
+    <p>The <code>max(1, ...)</code> matters more than it looks. A corpus of 200,000 support
+    tickets at 40 tokens each still produces 200,000 vectors, not the 17,000 a
+    divide-the-total estimate returns.</p>
+    <p>HNSW adds a navigable graph. Layer zero holds twice M bidirectional links per node and
+    the upper layers add roughly 15% more, stored as 32-bit ids. IVF stores centroids plus a
+    list assignment per vector, with the list count sized at the square root of the vector
+    count. Flat indexes add nothing beyond the vectors:</p>
+    <p class="calc-formula p-3 mb-3">hnsw_bytes = vector_count &times; 2M &times; 4 &times; 1.15</p>
+    <p>Metadata is charged per stored row. Single-vector models write one row per vector;
+    late-interaction models normally hold their patch vectors as an array on one row per item,
+    so metadata is charged per item there instead.</p>
+    <p class="mb-0">Text payload is estimated at four bytes per token, which holds for English
+    in UTF-8. Because overlapping chunks duplicate their shared tokens, stored text exceeds the
+    corpus by roughly the ratio of chunk size to stride.</p>
+  </div>
+
+  <p class="mt-4">
+    Background:
+    <a href="/library/20-vector-db-deepdive.html">why vector databases are difficult</a>,
+    <a href="/library/99-rag-data-methods.html">data methods for RAG</a>,
+    <a href="/library/56-event-driven-embeddings.html">event-driven embeddings in PostgreSQL</a>,
+    and <a href="/library/82-vlm-benchmarks.html">model choice and VLM inference cost</a>.
+    Related: the <a href="/tools/vram-calculator/">inference VRAM calculator</a>.
+    (If you are sizing this against a real corpus, <a href="/contact">get in touch</a>.)
+  </p>
+
+  <template id="tplBarSegment">
+    <span></span>
+  </template>
+
+  <template id="tplWarning">
+    <li class="calc-warn"></li>
+  </template>
+
+  <template id="tplDimRow">
+    <tr>
+      <td data-field="label"></td>
+      <td class="calc-num" data-field="b4"></td>
+      <td class="calc-num" data-field="b2"></td>
+      <td class="calc-num" data-field="b1"></td>
+      <td class="calc-num" data-field="b0"></td>
+    </tr>
+  </template>
+
+  <template id="tplVaryRow">
+    <tr>
+      <td data-field="label"></td>
+      <td class="calc-num" data-field="count"></td>
+      <td class="calc-num" data-field="vectors"></td>
+      <td class="calc-num" data-field="total"></td>
+    </tr>
+  </template>
+
+</div>
+
+<script type="module">
+  import { init } from '/assets/embedding-storage-calculator.js';
+  init({
+    comparisonDims: {{ site.data.embedding_models.comparison_dims | jsonify }},
+    comparisonChunks: {{ site.data.embedding_models.comparison_chunks | jsonify }},
+    comparisonVectors: {{ site.data.embedding_models.comparison_vectors | jsonify }},
+    units: {{ site.data.embedding_models.units | jsonify }}
+  });
+</script>
