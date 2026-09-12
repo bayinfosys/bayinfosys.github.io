@@ -27,7 +27,7 @@ Two findings from the same telemetry are worth keeping, because they show what a
 
 (The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html) and on GitHub.)
 
-## What the small number says about the large one
+## The Mariginal Cost of Self-hosting
 
 Five and a half pence for 1,204 requests is not evidence that inference is free. It is evidence that for a defined class of model, the marginal cost of an additional request, once the hardware exists and is idle, approaches the cost of the electricity it draws and very little else. That is the same statement the industry-level figures are making about token prices generally, at a scale where it can actually be checked.
 

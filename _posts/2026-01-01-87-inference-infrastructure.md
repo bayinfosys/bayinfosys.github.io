@@ -13,7 +13,6 @@ related:
   - 65-why-private-inference
   - 40-private-inference
   - 63-private-inference-stack
-  - 95-private-inference-costs
   - 65-why-private-inference
   - 110-inference-hosting-decision
   - 111-inference-without-cuda
@@ -41,7 +40,7 @@ or when usage is consistent enough that dedicated hardware costs less than per-t
 
 None of these is universally correct.
 The decision follows from data sensitivity and usage pattern, in that order, not from which option is newest or best-known.
-[/library/110-inference-hosting-decision.html](Self-hosted or managed works) through that decision on its own, including the contractual position each option puts you in.
+[Self-hosted or managed works](/library/65-why-private-inference.html) through that decision on its own, including the contractual position each option puts you in.
 
 ## Hardware: why VRAM is the binding constraint
 
@@ -53,7 +52,7 @@ NVIDIA remains the default choice for most deployments due to ecosystem maturity
 Alternatives exist: AMD, Apple Silicon, and a handful of Chinese vendors close the raw hardware gap in places but bring their own framework and container constraints, covered in full in [our GPU options guide](/library/78-gpu-market-2026.html).
 Quantisation, running a model at reduced numerical precision, is common for managed or self-hosted deployments:
 it can cut VRAM requirements substantially, as our own benchmark across [14 models on a single consumer GPU](https://marigold.run/blog/self-hosted-inference-benchmark.html) shows in practice.
-Concurrency changes the arithmetic, because the KV cache grows with simultaneous requests while the weights do not: [sizing an inference deployment](/library/113-sizing-inference-deployment.html) covers that calculation.
+Concurrency changes the arithmetic, because the KV cache grows with simultaneous requests while the weights do not: [sizing an inference deployment](/tools/vram-calculator.html) covers that calculation.
 
 ## Multi-machine and enterprise deployment
 
@@ -75,7 +74,6 @@ Ollama and direct HuggingFace `transformers` pipelines are simpler to run and we
 Performance degrades once concurrent load increases.
 
 We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
-Every option above assumes CUDA, and so assumes NVIDIA. [Running inference without CUDA](/library/111-inference-without-cuda.html) covers what works on AMD, Apple silicon and non-x86 hosts, and what breaks.
 
 ## Matching systems to workload
 
