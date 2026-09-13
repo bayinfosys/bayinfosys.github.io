@@ -1,24 +1,25 @@
-        /* Variables */
-        :root {
-            --text: #444;
-            --border: #AAA;
-            --flat-bg: #FFF;
-            --dark-bg: #333; /* Navbar and footer background */
-            --light-bg: #EEE; /* Light text for contrast */
-            --link-hover: #FFF; /* Hover color for links */
-        }
+/* Variables */
+:root {
+    --text: #444;
+    --border: #AAA;
+    --flat-bg: #FFF;
+    --dark-bg: #333; /* Navbar and footer background */
+    --light-bg: #EEE; /* Light text for contrast */
+    --link-hover: #FFF; /* Hover color for links */
+}
 
-        /* General Styles */
-        body {
-            font-family: "Felix Titling", "Bookman Old Style", Serif;
-            background-color: var(--flat-bg);
-            color: var(--text);
-        }
+/* General Styles */
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Felix Titling", "Bookman Old Style", Serif;
+    background-color: var(--flat-bg);
+    color: var(--text);
+}
 
-        h1, h2 {
-            font-family: "Felix Titling", "Bookman Old Style", Serif;
-            color: var(--text);
-        }
+h1, h2 {
+    font-family: "Felix Titling", "Bookman Old Style", Serif;
+    color: var(--text);
+}
 
         /* Navbar Styling */
 .navbar-nav .nav-link {
