@@ -44,7 +44,7 @@ faq:
 
       <h1>Sovereign AI for UK organisations</h1>
       <p class="lead mt-3">Many organisations cannot send their data to a third-party model API. The data is personal, or it belongs to clients, or a regulator restricts where it goes, or a leak would cost more trust than the organisation can afford to lose. Open-weight models run wherever the data already is, which takes the model provider out of the arrangement.</p>
-      <p>This page sets out what sovereignty means in practice, who needs it, and the three ways we deploy <a href="https://marigold.run">marigold</a> (our open-source inference platform) to provide it. (To see where your organisation stands first, take the <a href="/ai-readiness-assessment.html">AI readiness assessment</a>; to go straight to a conversation, <a href="#discuss">discuss a deployment</a>.)</p>
+      <p>This page sets out what sovereignty means in practice, who needs it, and the three ways we deploy <a href="https://marigold.run">marigold</a> (our open-source inference platform) to provide it. (To see where your organisation stands first, take the <a href="/ai-readiness-assessment.html">AI readiness assessment</a>; to go straight to a conversation, <a href="#discuss">discuss a deployment</a> or check whether you need it with the <a href="/checklists/private-inference.html">private inference checklist</a>)</p>
 
       <section class="mt-5" aria-labelledby="sov-meaning">
         <h2 id="sov-meaning">What does "sovereign AI" mean for an organisation?</h2>
@@ -263,30 +263,6 @@ faq:
 <script src="/assets/render.js"></script>
 <script>
 (() => {
-  // Clone template "tpl-<name>" and fill its data-bind targets from values.
-  function render(name, values = {}) {
-    const frag = document.getElementById("tpl-" + name).content.cloneNode(true);
-    const empty = v => v === undefined || v === null || v === "";
-
-    frag.querySelectorAll("[data-optional]").forEach(el => {
-      if (empty(values[el.dataset.optional])) el.remove();
-    });
-
-    frag.querySelectorAll("[data-bind]").forEach(el => {
-      el.dataset.bind.split(";").forEach(pair => {
-        const [how, key] = pair.split(":").map(s => s.trim());
-        const v = values[key];
-        if (empty(v)) return;
-        if (how === "text") el.textContent = v;
-        else if (how === "append") [].concat(v).forEach(n => el.appendChild(n));
-        else el.setAttribute(how, v);
-      });
-      el.removeAttribute("data-bind");
-    });
-
-    return frag;
-  }
-
   const form = document.getElementById("sov-form");
   const field = n => form.elements.namedItem(n).value.trim();
 
