@@ -2,12 +2,9 @@
 date: 2026-07-15
 layout: article
 title: "AI Inference Infrastructure: A Decision Framework"
-seo_title: "How to Choose AI Inference Infrastructure for Production (2026 Guide)"
-description: "How to choose AI inference infrastructure for production: hosted vs. self-hosted, sizing GPUs by VRAM, and serving software like vLLM for handling many concurrent API users. A four-part decision framework."
-keywords: ["ai inference infrastructure", "ai inference infrastructure best
-practices", "ai inference hosting", "ai inference deployment", "ai inference
-servers", "ai model inference hosting", "ai inference api", "local ai",
-"vllm", "gpu vram inference"]
+seo_title: "AI Inference Infrastructure: Choosing Hosting, GPUs and Serving Software"
+description: "The best AI inference infrastructure depends on four decisions: who hosts it, which GPU (VRAM is the constraint), how it scales, and which serving software handles concurrent users. How to make each one for production."
+keywords: ["ai inference infrastructure", "ai inference infrastructure best practices", "ai inference hosting", "ai inference deployment", "ai inference servers", "ai model inference hosting", "ai inference api", "local ai", "vllm", "gpu vram inference"]
 topic: "Architecture & Deployment"
 related:
   - 65-why-private-inference

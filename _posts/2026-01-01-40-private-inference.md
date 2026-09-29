@@ -1,11 +1,13 @@
 ---
 date: 2026-04-15
 layout: article
+
 title: "Private Inference: Running AI Inside Your Own Infrastructure"
-description: "Data egress is the constraint that kills AI projects in regulated sectors. Open-weight models deployed inside a VPC remove the objection before it reaches legal review."
+seo_title: "What Is Private Inference? Running AI Inside Your Own Infrastructure"
+description: "Private inference runs AI models inside infrastructure you control, so prompts and data never reach a model provider. Why regulated sectors need it, what it costs, and when a hosted API is cheaper."
+
 keywords: ["private inference", "self-hosted llm", "aws vpc", "data sovereignty", "regulated sectors", "open source models"]
 topic: "Architecture & Deployment"
-seo_title: "How to Run AI Models Inside Your Own Infrastructure"
 cta: private-inference
 related:
   - 63-private-inference
