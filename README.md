@@ -107,6 +107,65 @@ The `related` field takes a list of post slugs (the filename without the date pr
 and without the extension). The `related.html` include resolves these against
 `site.posts` and renders linked titles with descriptions. A post must exist and
 have a matching slug for the link to appear.
+---
+
+## Checklists
+
+A checklist is a short interactive page whose answers each carry guidance and
+a link into the library. Checklists are the site's soft action: finer-grained
+than "get in touch", and a way into the library by question.
+
+### Files
+
+- `_checklists/<name>.html`: the page. Front matter (`title`, `seo_title`,
+  `description`, `keywords`, optional `permalink`) plus the copy around the
+  questions, which places the includes where they belong:
+  `checklist/questions.html`, `results.html`, `next.html`,
+  `print.html` (optional `heading`), `faq.html`.
+- `_data/<name>.yml`: the content. The name must match the page.
+- `_layouts/checklist.html`: FAQ structured data, the config block, the
+  templates, and the two scripts.
+- `_includes/checklist/`: the shared blocks and `templates.html`.
+- `assets/render.js`: `render(name, values)` fills a `<template>`.
+- `assets/checklist.js`: selection, scoring, results, forms, events.
+- `checklists.html`: the index, generated from the collection.
+
+URLs: `/checklists/<name>.html`, unless the page sets a permalink (the
+assessment keeps `/ai-readiness-assessment.html`).
+
+### Data file
+
+- `questions`: each has `id`, `type` (`scored` or `flag`), `area`, `text`
+  and `options`. Every question needs an `area`.
+- Options: `label`, `guidance`, optional `points` (scored questions),
+  optional `flag`, optional `links` (`url`, `text`).
+- `bands`: `min`, `max` (inclusive, over the total), `name`, `text`, `links`.
+- `flags`: keyed by name; `text`, optional `url` and `link_text`.
+- `faq`: `q`, `a`. Rendered visibly and as FAQPage structured data.
+- `grouped: true` prints a label wherever `area` changes.
+
+### Behaviour (one behaviour for every checklist)
+
+- Higher points always mean better placed. Where a checklist measures need
+  (private inference), the points are inverted so this still holds.
+- Results show the band, then the area with the lowest share of its maximum
+  (and the lowest-scoring question within it), then any flags.
+- The reading list collects every link from the chosen answers and the band.
+- No per-checklist switches. A checklist that needs different behaviour gets
+  different data, not a new option.
+
+### Articles
+
+An article's `cta` names a checklist. The link renders when `cta` is set.
+`_config.yml` defaults every post to `cta: ai-readiness-assessment`.
+When an article is retired in favour of its checklist, add its old URL to
+the checklist's `redirect_from`.
+
+### Events (Clientlog)
+
+`checklist_start`, `checklist_complete`, `checklist_email_results` and
+`checklist_call_request`, each carrying `checklist: <name>`. The sovereign
+page sends `sovereign_deployment_enquiry`.
 
 ---
 
