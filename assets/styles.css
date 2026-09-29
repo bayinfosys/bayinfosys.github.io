@@ -325,3 +325,143 @@ h1, h2 {
 .library-card--dark .library-card__desc {
   color: #bbb;
 }
+
+/* AI readiness assessment */
+.ra-q {
+  margin-top: 2.5rem;
+}
+
+.ra-q__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ra-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.ra-opt {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--flat-bg);
+  transition: border-color 0.1s;
+}
+
+.ra-opt:hover,
+.ra-opt.is-selected {
+  border-color: var(--text);
+}
+
+.ra-opt > summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 2.6rem;
+  line-height: 1.5;
+}
+
+.ra-opt > summary::-webkit-details-marker {
+  display: none;
+}
+
+.ra-opt > summary::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+}
+
+.ra-opt.is-selected > summary::before {
+  background: var(--text);
+  box-shadow: inset 0 0 0 2px var(--flat-bg);
+}
+
+.ra-opt > summary:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.ra-guide {
+  padding: 0 1rem 1rem 2.6rem;
+  font-size: 0.95rem;
+}
+
+.ra-guide p {
+  margin-bottom: 0.5rem;
+}
+
+.ra-result {
+  padding: 1.5rem;
+  border-left: 3px solid var(--border);
+}
+
+.ra-result h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.ra-result__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 0.4rem;
+}
+
+.ra-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ra-links li {
+  margin-top: 0.4rem;
+}
+
+.ra-form {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.ra-print__list > li {
+  margin-top: 0.75rem;
+}
+
+.ra-print__list ul {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.ra-print-only {
+  display: none;
+}
+
+@media print {
+  nav,
+  footer,
+  .quiz-ribbon,
+  .ra-noprint {
+    display: none !important;
+  }
+
+  .ra-print {
+    margin-top: 0 !important;
+  }
+
+  .ra-print-only {
+    display: block;
+  }
+
+  .ra-print a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

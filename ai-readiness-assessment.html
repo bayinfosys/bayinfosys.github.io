@@ -1,0 +1,412 @@
+---
+layout: default
+title: "AI Readiness Assessment"
+seo_title: "Free AI Readiness Assessment and Checklist"
+description: "Ten questions, five minutes. Find out where your organisation stands on AI (goals, data, sensitivity, ownership), with guidance on each answer."
+keywords: ["ai readiness assessment", "ai readiness checklist", "data strategy consulting", "is my organisation ready for ai"]
+permalink: /ai-readiness-assessment
+---
+{% assign r = site.data.readiness %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for f in r.faq %}
+    {
+      "@type": "Question",
+      "name": {{ f.q | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <h1>AI Readiness Assessment</h1>
+      <p class="lead mt-3 ra-noprint">AI projects tend to stall on the same three things: an unclear goal, data nobody has checked, and no one placed to judge the technical work. This assessment covers the questions we ask at the start of every engagement, in roughly the order we ask them.</p>
+
+      <section class="ra-noprint mt-5" aria-labelledby="ra-how">
+        <h2 id="ra-how">How does the assessment work?</h2>
+        <p>Ten questions, about five minutes. Choose an answer to see guidance on it and a link to further reading; you can change an answer at any time, and the result updates as you go. Seven questions are scored, and three shape the advice without affecting the score. We record which answers are chosen, without any name or contact details; those reach us only if you use one of the forms at the end.</p>
+      </section>
+
+      <section class="ra-noprint mt-5" aria-labelledby="ra-questions">
+        <h2 id="ra-questions">The questions</h2>
+        {% for q in r.questions %}
+        <section class="ra-q" data-q="{{ q.id }}" data-type="{{ q.type }}" data-area="{{ q.area | escape }}" aria-labelledby="{{ q.id }}-title">
+          <h3 id="{{ q.id }}-title" class="ra-q__title">{{ forloop.index }}. {{ q.text }}</h3>
+          <div class="ra-options">
+            {% for o in q.options %}
+            <details class="ra-opt" name="{{ q.id }}" data-points="{{ o.points }}" data-flag="{{ o.flag }}">
+              <summary><span class="ra-opt__label">{{ o.label }}</span><span class="ra-opt__state visually-hidden"></span></summary>
+              <div class="ra-guide">
+                <p>{{ o.guidance }}</p>
+                {% if o.links and o.links.size > 0 %}
+                <p class="ra-guide__links">Further reading:
+                  {% for l in o.links %}<a href="{{ l.url }}">{{ l.text }}</a>{% unless forloop.last %}; {% endunless %}{% endfor %}
+                </p>
+                {% endif %}
+              </div>
+            </details>
+            {% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+      </section>
+
+      <section class="ra-noprint mt-5" aria-labelledby="ra-results-h">
+        <h2 id="ra-results-h">Your results</h2>
+        <div id="ra-results" aria-live="polite">
+          <p class="text-muted">Scoring runs in your browser and needs JavaScript. The <a href="#ra-print-h">printable checklist</a> below lists the points for each answer and the score bands.</p>
+        </div>
+      </section>
+
+      <section id="ra-next" class="ra-noprint mt-5" aria-labelledby="ra-next-h" hidden>
+        <h2 id="ra-next-h">What next?</h2>
+        <p>Three options, in order of commitment. (What we collect is set out in the <a href="/privacy.html">privacy notice</a>.)</p>
+
+        <form id="ra-form-email" class="ra-form mt-4">
+          <h3 class="h5">Email me my results</h3>
+          <p>We will email you your result and the reading list below, usually within one working day.</p>
+          <div class="mb-3">
+            <label for="ra-email-1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="ra-email-1" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="ra-consent" name="consent">
+            <label class="form-check-label" for="ra-consent">I consent to be contacted about my results</label>
+          </div>
+          <button type="submit" class="btn btn-custom">Email my results</button>
+          <p class="ra-form__msg mt-3" role="status" hidden></p>
+        </form>
+
+        <form id="ra-form-call" class="ra-form mt-4">
+          <h3 class="h5">Talk it through</h3>
+          <p>A free 20-minute call to go through your answers. Only the email address is required.</p>
+          <div class="mb-3">
+            <label for="ra-email-2" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="ra-email-2" name="email" autocomplete="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="ra-name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="ra-name" name="name" autocomplete="name">
+          </div>
+          <div class="mb-3">
+            <label for="ra-org" class="form-label">Organisation</label>
+            <input type="text" class="form-control" id="ra-org" name="organisation" autocomplete="organization">
+          </div>
+          <div class="mb-3">
+            <label for="ra-decision" class="form-label">Who would make the decision?</label>
+            <input type="text" class="form-control" id="ra-decision" name="decision_maker">
+          </div>
+          <div class="mb-3">
+            <label for="ra-timing" class="form-label">Timing</label>
+            <select class="form-select" id="ra-timing" name="timing">
+              <option value="">Choose one</option>
+              <option>This quarter</option>
+              <option>This year</option>
+              <option>Exploring</option>
+            </select>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="ra-inc" name="include_answers">
+            <label class="form-check-label" for="ra-inc">Include my result and answers</label>
+          </div>
+          <button type="submit" class="btn btn-custom">Request a call</button>
+          <p class="ra-form__msg mt-3" role="status" hidden></p>
+        </form>
+
+        <h3 class="h5 mt-5">Keep reading</h3>
+        <p>The articles linked from your answers:</p>
+        <ul id="ra-reading" class="ra-links"></ul>
+      </section>
+
+      <noscript>
+        <p class="ra-noprint mt-4">(To talk through your answers, email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a>.)</p>
+      </noscript>
+
+      <section class="ra-print mt-5" aria-labelledby="ra-print-h">
+        <h2 id="ra-print-h">Can I print the AI readiness checklist?</h2>
+        <p class="ra-noprint">Yes. The version below lists every question with the points for each answer. Questions marked "no points" change the advice without changing the score.</p>
+        <p class="ra-noprint" data-ra-js hidden><button type="button" id="ra-print-btn" class="btn btn-custom">Print the checklist</button></p>
+        <ol class="ra-print__list">
+          {% for q in r.questions %}
+          <li>
+            <strong>{{ q.text }}</strong>{% if q.type == "flag" %} (no points){% endif %}
+            <ul>
+              {% for o in q.options %}
+              <li>[ ] {{ o.label }}{% if q.type == "scored" %} ({{ o.points }}){% endif %}</li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ol>
+        <p><strong>Score out of 14:</strong>
+          {% for b in r.bands %}{{ b.min }}-{{ b.max }}, {{ b.name | downcase }}{% unless forloop.last %}; {% endunless %}{% endfor %}.
+        </p>
+        <p class="ra-print-only">www.bayis.co.uk/ai-readiness-assessment.html</p>
+      </section>
+
+      <section class="ra-noprint mt-5" aria-labelledby="ra-faq-h">
+        <h2 id="ra-faq-h">Frequently asked questions</h2>
+        {% for f in r.faq %}
+        <h3 class="h5 mt-4">{{ f.q }}</h3>
+        <p>{{ f.a }}</p>
+        {% endfor %}
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- Runtime templates. render(name, values) fills data-bind targets:
+     "text:key" sets textContent, "append:key" inserts nodes, any other
+     name (href, etc.) sets that attribute. data-optional="key" removes
+     the element when that value is empty. -->
+
+<template id="tpl-status">
+  <p class="text-muted"><span data-bind="text:left"></span> left to answer.</p>
+</template>
+
+<template id="tpl-band">
+  <div class="ra-result">
+    <p class="ra-result__label">Score <span data-bind="text:score"></span> of <span data-bind="text:max"></span></p>
+    <h3 data-bind="text:name"></h3>
+    <p data-bind="text:text"></p>
+    <ul class="ra-links" data-bind="append:links"></ul>
+  </div>
+</template>
+
+<template id="tpl-weakest">
+  <div class="ra-result mt-4">
+    <p class="ra-result__label">Weakest area</p>
+    <h3 data-bind="text:area"></h3>
+    <div data-bind="append:guidance"></div>
+  </div>
+</template>
+
+<template id="tpl-flags">
+  <div class="ra-result mt-4">
+    <p class="ra-result__label">From your other answers</p>
+    <ul class="ra-links" data-bind="append:items"></ul>
+  </div>
+</template>
+
+<template id="tpl-flag">
+  <li><span data-bind="text:text"></span> <a data-bind="href:url; text:link_text" data-optional="url"></a></li>
+</template>
+
+<template id="tpl-link">
+  <li><a data-bind="href:url; text:text"></a></li>
+</template>
+
+<template id="tpl-sent">
+  <span data-bind="text:message"></span>
+</template>
+
+<template id="tpl-send-failed">
+  <span>That did not send. Please email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a> instead.</span>
+</template>
+
+<script>
+(() => {
+  const BANDS = {{ r.bands | jsonify }};
+  const FLAGS = {{ r.flags | jsonify }};
+
+  const qs = Array.from(document.querySelectorAll(".ra-q"));
+  const scored = qs.filter(q => q.dataset.type === "scored");
+  const maxScore = scored.length * 2;
+  const chosen = {};
+  let started = false;
+  let completed = false;
+  let result = null;
+
+  const out = document.getElementById("ra-results");
+  const next = document.getElementById("ra-next");
+  const reading = document.getElementById("ra-reading");
+
+  // Clone template "tpl-<name>" and fill its data-bind targets from values.
+  function render(name, values = {}) {
+    const frag = document.getElementById("tpl-" + name).content.cloneNode(true);
+    const empty = v => v === undefined || v === null || v === "";
+
+    frag.querySelectorAll("[data-optional]").forEach(el => {
+      if (empty(values[el.dataset.optional])) el.remove();
+    });
+
+    frag.querySelectorAll("[data-bind]").forEach(el => {
+      el.dataset.bind.split(";").forEach(pair => {
+        const [how, key] = pair.split(":").map(s => s.trim());
+        const v = values[key];
+        if (empty(v)) return;
+        if (how === "text") el.textContent = v;
+        else if (how === "append") [].concat(v).forEach(n => el.appendChild(n));
+        else el.setAttribute(how, v);
+      });
+      el.removeAttribute("data-bind");
+    });
+
+    return frag;
+  }
+
+  function track(name, data = {}) {
+    try {
+      if (typeof logger !== "undefined" && logger && typeof logger.event === "function") {
+        logger.event(name, data);
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  const label = d => d.querySelector(".ra-opt__label").textContent.trim();
+
+  const linksIn = el => Array.from(el.querySelectorAll("a")).map(a => ({
+    url: a.getAttribute("href"),
+    text: a.textContent.trim()
+  }));
+
+  const linkItems = links => links.map(l => render("link", l));
+
+  function select(q, d) {
+    q.querySelectorAll(".ra-opt").forEach(o => {
+      const on = o === d;
+      o.classList.toggle("is-selected", on);
+      o.querySelector(".ra-opt__state").textContent = on ? " (selected)" : "";
+    });
+    chosen[q.dataset.q] = d;
+    if (!started) { started = true; track("assessment_start"); }
+    update();
+  }
+
+  qs.forEach(q => {
+    const opts = q.querySelectorAll(".ra-opt");
+    opts.forEach(d => {
+      d.addEventListener("toggle", () => {
+        if (!d.open) return;
+        opts.forEach(o => { if (o !== d) o.open = false; });
+        select(q, d);
+      });
+    });
+  });
+
+  function update() {
+    const left = qs.filter(q => !chosen[q.dataset.q]).length;
+    if (left > 0) {
+      out.replaceChildren(render("status", { left: left + (left === 1 ? " question" : " questions") }));
+      next.hidden = true;
+      result = null;
+      return;
+    }
+
+    let score = 0;
+    let weakest = null;
+    let low = 2;
+    scored.forEach(q => {
+      const p = parseInt(chosen[q.dataset.q].dataset.points, 10) || 0;
+      score += p;
+      if (p < low) { low = p; weakest = q; }
+    });
+
+    const band = BANDS.find(b => score >= b.min && score <= b.max);
+    const flags = [...new Set(qs.map(q => chosen[q.dataset.q].dataset.flag).filter(f => f && FLAGS[f]))];
+
+    const blocks = [render("band", {
+      score: String(score),
+      max: String(maxScore),
+      name: band.name,
+      text: band.text,
+      links: linkItems(band.links)
+    })];
+
+    if (weakest) {
+      const guide = chosen[weakest.dataset.q].querySelector(".ra-guide");
+      blocks.push(render("weakest", {
+        area: weakest.dataset.area,
+        guidance: Array.from(guide.childNodes).map(n => n.cloneNode(true))
+      }));
+    }
+
+    if (flags.length) {
+      blocks.push(render("flags", { items: flags.map(f => render("flag", FLAGS[f])) }));
+    }
+
+    out.replaceChildren(...blocks);
+
+    const seen = new Set();
+    const links = [];
+    qs.forEach(q => linksIn(chosen[q.dataset.q].querySelector(".ra-guide")).forEach(l => {
+      if (!seen.has(l.url)) { seen.add(l.url); links.push(l); }
+    }));
+    band.links.forEach(l => { if (!seen.has(l.url)) { seen.add(l.url); links.push(l); } });
+    reading.replaceChildren(...linkItems(links));
+    next.hidden = false;
+
+    result = {
+      score,
+      max: maxScore,
+      band: band.name,
+      weakest: weakest ? weakest.dataset.area : null,
+      flags: flags.map(f => FLAGS[f].text)
+    };
+
+    if (!completed) { completed = true; track("assessment_complete"); }
+  }
+
+  const answerList = () => qs.map(q => ({
+    question: q.querySelector(".ra-q__title").textContent.trim(),
+    answer: label(chosen[q.dataset.q])
+  }));
+
+  const field = (f, n) => f.elements.namedItem(n);
+
+  function bind(id, eventName, build, okText) {
+    const f = document.getElementById(id);
+    f.addEventListener("submit", e => {
+      e.preventDefault();
+      if (!result) return;
+      const data = build(f);
+      const msg = f.querySelector(".ra-form__msg");
+      msg.hidden = false;
+      if (track(eventName, data)) {
+        msg.replaceChildren(render("sent", { message: okText }));
+        f.querySelector("button[type=submit]").disabled = true;
+      } else {
+        msg.replaceChildren(render("send-failed"));
+      }
+    });
+  }
+
+  bind("ra-form-email", "assessment_email_results", f => ({
+    email: field(f, "email").value.trim(),
+    consent: field(f, "consent").checked,
+    result
+  }), "Sent. Your results will arrive by email, usually within one working day.");
+
+  bind("ra-form-call", "assessment_call_request", f => {
+    const data = {
+      email: field(f, "email").value.trim(),
+      name: field(f, "name").value.trim(),
+      organisation: field(f, "organisation").value.trim(),
+      decision_maker: field(f, "decision_maker").value.trim(),
+      timing: field(f, "timing").value
+    };
+    if (field(f, "include_answers").checked) {
+      data.result = result;
+      data.answers = answerList();
+    }
+    return data;
+  }, "Sent. We will email you within one working day to arrange a time.");
+
+  document.querySelectorAll("[data-ra-js]").forEach(el => { el.hidden = false; });
+  document.getElementById("ra-print-btn").addEventListener("click", () => window.print());
+
+  update();
+})();
+</script>

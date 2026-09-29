@@ -1,0 +1,298 @@
+# AI Readiness Assessment content, rendered by ai-readiness-assessment.html.
+# Scored questions: each option has points (0-2). Flag questions: no points;
+# an option may set a flag, which adds a note to the results.
+# TODO(sovereign): swap /library/65-why-private-inference.html for /sovereign-ai
+# once page 1 is live (three places below, plus flags.sensitive).
+
+questions:
+  - id: q1
+    type: scored
+    area: "The goal"
+    text: "What do you want AI to do for your organisation?"
+    options:
+      - label: "A specific problem with a measurable outcome"
+        points: 2
+        guidance: "This is where scoping starts. Put a value on the outcome next, so that scope, budget and the decision to continue can all be weighed against it."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+      - label: "We know the area, but not the exact problem"
+        points: 1
+        guidance: "A common position. List the tasks and decisions that take the most time or money, and who repeats them each week; the first use case is usually on that list."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+      - label: 'There is pressure to "do something with AI"'
+        points: 0
+        guidance: "Pressure without a defined problem is how many AI projects stall. Find the problem first; the choice of technology follows from it."
+        links:
+          - url: "/library/14-5-mistakes-to-avoid.html"
+            text: "5 mistakes to avoid when building your first AI product"
+
+  - id: q2
+    type: scored
+    area: "Where the data lives"
+    text: "Where does the relevant data live?"
+    options:
+      - label: "Mostly in one system"
+        points: 2
+        guidance: "A strong position. The open question is whether that system's data is complete and consistent."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "Several systems that don't talk to each other"
+        points: 1
+        guidance: "Each system holds part of the picture. A data model that maps one onto another is usually the first piece of work."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+      - label: "Spreadsheets, documents and inboxes"
+        points: 1
+        guidance: "Workable, though it needs structure before AI can use it reliably. The first job is agreeing which copy of each record is the true one."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "Mostly in people's heads"
+        points: 0
+        guidance: "Common in small teams, and a risk whenever someone leaves. Writing it down pays off with or without AI."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+
+  - id: q3
+    type: scored
+    area: "What the data contains"
+    text: "Do you know what's in your data?"
+    options:
+      - label: "Yes; it's documented, and we know its gaps"
+        points: 2
+        guidance: "Uncommon, and it means AI work can be scoped accurately."
+        links: []
+      - label: "Roughly, but nobody has written it down"
+        points: 1
+        guidance: "A short audit turns this into a document the whole team can use."
+        links:
+          - url: "/library/05-what-data-do-i-need.html"
+            text: "What data do I need?"
+      - label: "No"
+        points: 0
+        guidance: "Start here. What the data contains decides what AI can and cannot do for you."
+        links:
+          - url: "/library/05-what-data-do-i-need.html"
+            text: "What data do I need?"
+
+  - id: q4
+    type: flag
+    area: "Sensitivity"
+    text: "Is any of the data sensitive?"
+    options:
+      - label: "No"
+        guidance: "You have the widest choice of tools, hosted AI services included."
+        links: []
+      - label: "Personal data about customers, members or staff"
+        flag: sensitive
+        guidance: "Check whether it can go to a third-party AI service under UK GDPR, and what the people it describes would expect."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "Confidential to clients, or commercially sensitive"
+        flag: sensitive
+        guidance: "Client contracts often restrict third-party processing. Read them before choosing a tool."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "Regulated (health, financial, legal) or security-related"
+        flag: sensitive
+        guidance: "You will probably need UK-hosted or self-hosted models."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+          - url: "/library/95-private-inference-costs.html"
+            text: "What private inference costs"
+
+  - id: q5
+    type: flag
+    area: "Current use"
+    text: "How do you use AI today?"
+    options:
+      - label: "Not at all"
+        guidance: "Start with a small, low-risk task and learn from it before committing to anything larger."
+        links: []
+      - label: "Staff use chat tools individually (ChatGPT, Copilot, Claude)"
+        guidance: "Set a short policy on what data can be pasted in. Anything pasted into a commercial service has left the organisation."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "Connected to our systems or data (connectors, agents)"
+        flag: connected
+        guidance: "Check whether the model is being asked to filter, count or calculate. Those jobs belong in ordinary code, which does them exactly, every time."
+        links: []
+      - label: "We've built something custom"
+        guidance: "The next question is how you measure whether it works, and who notices when it stops."
+        links:
+          - url: "/library/25-llm-evaluation.html"
+            text: "Evaluating language models"
+
+  - id: q6
+    type: scored
+    area: "Technical judgement"
+    text: "Who can judge whether technical work is good?"
+    options:
+      - label: "An in-house lead with AI or data experience"
+        points: 2
+        guidance: "You can direct outside help and check what it delivers."
+        links: []
+      - label: "A technical team that's new to AI"
+        points: 1
+        guidance: "Good foundations. An experienced reviewer at the main decision points avoids expensive wrong turns."
+        links:
+          - url: "/library/18-mle-vs-swe.html"
+            text: "ML engineer vs software engineer"
+      - label: "An outside vendor or agency"
+        points: 1
+        guidance: "Make sure the documentation, access credentials and data sit in your own accounts, so the work survives a change of supplier."
+        links: []
+      - label: "No one"
+        points: 0
+        guidance: "A common reason projects go wrong unnoticed. Get independent technical judgement before spending on a build."
+        links:
+          - url: "/library/74-ml-team-structure.html"
+            text: "How to structure an ML team"
+
+  - id: q7
+    type: flag
+    area: "History"
+    text: "Has an AI or data project stalled before?"
+    options:
+      - label: "No, this is our first"
+        guidance: "Then there is no earlier approach to unpick."
+        links: []
+      - label: "Yes; it stalled or was abandoned"
+        flag: stalled
+        guidance: "Find out why before starting again. The cause is rarely the technology alone."
+        links:
+          - url: "/library/86-structuring-ml-projects.html"
+            text: "How to structure an ML project"
+      - label: "Yes; it's live, but disappointing"
+        flag: stalled
+        guidance: "An independent review can weigh fixing it against replacing it, without the sunk cost affecting the answer."
+        links:
+          - url: "/library/86-structuring-ml-projects.html"
+            text: "How to structure an ML project"
+
+  - id: q8
+    type: scored
+    area: "Measuring success"
+    text: "How will you know if it works?"
+    options:
+      - label: "We have an agreed measure and a way to check it"
+        points: 2
+        guidance: "That makes every later decision easier, including the decision to stop."
+        links: []
+      - label: "Staff will try it and tell us"
+        points: 1
+        guidance: "Using the tool is the best early test. Ask people to note where it is right and where it is wrong; that list becomes your automated test set later."
+        links:
+          - url: "/library/61-eval-datasets.html"
+            text: "Building an evaluation dataset"
+      - label: "We haven't thought about it"
+        points: 0
+        guidance: "Decide before building, or there will be no basis for deciding whether to continue."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for AI projects"
+
+  - id: q9
+    type: scored
+    area: "Acting on the output"
+    text: "What should happen with the AI's output?"
+    options:
+      - label: "It triggers an action in a system or workflow"
+        points: 2
+        guidance: "Data in, action out, and a change you can measure: the strongest shape for an AI project."
+        links: []
+      - label: "People read it to inform decisions"
+        points: 1
+        guidance: "Useful, though reports are easy to ignore. Decide who acts on each output, and what they do with it."
+        links: []
+      - label: "Not sure"
+        points: 0
+        guidance: "Work this out before anything else; it shapes the whole design."
+        links: []
+
+  - id: q10
+    type: scored
+    area: "The cost of waiting"
+    text: "What happens if you do nothing for a year?"
+    options:
+      - label: "We can put a number on it"
+        points: 2
+        guidance: "That number is your budget ceiling and the core of your business case."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+      - label: "It gets worse, but we haven't costed it"
+        points: 1
+        guidance: "A rough figure is enough to decide how much to invest."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+      - label: "Not much"
+        points: 0
+        guidance: "Then it may not be the right time, which is a valid conclusion."
+        links: []
+
+bands:
+  - min: 0
+    max: 5
+    name: "Foundations first"
+    text: "The goal or the data needs work before AI will pay off. The next step is to define the problem and audit the data, both of which are useful whatever you decide about AI."
+    links:
+      - url: "/library/68-build-measurements.html"
+        text: "Don't build models, build measurements"
+      - url: "/library/05-what-data-do-i-need.html"
+        text: "What data do I need?"
+  - min: 6
+    max: 10
+    name: "Ready to test"
+    text: "The foundations are in place. The next step is a short feasibility prototype on your own data, with go and stop criteria agreed before it starts."
+    links:
+      - url: "/library/69-measurement-framework.html"
+        text: "A measurement framework for AI projects"
+      - url: "/library/61-eval-datasets.html"
+        text: "Building an evaluation dataset"
+  - min: 11
+    max: 14
+    name: "Ready to build"
+    text: "You can scope and deliver in phases. The next step is a roadmap of fixed-price phases, with a decision point after each."
+    links:
+      - url: "/library/86-structuring-ml-projects.html"
+        text: "How to structure an ML project"
+      - url: "/library/04-cost-of-ml.html"
+        text: "The cost of machine learning"
+
+flags:
+  sensitive:
+    text: "Your data needs a hosting decision before a tool decision."
+    url: "/library/65-why-private-inference.html"
+    link_text: "Why private inference"
+  connected:
+    text: "Check which jobs the model is doing that ordinary code should do instead (filtering, counting and calculating are the usual ones)."
+    url: ""
+    link_text: ""
+  stalled:
+    text: "An independent review of the earlier project may be the right first step."
+    url: "/library/86-structuring-ml-projects.html"
+    link_text: "How to structure an ML project"
+
+faq:
+  - q: "What is AI readiness?"
+    a: "AI readiness is whether an organisation has what an AI project needs before it starts: a defined problem with a value on it, data that is known and reachable, someone able to judge the technical work, and a way to tell whether the result works. The choice of technology comes later and depends on those four."
+  - q: "How long does a full assessment take?"
+    a: "It depends on how many systems hold the relevant data and how many people we need to speak to. We agree the length and the fee in writing before any work starts."
+  - q: "What does a full assessment cost?"
+    a: "The first conversation is free. The assessment itself is fixed price, agreed before it starts."
+  - q: "What do we receive?"
+    a: "A data strategy: a short document setting out your situation, the goal in business terms, what is at stake if the work goes wrong, a phased plan with a fixed price and a go, adjust or stop decision after each phase, and what we recommend not doing. It is the same document our data strategy consulting work produces, scoped to the AI decision in front of you."
+  - q: "Are my answers sent anywhere?"
+    a: "We record which answers are chosen, without any name or contact details, to see how the assessment is used. Your contact details, and your answers linked to them, reach us only if you use one of the forms at the end."
