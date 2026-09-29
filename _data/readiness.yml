@@ -93,22 +93,20 @@ questions:
         flag: sensitive
         guidance: "Check whether it can go to a third-party AI service under UK GDPR, and what the people it describes would expect."
         links:
-          - url: "/library/65-why-private-inference.html"
-            text: "Why private inference"
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
       - label: "Confidential to clients, or commercially sensitive"
         flag: sensitive
         guidance: "Client contracts often restrict third-party processing. Read them before choosing a tool."
         links:
-          - url: "/library/65-why-private-inference.html"
-            text: "Why private inference"
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
       - label: "Regulated (health, financial, legal) or security-related"
         flag: sensitive
         guidance: "You will probably need UK-hosted or self-hosted models."
         links:
-          - url: "/library/65-why-private-inference.html"
-            text: "Why private inference"
-          - url: "/library/95-private-inference-costs.html"
-            text: "What private inference costs"
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
 
   - id: q5
     type: flag

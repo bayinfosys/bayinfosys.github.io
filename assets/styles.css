@@ -465,3 +465,36 @@ h1, h2 {
     text-decoration: none;
   }
 }
+
+/* Sovereign AI page */
+.sov-sector a {
+  font-size: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.sov-option {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--border);
+  margin-top: 1.5rem;
+}
+
+.sov-option h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.sov-meta {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.sov-table th,
+.sov-table td {
+  font-size: 0.9rem;
+}
+
+.sov-table caption {
+  caption-side: top;
+  color: #888;
+  font-size: 0.8rem;
+}

@@ -91,4 +91,4 @@ Ollama's simplicity outweighs its throughput ceiling here, and GPU choice matter
 
 Mapping a project onto one of these three narrows the hardware and serving-software decision from four independent questions to one.
 
-(If you're weighing hosted against self-hosted inference for a specific workload, [get in touch](/contact) to talk through the tradeoff.)
+(Whether to run inference yourself, and how to do it compliantly, is covered on the [Sovereign AI](/sovereign-ai.html) page.)
