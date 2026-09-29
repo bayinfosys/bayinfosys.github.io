@@ -2,11 +2,8 @@
 date: 2026-04-28
 layout: article
 title: "Multi-Tenant Architecture: A Practical Spectrum"
-seo_title: "Multi-Tenant Architecture Patterns: From Shared Database to Full Isolation"
-description: "Multi-tenancy is not a single pattern. It is a spectrum from shared tables
-to fully separate infrastructure, and the right point on that spectrum depends on what
-varies between tenants, where your operational complexity budget sits, and what failure
-looks like."
+seo_title: "Multi-Tenant Data Isolation: Row-Level Security, Schemas or Separate Databases?"
+description: "How to isolate tenant data: shared tables with PostgreSQL row-level security, a schema per tenant, a database per tenant, or separate infrastructure. When each fits, and what failure looks like in each."
 keywords: ["multi-tenant architecture", "multi-tenancy", "saas architecture", "tenant isolation", "database per tenant", "schema per tenant", "row-level security"]
 topic: "Architecture & Deployment"
 related:
