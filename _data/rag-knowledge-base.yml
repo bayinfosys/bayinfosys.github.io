@@ -1,0 +1,332 @@
+# RAG Knowledge Base Checklist, from articles 97-100.
+# Scores measure fit and readiness: higher is readier. Knowing a constraint
+# (sensitive documents, permissions) scores higher than not having checked.
+
+grouped: true
+
+questions:
+  # Fit (article 97)
+  - id: f1
+    type: scored
+    area: "Fit"
+    text: "What should users get back when they ask a question?"
+    options:
+      - label: "A written answer drawn from several documents"
+        points: 2
+        guidance: "RAG fits: the system retrieves the relevant passages and the model writes the answer from them."
+        links:
+          - url: "/library/97-what-is-rag.html"
+            text: "What problem does RAG actually solve?"
+      - label: "The right document or passage, which they read themselves"
+        points: 0
+        flag: search
+        guidance: "A well-built search index may serve this better and more reliably. Returning the source text avoids the risks that summarising it introduces."
+        links:
+          - url: "/library/97-what-is-rag.html"
+            text: "What problem does RAG actually solve?"
+      - label: "Not sure yet"
+        points: 1
+        guidance: "Ask a few likely users what they would do with an answer. If they would check the source anyway, search may be enough."
+
+  - id: f2
+    type: scored
+    area: "Fit"
+    text: "How often does the knowledge change?"
+    options:
+      - label: "Weekly or more often"
+        points: 2
+        guidance: "This suits RAG: updating an index costs far less than retraining a model."
+      - label: "Rarely; it is stable, foundational material"
+        points: 1
+        guidance: "Stable knowledge (house style, a domain's reasoning, how a task should behave) can suit fine-tuning, since the retraining cost is paid rarely. RAG still fits if answers must cite their sources."
+        links:
+          - url: "/library/97-what-is-rag.html"
+            text: "What problem does RAG actually solve?"
+      - label: "We do not know"
+        points: 0
+        guidance: "Find out; the answer decides between RAG and fine-tuning."
+        links:
+          - url: "/library/97-what-is-rag.html"
+            text: "What problem does RAG actually solve?"
+
+  - id: f3
+    type: scored
+    area: "Fit"
+    text: "Do answers need to cite their source?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "RAG provides this as a by-product, because the system knows which passage it retrieved."
+      - label: "No"
+        points: 1
+        guidance: "Then fine-tuning is also an option. Weigh it on how often the knowledge changes."
+        links:
+          - url: "/library/97-what-is-rag.html"
+            text: "What problem does RAG actually solve?"
+
+  # Data (article 99)
+  - id: d1
+    type: scored
+    area: "Data"
+    text: "What are the source documents mostly like?"
+    options:
+      - label: "Prose: contracts, policies, correspondence, reports"
+        points: 2
+        guidance: "The mature text pipeline suits it. Start with fixed-size or semantic chunking."
+        links:
+          - url: "/library/99-rag-data-methods.html"
+            text: "Data methods for RAG"
+      - label: "Tables, forms, scans or diagrams"
+        points: 1
+        guidance: "Decide between extracting the text and embedding the pages as images before indexing anything; the choice is hard to reverse once the corpus is indexed."
+        links:
+          - url: "/library/99-rag-data-methods.html"
+            text: "Data methods for RAG"
+      - label: "A database more than documents"
+        points: 1
+        guidance: "Structured data works better through a documented schema and generated queries than through a pipeline built to chunk prose."
+        links:
+          - url: "/library/27-schema-docs.html"
+            text: "SQL schema documentation for RAG pipelines"
+      - label: "A mixture we have not catalogued"
+        points: 0
+        guidance: "Catalogue it first. The right preparation method depends on what the documents look like."
+        links:
+          - url: "/library/99-rag-data-methods.html"
+            text: "Data methods for RAG"
+
+  - id: d2
+    type: scored
+    area: "Data"
+    text: "Do typical questions need facts from more than one document?"
+    options:
+      - label: "Rarely; the answer is usually in one place"
+        points: 2
+        guidance: "Flat chunks and similarity search handle this well."
+      - label: "Often"
+        points: 1
+        guidance: "Connecting facts that never appear in the same passage is where flat chunks struggle. A knowledge graph, or a reference compiled from the sources, handles it."
+        links:
+          - url: "/library/99-rag-data-methods.html"
+            text: "Data methods for RAG"
+          - url: "/library/62-context-compilation.html"
+            text: "Context is a build step"
+      - label: "Not sure"
+        points: 0
+        guidance: "Collect twenty real questions and check where each answer lives. The pattern decides the method."
+
+  - id: d3
+    type: scored
+    area: "Data"
+    text: "Is it clear which version of each document is current?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then the index can be kept in step with the source."
+      - label: "Mostly"
+        points: 1
+        guidance: "Outdated copies are retrieved as readily as current ones. Decide which source is authoritative and index only that."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "No"
+        points: 0
+        guidance: "Fix this first. A model given an outdated passage writes an outdated answer with the same confidence."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+
+  # Risks (article 98)
+  - id: r1
+    type: scored
+    area: "Risks"
+    text: "Can the documents be sent to third-party embedding and generation services?"
+    options:
+      - label: "Yes; none of it is sensitive"
+        points: 2
+        guidance: "Then hosted services are an option. Budget for embedding the whole corpus, as well as the queries."
+        links:
+          - url: "/library/98-rag-risks-and-costs.html"
+            text: "RAG risks and costs"
+      - label: "No, or only some of them"
+        points: 1
+        flag: private
+        guidance: "Embedding sends every indexed document to the provider at ingestion, whether or not anyone queries it. Keep the sensitive part on infrastructure you control."
+        links:
+          - url: "/checklists/private-inference.html"
+            text: "Do you need private inference?"
+      - label: "We have not checked"
+        points: 0
+        guidance: "Check before indexing anything. Ingestion is the point where documents leave."
+        links:
+          - url: "/library/98-rag-risks-and-costs.html"
+            text: "RAG risks and costs"
+
+  - id: r2
+    type: scored
+    area: "Risks"
+    text: "Do different users have permission to see different documents?"
+    options:
+      - label: "No; everyone can see everything"
+        points: 2
+        guidance: "Then permission-blind retrieval is not a risk. Check again if the audience grows."
+      - label: "Yes, and retrieval will filter by permission"
+        points: 2
+        guidance: "Store access metadata with each chunk and filter at retrieval time; the index will not inherit the source system's permissions."
+        links:
+          - url: "/library/33-vector-db-filters.html"
+            text: "Filtered vector search"
+      - label: "Yes, and we have not planned for it"
+        points: 0
+        flag: permissions
+        guidance: "A naive pipeline retrieves the most relevant passage whoever it belongs to, and puts it in the answer. Rebuild the permission model in the index before launch."
+        links:
+          - url: "/library/98-rag-risks-and-costs.html"
+            text: "RAG risks and costs"
+
+  - id: r3
+    type: scored
+    area: "Risks"
+    text: "Have you budgeted for re-indexing as the corpus grows and changes?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Ingestion is a recurring cost tied to corpus size, and the budget treats it as one."
+      - label: "We budgeted per query only"
+        points: 1
+        guidance: "Queries are the easier half of the bill. Every re-index (changed documents, a better embedding model) repeats the ingestion cost in full."
+        links:
+          - url: "/library/98-rag-risks-and-costs.html"
+            text: "RAG risks and costs"
+      - label: "No budget yet"
+        points: 0
+        guidance: "Estimate it from the corpus: documents, times chunks per document, times the cost of an embedding call, for every re-index. The retrieved context also sets the cost of each query."
+        links:
+          - url: "/library/80-falling-token-prices.html"
+            text: "Falling token prices"
+
+  # Evaluation (article 100)
+  - id: e1
+    type: scored
+    area: "Evaluation"
+    text: "Do you have a set of real questions with known correct answers?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "That set is what every stage of the pipeline gets measured against."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "We could generate one from our documents"
+        points: 1
+        guidance: "Generated question-and-answer pairs make evaluation practical at scale. Have a domain expert review a sample, since a judge model misses specialist errors."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "No"
+        points: 0
+        guidance: "Without one, a fluent wrong answer and a correct one look the same. Build the set before choosing tools."
+        links:
+          - url: "/checklists/ml-measurement.html"
+            text: "The ML measurement checklist"
+
+  - id: e2
+    type: scored
+    area: "Evaluation"
+    text: "Will you measure retrieval separately from the answers?"
+    options:
+      - label: "Yes, stage by stage"
+        points: 2
+        guidance: "Then a falling score points at the stage that broke: chunking, retrieval or generation."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "We will check the answers"
+        points: 1
+        guidance: "Answer quality alone cannot locate a fault. A model given the wrong passage still writes a confident answer."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "Not planned"
+        points: 0
+        guidance: "Retrieval can fail silently, on top of anything the model gets wrong. Plan to measure it."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+
+  - id: e3
+    type: scored
+    area: "Evaluation"
+    text: "Who will check the knowledge base once it is live?"
+    options:
+      - label: "A named owner, re-running the evaluation on a schedule"
+        points: 2
+        guidance: "Scores decay as documents are added, edited and retired, with no change to the model. A schedule catches it."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "Users will report problems"
+        points: 1
+        guidance: "Users are poorly placed to spot an unsupported claim, because it reads like a correct one. Add sampled review by someone who knows the material."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+      - label: "Nobody yet"
+        points: 0
+        guidance: "Name an owner before launch. Drift in the corpus is separate from drift in the model, and needs its own check."
+        links:
+          - url: "/library/100-rag-evaluation.html"
+            text: "Evaluating RAG"
+
+bands:
+  - min: 0
+    max: 11
+    name: "Groundwork first"
+    text: "Several foundations are missing. Settle them before anything is indexed, while the decisions are still cheap to change, starting with the area below."
+    links:
+      - url: "/library/97-what-is-rag.html"
+        text: "What problem does RAG actually solve?"
+      - url: "/library/100-rag-evaluation.html"
+        text: "Evaluating RAG"
+  - min: 12
+    max: 19
+    name: "Ready to prototype"
+    text: "The main decisions are made. A prototype on a representative slice of the corpus, measured stage by stage, will show whether the approach holds."
+    links:
+      - url: "/library/99-rag-data-methods.html"
+        text: "Data methods for RAG"
+      - url: "/library/100-rag-evaluation.html"
+        text: "Evaluating RAG"
+  - min: 20
+    max: 24
+    name: "Ready to build"
+    text: "Fit, data, risks and evaluation are all accounted for. Build in phases, with the evaluation set as the gate for each."
+    links:
+      - url: "/library/100-rag-evaluation.html"
+        text: "Evaluating RAG"
+      - url: "/library/86-structuring-ml-projects.html"
+        text: "How to structure an ML project"
+
+flags:
+  search:
+    text: "A search index may serve your users better than generated answers."
+    url: "/library/97-what-is-rag.html"
+    link_text: "What problem does RAG actually solve?"
+  private:
+    text: "Some documents cannot go to a third party, so embedding and generation need to run on infrastructure you control."
+    url: "/checklists/private-inference.html"
+    link_text: "Do you need private inference?"
+  permissions:
+    text: "Permission filtering has to be designed into retrieval before launch."
+    url: "/library/33-vector-db-filters.html"
+    link_text: "Filtered vector search"
+
+faq:
+  - q: "What is a RAG knowledge base?"
+    a: "A system that answers questions from your own documents. It retrieves the passages most likely to hold the answer and gives them to a language model, which writes the answer from them and can cite where it came from."
+  - q: "Should we use RAG or fine-tuning?"
+    a: "RAG suits knowledge that changes often and answers that must cite a source. Fine-tuning suits stable knowledge, such as house style or how a task should behave. Many questions are better served by plain search, which returns the source itself."
+  - q: "Can a RAG system keep our documents private?"
+    a: "Only if embedding and generation both run on infrastructure you control. A standard pipeline sends every indexed document to the embedding provider at ingestion, and the retrieved passages to the generation provider on every query."
+  - q: "How do you measure whether a RAG system works?"
+    a: "Stage by stage: the embedding model, the chunking, retrieval, then generation. A single score cannot say which stage failed, and each stage fails in its own way."

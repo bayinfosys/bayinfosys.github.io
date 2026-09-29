@@ -17,6 +17,7 @@ defaults:
       type: "posts"
     values:
       permalink: /library/:title.html
+      cta: ai-readiness-assessment
   - scope:
       path: "library"
       type: "pages"
