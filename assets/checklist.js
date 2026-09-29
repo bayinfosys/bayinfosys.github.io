@@ -10,6 +10,7 @@
   const cfg = cfgEl ? JSON.parse(cfgEl.textContent) : {};
   const bands = cfg.bands || [];
   const flagText = cfg.flags || {};
+  const scoreLabel = cfg.scoreLabel || "Score";
 
   const qs = Array.from(root.querySelectorAll(".cl-q"));
   const scored = qs.filter(q => q.dataset.type === "scored");
@@ -104,6 +105,7 @@
     const blocks = [];
     if (band) {
       blocks.push(render("cl-band", {
+        label: scoreLabel,
         score: String(score),
         max: String(maxScore),
         name: band.name,

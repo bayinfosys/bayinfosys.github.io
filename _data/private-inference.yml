@@ -1,0 +1,233 @@
+# Do You Need Private Inference? From article 65, routing to /sovereign-ai.html.
+# Scores measure the need for sovereignty: higher means more need.
+# Regulatory and contractual "Yes" answers carry 4 points, because either one
+# usually rules out a hosted model API on its own.
+
+score_label: "Sensitivity"
+hide_weakest: true
+
+questions:
+  - id: q1
+    type: scored
+    area: "Regulation"
+    text: "Does a law, regulator or framework restrict where any of the data can be processed?"
+    options:
+      - label: "Yes (for example NHS data frameworks, FCA rules, legal professional privilege)"
+        points: 4
+        flag: regulated
+        guidance: "Then the question is how to run AI compliantly. A hosted model API is a third-party processor, and the answer for regulated data is usually no."
+        links:
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
+      - label: "Not sure"
+        points: 1
+        guidance: "Find out before choosing a tool. Your data protection officer or compliance lead can usually answer quickly, because the frameworks are specific about third-party processing."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "No"
+        points: 0
+        guidance: "Then regulation does not decide this, and the questions below do."
+
+  - id: q2
+    type: scored
+    area: "Personal data"
+    text: "Does the data include personal data about customers, members, patients or staff?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "UK GDPR applies to every processor the data passes through, a model provider included, and processing outside the UK brings the international transfer rules into play."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "Some of it"
+        points: 1
+        guidance: "Consider whether it can be found and removed before processing. Detection misses some cases, so redaction reduces the risk without removing it."
+        links:
+          - url: "/library/73-ner-and-pii.html"
+            text: "What is NER and why does it matter for PII?"
+      - label: "No"
+        points: 0
+        guidance: "One constraint fewer. The remaining questions still apply."
+
+  - id: q3
+    type: scored
+    area: "Contracts"
+    text: "Do client contracts or confidentiality agreements restrict third-party processing?"
+    options:
+      - label: "Yes"
+        points: 4
+        flag: contract
+        guidance: "Sending the data to a model provider may breach them, whatever the provider's own terms say. Read the clauses before choosing a tool."
+        links:
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
+      - label: "Not sure"
+        points: 1
+        guidance: "Check for clauses on subcontractors, processors and data location. They often cover AI services without naming them."
+      - label: "No"
+        points: 0
+        guidance: "Then contracts do not decide this."
+
+  - id: q4
+    type: scored
+    area: "Exposure"
+    text: "If this data appeared somewhere it should not, what would it cost you?"
+    options:
+      - label: "A great deal: client trust, legal action or regulatory attention"
+        points: 2
+        guidance: "Then exposure is the deciding risk. A breach at your processor is a breach you may have to report."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "Embarrassing, but survivable"
+        points: 1
+        guidance: "Weigh it against the convenience of a hosted service. Keeping only the most sensitive subsets in-house is often enough."
+        links:
+          - url: "/library/98-rag-risks-and-costs.html"
+            text: "RAG risks and costs"
+      - label: "Little or nothing"
+        points: 0
+        guidance: "A hosted API is a reasonable choice for this data."
+
+  - id: q5
+    type: scored
+    area: "Training and reuse"
+    text: "Do you know whether your AI services can use submitted data for training?"
+    options:
+      - label: "Yes, and our terms exclude it"
+        points: 0
+        guidance: "Keep a record of the terms you relied on; providers revise them."
+      - label: "Staff use consumer chat tools, and we have not checked"
+        points: 2
+        flag: consumer
+        guidance: "Consumer chat services may use conversations for training unless a setting or plan excludes it. Check the settings, and set a policy on what staff may paste in."
+        links:
+          - url: "/library/65-why-private-inference.html"
+            text: "Why private inference"
+      - label: "We do not use an AI service yet"
+        points: 0
+        guidance: "Then you can choose on these criteria from the start. Running an open-weight model involves no model provider at all."
+        links:
+          - url: "/library/66-open-weights-separate-concerns.html"
+            text: "Open weight models and the separation of concerns"
+
+  - id: q6
+    type: scored
+    area: "Jurisdiction"
+    text: "Would it matter if a foreign government could require your cloud provider to hand over the data?"
+    options:
+      - label: "Yes"
+        points: 2
+        flag: jurisdiction
+        guidance: "Then UK residency is not enough on its own. US law can reach US cloud providers wherever the data is stored; your own hardware, or a provider outside US jurisdiction, avoids that."
+        links:
+          - url: "/sovereign-ai.html"
+            text: "Sovereign AI for UK organisations"
+      - label: "Not sure"
+        points: 1
+        guidance: "It usually matters for defence, security and some public-sector work, and for clients who ask. Check what your clients' contracts say about data location and access."
+      - label: "No"
+        points: 0
+        guidance: "Then a UK region with any major cloud provider meets the residency requirement."
+
+  - id: q7
+    type: scored
+    area: "Environment"
+    text: "Does the system need to run without an internet connection?"
+    options:
+      - label: "Yes"
+        points: 2
+        flag: offline
+        guidance: "Then it has to run on your own hardware. marigold runs with no connection once its models are downloaded."
+        links:
+          - url: "/library/64-marigold.html"
+            text: "Marigold: a self-hosted inference API"
+      - label: "No"
+        points: 0
+        guidance: "Any of the deployment options will work."
+
+  - id: q8
+    type: flag
+    area: "Volume"
+    text: "How steady is the expected usage?"
+    options:
+      - label: "Steady and high (millions of tokens a day)"
+        flag: volume
+        guidance: "At this volume, dedicated hardware may cost less than per-token pricing, whatever the sensitivity. The break-even is worth calculating."
+        links:
+          - url: "/library/95-private-inference-costs.html"
+            text: "What private inference costs"
+      - label: "Occasional or unpredictable"
+        guidance: "Per-token pricing suits irregular use, where dedicated hardware would sit idle. If private inference is needed for other reasons, a hosted private service spreads the hardware cost."
+        links:
+          - url: "/library/87-inference-infrastructure.html"
+            text: "AI inference infrastructure: a decision framework"
+      - label: "We do not know yet"
+        guidance: "Estimate it from the number of documents or requests a day; the cost comparison depends on it."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+bands:
+  - min: 0
+    max: 3
+    name: "A hosted API is likely fine"
+    text: "Nothing in your answers rules out a hosted model API. Choose one whose terms exclude training on your data, and set a policy on what staff may send to it."
+    links:
+      - url: "/library/87-inference-infrastructure.html"
+        text: "AI inference infrastructure: a decision framework"
+      - url: "/library/65-why-private-inference.html"
+        text: "Why private inference"
+  - min: 4
+    max: 9
+    name: "Private inference in your cloud"
+    text: "Your answers point to keeping processing inside a boundary you control. Open-weight models in your own cloud account usually meet the need, with UK residency and the security controls you already run."
+    links:
+      - url: "/sovereign-ai.html"
+        text: "Sovereign AI for UK organisations"
+      - url: "/library/40-private-inference.html"
+        text: "Private inference: running AI inside your own infrastructure"
+  - min: 10
+    max: 18
+    name: "Private inference from the start"
+    text: "Several constraints apply at once. Plan for private inference from the outset, and settle the jurisdiction question before choosing between your own hardware and your cloud account."
+    links:
+      - url: "/sovereign-ai.html"
+        text: "Sovereign AI for UK organisations"
+      - url: "/library/79-open-weights-deployment.html"
+        text: "Deployment tiers for open-weight models"
+
+flags:
+  regulated:
+    text: "A regulatory constraint applies, so a hosted model API is usually ruled out whatever the total."
+    url: "/sovereign-ai.html"
+    link_text: "Sovereign AI for UK organisations"
+  contract:
+    text: "Client contracts restrict third-party processing. Check them before any data goes to a model provider."
+  jurisdiction:
+    text: "Jurisdiction matters for this data: plan for your own hardware, or a cloud provider outside US jurisdiction."
+    url: "/sovereign-ai.html"
+    link_text: "Sovereign AI for UK organisations"
+  offline:
+    text: "Offline operation needs your own hardware, whatever the total."
+    url: "/library/64-marigold.html"
+    link_text: "Marigold: a self-hosted inference API"
+  consumer:
+    text: "Check the training settings on the chat tools staff already use, and set a policy on what can be pasted in."
+    url: "/library/65-why-private-inference.html"
+    link_text: "Why private inference"
+  volume:
+    text: "At steady high volume, private inference may also cost less than per-token pricing."
+    url: "/library/95-private-inference-costs.html"
+    link_text: "What private inference costs"
+
+faq:
+  - q: "What is private inference?"
+    a: "Running AI models on infrastructure you control (your own hardware, your cloud account, or a dedicated hosted service), so prompts and data never reach a model provider such as OpenAI, Anthropic or Google."
+  - q: "Is UK data residency enough?"
+    a: "It places the data under UK law. It does not stop US law from reaching a US cloud provider, which matters for some data and not for other data."
+  - q: "Do AI providers train on the data we send them?"
+    a: "It depends on the service and its terms. Business API and enterprise terms usually exclude training by default; consumer chat services and some free tiers may use submitted data unless a setting or plan excludes it. Terms change, so keep a record of the ones you relied on."
+  - q: "Are open-weight models good enough to replace a hosted API?"
+    a: "For most document, search and extraction tasks, yes. The leading closed models usually keep an edge on the hardest open-ended reasoning and on long, multi-step agent tasks."

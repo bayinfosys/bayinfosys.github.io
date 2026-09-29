@@ -1,0 +1,20 @@
+---
+title: "Do You Need Private Inference?"
+seo_title: "Do You Need Private Inference? A Checklist for Sensitive Data and AI"
+description: "Eight questions on regulation, exposure, training risk, jurisdiction and usage, with a recommendation on how to deploy AI on sensitive data."
+keywords: ["private inference", "private ai inference", "do i need private inference", "compliant inference hosting", "self hosted llm", "uk data residency", "gdpr ai"]
+---
+
+<h1>Do you need private inference?</h1>
+<p class="lead mt-3 cl-noprint">Private inference means running AI models on infrastructure you control, so the data never goes to a model provider. Whether you need it comes down to three risks (regulation, exposure, and the reuse of submitted data) and two practical questions: which jurisdictions can reach the data, and whether the system has to run offline. This checklist works through them and suggests which kind of deployment fits.</p>
+
+<section class="cl-noprint mt-5" aria-labelledby="how">
+  <h2 id="how">How does the checklist work?</h2>
+  <p>Eight questions, about five minutes. Each answer shows guidance and a link to further reading. Seven questions add to a sensitivity score; the eighth, on usage, affects only the cost case. A regulatory or contractual yes carries more weight than the other answers, because either one usually rules out a hosted model API on its own. We record which answers are chosen, without any name or contact details; those reach us only if you use one of the forms at the end.</p>
+</section>
+
+{% include checklist/questions.html %}
+{% include checklist/results.html %}
+{% include checklist/next.html %}
+{% include checklist/print.html heading="Can I print the private inference checklist?" %}
+{% include checklist/faq.html %}

@@ -21,6 +21,7 @@ layout: default
 </script>
 {% endif %}
 
+<script type="application/json" id="checklist-config">{"bands": {{ d.bands | jsonify }}, "flags": {{ d.flags | jsonify }}, "scoreLabel": {{ d.score_label | default: "Score" | jsonify }}}</script>
 <script type="application/json" id="checklist-config">{"bands": {{ d.bands | jsonify }}, "flags": {{ d.flags | jsonify }}}</script>
 
 <main class="container py-5">
