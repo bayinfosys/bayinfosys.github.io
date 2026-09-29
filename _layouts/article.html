@@ -32,17 +32,10 @@ layout: default
 
   {% include related.html %}
 
-  <hr class="mt-5">
-  {% assign sov_topics = "Infrastructure|Architecture & Deployment|Security & Resilience|Developer Tools" | split: "|" %}
-  {% assign cta = page.cta %}
-  {% unless cta %}
-    {% if sov_topics contains page.topic %}{% assign cta = "sovereign" %}{% else %}{% assign cta = "assessment" %}{% endif %}
-  {% endunless %}
-  <p class="text-muted">
-  {% if cta == "sovereign" %}
-  (If your data cannot go to a third-party model provider, <a href="/sovereign-ai.html">sovereign AI</a> sets out the options.
-  {% else %}
-  (To see where your organisation stands, take the ten-question <a href="/ai-readiness-assessment.html">AI readiness assessment</a>
+  <hr id="article-end" class="mt-5">
+  {% if page.cta %}
+  {% assign cl = site.checklists | where: "slug", page.cta | first %}
+  <p class="text-muted">(Checklist: <a href="{{ cl.url }}">{{ cl.title }}</a>. {{ cl.description }})</p>
   {% endif %}
-  Questions about this article? <a href="/contact.html">Get in touch</a>.)</p>
+  <p class="text-muted">Questions about this? <a href="/contact.html">Get in touch.</a></p>
 </main>
