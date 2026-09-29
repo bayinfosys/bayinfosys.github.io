@@ -6,6 +6,7 @@ description: "A RAG pipeline sends your documents to a third party twice on ever
 keywords: ["rag data privacy", "rag security risk", "rag cost", "embedding api cost", "private rag pipeline", "rag access control"]
 topic: "AI Systems"
 seo_title: "RAG Risks: Data Exposure, Cost, and Access Control Explained"
+cta: sovereign
 related:
   - 65-why-private-inference
   - 40-private-inference

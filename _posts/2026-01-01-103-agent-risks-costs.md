@@ -6,6 +6,7 @@ description: "RAG's main risk is data leaving the building. An agent's main risk
 keywords: ["ai agent risks", "agent cost", "denial of wallet attack", "agent governance", "agent memory corruption", "MINJA", "least privilege ai agents", "agent security"]
 topic: "AI Systems"
 seo_title: "Agent Risks and Costs: Governance, Denial-of-Wallet, and Exposure"
+cta: sovereign
 related:
   - 09-data-risks
   - 65-why-private-inference

@@ -6,6 +6,7 @@ seo_title: "Regulatory and Exposure Risk: Why Private Inference for Compliance"
 description: "The specific regulatory (NHS, FCA, GDPR) and exposure risks that make private inference necessary for regulated data, distinct from the general architectural case for self-hosting AI models."
 keywords: ["private inference", "data sovereignty", "ai data risk", "private ai hosting", "gdpr ai", "open weight models", "self-hosted llm", "ai training data risk", "private cloud inference", "data leakage ai"]
 topic: "Infrastructure"
+cta: sovereign
 related:
   - 40-private-inference
   - 63-private-inference-stack
