@@ -498,3 +498,25 @@ h1, h2 {
   color: #888;
   font-size: 0.8rem;
 }
+
+/* Homepage readiness block */
+.btn-light-custom {
+  background-color: var(--light-bg);
+  color: var(--dark-bg);
+  border: none;
+}
+
+.btn-light-custom:hover {
+  background-color: var(--flat-bg);
+  color: var(--dark-bg);
+}
+
+.readiness-sample {
+  list-style: none;
+  padding-left: 0;
+}
+
+.readiness-sample li {
+  font-style: italic;
+  margin-top: 0.4rem;
+}

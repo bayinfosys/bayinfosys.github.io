@@ -44,7 +44,7 @@ faq:
 
       <h1>Sovereign AI for UK organisations</h1>
       <p class="lead mt-3">Many organisations cannot send their data to a third-party model API. The data is personal, or it belongs to clients, or a regulator restricts where it goes, or a leak would cost more trust than the organisation can afford to lose. Open-weight models run wherever the data already is, which takes the model provider out of the arrangement.</p>
-      <p>This page sets out what sovereignty means in practice, who needs it, and the three ways we deploy marigold (our open-source inference platform) to provide it. (To see where your organisation stands first, take the <a href="/ai-readiness-assessment.html">AI readiness assessment</a>; to go straight to a conversation, <a href="#discuss">discuss a deployment</a>.)</p>
+      <p>This page sets out what sovereignty means in practice, who needs it, and the three ways we deploy <a href="https://marigold.run">marigold</a> (our open-source inference platform) to provide it. (To see where your organisation stands first, take the <a href="/ai-readiness-assessment.html">AI readiness assessment</a>; to go straight to a conversation, <a href="#discuss">discuss a deployment</a>.)</p>
 
       <section class="mt-5" aria-labelledby="sov-meaning">
         <h2 id="sov-meaning">What does "sovereign AI" mean for an organisation?</h2>
@@ -91,7 +91,7 @@ faq:
           <div class="col-12 col-sm-6">
             <div class="library-card sov-sector">
               <span class="library-card__title">Defence and security suppliers</span>
-              <span class="library-card__desc">Data that cannot leave a controlled environment. marigold runs with no network connection once its models are installed.</span>
+              <span class="library-card__desc">Data that cannot leave a controlled environment. <a href="https://marigold.run">marigold</a> runs with no network connection once its models are installed.</span>
               <a href="/library/79-open-weights-deployment.html">Deployment tiers for open-weight models</a>
             </div>
           </div>
@@ -106,7 +106,7 @@ faq:
 
       <section class="mt-5" aria-labelledby="sov-marigold">
         <h2 id="sov-marigold">What is marigold?</h2>
-        <p>marigold is our open-source inference platform for open-weight models such as Llama, Mistral and Qwen. It offers the same API as OpenAI and Anthropic, so software written for those services can point at marigold without changes, and it runs the same way on a single server, in a cloud account, or as a hosted service.</p>
+        <p><a href="https://marigold.run">marigold</a> is our open-source inference platform for open-weight models such as Llama, Mistral and Qwen. It offers the same API as OpenAI and Anthropic, so software written for those services can point at marigold without changes, and it runs the same way on a single server, in a cloud account, or as a hosted service.</p>
         <p>Its models cover text generation, embeddings, image understanding and generation, text-to-speech, and evaluation. (For engineers: <a href="https://marigold.run">marigold.run</a>, the <a href="https://github.com/bayinfosys/marigold">source on GitHub</a>, the <a href="https://marigold.run/tutorials.html">tutorials</a>, and <a href="/library/64-marigold.html">how marigold works</a>.)</p>
       </section>
 
@@ -116,13 +116,14 @@ faq:
 
         <div class="sov-option">
           <h3>On your own hardware</h3>
-          <p>marigold runs on servers you own, on your premises. It needs an internet connection only to download the models; after that it runs with no connection at all. No cloud provider is involved, so no third party holds the data. This is the strongest option.</p>
+          <p><a href="https://marigold.run">marigold</a> runs on servers you own, on your premises. It needs an internet connection only to download the models; after that it runs with no connection at all. No cloud provider is involved, so no third party holds the data. This is the strongest option.</p>
           <p class="sov-meta"><strong>Who runs it:</strong> your team. <strong>Price:</strong> the software is open source and free; help with hardware sizing, installation and configuration is priced per engagement. (Sizing guidance: <a href="/library/78-gpu-market-2026.html">GPU options for self-hosted inference</a>.)</p>
         </div>
 
         <div class="sov-option">
           <h3>In your cloud account</h3>
-          <p>We deploy marigold into your own cloud account, inside the security setup you already run: your network rules, access controls, logging and billing. Costs and data egress appear in the monitoring you already have. Your cloud provider's jurisdiction applies.</p>
+          <p>We deploy <a href="https://marigold.run">marigold</a> into your own cloud account, inside the security setup you already run: your network rules, access controls, logging and billing. Costs and data egress appear in the monitoring you already have. Your cloud provider's jurisdiction applies.</p>
+          <p><a href="https://marigold.run">marigold</a> needs only compute instances and storage, so it runs on any of the major clouds. We deploy to AWS with Terraform today; adding Azure or Google Cloud takes about a week, on request.</p>
           <p>A deployment runs in four stages:</p>
           <ol>
             <li>A readiness check of the data, its sensitivity and the use case.</li>
@@ -136,7 +137,7 @@ faq:
 
         <div class="sov-option">
           <h3>Hosted by us</h3>
-          <p>We run marigold on AWS in the region you choose and bill you directly. You receive an API endpoint and manage no infrastructure, and model versions change only by agreement with you. AWS is a US company, so the CLOUD Act point above applies.</p>
+          <p>We run <a href="https://marigold.run">marigold</a> on AWS in the region you choose and bill you directly. You receive an API endpoint and manage no infrastructure, and model versions change only by agreement with you. AWS is a US company, so the CLOUD Act point above applies.</p>
           <p class="sov-meta"><strong>Who runs it:</strong> Bay Information Systems. <strong>Price:</strong> monthly, based on usage, and available on request. (Include your expected volume when you <a href="#discuss">get in touch</a>.)</p>
         </div>
 
@@ -236,7 +237,7 @@ faq:
             <textarea class="form-control" id="sov-data" name="data" rows="3" placeholder="For example: member records, client contracts, claims notes."></textarea>
           </div>
           <div class="mb-3">
-            <label for="sov-usage" class="form-label">Expected usage (for hosted marigold)</label>
+            <label for="sov-usage" class="form-label">Expected usage (for hosted <a href="https://marigold.run">marigold</a>)</label>
             <input type="text" class="form-control" id="sov-usage" name="usage" placeholder="For example: 2,000 documents a day.">
           </div>
           <button type="submit" class="btn btn-custom">Send</button>
