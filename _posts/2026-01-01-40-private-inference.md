@@ -6,6 +6,7 @@ description: "Data egress is the constraint that kills AI projects in regulated 
 keywords: ["private inference", "self-hosted llm", "aws vpc", "data sovereignty", "regulated sectors", "open source models"]
 topic: "Architecture & Deployment"
 seo_title: "How to Run AI Models Inside Your Own Infrastructure"
+cta: private-inference
 related:
   - 63-private-inference
   - 65-why-private-inference

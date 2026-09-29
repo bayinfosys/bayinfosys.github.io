@@ -3,14 +3,10 @@ layout: article
 date: 2026-05-20
 title: "A Measurement Framework for Machine Learning Projects"
 seo_title: "Machine Learning Measurement Framework: Eval Datasets and Scoring"
-description: "A practical framework for defining, building, and maintaining
-the measurement system that determines whether an ML project is working.
-Includes scoring formulae, risk weighting, and a readiness checklist."
-keywords: ["machine learning evaluation framework", "ml success metrics",
-"how to evaluate machine learning model", "ml deployment criteria",
-"machine learning measurement", "ai project evaluation", "ml eval dataset",
-"machine learning readiness", "ml scoring framework"]
+description: "A practical framework for defining, building, and maintaining the measurement system that determines whether an ML project is working. Includes scoring formulae, risk weighting, and a readiness checklist."
+keywords: ["machine learning evaluation framework", "ml success metrics", "how to evaluate machine learning model", "ml deployment criteria", "machine learning measurement", "ai project evaluation", "ml eval dataset", "machine learning readiness", "ml scoring framework"]
 topic: "Product & Strategy"
+cta: ml-measurement
 last_modified_at: 2026-05-20
 related:
   - 68-build-measurements
