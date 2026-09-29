@@ -6,6 +6,11 @@ plugins:
   - jekyll-redirect-from
   - jekyll-feed
 
+collections:
+  checklists:
+    output: true
+    permalink: /checklists/:name.html
+
 defaults:
   - scope:
       path: ""
@@ -17,6 +22,11 @@ defaults:
       type: "pages"
     values:
       layout: article
+  - scope:
+      path: ""
+      type: "checklists"
+    values:
+      layout: checklist
 
 author:
   name: "Edward Grundy"

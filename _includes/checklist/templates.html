@@ -1,0 +1,47 @@
+<template id="tpl-cl-status">
+  <p class="text-muted"><span data-bind="text:left"></span> left to answer.</p>
+</template>
+
+<template id="tpl-cl-done">
+  <p>All questions answered. The reading list below collects the articles linked from your answers.</p>
+</template>
+
+<template id="tpl-cl-band">
+  <div class="cl-result">
+    <p class="cl-result__label">Score <span data-bind="text:score"></span> of <span data-bind="text:max"></span></p>
+    <h3 data-bind="text:name"></h3>
+    <p data-bind="text:text"></p>
+    <ul class="cl-links" data-bind="append:links"></ul>
+  </div>
+</template>
+
+<template id="tpl-cl-weakest">
+  <div class="cl-result mt-4">
+    <p class="cl-result__label">Weakest area</p>
+    <h3 data-bind="text:area"></h3>
+    <div data-bind="append:guidance"></div>
+  </div>
+</template>
+
+<template id="tpl-cl-flags">
+  <div class="cl-result mt-4">
+    <p class="cl-result__label">From your other answers</p>
+    <ul class="cl-links" data-bind="append:items"></ul>
+  </div>
+</template>
+
+<template id="tpl-cl-flag">
+  <li><span data-bind="text:text"></span> <a data-bind="href:url; text:link_text" data-optional="url"></a></li>
+</template>
+
+<template id="tpl-cl-link">
+  <li><a data-bind="href:url; text:text"></a></li>
+</template>
+
+<template id="tpl-cl-sent">
+  <span data-bind="text:message"></span>
+</template>
+
+<template id="tpl-cl-send-failed">
+  <span>That did not send. Please email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a> instead.</span>
+</template>

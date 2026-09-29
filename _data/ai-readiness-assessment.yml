@@ -192,13 +192,13 @@ questions:
         guidance: "Using the tool is the best early test. Ask people to note where it is right and where it is wrong; that list becomes your automated test set later."
         links:
           - url: "/library/61-eval-datasets.html"
-            text: "Building an evaluation dataset"
+            text: "How to evaluate an AI pipeline"
       - label: "We haven't thought about it"
         points: 0
         guidance: "Decide before building, or there will be no basis for deciding whether to continue."
         links:
-          - url: "/library/69-measurement-framework.html"
-            text: "A measurement framework for AI projects"
+          - url: "/checklists/ml-measurement.html"
+            text: "The ML measurement checklist"
 
   - id: q9
     type: scored
@@ -256,9 +256,9 @@ bands:
     text: "The foundations are in place. The next step is a short feasibility prototype on your own data, with go and stop criteria agreed before it starts."
     links:
       - url: "/library/69-measurement-framework.html"
-        text: "A measurement framework for AI projects"
+        text: "A measurement framework for ML projects"
       - url: "/library/61-eval-datasets.html"
-        text: "Building an evaluation dataset"
+        text: "How to evaluate an AI pipeline"
   - min: 11
     max: 14
     name: "Ready to build"

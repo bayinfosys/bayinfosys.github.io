@@ -520,3 +520,154 @@ h1, h2 {
   font-style: italic;
   margin-top: 0.4rem;
 }
+
+/* Checklists */
+.cl-q {
+  margin-top: 2.5rem;
+}
+
+.cl-q__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cl-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.cl-opt {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--flat-bg);
+  transition: border-color 0.1s;
+}
+
+.cl-opt:hover,
+.cl-opt.is-selected {
+  border-color: var(--text);
+}
+
+.cl-opt > summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 2.6rem;
+  line-height: 1.5;
+}
+
+.cl-opt > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cl-opt > summary::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+}
+
+.cl-opt.is-selected > summary::before {
+  background: var(--text);
+  box-shadow: inset 0 0 0 2px var(--flat-bg);
+}
+
+.cl-opt > summary:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.cl-guide {
+  padding: 0 1rem 1rem 2.6rem;
+  font-size: 0.95rem;
+}
+
+.cl-guide p {
+  margin-bottom: 0.5rem;
+}
+
+.cl-result {
+  padding: 1.5rem;
+  border-left: 3px solid var(--border);
+}
+
+.cl-result h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.cl-result__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 0.4rem;
+}
+
+.cl-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cl-links li {
+  margin-top: 0.4rem;
+}
+
+.cl-print__list > li {
+  margin-top: 0.75rem;
+}
+
+.cl-print__list ul {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.cl-print-only {
+  display: none;
+}
+
+/* Shared form panel (checklists, sovereign AI page) */
+.form-panel {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+@media print {
+  nav,
+  footer,
+  .quiz-ribbon,
+  .cl-noprint {
+    display: none !important;
+  }
+
+  .cl-print {
+    margin-top: 0 !important;
+  }
+
+  .cl-print-only {
+    display: block;
+  }
+
+  .cl-print a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.cl-group {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 3rem 0 0;
+}

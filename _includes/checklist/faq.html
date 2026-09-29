@@ -1,0 +1,10 @@
+{% assign d = site.data[page.slug] %}
+{% if d.faq %}
+<section class="cl-noprint mt-5" aria-labelledby="cl-faq-h">
+  <h2 id="cl-faq-h">{{ include.heading | default: "Frequently asked questions" }}</h2>
+  {% for f in d.faq %}
+  <h3 class="h5 mt-4">{{ f.q }}</h3>
+  <p>{{ f.a }}</p>
+  {% endfor %}
+</section>
+{% endif %}

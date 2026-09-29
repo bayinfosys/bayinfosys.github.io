@@ -1,0 +1,26 @@
+---
+layout: default
+title: "Checklists"
+description: "Short interactive checklists on AI readiness, data and deployment. Each answer links to the article in our library that covers it."
+permalink: /checklists
+---
+
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1>Checklists</h1>
+      <p class="lead mt-3">Each checklist takes a few minutes. Every answer comes with guidance and a link to the library article that covers it, so the checklists also work as a way into the library by question.</p>
+      <div class="row g-3 mt-3">
+        {% for c in site.checklists %}
+        {% assign d = site.data[c.slug] %}
+        <div class="col-12">
+          <a href="{{ c.url }}" class="library-card">
+            <span class="library-card__title">{{ c.title }}</span>
+            <span class="library-card__desc">{{ c.description }} ({{ d.questions.size }} questions.)</span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>

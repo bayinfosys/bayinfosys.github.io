@@ -1,0 +1,34 @@
+{% assign d = site.data[page.slug] %}
+{% assign total = 0 %}
+{% for q in d.questions %}
+  {% if q.type == "scored" %}
+    {% assign qmax = 0 %}
+    {% for o in q.options %}{% if o.points > qmax %}{% assign qmax = o.points %}{% endif %}{% endfor %}
+    {% assign total = total | plus: qmax %}
+  {% endif %}
+{% endfor %}
+{% assign flag_qs = d.questions | where: "type", "flag" %}
+
+<section class="cl-print mt-5" aria-labelledby="cl-print-h">
+  <h2 id="cl-print-h">{{ include.heading | default: "Can I print this checklist?" }}</h2>
+  <p class="cl-noprint">Yes. The version below lists every question{% if total > 0 %} with the points for each answer{% endif %}.{% if flag_qs.size > 0 %} Questions marked "no points" change the advice without changing the score.{% endif %}</p>
+  <p class="cl-noprint" data-cl-js hidden><button type="button" id="cl-print-btn" class="btn btn-custom">Print the checklist</button></p>
+  <ol class="cl-print__list">
+    {% for q in d.questions %}
+    <li>
+      <strong>{{ q.text }}</strong>{% if q.type == "flag" %} (no points){% endif %}
+      <ul>
+        {% for o in q.options %}
+        <li>[ ] {{ o.label }}{% if q.type == "scored" %} ({{ o.points }}){% endif %}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ol>
+  {% if d.bands %}
+  <p><strong>Score out of {{ total }}:</strong>
+    {% for b in d.bands %}{{ b.min }}-{{ b.max }}, {{ b.name | downcase }}{% unless forloop.last %}; {% endunless %}{% endfor %}.
+  </p>
+  {% endif %}
+  <p class="cl-print-only">{{ site.url | remove: "https://" }}{{ page.url }}</p>
+</section>

@@ -1,0 +1,63 @@
+<section id="cl-next" class="cl-noprint mt-5" aria-labelledby="cl-next-h" hidden>
+  <h2 id="cl-next-h">{{ include.heading | default: "What next?" }}</h2>
+  <p>Three options, in order of commitment. (What we collect is set out in the <a href="/privacy.html">privacy notice</a>.)</p>
+
+  <form id="cl-form-email" class="form-panel mt-4">
+    <h3 class="h5">Email me my results</h3>
+    <p>We will email you your result and the reading list below, usually within one working day.</p>
+    <div class="mb-3">
+      <label for="cl-email-1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="cl-email-1" name="email" autocomplete="email" required>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" id="cl-consent" name="consent">
+      <label class="form-check-label" for="cl-consent">I consent to be contacted about my results</label>
+    </div>
+    <button type="submit" class="btn btn-custom">Email my results</button>
+    <p class="form-msg mt-3" role="status" hidden></p>
+  </form>
+
+  <form id="cl-form-call" class="form-panel mt-4">
+    <h3 class="h5">Talk it through</h3>
+    <p>A free 20-minute call to go through your answers. Only the email address is required.</p>
+    <div class="mb-3">
+      <label for="cl-email-2" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="cl-email-2" name="email" autocomplete="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="cl-name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="cl-name" name="name" autocomplete="name">
+    </div>
+    <div class="mb-3">
+      <label for="cl-org" class="form-label">Organisation</label>
+      <input type="text" class="form-control" id="cl-org" name="organisation" autocomplete="organization">
+    </div>
+    <div class="mb-3">
+      <label for="cl-decision" class="form-label">Who would make the decision?</label>
+      <input type="text" class="form-control" id="cl-decision" name="decision_maker">
+    </div>
+    <div class="mb-3">
+      <label for="cl-timing" class="form-label">Timing</label>
+      <select class="form-select" id="cl-timing" name="timing">
+        <option value="">Choose one</option>
+        <option>This quarter</option>
+        <option>This year</option>
+        <option>Exploring</option>
+      </select>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" id="cl-inc" name="include_answers">
+      <label class="form-check-label" for="cl-inc">Include my result and answers</label>
+    </div>
+    <button type="submit" class="btn btn-custom">Request a call</button>
+    <p class="form-msg mt-3" role="status" hidden></p>
+  </form>
+
+  <h3 class="h5 mt-5">Keep reading</h3>
+  <p>The articles linked from your answers:</p>
+  <ul id="cl-reading" class="cl-links"></ul>
+</section>
+
+<noscript>
+  <p class="cl-noprint mt-4">(To talk through your answers, email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a>.)</p>
+</noscript>

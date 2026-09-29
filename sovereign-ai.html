@@ -210,7 +210,7 @@ faq:
       <section id="discuss" class="mt-5" aria-labelledby="sov-discuss">
         <h2 id="sov-discuss">Discuss a deployment</h2>
         <p>Tell us what the data is and which option interests you, and we will reply within one working day. (What we collect is set out in the <a href="/privacy.html">privacy notice</a>.)</p>
-        <form id="sov-form" class="ra-form mt-3">
+        <form id="sov-form" class="form-panel mt-3">
           <div class="mb-3">
             <label for="sov-email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="sov-email" name="email" autocomplete="email" required>
@@ -241,7 +241,7 @@ faq:
             <input type="text" class="form-control" id="sov-usage" name="usage" placeholder="For example: 2,000 documents a day.">
           </div>
           <button type="submit" class="btn btn-custom">Send</button>
-          <p class="ra-form__msg mt-3" role="status" hidden></p>
+          <p class="form-msg mt-3" role="status" hidden></p>
         </form>
         <noscript>
           <p class="mt-3">(Or email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a>.)</p>
@@ -260,6 +260,7 @@ faq:
   <span>That did not send. Please email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a> instead.</span>
 </template>
 
+<script src="/assets/render.js"></script>
 <script>
 (() => {
   // Clone template "tpl-<name>" and fill its data-bind targets from values.
@@ -308,7 +309,7 @@ faq:
       }
     } catch (err) {}
 
-    const msg = form.querySelector(".ra-form__msg");
+    const msg = form.querySelector(".form-msg");
     msg.hidden = false;
     if (sent) {
       msg.replaceChildren(render("sent", { message: "Sent. We will reply within one working day." }));

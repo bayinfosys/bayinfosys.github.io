@@ -13,7 +13,7 @@ description: "Bay Information Systems is an independent AI consultancy. We asses
     <h2 style="color: var(--light-bg);">Is your organisation ready for AI?</h2>
     <p class="mt-3">Ten questions, about five minutes. Each answer comes with guidance and a link to the article that covers it, and the result names your weakest area and the next step. It includes questions such as:</p>
     <ul class="readiness-sample mt-3">
-      {% for q in site.data.readiness.questions %}
+      {% for q in site.data["ai-readiness-assessment"].questions %}
         {% if q.id == "q3" or q.id == "q6" or q.id == "q8" %}
         <li>{{ q.text }}</li>
         {% endif %}

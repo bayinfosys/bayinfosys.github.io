@@ -1,0 +1,407 @@
+# ML Measurement Checklist, from article 69.
+# Only "Yes" scores (1). "Uncertain" and "No" both score 0, because either
+# way the item is not in place; the guidance differs.
+
+grouped: true
+
+questions:
+  # Ground truth
+  - id: g1
+    type: scored
+    area: "Ground truth"
+    text: "Have you identified the decision points the model will automate or support?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Each decision point is a place to collect examples, which is where the ground truth dataset starts."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Walk through the process from the customer's side and mark every place where a person makes the same judgement repeatedly. Those are the candidates."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+      - label: "No"
+        points: 0
+        guidance: "Start here; every later item on this list depends on it. A process walk is the usual way to find them."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+
+  - id: g2
+    type: scored
+    area: "Ground truth"
+    text: "Can you produce labelled examples of correct output for those decisions?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then the task can be specified formally; the labelled set is the specification."
+        links:
+          - url: "/library/46-labels-are-the-task.html"
+            text: "Task specification is the primary artefact"
+      - label: "Uncertain"
+        points: 0
+        guidance: "Look at what the organisation already records. Support tickets, rework queues and known-issue lists hold the input, the output and the correction in one place."
+        links:
+          - url: "/library/67-swe-know-about-ml.html"
+            text: "What software engineers already know about machine learning"
+      - label: "No"
+        points: 0
+        guidance: "Without examples of correct output there is nothing to measure a model against. Producing them is the first piece of work, and it needs the domain expert."
+        links:
+          - url: "/library/46-labels-are-the-task.html"
+            text: "Task specification is the primary artefact"
+
+  - id: g3
+    type: scored
+    area: "Ground truth"
+    text: "Do you have at least 50 labelled examples, or a plan to produce them before evaluation begins?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Fifty well-chosen examples evaluate a model more reliably than a thousand ambiguous ones."
+        links:
+          - url: "/library/61-eval-datasets.html"
+            text: "How to evaluate an AI pipeline"
+      - label: "Uncertain"
+        points: 0
+        guidance: "Count what exists before planning more. Historical corrections often supply the first few dozen."
+        links:
+          - url: "/library/67-swe-know-about-ml.html"
+            text: "What software engineers already know about machine learning"
+      - label: "No"
+        points: 0
+        guidance: "Budget the labelling before the model. The cost is the number of examples, divided by examples per day, times the labeller's daily rate, and labelling is frequently the largest single cost in the project."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+  - id: g4
+    type: scored
+    area: "Ground truth"
+    text: "Do your examples cover failure cases as well as successes?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then the evaluation can catch a regression on the cases that matter."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Production data leans towards the cases the system was built for. Check for empty fields, duplicates and inputs at the extremes."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+      - label: "No"
+        points: 0
+        guidance: "Construct synthetic examples for the edge cases deliberately; production logs will not supply them."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+
+  # Scoring
+  - id: s1
+    type: scored
+    area: "Scoring"
+    text: "Have you defined what correct output means for each example, in terms you can count?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then scoring is a comparison, and anyone can rerun it."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Where two experts would disagree on an example, the definition is not yet precise enough. Resolve the disagreements; they are part of the specification."
+        links:
+          - url: "/library/46-labels-are-the-task.html"
+            text: "Task specification is the primary artefact"
+      - label: "No"
+        points: 0
+        guidance: "Write the definition down for each example before choosing a metric; the metric follows from the definition."
+        links:
+          - url: "/library/23-business-goals.html"
+            text: "Metrics for business goals"
+
+  - id: s2
+    type: scored
+    area: "Scoring"
+    text: "Have you assigned risk weights to failure classes, based on business consequence?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then the weighted score measures what matters to the business."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Group the failures you have seen (routing, classification, extraction, boundary errors) and ask the domain expert which cost most."
+        links:
+          - url: "/library/67-swe-know-about-ml.html"
+            text: "What software engineers already know about machine learning"
+      - label: "No"
+        points: 0
+        guidance: "Without weights, a model that scores 93% overall but fails on high-risk cases looks better than one that scores 89% evenly."
+        links:
+          - url: "/library/67-swe-know-about-ml.html"
+            text: "What software engineers already know about machine learning"
+
+  - id: s3
+    type: scored
+    area: "Scoring"
+    text: "Have you set a weighted score threshold the model must clear before deployment?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "That threshold is the acceptance criterion; sign-off becomes a check against it."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Set it from the business consequence of an error, before any results exist."
+        links:
+          - url: "/library/23-business-goals.html"
+            text: "Metrics for business goals"
+      - label: "No"
+        points: 0
+        guidance: "Without one, sign-off comes down to whether the team feels confident, which is where ML projects tend to stall."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+
+  - id: s4
+    type: scored
+    area: "Scoring"
+    text: "Have you set a separate threshold for high-risk failure classes?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "The second threshold catches a model that clears the overall score while failing on the cases that matter most."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Identify the failure classes with the highest business impact first; the threshold follows from them."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+      - label: "No"
+        points: 0
+        guidance: "A single overall threshold can hide a model that fails on the most expensive cases. Add a second condition for those."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+
+  # Deployment
+  - id: d1
+    type: scored
+    area: "Deployment"
+    text: "Is the deployment gate defined before evaluation begins?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then the results cannot move the goalposts."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Write the thresholds down and date them before the first evaluation run."
+      - label: "No"
+        points: 0
+        guidance: "A gate set after the results are known tends to be set wherever the results landed. Fix it first."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+
+  - id: d2
+    type: scored
+    area: "Deployment"
+    text: "Have you identified who owns the go/no-go decision?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "One named owner keeps the decision from drifting between teams."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Name one person. A committee can advise, but the decision needs an owner."
+      - label: "No"
+        points: 0
+        guidance: "Name the owner before the model is built; a gate is only useful if someone is accountable for applying it."
+        links:
+          - url: "/library/74-ml-team-structure.html"
+            text: "How to structure an ML team"
+
+  - id: d3
+    type: scored
+    area: "Deployment"
+    text: "Do you have a plan for monitoring model performance after deployment?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "A scheduled evaluation against the ground truth set will show whether the score is holding."
+      - label: "Uncertain"
+        points: 0
+        guidance: "The simplest plan is to rerun the evaluation on a schedule and compare the score with the previous run."
+        links:
+          - url: "/library/69-measurement-framework.html"
+            text: "A measurement framework for ML projects"
+      - label: "No"
+        points: 0
+        guidance: "ML systems fail quietly: the outputs become gradually less right as the inputs change. Monitoring is how you find out."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+
+  # Retraining
+  - id: r1
+    type: scored
+    area: "Retraining"
+    text: "Do you know how you will detect performance degradation in production?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then drift shows up as a number before it shows up as a complaint."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Sample production outputs, have the domain expert correct them, and score the model against the corrections."
+        links:
+          - url: "/library/46-labels-are-the-task.html"
+            text: "Task specification is the primary artefact"
+      - label: "No"
+        points: 0
+        guidance: "Degradation is usually gradual, which makes it easy to miss. Decide how you will measure it before it happens."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+
+  - id: r2
+    type: scored
+    area: "Retraining"
+    text: "Have you estimated the cost of a retraining cycle?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then retraining is a budget decision you can make on its merits."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Labels drive most of the cost: the number needed, divided by labels per day, times the labeller's daily rate."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+      - label: "No"
+        points: 0
+        guidance: "Estimate it now. The formula needs three numbers, and it settles whether an improvement is worth paying for."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+  - id: r3
+    type: scored
+    area: "Retraining"
+    text: "Have you identified who will produce new labels, and at what rate?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "The rate sets how quickly the model can improve."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Labelling usually needs domain knowledge. Check whether the people who have it can spare the time."
+        links:
+          - url: "/library/74-ml-team-structure.html"
+            text: "How to structure an ML team"
+      - label: "No"
+        points: 0
+        guidance: "Without a labeller, the model cannot improve after deployment. Name the person and measure their rate on a small batch."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+  # Organisation
+  - id: o1
+    type: scored
+    area: "Organisation"
+    text: "Do you have a domain expert who can confirm what correct output looks like?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "They own two thirds of the problem: what the data means, and what correct output looks like."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+      - label: "Uncertain"
+        points: 0
+        guidance: "Look for whoever resolves escalations today; they already apply the definition of correct."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+      - label: "No"
+        points: 0
+        guidance: "Without one, nobody can say whether the model is right. This is the gap to close first."
+        links:
+          - url: "/library/74-ml-team-structure.html"
+            text: "How to structure an ML team"
+
+  - id: o2
+    type: scored
+    area: "Organisation"
+    text: "Is that expert allocated time to the project, beyond occasional consultation?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Allocated time keeps labelling and review on schedule."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Agree a fixed number of hours a week and put it in their plan, or the work will slip behind their day job."
+      - label: "No"
+        points: 0
+        guidance: "An expert consulted occasionally becomes the bottleneck. Budget their time as part of the project cost."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+  - id: o3
+    type: scored
+    area: "Organisation"
+    text: "Do you have a plan for what happens when the model is wrong?"
+    options:
+      - label: "Yes"
+        points: 1
+        guidance: "Then errors have a route: to a person, to a queue, or to a correction that feeds the labelled set."
+      - label: "Uncertain"
+        points: 0
+        guidance: "Decide where a wrong output goes, who sees it, and whether the correction is recorded."
+        links:
+          - url: "/library/46-labels-are-the-task.html"
+            text: "Task specification is the primary artefact"
+      - label: "No"
+        points: 0
+        guidance: "Every model is wrong some of the time. Plan the fallback (human review, a queue, a safe default) before deployment."
+        links:
+          - url: "/library/04-cost-of-ml.html"
+            text: "The cost of machine learning"
+
+bands:
+  - min: 0
+    max: 11
+    name: "Measurement first"
+    text: "More than a third of the foundations are uncertain or missing. Build the measurement framework before choosing a model; the uncertain answers are the first deliverables."
+    links:
+      - url: "/library/69-measurement-framework.html"
+        text: "A measurement framework for ML projects"
+      - url: "/library/68-build-measurements.html"
+        text: "Don't build models, build measurements"
+  - min: 12
+    max: 16
+    name: "Nearly ready"
+    text: "The gaps are specific. Close them before evaluation begins, starting with the weakest area below."
+    links:
+      - url: "/library/61-eval-datasets.html"
+        text: "How to evaluate an AI pipeline"
+      - url: "/library/46-labels-are-the-task.html"
+        text: "Task specification is the primary artefact"
+  - min: 17
+    max: 17
+    name: "Ready to evaluate"
+    text: "The foundations are in place. A model can be judged against an agreed gate, and its performance tracked after deployment."
+    links:
+      - url: "/library/61-eval-datasets.html"
+        text: "How to evaluate an AI pipeline"
+      - url: "/library/25-llm-evaluation.html"
+        text: "Evaluating language models"
+
+faq:
+  - q: "What is an ML measurement framework?"
+    a: "The set of things that decide whether a model is working: a ground truth dataset, a scoring function, risk weights for different failures, a deployment gate, and a plan for detecting and fixing degradation after launch."
+  - q: "How many labelled examples do we need?"
+    a: "Fewer than most teams expect. Fifty well-chosen examples with clear correct outputs evaluate a model more reliably than a thousand ambiguous ones, provided they include failure cases."
+  - q: "Why does an uncertain answer score the same as no?"
+    a: "Either way, the item is not yet in place. The difference matters for planning: uncertain items are usually the quickest to settle, which makes them the first deliverables."
+  - q: "Does this apply to projects built on large language models?"
+    a: "Yes. A new prompt, a new model or a revised pipeline is judged the same way: run it against the labelled set and check that it clears the gate."
