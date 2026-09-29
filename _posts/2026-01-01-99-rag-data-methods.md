@@ -6,6 +6,7 @@ description: "Chunking is one point on a spectrum of methods for preparing data 
 keywords: ["rag chunking strategies", "semantic chunking", "contextual retrieval", "late chunking", "graphrag", "image rag", "colpali", "multimodal rag", "document embedding methods"]
 topic: "AI Systems"
 seo_title: "RAG Data Methods: Chunking, Enrichment, and Image Retrieval Explained"
+cta: rag-knowledge-base
 related:
   - 97-what-is-rag
   - 19-rag-strategy

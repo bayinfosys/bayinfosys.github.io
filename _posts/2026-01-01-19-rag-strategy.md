@@ -7,6 +7,7 @@ description: "RAG is not one architecture but four independent decisions: how yo
 keywords: ["rag components", "rag indexing", "rag strategy", "retrieval augmented generation architecture", "vector database", "llm", "enterprise ai"]
 topic: "AI Systems"
 seo_title: "RAG Architecture Explained: Chunking, Indexing, Retrieval, Generation"
+cta: rag-knowledge-base
 related:
   - 97-what-is-rag
   - 20-vector-db-deepdive

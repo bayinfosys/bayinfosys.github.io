@@ -6,6 +6,7 @@ description: "RAG evaluation is not one number. It is four separate measurements
 keywords: ["rag evaluation", "ragas", "rag metrics", "how to evaluate rag", "rag monitoring", "retrieval quality", "hallucination detection rag", "rag drift detection"]
 topic: "AI Systems"
 seo_title: "How to Evaluate a RAG System: Metrics and Drift Detection"
+cta: rag-knowledge-base
 related:
   - 97-what-is-rag
   - 19-rag-strategy
