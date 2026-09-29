@@ -6,6 +6,7 @@ description: "A checklist for integrating machine learning into a product withou
 keywords: ["data strategy", "data requirements", "machine learning", "product management", "data audit"]
 topic: "Data Strategy"
 seo_title: "How to Assess What Data You Need for Machine Learning"
+cta: data-maturity
 related:
   - 17-data-maturity
   - 04-cost-of-ml

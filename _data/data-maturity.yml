@@ -1,0 +1,348 @@
+# Data Maturity Checklist, from article 17 (its maturity checklist and its
+# "signs you might be struggling", rephrased so higher points mean better placed).
+
+grouped: true
+
+questions:
+  # Storage
+  - id: s1
+    type: scored
+    area: "Storage"
+    text: "Can anyone on the team say where the latest version of a key dataset lives?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "A consistent location is the first sign of storage maturity. Retention rules and version history come next."
+      - label: "Sometimes"
+        points: 1
+        guidance: "Pick the three datasets the organisation relies on most and record where the authoritative copy of each lives. That list is the start of a catalogue."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "No"
+        points: 0
+        guidance: "Start here. Until the current version can be found, every other question on this list is hard to answer."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+
+  - id: s2
+    type: scored
+    area: "Storage"
+    text: "Do reports draw on the data directly, without manual downloads?"
+    options:
+      - label: "Yes, from a shared store or dashboard"
+        points: 2
+        guidance: "Then reports update with the data, and everyone reads the same numbers."
+      - label: "Some do; others are exported by hand"
+        points: 1
+        guidance: "Each manual export is a copy that stops updating the moment it is made. Automate the one that is repeated most often."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+      - label: "Most are exported by hand"
+        points: 0
+        guidance: "Reports built from exported copies drift from the source and from each other. A shared, queryable store is the fix."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+
+  - id: s3
+    type: scored
+    area: "Storage"
+    text: "Do you know how long data is kept, and can you see how it has changed?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Retention rules and an audit trail let you say what a record looked like last year, with confidence."
+      - label: "Partly"
+        points: 1
+        guidance: "Write the retention rules down, then keep raw records unchanged so that later changes can be traced."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+      - label: "No"
+        points: 0
+        guidance: "Keep raw records as they arrive and never overwrite them; the raw record is the audit trail."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+
+  # External services
+  - id: e1
+    type: scored
+    area: "External services"
+    text: "Do you know which third-party services hold your data?"
+    options:
+      - label: "Yes, and we keep a list"
+        points: 2
+        guidance: "Then your dependencies are visible. Check that each service allows a full export."
+      - label: "Roughly"
+        points: 1
+        guidance: "List them, with what each holds and who administers it. The list often turns up a service nobody remembers signing up for."
+      - label: "No"
+        points: 0
+        guidance: "List them first. Data you cannot locate cannot be backed up, moved or joined to anything else."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+
+  - id: e2
+    type: scored
+    area: "External services"
+    text: "Could you move a key service to a different provider?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then changing provider is a planned project with a known cost."
+      - label: "With difficulty"
+        points: 1
+        guidance: "Test a full export from the service you depend on most. What comes out, and in what shape, is the real measure."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "No"
+        points: 0
+        flag: lockin
+        guidance: "Then the provider controls both the data and the terms. Plan an export route before you need it."
+
+  # Reproducibility
+  - id: r1
+    type: scored
+    area: "Reproducibility"
+    text: "Can you trace a key figure back to its source data and the steps that produced it?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then a change in a trend reflects the data, with the method held constant."
+      - label: "For some figures"
+        points: 1
+        guidance: "Start with the numbers the board sees. Record the source, the steps and the definitions behind each one."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+      - label: "No"
+        points: 0
+        guidance: "Without a trace, a change in a number could be a change in the world or a change in the method. Record how each key number is produced."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+
+  - id: r2
+    type: scored
+    area: "Reproducibility"
+    text: "Can you repeat a data collection (a survey, a cohort, a metric) the same way next time?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then collection is part of a pipeline, and comparisons over time hold."
+      - label: "Partly"
+        points: 1
+        guidance: "Write down the collection steps and the definitions they use, and keep them with the data."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "No"
+        points: 0
+        guidance: "Data treated as the one-off result of someone's effort is hard to compare or scale. Script the collection you repeat most."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+
+  # Ownership
+  - id: o1
+    type: scored
+    area: "Ownership"
+    text: "If the person who calculates a key number left tomorrow, could someone else produce it?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then the knowledge lives in the process, where it survives staff changes."
+      - label: "With some effort"
+        points: 1
+        guidance: "Pair someone with the current owner on the next run, and write each step down as they go."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+      - label: "No"
+        points: 0
+        flag: keyperson
+        guidance: "A common single point of failure in small teams. Capture the steps now, while the person is still there."
+        links:
+          - url: "/library/68-build-measurements.html"
+            text: "Don't build models, build measurements"
+
+  - id: o2
+    type: scored
+    area: "Ownership"
+    text: "Do different teams get the same answer from the same data?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then shared definitions are doing their job."
+      - label: "Usually"
+        points: 1
+        guidance: "Where the answers differ, the definitions differ. Agree one definition per metric and keep it next to the data."
+        links:
+          - url: "/library/27-schema-docs.html"
+            text: "SQL schema documentation for RAG pipelines"
+      - label: "No"
+        points: 0
+        guidance: "Metrics open to interpretation turn meetings into arguments about numbers. Define each key metric once, in one place."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+
+  - id: o3
+    type: scored
+    area: "Ownership"
+    text: "Are data definitions kept close to the data, in the schema, metadata or a readme?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then anyone can read what a field means without asking."
+      - label: "Some of them"
+        points: 1
+        guidance: "Start with the fields people ask about most often."
+        links:
+          - url: "/library/27-schema-docs.html"
+            text: "SQL schema documentation for RAG pipelines"
+      - label: "No"
+        points: 0
+        guidance: "Definitions held in people's heads leave with them. Document the schema where the data lives."
+        links:
+          - url: "/library/27-schema-docs.html"
+            text: "SQL schema documentation for RAG pipelines"
+
+  # Governance
+  - id: g1
+    type: scored
+    area: "Governance"
+    text: "Do access permissions reflect roles and regulatory requirements?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then access can grow with the organisation without growing the risk."
+      - label: "Partly"
+        points: 1
+        guidance: "Review who can see personal and confidential data first, and remove access nobody needs."
+      - label: "No"
+        points: 0
+        guidance: "Start with personal and confidential data: who can see it, and why. UK GDPR expects access to be limited to what each purpose needs."
+        links:
+          - url: "/library/73-ner-and-pii.html"
+            text: "What is NER and why does it matter for PII?"
+
+  - id: g2
+    type: scored
+    area: "Governance"
+    text: "Would you notice if data went missing or was overwritten?"
+    options:
+      - label: "Yes, we have alerts"
+        points: 2
+        guidance: "Then data problems surface as alerts before they surface in a decision."
+      - label: "Eventually"
+        points: 1
+        guidance: "Add checks to the feeds behind key reports: row counts, arrival times, and values out of range."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+      - label: "No"
+        points: 0
+        guidance: "Silent loss is found only when something breaks. Start with an alert on missing or late data for the most important feed."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+
+  # Use
+  - id: u1
+    type: scored
+    area: "Use"
+    text: "Can people get the data they need without asking someone to pull it?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Self-service access means the data is organised for use."
+      - label: "Some of them"
+        points: 1
+        guidance: "Note which requests recur, and publish those as a standing report or dataset."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+      - label: "No"
+        points: 0
+        guidance: "Every request that needs a person creates a queue and another copy. Publish the requests that recur."
+        links:
+          - url: "/library/17-data-maturity.html"
+            text: "What is data maturity?"
+
+  - id: u2
+    type: scored
+    area: "Use"
+    text: "Is a new metric easy to add?"
+    options:
+      - label: "Yes"
+        points: 2
+        guidance: "Then the data model has room for new questions, and the history you have accumulated may answer more of them than the current reports show."
+        links:
+          - url: "/library/41-what-your-data-already-knows.html"
+            text: "What your data already knows"
+      - label: "It takes a project"
+        points: 1
+        guidance: "A new metric should be a query. When it takes a project, the data usually lacks a shared model."
+        links:
+          - url: "/library/55-data-engineering.html"
+            text: "What is data engineering?"
+      - label: "No"
+        points: 0
+        guidance: "Then the data answers only the questions it was set up for. A shared, well-defined data model is what changes that."
+        links:
+          - url: "/library/57-medallion.html"
+            text: "Bronze, silver, gold: a layered data architecture"
+
+bands:
+  - min: 0
+    max: 11
+    name: "Early"
+    text: "Data depends on people and manual steps, and AI built on it inherits that fragility. The first gains come from the basics: know where the data lives, and write down how key numbers are made."
+    links:
+      - url: "/library/17-data-maturity.html"
+        text: "What is data maturity?"
+      - url: "/library/55-data-engineering.html"
+        text: "What is data engineering?"
+  - min: 12
+    max: 21
+    name: "Developing"
+    text: "The foundations exist, with gaps. Close the area below first, then scope AI work against data you can trust."
+    links:
+      - url: "/library/57-medallion.html"
+        text: "Bronze, silver, gold: a layered data architecture"
+      - url: "/library/05-what-data-do-i-need.html"
+        text: "What data do I need?"
+  - min: 22
+    max: 28
+    name: "Established"
+    text: "Data is findable, reproducible and owned by processes, which is the footing AI work needs. The next question is what the goal is, and whether AI is the right tool for it."
+    links:
+      - url: "/ai-readiness-assessment.html"
+        text: "AI readiness assessment"
+      - url: "/library/41-what-your-data-already-knows.html"
+        text: "What your data already knows"
+
+flags:
+  lockin:
+    text: "A provider controls data you depend on. Plan an export route before you need one."
+  keyperson:
+    text: "A key number depends on one person. Capturing how it is made pays off with or without AI."
+    url: "/library/68-build-measurements.html"
+    link_text: "Don't build models, build measurements"
+
+faq:
+  - q: "What is data maturity?"
+    a: "The degree to which an organisation can trust, find and use its data in consistent, repeatable ways. It runs from ad hoc storage and manual exports to data produced by processes, with known owners and written definitions."
+  - q: "Why does data maturity matter for AI?"
+    a: "A model works with the data it is given. At low maturity it inherits the same gaps and inconsistencies as the reports, and nobody can tell whether its output is right."
+  - q: "Do we need a data warehouse first?"
+    a: "Not necessarily. Many of the items here are practices: knowing where data lives, writing definitions down, keeping raw records. A single well-structured database handles tens of millions of rows without special effort."
+  - q: "How does this differ from the AI readiness assessment?"
+    a: "The assessment covers the whole AI decision: the goal, the data, its sensitivity, and who can judge the work. This checklist looks at the data in more depth."

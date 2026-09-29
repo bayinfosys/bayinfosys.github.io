@@ -72,8 +72,8 @@ questions:
         points: 1
         guidance: "A short audit turns this into a document the whole team can use."
         links:
-          - url: "/library/05-what-data-do-i-need.html"
-            text: "What data do I need?"
+          - url: "/checklists/data-maturity.html"
+            text: "The data maturity checklist"
       - label: "No"
         points: 0
         guidance: "Start here. What the data contains decides what AI can and cannot do for you."
