@@ -1,16 +1,14 @@
 ---
 date: 2026-04-15
 layout: article
-
-title: "Private Inference: Running AI Inside Your Own Infrastructure"
-seo_title: "What Is Private Inference? Running AI Inside Your Own Infrastructure"
-description: "Private inference runs AI models inside infrastructure you control, so prompts and data never reach a model provider. Why regulated sectors need it, what it costs, and when a hosted API is cheaper."
-
-keywords: ["private inference", "self-hosted llm", "aws vpc", "data sovereignty", "regulated sectors", "open source models"]
+title: "What Is Private AI Inference?"
+seo_title: "What Is Private AI Inference? Running AI on Your Own Servers"
+description: "Private inference runs AI models on infrastructure you control, so prompts and documents never reach a model provider. How it works, what a private AI server is, and what it costs."
+keywords: ["private inference", "private ai inference", "private ai server", "private ai infrastructure", "self-hosted llm", "on-premise ai", "open weight models", "aws vpc"]
 topic: "Architecture & Deployment"
 cta: private-inference
 related:
-  - 63-private-inference
+  - 63-private-inference-stack
   - 65-why-private-inference
   - 87-inference-infrastructure
   - 66-open-weights-separate-concerns
@@ -19,34 +17,38 @@ related:
   - 80-falling-token-prices
 ---
 
-# Private Inference: Running AI Inside Your Own Infrastructure
+# What Is Private AI Inference?
 
-The conversation that ends AI projects in regulated sectors tends to follow a predictable shape. Someone identifies a genuine use case. A team builds a prototype using a cloud API. Legal or compliance reviews the architecture. The prototype dies.
+Private inference means running an AI model on infrastructure you control: your own servers, your own cloud account, or a dedicated deployment run for you. Prompts and documents go to the model and the answers come back without passing through a model provider such as OpenAI or Anthropic. (For organisations deciding where their models should run, [sovereign and on-premise AI](/sovereign-ai.html) sets out the options and how we help.)
 
-The objection is not to AI, rather it is to data leaving the organisation's infrastructure. Healthcare data governed by NHS frameworks, financial data covered by FCA conduct rules, client data protected by confidentiality agreements: none of this can flow freely to an external API endpoint, regardless of what the API provider's data processing agreements say. The constraint is real and, in most cases, non-negotiable.
+Regulated sectors need it most. A team builds a prototype on a cloud API, legal or compliance reviews the architecture, and the prototype stops there, because the data cannot leave the organisation. Health data under NHS frameworks, financial data under FCA conduct rules and client data under confidentiality agreements cannot go to an external API endpoint, whatever the provider's data processing agreement says.
 
-## Separation of Concerns
+## How does private inference work?
 
-Cloud AI APIs bundle two things that can be separated: the model and the infrastructure. When you call the OpenAI or Anthropic API, your data travels to their servers, runs against their model, and returns a result.
+A cloud AI API bundles the model with the infrastructure it runs on. A request travels to the provider's servers, runs against the provider's model, and comes back.
 
-Open-weight models remove this coupling. Llama, Mistral, Qwen, and others publish model weights that any organisation can download and run on its own hardware. The model runs where the data lives.
+Open-weight models separate the two. Llama, Mistral, Qwen and others publish their weights (the files that make up the model), and any organisation can download them and run them on its own hardware. The model then runs where the data already is, and the provider drops out of the arrangement.
 
-On AWS, this means deploying inference within a Virtual Private Cloud -- the same network boundary that already governs databases, application servers, and storage. A prompt containing patient data, client transaction history, or confidential correspondence never crosses that boundary. It runs against a model deployed inside it, and the response returns inside it.
+## What is a private AI server?
 
-Selecting a model, provisioning GPU-backed EC2 instances with sufficient memory for the weights, containerising the inference server, and deploying within an existing VPC: this is the same architecture as any compute-intensive internal service.
+A private AI server is a machine you own, on your own premises, running open-weight models. A server with one or two GPUs runs the smaller models that handle most document work; the largest open-weight models need several GPUs. It needs an internet connection only to download the models, and after that it can run with no connection at all. No cloud provider is involved, so no third party holds the data. (Sizing guidance: [GPU options for self-hosted inference](/library/78-gpu-market-2026.html).)
 
-## New Choices
+## Private inference in your cloud account
 
-Cloud API pricing runs at a few dollars per million tokens. Self-hosted inference trades per-token cost for fixed infrastructure: a GPU instance running a model continuously costs somewhere between two and eight dollars an hour depending on instance type and model size, regardless of query volume. At low volumes, cloud APIs cost less. At sustained workloads above a few million tokens a day, self-hosted inference typically costs less, often significantly. The break-even is worth calculating rather than estimating, but it exists.
+On AWS, private inference means deploying the model inside a Virtual Private Cloud (VPC): the same network boundary that already governs the organisation's databases, application servers and storage. A prompt containing patient data, transaction history or confidential correspondence stays inside that boundary, and so does the response. The cloud provider's jurisdiction still applies.
 
-Not all tasks require the largest available models. The smaller models in the Llama and Mistral families handle classification, extraction, summarisation, and question-answering over structured documents with results comparable to much larger models on well-defined tasks. The 70B parameter range produces output quality close to frontier models.
+The work is familiar: choose a model, provision GPU instances with enough memory for its weights, containerise the inference server and deploy it inside the existing VPC. It is the same architecture as any compute-heavy internal service.
 
-Model selection should follow task requirements. A document extraction pipeline running on a fine-tuned 8B model inside a VPC is both compliant and cost-effective.
+## What does it cost?
 
-## What Remains
+Cloud APIs charge a few dollars per million tokens. Private inference swaps that for a fixed cost: hardware you buy, or GPU instances billed by the hour whatever the query volume. At low or irregular volumes, the API costs less. At steady workloads above a few million tokens a day, private inference usually costs less, often by a wide margin. The break-even depends on the workload and is worth calculating. ([What private inference costs](/library/95-private-inference-costs.html) measures one.)
 
-Private inference does not resolve every constraint. Output governance -- audit trails, error handling, review processes -- is a separate problem. Operating GPU infrastructure is a genuine operational consideration.
+## Are open-weight models good enough?
 
-These are all tractable engineering problems. They are also different problems from the data egress constraint. Until the architecture is compliant, nothing else in the project is worth discussing.
+For well-defined tasks, usually. The smaller Llama, Mistral and Qwen models handle classification, extraction, summarisation and question-answering over documents with results comparable to much larger models, and the largest open-weight models come close to frontier quality. Model choice should follow the task: a document extraction pipeline on a fine-tuned 8B model inside a VPC is compliant and cheap to run.
 
-(Whether to run inference yourself, and how to do it compliantly, is covered on the [Sovereign AI](/sovereign-ai.html) page.)
+## What private inference leaves unsolved
+
+Moving the model inside the boundary settles where the data goes. Output governance (audit trails, error handling, human review) remains its own problem, and someone has to operate the GPU infrastructure. Both are ordinary engineering work. Neither is worth starting until the data question is settled.
+
+(The rest of the private inference series: [The Private Inference Stack](/library/63-private-inference-stack.html) covers the tooling, from raw framework code to managed providers; [Why Private Inference](/library/65-why-private-inference.html) sets out the risks that drive the decision; [Open Weight Models and the Separation of Concerns](/library/66-open-weights-separate-concerns.html) covers what open weights change about compliance. [marigold](https://marigold.run) is our open-source platform for running open-weight models on your own infrastructure.)
