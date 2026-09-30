@@ -1,13 +1,21 @@
 ---
 layout: default
-title: "Sovereign AI for UK Organisations"
-seo_title: "Sovereign AI for UK Organisations"
-description: "Use AI on sensitive data without sending it to a third-party model provider. Open-weight models on your own hardware, in your cloud account, or hosted in the UK."
-keywords: ["sovereign ai uk", "self hosted llm", "private llm deployment", "uk hosted ai", "uk data residency", "open weight models", "private inference", "private ai inference", "compliant inference hosting", "managed inference"]
+title: "Sovereign and on-premise AI for UK organisations"
+seo_title: "Sovereign and On-Premise AI for UK Organisations"
+description: "Independent advice on AI that runs on your own servers, in your cloud account or hosted in the UK. Start with a one-week, fixed-price AI roadmap."
+keywords: ["sovereign ai", "sovereign ai uk", "on premise ai", "on-premise ai", "on prem llm", "private llm", "self hosted llm", "ai roadmap", "uk data residency", "open weight models"]
 permalink: /sovereign-ai
 faq:
   - q: "Are open-weight models good enough?"
     a: "For most document, search and extraction tasks, yes. Smaller open-weight models handle classification, extraction, summarisation and question-answering over documents with results comparable to much larger models, and the largest open-weight models come close to frontier quality. The leading closed models usually keep an edge on the hardest open-ended reasoning and on long, multi-step agent tasks."
+  - q: "Can AI be deployed on-premise?"
+    a: "Yes. Open-weight models run on servers you own, with no connection to the company that published them; marigold needs an internet connection only to download the models. Hardware is the main constraint: a server with one or two GPUs runs the smaller models that handle most document tasks, and the largest models need several."
+    more_url: "/library/78-gpu-market-2026.html"
+    more_text: "GPU options for self-hosted inference"
+  - q: "What is the difference between on-premise and hosted AI?"
+    a: "On-premise AI runs on hardware you own, so the data stays in your building and no third party handles it. Hosted AI runs on someone else's hardware: a model provider's API, or open-weight models in a cloud region. Hosted is quicker to start and suits irregular use; on-premise gives the most control and costs less at steady, high volume."
+  - q: "Do we have to use marigold?"
+    a: "No. The roadmap recommends what fits the data and the budget, which may be a hosted API, another platform, or marigold. We advise on what to build, how to measure it and how to progress it, whatever runs underneath."
   - q: "Is it more expensive than using an API?"
     a: "It depends on volume. At low or irregular volumes a hosted API usually costs less; at steady volumes above a few million tokens a day, dedicated hardware usually costs less. The break-even is worth calculating for your own workload."
     more_url: "/library/95-private-inference-costs.html"
@@ -17,7 +25,7 @@ faq:
     more_url: "/ai-readiness-assessment.html"
     more_text: "AI readiness assessment"
   - q: "Where exactly is our data stored and processed?"
-    a: "On your premises, for the on-premises option. For the other two options, in the cloud region chosen at deployment; for UK residency, that is a UK region such as AWS London (eu-west-2)."
+    a: "On your premises, for the on-premise option. For the other two options, in the cloud region chosen at deployment; for UK residency, that is a UK region such as AWS London (eu-west-2)."
   - q: "AWS is a US company. Does that matter?"
     a: "It can. Data in AWS London stays in the UK, and US law (the CLOUD Act) can still require AWS to produce data it holds. If that matters for your data, run marigold on your own hardware, or in an account with a cloud provider outside US jurisdiction."
 ---
@@ -42,23 +50,26 @@ faq:
   <div class="row justify-content-center">
     <div class="col-lg-8">
 
-      <h1>Sovereign AI for UK organisations</h1>
-      <p class="lead mt-3">Many organisations cannot send their data to a third-party model API. The data is personal, or it belongs to clients, or a regulator restricts where it goes, or a leak would cost more trust than the organisation can afford to lose. Open-weight models run wherever the data already is, which takes the model provider out of the arrangement.</p>
-      <p>This page sets out what sovereignty means in practice, who needs it, and the three ways we deploy <a href="https://marigold.run">marigold</a> (our open-source inference platform) to provide it. (To see where your organisation stands first, take the <a href="/ai-readiness-assessment.html">AI readiness assessment</a>; to go straight to a conversation, <a href="#discuss">discuss a deployment</a> or check whether you need it with the <a href="/checklists/private-inference.html">private inference checklist</a>)</p>
+      <h1>Sovereign and on-premise AI for UK organisations</h1>
+      <p class="lead mt-3">Many organisations cannot send their data to a third-party model API. The data is personal, or it belongs to clients, or a regulator restricts where it goes. Open-weight models run wherever the data already is (on your own servers, in your cloud account, or hosted in the UK), which takes the model provider out of the arrangement and keeps what AI does for the organisation.</p>
+      <p>We advise independently on AI you control: what to build, how to measure it and how to progress it. We are not tied to Azure, OpenAI or any model provider, and we publish our price. Most engagements start with a one-week <a href="#roadmap">AI roadmap</a> at a fixed &pound;8,000. (To see where you stand first, take the free <a href="/checklists/private-inference.html">private inference checklist</a>.)</p>
 
-      <section class="mt-5" aria-labelledby="sov-meaning">
-        <h2 id="sov-meaning">What does "sovereign AI" mean for an organisation?</h2>
-        <p>Sovereign AI means an organisation controls four things: where its data is processed, who can see it, which model runs, and which laws apply. Each has a precise answer, and the answers change with the deployment.</p>
-        <p><strong>Where the data is processed.</strong> Residency is the physical location of the servers that store and process the data. For UK residency, that means hardware in the UK: your own premises, or a UK cloud region such as AWS London (eu-west-2).</p>
-        <p><strong>Who can see it.</strong> Sending a prompt to a model API gives the provider a copy of the data, whatever its policy says about retention and training. Running an open-weight model removes that provider; whoever operates the hardware remains.</p>
-        <p><strong>Which model runs.</strong> Hosted APIs update and retire models on the provider's schedule. An open-weight model is a set of files you hold, and the version you test stays the version you run until you decide to change it.</p>
-        <p><strong>Which laws apply.</strong> Data stored in the UK falls under UK law, and residency alone does not remove other jurisdictions. AWS, Microsoft and Google are US companies, and the US CLOUD Act allows US authorities to require a US provider to produce data in its possession, custody or control, wherever that data is stored. On hardware you own, no cloud provider is involved, so there is no third party for a foreign authority to compel.</p>
+      <section class="mt-5" aria-labelledby="sov-value">
+        <h2 id="sov-value">What can AI you control do?</h2>
+        <p>The same work hosted AI does, on data that cannot go to a hosted service. Most of the value sits in documents and records the organisation already holds:</p>
+        <ul>
+          <li>Answer questions over your own archive (policy wordings, contracts, case files, research reports), citing the passage each answer comes from.</li>
+          <li>Extract structured data from documents such as claims forms, contracts and applications.</li>
+          <li>Classify and route incoming work: emails, enquiries, claims, complaints.</li>
+          <li>Summarise long records for the person who has to act on them.</li>
+          <li>Find personal data in text before documents are shared or published (<a href="/library/73-ner-and-pii.html">finding personal data in text</a>).</li>
+        </ul>
+        <p>Open-weight models handle these tasks well (see the <a href="#sov-faq">questions below</a>). Where one does not, the roadmap says so.</p>
       </section>
 
       <section class="mt-5" aria-labelledby="sov-who">
         <h2 id="sov-who">Who needs sovereign AI?</h2>
         <p>Any organisation whose data cannot go to a third-party model provider, whether the reason is the law, a contract, or the trust of the people the data describes.</p>
-        <!-- Add a case study link to each card when the example readiness guides are live. -->
         <div class="row g-3 mt-2">
           <div class="col-12 col-sm-6">
             <div class="library-card sov-sector">
@@ -76,7 +87,7 @@ faq:
           </div>
           <div class="col-12 col-sm-6">
             <div class="library-card sov-sector">
-              <span class="library-card__title">Research and professional services</span>
+              <span class="library-card__title">Law and professional services</span>
               <span class="library-card__desc">Client-confidential archives. Searching them with AI through a hosted API sends the documents to a third party at indexing and again at query time.</span>
               <a href="/library/98-rag-risks-and-costs.html">RAG risks and costs</a>
             </div>
@@ -98,48 +109,64 @@ faq:
         </div>
       </section>
 
+      <section class="mt-5" aria-labelledby="sov-meaning">
+        <h2 id="sov-meaning">What do sovereign AI and on-premise AI mean?</h2>
+        <p>Sovereign AI means an organisation controls four things: where its data is processed, who can see it, which model runs, and which laws apply. Each has a precise answer, and the answers change with the deployment.</p>
+        <p><strong>Where the data is processed.</strong> Residency is the physical location of the servers that store and process the data. For UK residency, that means hardware in the UK: your own premises, or a UK cloud region such as AWS London (eu-west-2).</p>
+        <p><strong>Who can see it.</strong> Sending a prompt to a model API gives the provider a copy of the data, whatever its policy says about retention and training. Running an open-weight model removes that provider; whoever operates the hardware remains.</p>
+        <p><strong>Which model runs.</strong> Hosted APIs update and retire models on the provider's schedule. An open-weight model is a set of files you hold, and the version you test stays the version you run until you decide to change it.</p>
+        <p><strong>Which laws apply.</strong> Data stored in the UK falls under UK law, and residency alone does not remove other jurisdictions. AWS, Microsoft and Google are US companies, and the US CLOUD Act allows US authorities to require a US provider to produce data in its possession, custody or control, wherever that data is stored.</p>
+        <p>On-premise AI is the strongest form of sovereign AI. The models run on servers you own, in your own building, so no cloud provider is involved and there is no third party for a foreign authority to compel.</p>
+      </section>
+
+      <section id="roadmap" class="mt-5" aria-labelledby="sov-roadmap">
+        <h2 id="sov-roadmap">The AI roadmap</h2>
+        <p>A roadmap sets out what data your organisation holds, what in it is valuable, and where AI can use it, ranked by value and effort. It covers the risks and the running costs, and it recommends how to run each piece: on your own hardware, in your cloud account, hosted by us, or through a hosted API where the data allows. The recommendation follows the data, and marigold is one option among several.</p>
+        <ol>
+          <li>Pre-work: the <a href="/checklists/private-inference.html">private inference checklist</a>, completed by you or with us on a call.</li>
+          <li>Three interviews with key people (usually whoever owns the data, an operational lead, and whoever holds the budget).</li>
+          <li>Analysis of the data, the systems around it and the constraints on it.</li>
+          <li>The roadmap document, and a session to walk through it.</li>
+        </ol>
+        <p class="sov-meta"><strong>Duration:</strong> one week. <strong>Price:</strong> &pound;8,000, fixed. (Anonymised example roadmaps from past clients are available through the <a href="#discuss">form below</a>.)</p>
+      </section>
+
       <section class="mt-5" aria-labelledby="sov-host">
         <h2 id="sov-host">Should we host our own inference infrastructure?</h2>
         <p>Yes, if the data cannot leave your boundary; otherwise the answer depends on volume. A hosted API is the sensible default for data with no sensitivity constraint and irregular usage. Private inference (running open-weight models on infrastructure you control) pays off when the data cannot go to a third party at all, or when usage is steady enough that dedicated hardware costs less than per-token pricing, which usually happens above a few million tokens a day.</p>
         <p>The engineering questions that follow (which GPUs, which serving software, how to scale) are covered in <a href="/library/87-inference-infrastructure.html">AI inference infrastructure: a decision framework</a>, and the running costs in <a href="/library/95-private-inference-costs.html">what private inference costs</a>.</p>
       </section>
 
-      <section class="mt-5" aria-labelledby="sov-marigold">
-        <h2 id="sov-marigold">What is marigold?</h2>
-        <p>marigold is our open-source inference platform for open-weight models such as Llama, Mistral and Qwen. It offers the same API as OpenAI and Anthropic, so software written for those services can point at marigold without changes, and it runs the same way on a single server, in a cloud account, or as a hosted service.</p>
-        <p>Its models cover text generation, embeddings, image understanding and generation, text-to-speech, and evaluation. (For engineers: <a href="https://marigold.run">marigold.run</a>, the <a href="https://github.com/bayinfosys/marigold">source on GitHub</a>, the <a href="https://marigold.run/tutorials.html">tutorials</a>, and <a href="/library/64-marigold.html">how marigold works</a>.)</p>
-      </section>
-
       <section class="mt-5" aria-labelledby="sov-options">
-        <h2 id="sov-options">Which deployment option fits?</h2>
+        <h2 id="sov-options">Where the models run</h2>
+        <p>Where a roadmap recommends private inference, we deploy <a href="https://marigold.run">marigold</a>, our open-source inference platform for open-weight models such as Llama, Mistral and Qwen. It offers the same API as OpenAI and Anthropic, so software written for those services points at marigold without changes. Its models cover text generation, embeddings, image understanding and generation, text-to-speech, and evaluation. (For engineers: the <a href="https://github.com/bayinfosys/marigold">source on GitHub</a>, the <a href="https://marigold.run/tutorials.html">tutorials</a>, and <a href="/library/64-marigold.html">how marigold works</a>.)</p>
         <p>The software is the same in all three options. They differ in whose hardware it runs on, and so in how far sovereignty extends. Moving between them changes the infrastructure and leaves your applications as they are.</p>
 
         <div class="sov-option">
           <h3>On your own hardware</h3>
-          <p><a href="https://marigold.run">marigold</a> runs on servers you own, on your premises. It needs an internet connection only to download the models; after that it runs with no connection at all. No cloud provider is involved, so no third party holds the data. This is the strongest option.</p>
+          <p>marigold runs on servers you own, on your premises. It needs an internet connection only to download the models; after that it runs with no connection at all. No cloud provider is involved, so no third party holds the data.</p>
           <p class="sov-meta"><strong>Who runs it:</strong> your team. <strong>Price:</strong> the software is open source and free; help with hardware sizing, installation and configuration is priced per engagement. (Sizing guidance: <a href="/library/78-gpu-market-2026.html">GPU options for self-hosted inference</a>.)</p>
         </div>
 
         <div class="sov-option">
           <h3>In your cloud account</h3>
-          <p>We deploy <a href="https://marigold.run">marigold</a> into your own cloud account, inside the security setup you already run: your network rules, access controls, logging and billing. Costs and data egress appear in the monitoring you already have. Your cloud provider's jurisdiction applies.</p>
-          <p><a href="https://marigold.run">marigold</a> needs only compute instances and storage, so it runs on any of the major clouds. We deploy to AWS with Terraform today; adding Azure or Google Cloud takes about a week, on request.</p>
+          <p>We deploy marigold into your own cloud account, inside the security setup you already run: your network rules, access controls, logging and billing. Costs and data egress appear in the monitoring you already have. Your cloud provider's jurisdiction applies.</p>
+          <p>marigold needs only compute instances and storage, so it runs on any of the major clouds. We deploy to AWS with Terraform today; adding Azure or Google Cloud takes about a week, on request.</p>
           <p>A deployment runs in four stages:</p>
           <ol>
-            <li>A readiness check of the data, its sensitivity and the use case.</li>
+            <li>A roadmap, or a shorter readiness check where the use case is already settled.</li>
             <li>Deployment and configuration in your account.</li>
             <li>Integration with one agreed system or workflow.</li>
             <li>Handover, with documentation.</li>
           </ol>
           <!-- PRICE: add "from GBP X" for the readiness check here once set. -->
-          <p class="sov-meta"><strong>Who runs it:</strong> you, after handover. <strong>Price:</strong> a fixed fee for the readiness check, then a fixed price for the deployment, quoted from it.</p>
+          <p class="sov-meta"><strong>Who runs it:</strong> you, after handover. <strong>Price:</strong> a fixed price for the deployment, quoted from the roadmap or readiness check.</p>
         </div>
 
         <div class="sov-option">
           <h3>Hosted by us</h3>
-          <p>We run <a href="https://marigold.run">marigold</a> on AWS in the region you choose and bill you directly. You receive an API endpoint and manage no infrastructure, and model versions change only by agreement with you. AWS is a US company, so the CLOUD Act point above applies.</p>
+          <p>We run marigold on AWS in the region you choose and bill you directly. You receive an API endpoint and manage no infrastructure, and model versions change only by agreement with you. AWS is a US company, so the CLOUD Act point above applies.</p>
           <p class="sov-meta"><strong>Who runs it:</strong> Bay Information Systems. <strong>Price:</strong> monthly, based on usage, and available on request. (Include your expected volume when you <a href="#discuss">get in touch</a>.)</p>
-          <p>This is managed private inference: dedicated to you, with no model provider in the path.</p>
         </div>
 
         <div class="table-responsive mt-4">
@@ -197,7 +224,7 @@ faq:
 
       <section class="mt-5" aria-labelledby="sov-cost">
         <h2 id="sov-cost">What does getting it wrong cost?</h2>
-        <p>Four problems come up repeatedly. A data incident involving personal or client data counts as your breach even when a processor caused it (the ICO's definition covers data sent to a third party). A provider can change or retire a model that a process depends on, on its own schedule. A single vendor's API sets your prices, and leaving means rewriting against another. And a regulator or client can ask where their data went, at which point the answer needs to be specific. (The <a href="/ai-readiness-assessment.html">readiness assessment</a> includes a question on which of these apply to your data.)</p>
+        <p>Four problems come up repeatedly. A data incident involving personal or client data counts as your breach even when a processor caused it (the ICO's definition covers data sent to a third party). A provider can change or retire a model that a process depends on, on its own schedule. A single vendor's API sets your prices, and leaving means rewriting against another. And a regulator or client can ask where their data went, at which point the answer needs to be specific. (The <a href="/checklists/private-inference.html">private inference checklist</a> asks which of these apply to your data.)</p>
       </section>
 
       <section class="mt-5" aria-labelledby="sov-faq">
@@ -209,8 +236,8 @@ faq:
       </section>
 
       <section id="discuss" class="mt-5" aria-labelledby="sov-discuss">
-        <h2 id="sov-discuss">Discuss a deployment</h2>
-        <p>Tell us what the data is and which option interests you, and we will reply within one working day. (What we collect is set out in the <a href="/privacy.html">privacy notice</a>.)</p>
+        <h2 id="sov-discuss">Start a roadmap or ask a question</h2>
+        <p>Tell us what the data is and what you would like, and we will reply within one working day. (What we collect is set out in the <a href="/privacy.html">privacy notice</a>.)</p>
         <form id="sov-form" class="form-panel mt-3">
           <div class="mb-3">
             <label for="sov-email" class="form-label">Email address</label>
@@ -225,21 +252,17 @@ faq:
             <input type="text" class="form-control" id="sov-org" name="organisation" autocomplete="organization">
           </div>
           <div class="mb-3">
-            <label for="sov-option" class="form-label">Which option?</label>
-            <select class="form-select" id="sov-option" name="option">
+            <label for="sov-interest" class="form-label">What would you like?</label>
+            <select class="form-select" id="sov-interest" name="interest">
+              <option>An AI roadmap</option>
+              <option>Example roadmaps</option>
+              <option>A deployment</option>
               <option value="">Not sure yet</option>
-              <option>On our own hardware</option>
-              <option>In our cloud account</option>
-              <option>Hosted by you</option>
             </select>
           </div>
           <div class="mb-3">
             <label for="sov-data" class="form-label">What is the data?</label>
             <textarea class="form-control" id="sov-data" name="data" rows="3" placeholder="For example: member records, client contracts, claims notes."></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="sov-usage" class="form-label">Expected usage (for hosted marigold)</label>
-            <input type="text" class="form-control" id="sov-usage" name="usage" placeholder="For example: 2,000 documents a day.">
           </div>
           <button type="submit" class="btn btn-custom">Send</button>
           <p class="form-msg mt-3" role="status" hidden></p>
@@ -273,9 +296,8 @@ faq:
       email: field("email"),
       name: field("name"),
       organisation: field("organisation"),
-      option: field("option"),
-      data: field("data"),
-      usage: field("usage")
+      interest: field("interest"),
+      data: field("data")
     };
 
     let sent = false;
@@ -289,7 +311,10 @@ faq:
     const msg = form.querySelector(".form-msg");
     msg.hidden = false;
     if (sent) {
-      msg.replaceChildren(render("sent", { message: "Sent. We will reply within one working day." }));
+      const message = data.interest === "Example roadmaps"
+        ? "Sent. The example roadmaps will reach you within one working day."
+        : "Sent. We will reply within one working day.";
+      msg.replaceChildren(render("sent", { message }));
       form.querySelector("button[type=submit]").disabled = true;
     } else {
       msg.replaceChildren(render("send-failed"));
