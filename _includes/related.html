@@ -1,16 +1,13 @@
 {% if page.related %}
-<section class="related-articles mt-5 pt-4 border-top">
+<aside class="related-articles mt-5 pt-4 border-top" aria-label="Related articles" data-nosnippet>
   <p class="text-muted mb-3" style="font-size: 0.8rem; letter-spacing: 0.05em;">Related articles</p>
   <ul class="list-unstyled">
     {% for slug in page.related %}
       {% assign rel = site.posts | where: "slug", slug | first %}
       {% if rel %}
-      <li class="mb-2">
-        <a href="{{ rel.url | relative_url }}">{{ rel.title }}</a>
-        {% if rel.description %}<span class="text-muted"> &mdash; {{ rel.description }}</span>{% endif %}
-      </li>
+      <li class="mb-2"><a href="{{ rel.url | relative_url }}">{{ rel.title }}</a></li>
       {% endif %}
     {% endfor %}
   </ul>
-</section>
+</aside>
 {% endif %}
