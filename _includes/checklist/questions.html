@@ -2,6 +2,7 @@
 {% assign prev_area = "" %}
 <section class="cl-noprint mt-5" aria-labelledby="cl-questions">
   <h2 id="cl-questions">{{ include.heading | default: "The questions" }}</h2>
+  <p class="text-muted">(Answers are recorded without your name or email address, and may be used in aggregate statistics. Details are in the <a href="/privacy.html">privacy notice</a>.)</p>
   {% for q in d.questions %}
   {% if d.grouped and q.area != prev_area %}
   <p class="cl-group">{{ q.area }}</p>
@@ -18,7 +19,7 @@
       <details class="cl-opt" name="{{ q.id }}" data-points="{{ o.points }}" data-flag="{{ o.flag }}">
         <summary><span class="cl-opt__label">{{ o.label }}</span><span class="cl-opt__state visually-hidden"></span></summary>
         <div class="cl-guide">
-          <p>{{ o.guidance }}</p>
+          {% if o.guidance %}<p>{{ o.guidance }}</p>{% endif %}
           {% if o.links and o.links.size > 0 %}
           <p class="cl-guide__links">Further reading:
             {% for l in o.links %}<a href="{{ l.url }}">{{ l.text }}</a>{% unless forloop.last %}; {% endunless %}{% endfor %}

@@ -141,7 +141,7 @@
       flags: flags.map(f => flagText[f].text)
     };
 
-    if (!completed) { completed = true; track("checklist_complete"); }
+    if (!completed) { completed = true; track("checklist_complete", { result, answers: answerList() }); }
   }
 
   const answerList = () => qs.map(q => ({
@@ -171,7 +171,8 @@
   bind("cl-form-email", "checklist_email_results", f => ({
     email: field(f, "email").value.trim(),
     consent: field(f, "consent").checked,
-    result
+    result,
+    answers: answerList()
   }), "Sent. Your results will arrive by email, usually within one working day.");
 
   bind("cl-form-call", "checklist_call_request", f => {

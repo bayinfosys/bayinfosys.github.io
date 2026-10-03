@@ -1,7 +1,8 @@
 # Do You Need Private Inference? From article 65, routing to /sovereign-ai.html.
 # Points measure freedom to use a hosted model API: a low score means more
 # constraint. Regulatory and contractual questions carry 4 points, because a
-# "Yes" to either usually rules out a hosted API on its own.
+# "Yes" to either usually rules out a hosted API on its own. The last four
+# questions describe the organisation and carry no points.
 
 questions:
   - id: q1
@@ -15,7 +16,7 @@ questions:
         guidance: "Then the question is how to run AI compliantly. A hosted model API is a third-party processor, and the answer for regulated data is usually no."
         links:
           - url: "/sovereign-ai.html"
-            text: "Sovereign AI for UK organisations"
+            text: "Sovereign and on-premise AI"
       - label: "Not sure"
         points: 3
         guidance: "Find out before choosing a tool. Your data protection officer or compliance lead can usually answer quickly, because the frameworks are specific about third-party processing."
@@ -58,7 +59,7 @@ questions:
         guidance: "Sending the data to a model provider may breach them, whatever the provider's own terms say. Read the clauses before choosing a tool."
         links:
           - url: "/sovereign-ai.html"
-            text: "Sovereign AI for UK organisations"
+            text: "Sovereign and on-premise AI"
       - label: "Not sure"
         points: 3
         guidance: "Check for clauses on subcontractors, processors and data location. They often cover AI services without naming them."
@@ -120,7 +121,7 @@ questions:
         guidance: "Then UK residency is not enough on its own. US law can reach US cloud providers wherever the data is stored; your own hardware, or a provider outside US jurisdiction, avoids that."
         links:
           - url: "/sovereign-ai.html"
-            text: "Sovereign AI for UK organisations"
+            text: "Sovereign and on-premise AI"
       - label: "Not sure"
         points: 1
         guidance: "It usually matters for defence, security and some public-sector work, and for clients who ask. Check what your clients' contracts say about data location and access."
@@ -166,14 +167,60 @@ questions:
           - url: "/library/04-cost-of-ml.html"
             text: "The cost of machine learning"
 
+  - id: q9
+    type: flag
+    area: "Organisation"
+    text: "Which sector is your organisation in?"
+    options:
+      - label: "Legal or professional services"
+      - label: "Insurance or finance"
+      - label: "Health or care"
+      - label: "Charity or membership organisation"
+      - label: "Public sector"
+      - label: "Defence or security"
+      - label: "Technology"
+      - label: "Other"
+
+  - id: q10
+    type: flag
+    area: "Organisation"
+    text: "How many people work there?"
+    options:
+      - label: "Fewer than 50"
+      - label: "50 to 249"
+      - label: "250 to 999"
+      - label: "1,000 or more"
+
+  - id: q11
+    type: flag
+    area: "Organisation"
+    text: "Which best describes your use of AI today?"
+    options:
+      - label: "None yet"
+      - label: "Staff use consumer chat tools (ChatGPT, Copilot, Gemini)"
+      - label: "Business or enterprise plans of those tools"
+      - label: "A cloud AI service (Azure OpenAI, AWS Bedrock or similar)"
+      - label: "Open-weight models we run ourselves"
+
+  - id: q12
+    type: flag
+    area: "Organisation"
+    text: "When are you planning to act?"
+    options:
+      - label: "This quarter"
+      - label: "Within a year"
+      - label: "Exploring for now"
+
 bands:
   - min: 0
     max: 8
     name: "Private inference from the start"
     text: "Several constraints apply at once. Plan for private inference from the outset, and settle the jurisdiction question before choosing between your own hardware and your cloud account."
     links:
+      - url: "/sovereign-ai.html#roadmap"
+        text: "The AI roadmap"
       - url: "/sovereign-ai.html"
-        text: "Sovereign AI for UK organisations"
+        text: "Sovereign and on-premise AI"
       - url: "/library/79-open-weights-deployment.html"
         text: "Deployment tiers for open-weight models"
   - min: 9
@@ -181,31 +228,35 @@ bands:
     name: "Private inference in your cloud"
     text: "Your answers point to keeping processing inside a boundary you control. Open-weight models in your own cloud account usually meet the need, with UK residency and the security controls you already run."
     links:
+      - url: "/sovereign-ai.html#roadmap"
+        text: "The AI roadmap"
       - url: "/sovereign-ai.html"
-        text: "Sovereign AI for UK organisations"
+        text: "Sovereign and on-premise AI"
       - url: "/library/40-private-inference.html"
-        text: "Private inference: running AI inside your own infrastructure"
+        text: "What is private AI inference?"
   - min: 15
     max: 18
     name: "A hosted API is likely fine"
-    text: "Nothing in your answers rules out a hosted model API. Choose one whose terms exclude training on your data, and set a policy on what staff may send to it."
+    text: "Nothing in your answers rules out a hosted model API. Choose one whose terms exclude training on your data, and set a policy on what staff may send to it. The roadmap covers what to build, whichever way it runs."
     links:
       - url: "/library/87-inference-infrastructure.html"
         text: "AI inference infrastructure: a decision framework"
       - url: "/library/65-why-private-inference.html"
         text: "Why private inference"
+      - url: "/sovereign-ai.html#roadmap"
+        text: "The AI roadmap"
 
 flags:
   regulated:
     text: "A regulatory constraint applies, so a hosted model API is usually ruled out whatever the total."
     url: "/sovereign-ai.html"
-    link_text: "Sovereign AI for UK organisations"
+    link_text: "Sovereign and on-premise AI"
   contract:
     text: "Client contracts restrict third-party processing. Check them before any data goes to a model provider."
   jurisdiction:
     text: "Jurisdiction matters for this data: plan for your own hardware, or a cloud provider outside US jurisdiction."
     url: "/sovereign-ai.html"
-    link_text: "Sovereign AI for UK organisations"
+    link_text: "Sovereign and on-premise AI"
   offline:
     text: "Offline operation needs your own hardware, whatever the total."
     url: "/library/64-marigold.html"
