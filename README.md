@@ -211,7 +211,7 @@ navigation events via a JavaScript snippet included in the default layout.
 
 ```javascript
 const logger = clientlog.createLogger({
-  endpoint: "https://api.dev.clientlog.bayis.co.uk/v1/event",
+  endpoint: "https://api.clientlog.bayis.co.uk/v1/event",
   project: "bayis/home",
   options: { session: true, navigation: true }
 });
