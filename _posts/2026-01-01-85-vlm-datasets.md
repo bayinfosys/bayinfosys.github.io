@@ -53,4 +53,4 @@ This is a reference for what these datasets actually contain, in what quantity, 
 
 **VQAv2.** 1.1 million questions and roughly 13 million answers over 265,016 images drawn from COCO, each question answered by multiple human annotators to capture disagreement. Reuses COCO's image files; the annotation and question files add under 1GB.
 
-(If you're evaluating which of these underlies a model you're considering deploying, the practical question is usually narrower than "what was it trained on": whether the training data's licence, safety filtering, and content are appropriate for your use case. [Get in touch](/contact) if that audit would help.)
+(If you're evaluating which of these underlies a model you're considering deploying, the practical question is usually narrower than "what was it trained on": whether the training data's licence, safety filtering, and content are appropriate for your use case. [Get in touch](/contact.html) if that audit would help.)

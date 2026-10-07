@@ -63,4 +63,4 @@ None of the four measurements above is a one-time gate. The corpus changes, docu
 
 Re-run the four stages on a fixed schedule against the current corpus, and track retrieval metrics against a rolling sample of real production queries rather than only the original eval set, since real usage drifts away from whatever questions the system was tested against at launch. When a metric drops, it points at the stage responsible: falling context recall means revisit chunking, falling precision at K means revisit retrieval, falling faithfulness means revisit generation. The measurement tells you which part of the pipeline to touch, which is the entire point of measuring each stage separately rather than scoring the system as one number.
 
-(If you're setting up drift detection for a RAG system already in production, [get in touch](/contact).)
+(If you're setting up drift detection for a RAG system already in production, [get in touch](/contact.html).)

@@ -120,4 +120,4 @@ They need to be present at the beginning.
 ---
 
 (Bay Information Systems works as an embedded function for defined engagements -- moving into a team, shaping the next set of goals alongside it, and leaving a system the organisation can operate.
-[Get in touch](/contact) if that model fits what you are building.)
+[Get in touch](/contact.html) if that model fits what you are building.)

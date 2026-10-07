@@ -44,4 +44,4 @@ The cost and exposure problems share the same structural fix as they did for RAG
 
 Governance doesn't have an infrastructure fix in the same way. Least privilege, approval gates, and audit trails are design decisions that have to be made regardless of where the model runs, and they're the one item on this list that self-hosting doesn't solve for you.
 
-(If you're scoping the permission model or cost ceiling for an agent build, [get in touch](/contact).)
+(If you're scoping the permission model or cost ceiling for an agent build, [get in touch](/contact.html).)

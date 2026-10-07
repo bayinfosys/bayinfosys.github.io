@@ -18,7 +18,7 @@ related:
 
 # Are You a Data Controller or a Processor?
 
-Machine learning work is data work, so the legal position on storing, moving and processing that data belongs in the engineering rather than in a review at the end. This piece covers one narrow category: request data of the kind that already sits in server logs and analytics events. It is not legal advice, and other categories raise different questions. (If your situation involves those, [get in touch](/contact) or ask your legal representative.)
+Machine learning work is data work, so the legal position on storing, moving and processing that data belongs in the engineering rather than in a review at the end. This piece covers one narrow category: request data of the kind that already sits in server logs and analytics events. It is not legal advice, and other categories raise different questions. (If your situation involves those, [get in touch](/contact.html) or ask your legal representative.)
 
 Two regimes apply to that data and they test different things. Most discussion collapses them into one, which is why so many teams reach the wrong answer confidently. One regime asks whether you put anything on the user's device. The other asks whether what you hold can be traced to a person. A system can pass the second and fail the first, and failing the first is the common case.
 
@@ -78,4 +78,4 @@ None of this is difficult. It is difficult to retrofit, because the identifier s
 
 [Clientlog](https://www.clientlog.bayis.co.uk) is built to these constraints: no device storage, no address retention, forwarding opt-in per destination. The implementation notes are on its own site.
 
-(If you are working out where your analytics or model pipeline sits against this, [get in touch](/contact).)
+(If you are working out where your analytics or model pipeline sits against this, [get in touch](/contact.html).)

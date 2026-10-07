@@ -204,4 +204,4 @@ modes. They identify the gaps.
 
 (Bay Information Systems designs and builds agentic systems for
 production deployment. If you are working through these architecture
-decisions, [get in touch](/contact).)
+decisions, [get in touch](/contact.html).)

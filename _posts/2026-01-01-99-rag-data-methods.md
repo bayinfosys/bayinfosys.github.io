@@ -54,4 +54,4 @@ The choice between them is not really about which is more advanced. It's about w
 
 None of these methods is a strict upgrade over the one before it; each solves a specific failure mode at a specific cost. A team with clean, prose-heavy documents and stable content gains little from graph extraction or late chunking and should start with fixed-size or semantic chunking. A team whose questions genuinely require connecting facts across documents needs the graph. A team whose source material is scanned forms and tables needs to have the OCR-versus-image conversation before writing a single line of chunking code, because that decision is much harder to reverse once a corpus has been indexed one way.
 
-(If you're working out which of these methods fits a specific document set, [get in touch](/contact).)
+(If you're working out which of these methods fits a specific document set, [get in touch](/contact.html).)

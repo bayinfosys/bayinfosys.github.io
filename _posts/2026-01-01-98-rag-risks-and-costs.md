@@ -51,4 +51,4 @@ None of these three risks argues against RAG as an approach. They argue for trea
 
 The exposure and cost points share a structural fix: running chunking, embedding, and generation on infrastructure you control removes the third party from both round trips. [Marigold](https://marigold.run) runs this stack on private, self-hosted infrastructure over your own data, so the ingestion cost is compute you already own and the query cost stops being a metered call to someone else's API.
 
-(If you're weighing a RAG build against these three risks, [get in touch](/contact).)
+(If you're weighing a RAG build against these three risks, [get in touch](/contact.html).)

@@ -199,4 +199,4 @@ Substanially better than uploading sensitive data and disclosing information to 
 
 ---
 
-See our [Marigold](https://marigold.run) platform for more options. For organisations working through the compliance architecture for a specific use case, [get in touch](/contact).
+See our [Marigold](https://marigold.run) platform for more options. For organisations working through the compliance architecture for a specific use case, [get in touch](/contact.html).

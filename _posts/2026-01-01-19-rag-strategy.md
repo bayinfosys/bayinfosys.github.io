@@ -62,4 +62,4 @@ It is also the step where the third-party question becomes unavoidable. A genera
 
 None of these four decisions needs to be made at maximum sophistication on day one. A naive chunking approach, a simple vector store, similarity-only retrieval, and a single generation call is a reasonable starting system for an internal search tool with well-structured source documents. Each component can be upgraded independently once you know which one is actually limiting quality, which is a more tractable question than "is our RAG good enough", because it points at a specific piece of the pipeline rather than the whole thing at once.
 
-(If you're scoping a RAG build and want a second opinion on which components are worth the engineering time, [get in touch](/contact).)
+(If you're scoping a RAG build and want a second opinion on which components are worth the engineering time, [get in touch](/contact.html).)
