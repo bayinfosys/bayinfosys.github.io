@@ -158,4 +158,4 @@ Prefect sits across the line: flows are ordinary code with a service alongside, 
 The tools differ in many further ways, and those differences matter at the margins.
 The important ones (determinism rules, recovery granularity, the shape of a repair, what must be operated) follow from where a tool stands on the two questions.
 
-If you are making this choice for an AI system, [we can help](/#contact-us).
+If you are making this choice for an AI system, [we can help](/contact).
