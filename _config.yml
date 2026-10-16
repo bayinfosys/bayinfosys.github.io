@@ -32,3 +32,11 @@ defaults:
 author:
   name: "Edward Grundy"
   url: "https://www.bayis.co.uk/about#edward-grundy"
+
+exclude:
+  - internal_only/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
