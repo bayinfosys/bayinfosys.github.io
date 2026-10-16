@@ -33,9 +33,10 @@ layout: default
   {% include related.html %}
 
   <hr id="article-end" class="mt-5">
+
   {% if page.cta %}
   {% assign cl = site.checklists | where: "slug", page.cta | first %}
-  <p class="text-muted">(Checklist: <a href="{{ cl.url }}">{{ cl.title }}</a>. {{ cl.description }})</p>
+  {% if cl %}<p class="text-muted">(Checklist: <a href="{{ cl.url }}">{{ cl.title }}</a>. {{ cl.description }})</p>{% endif %}
   {% endif %}
   <p class="text-muted">Questions about this? <a href="/contact.html">Get in touch.</a></p>
 </main>
