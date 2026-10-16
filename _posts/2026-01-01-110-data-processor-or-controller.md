@@ -14,6 +14,7 @@ related:
   - 42-software-engineering-solved-governance
   - 65-why-private-inference
   - 58-multi-tennant
+  - 73-ner-and-pii
 ---
 
 # Are You a Data Controller or a Processor?
