@@ -1,21 +1,24 @@
 ---
 layout: default
-permalink: /tools/
+permalink: /tools.html
+redirect_from:
+  - /tools/
 title: "Tools"
-seo_title: "Free Tools for AI Infrastructure Planning"
-description: "Free calculators and tools for sizing and costing machine learning infrastructure. No sign-up."
+seo_title: "Free Calculators for Self-Hosted AI Infrastructure"
+description: "Free calculators for sizing self-hosted AI: GPU memory for a model and its KV cache, and disk and memory for a vector database. No sign-up, nothing stored against an identity."
 ---
 
 <div class="container my-5">
   <h1>Tools</h1>
-  <p class="lead">Calculators and utilities from work we have done. Free, no sign-up,
-  nothing stored against an identity.</p>
+  <p class="lead">Calculators from our own infrastructure work. Free, no sign-up, nothing stored against an identity.</p>
 
   <div class="library-card p-4 mt-4">
-    <h2 class="library-card__title">
-      <a href="/tools/vram-calculator.html">Inference VRAM Calculator</a>
-    </h2>
-    <p class="library-card__desc mb-0">How much GPU memory a self-hosted model needs, once
-    the KV cache across concurrent requests is counted alongside the weights.</p>
+    <h2 class="library-card__title"><a href="/tools/vram-calculator.html">Inference VRAM Calculator</a></h2>
+    <p class="library-card__desc mb-0">How much GPU memory a self-hosted model needs, with the KV cache for concurrent requests counted alongside the weights.</p>
+  </div>
+
+  <div class="library-card p-4 mt-4">
+    <h2 class="library-card__title"><a href="/tools/embedding-storage-calculator.html">Embedding Storage Calculator</a></h2>
+    <p class="library-card__desc mb-0">Disk and memory for a vector database: text or image embeddings, single-vector or late interaction, with HNSW index overhead and stored payload.</p>
   </div>
 </div>
