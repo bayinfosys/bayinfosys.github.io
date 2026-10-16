@@ -26,8 +26,8 @@
 
   function track(name, data = {}) {
     try {
-      if (typeof logger !== "undefined" && logger && typeof logger.event === "function") {
-        logger.event(name, Object.assign({ checklist: id }, data));
+      if (typeof logger !== "undefined" && logger && typeof logger.log === "function") {
+        logger.log(name, Object.assign({ checklist: id }, data));
         return true;
       }
     } catch (e) {}
