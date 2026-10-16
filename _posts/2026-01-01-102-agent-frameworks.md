@@ -1,5 +1,5 @@
 ---
-date: 2026-10-16
+date: 2026-07-26
 layout: article
 title: "Agent Frameworks and Harnesses"
 seo_title: "Agent Frameworks Compared: LangGraph, CrewAI, OpenAI, Claude"
