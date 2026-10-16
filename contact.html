@@ -32,8 +32,8 @@ permalink: /contact.html
           <input type="text" class="form-control" id="name" placeholder="Your name">
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label">e-mail</label>
-          <input type="text" class="form-control" id="email" placeholder="Your email address">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" autocomplete="email" placeholder="Your email address" required>
         </div>
         <div class="mb-3">
           <label for="organisation" class="form-label">Organisation</label>
@@ -60,8 +60,8 @@ permalink: /contact.html
     const organisation = document.getElementById("organisation").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    if (!name || !message) {
-      alert("Please enter your name and a message.");
+    if (!name || !email || !message) {
+      alert("Please enter your name, email address and a message.");
       return;
     }
 
