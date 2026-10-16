@@ -52,4 +52,4 @@ Content, in the current model, is the artefact -- the video file, the article HT
 
 The production pipelines that maintain format variants -- the thumbnail generators, the responsive image tooling, the mobile rewrites -- solved a real problem with the tools available at the time. Nobody would design them from scratch today.
 
-*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. The image-to-depth workflow is in production. https://bayis.co.uk/marigold)*
+*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. The image-to-depth workflow is in production. https://marigold.run)*

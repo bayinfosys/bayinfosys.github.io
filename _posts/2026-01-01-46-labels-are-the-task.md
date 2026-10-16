@@ -41,4 +41,4 @@ This is what twenty years of ML consulting practice looks like applied to the fo
 
 The artefact which makes a pipeline transferable is not the pipeline itself. Any competent engineer can reconstruct the workflow from a specification. What cannot be reconstructed without significant effort is the labelled set that defines "correct" and the accumulated corrections from actual usage. That is the intellectual property which belongs to the client.
 
-*(Marigold's eval surface runs any pipeline against a labelled dataset, scores outputs using the same model registry, and accumulates corrected outputs from production runs into a reusable task specification. https://bayis.co.uk/marigold)*
+*(Marigold's eval surface runs any pipeline against a labelled dataset, scores outputs using the same model registry, and accumulates corrected outputs from production runs into a reusable task specification. https://marigold.run)*

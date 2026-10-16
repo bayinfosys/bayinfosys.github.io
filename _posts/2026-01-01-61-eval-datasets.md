@@ -120,4 +120,4 @@ The benchmarks above are calibration instruments. They show how models perform o
 
 The first step on any engagement is to get labelled examples of the task you actually need to solve. Run the pipeline against them. Look at the failures. Add them to the set with corrections attached. The benchmark literature is evidence that specifying the task properly is the hard part. The teams who built the datasets above -- including GDPval, LegalBench, and FinanceBench -- treated it as primary engineering work, not as a step that happens after the model is chosen.
 
-*(Marigold's eval surface runs any pipeline against a labelled dataset, scores outputs using a configurable judge, and accumulates corrected production outputs into a reusable task specification. https://bayis.co.uk/marigold)*
+*(Marigold's eval surface runs any pipeline against a labelled dataset, scores outputs using a configurable judge, and accumulates corrected production outputs into a reusable task specification. https://marigold.run)*

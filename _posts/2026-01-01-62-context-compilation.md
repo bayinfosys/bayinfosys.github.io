@@ -164,7 +164,7 @@ in full in [Task Specification is the Primary Artefact](/library/46-labels-are-t
 the measurement frameworks for evaluating retrieval quality are covered in
 [LLM Evaluation Metrics](/library/25-llm-evaluation.html).)
 
-(Bay Information Systems is building tooling in this direction: https://bayis.co.uk/marigold)
+(Bay Information Systems has tooling for this direction: [marigold](https://marigold.run))
 
 ## The query interface
 

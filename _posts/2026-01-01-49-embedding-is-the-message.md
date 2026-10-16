@@ -42,4 +42,4 @@ But the direction is real. The current assumption that AI communication will be 
 
 The medium is still being invented. The message may not be language at all.
 
-*(Bay Information Systems is building infrastructure in this direction. https://bayis.co.uk/marigold)*
+*(Bay Information Systems is building infrastructure in this direction. https://marigold.run)*

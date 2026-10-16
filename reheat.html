@@ -51,7 +51,7 @@ keywords: ["search console", "intent clustering", "content gap analysis", "seman
 
 <p>Each stage of the pipeline enriches the previous output and writes to a local state file. An interrupted run resumes from the last completed stage. Embedding runs locally via <a href="https://github.com/qdrant/fastembed">fastembed</a> -- no API calls, no data leaving your machine. Clustering uses k-means; the cluster count defaults to 32 and is configurable.</p>
 
-<p>Each cluster receives a natural language label from an inference provider of your choice: OpenAI, Anthropic, or <a href="https://www.bayis.co.uk/marigold">Marigold</a>. An optional SerpAPI enrichment pass pulls related queries and People Also Ask results into the same embedding space, widening the model's view of the intent landscape around your existing queries.</p>
+<p>Each cluster receives a natural language label from an inference provider of your choice: OpenAI, Anthropic, or <a href="https://marigold.run">Marigold</a>. An optional SerpAPI enrichment pass pulls related queries and People Also Ask results into the same embedding space, widening the model's view of the intent landscape around your existing queries.</p>
 
 <img src="/img/posts/reheat-intent-map.gif" alt="Intent map scatter plot showing query clusters">
 

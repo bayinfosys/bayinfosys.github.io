@@ -41,4 +41,4 @@ Most real systems need both, at different levels. A document processing pipeline
 
 The interesting design question is not which approach to use but where to draw the boundary: which decisions are fixed in the spec and which are made at runtime. Drawing that boundary well is most of what workflow design actually involves.
 
-*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. https://bayis.co.uk/marigold)*
+*(Marigold is a typed inference platform for privately hosted models with a declarative workflow engine. https://marigold.run)*
