@@ -1,50 +1,87 @@
 ---
-date: 2026-07-26
+date: 2026-10-16
 layout: article
 title: "Evaluating Agents"
-description: "How to evaluate an AI agent: tool-call correctness, planning efficiency and task success, measured separately and in that order, then repeated to check it succeeds the same way twice (pass^k)."
-keywords: ["agent evaluation", "tool calling accuracy", "task success rate", "GAIA benchmark", "SWE-bench", "tau-bench", "agent drift detection", "agent reliability"]
-seo_title: "How to Evaluate an AI Agent: Metrics, Benchmarks, and Drift"
+seo_title: "How to Evaluate an AI Agent: Task Sets, Traces and Repeated Runs"
+description: "How to evaluate an AI agent on your own tasks: tool-call correctness, planning efficiency and outcome, measured separately and in that order, then repeated to check it succeeds the same way twice."
+keywords: ["how to evaluate an ai agent", "agent evaluation", "tool calling accuracy", "agent task success rate", "pass^k", "llm as judge", "agent reliability", "agent drift"]
 topic: "AI Systems"
 related:
-  - 25-llm-evaluation
+  - 100-rag-evaluation
   - 61-eval-datasets
   - 68-build-measurements
-  - 44-static-vs-dynamic-planning
-  - 101-what-are-agents
-  - 102-agent-frameworks
+  - 109-instrumentation
+  - 112-dbos
   - 103-agent-risks-costs
-  - 104-agent-tasks
+  - 102-agent-frameworks
 ---
 
 # Evaluating Agents
 
-A completed task and a correctly completed task look the same in a transcript, in the same way a fluent RAG answer can be ungrounded. So evaluation has to check each stage of the loop separately, in pipeline order, rather than trusting a single end-to-end success number.
+A transcript of an agent that completed a task and one that completed it correctly can look the same, in the way a fluent RAG answer can be ungrounded ([Evaluating RAG](/library/100-rag-evaluation.html)).
+An agent's output is a sequence of actions, and each can be right or wrong independently of the final answer.
+Evaluation therefore follows the loop: each stage measured on its own, in the order the agent runs them, on tasks taken from your own work, and repeated.
 
-## First, tool-call correctness
+We can set out the method in five parts: the task set, the trace, three measurements, repetition, and when to run it again.
 
-Before asking whether the task succeeded, check whether the agent called the right tool with the right arguments at each step. This is measured independently of final outcome, since an agent can call the correct tool with a malformed argument and still stumble into a working result by luck, or call the wrong tool first and still recover. The Berkeley Function-Calling Leaderboard is the standard reference for this specific measurement: function-calling accuracy in isolation, across languages and API styles, held apart from anything downstream. If this number is poor, nothing later in the loop can be trusted to mean what it appears to mean.
+## The task set
 
-## Then, planning efficiency
+Public benchmarks measure general capability on someone else's tools.
+The evaluation that predicts behaviour in production uses your tasks, your tools and your failure cases.
+A few dozen tasks will find the large faults, and the set grows as production supplies new cases.
 
-With tool calls confirmed correct, measure whether the agent got to the answer efficiently or wandered there. Step count per completed task and cost per completed task are the two numbers that matter here, and they're rarely reported alongside success rate even though they should be read together: a benchmark score of 88% achieved at fifty dollars of inference per task is not the same result as 88% achieved at fifty cents, and most published agent benchmarks don't integrate cost into the headline number at all. This is the stage where the cost risk from the previous article in this series actually gets caught before the bill does, a plan that took thirty steps for a three-step task shows up here as a number, not as a mystery on the invoice.
+Each task needs three things written down before the agent runs it: the request as a user would phrase it, the end state that counts as success, and any rules the agent must respect on the way.
+The end state carries the most weight.
+tau-bench, a benchmark for customer-service agents, judges a run by comparing the database after the conversation with an annotated goal state, which tests what the agent did and ignores how well it described it.
+The same check works on a private set: the order is cancelled, the ticket carries the right label, the patch fixes the failing test and the existing tests still pass.
 
-## Then, task success rate, checked more than once
+Include tasks the agent should refuse or escalate (a request that breaks a stated policy, a change it has no permission to make) and tasks it has got wrong before.
+These test the governance problems in [Agent Risks, Costs, and Governance](/library/103-agent-risks-costs.html), which a set of ordinary requests never reaches.
 
-Finally, whether the task was actually completed correctly. GAIA measures this across general assistant tasks requiring multi-step reasoning and tool use; SWE-bench Verified measures it for coding agents specifically, against real GitHub issues where a patch has to make the failing tests pass without breaking the ones that already did; WebArena and OSWorld measure it for browser and desktop tasks; tau-bench (and its successor tau2-bench) adds a distinction worth adopting directly, scoring policy adherence separately from task completion, so an agent that resolves a request by violating a stated rule doesn't get full credit for succeeding.
+## The trace
 
-The number worth checking that most teams skip: does the agent succeed the same way twice. Agent variance between runs on identical tasks is large enough that a single pass rate is close to meaningless on its own; reported pass^4 scores commonly run fifteen to twenty-five points below pass^1 on the same benchmark. A 90% single-run success rate can correspond to something closer to 70% reliability once the same task gets retried a handful of times, which is the situation a production system is actually in. Measure success rate across repeated runs of the same task, not once per task, or the number you report will be higher than the reliability you actually get.
+Every measurement reads from a record of the run: each tool call with its arguments and result, each model call with its token count, the order they happened in, and the final state.
+[Instrumentation Is the Deliverable](/library/109-instrumentation.html) argues that this record is worth building for its own sake.
+A durable execution layer produces most of it as a side effect.
+DBOS, for example, stores each workflow's inputs and every step's output as rows in Postgres ([What Is DBOS?](/library/112-dbos.html)), so the evaluation queries the same tables the recovery mechanism uses.
+(If you are building this record for an agent already in production, [get in touch](/contact.html).)
 
-## Getting the numbers
+## Three measurements, in order
 
-None of the benchmarks above substitutes for an eval set built from your own tasks, for the same reason a general RAG benchmark doesn't substitute for evaluating against your own corpus: GAIA and SWE-bench measure general capability, not whether your agent handles your tools, your data, and your failure modes correctly. Build a small task set from real cases (including ones the agent has previously got wrong) and run the three measurements above against it directly, using the general benchmarks as calibration for how a given model or framework performs before you commit to building against it.
+**Tool-call correctness.**
+For each call, check that the agent chose the right tool and passed valid arguments.
+Most of this is mechanical: arguments validate against the tool's schema, identifiers refer to records that exist, and values fall within documented ranges.
+Where a task has one correct sequence of calls, compare the trace with it; where several sequences are acceptable, check each call against rules instead.
+The Berkeley Function-Calling Leaderboard measures this stage across models, which helps choose a model before building and says nothing about your own tools.
 
-One further limitation worth stating plainly: most agent benchmarks report a single end-to-end number and don't localise which stage of the pipeline a failure came from. That's precisely why the three measurements above are worth taking separately rather than trusting whatever single score a leaderboard reports, since a dropping success rate with unchanged tool-call correctness points somewhere different than a dropping success rate caused by tool calls going wrong.
+**Planning efficiency.**
+For completed tasks, count steps and cost, and compare each with a budget set per task.
+A task that should take three steps and takes thirty shows up here as a number before it shows up on an invoice.
+Read these beside the success rate, since a higher success rate bought with ten times the steps is a different result.
 
-## Drift detection in agents
+**Outcome.**
+Compare the final state with the expected end state, and check the rules separately: an agent that completes a refund by skipping a required approval has failed the task.
+Use code to check anything code can check.
+Use a model as judge only for outputs it cannot (the quality of a written summary, for instance), and test the judge against a sample of human labels before relying on it ([How to Evaluate an AI Pipeline](/library/61-eval-datasets.html)).
 
-None of the three measurements is a one-time gate. Two things drift independently of the model. A tool's underlying API changes its response format or its error codes, and calls that used to succeed start failing in a way the agent has no way to anticipate. A sub-agent's system prompt, or the tool set the harness exposes, stops matching what it was tuned against, and the agent's behaviour degrades in a way that looks exactly like the model getting worse, when nothing about the model has changed.
+The order serves diagnosis.
+A fall in outcome while tool calls stay correct points at planning or at the model's final step.
+A fall in tool-call correctness most often means something changed in a tool (its schema, its error codes, its data), and the later measurements inherit the fault.
 
-Re-run the three measurements on a fixed schedule, and specifically after any change to a tool's API, a harness version, or a framework upgrade, rather than only after a model change, since those are the more common source of a production agent quietly getting less reliable. When a metric drops, it points at a stage the same way it does for RAG: falling tool-call correctness means a tool's interface has changed underneath the agent; falling planning efficiency with unchanged tool-call correctness means the planning strategy itself has degraded; falling task success rate with the first two holding steady means the model or the final-step logic is where to look.
+## Repetition
 
-(If you're setting up this evaluation loop for an agent already in production, [get in touch](/contact.html).)
+An agent given the same task twice can take different paths to different results, so one run per task overstates reliability.
+Run each task several times and report two numbers: the share of individual runs that succeed, and the share of tasks that succeed on every run.
+tau-bench introduced the second as pass^k, for k runs.
+The gap between the two numbers measures inconsistency, and a production system lives with that gap, because every real request is another draw.
+(If runs were independent, a 90 per cent success rate per run would give 0.9 to the power 4, about 66 per cent, for four successes in a row.)
+
+Repetition also separates change from noise.
+A difference between two model versions smaller than the spread between runs of one version is not yet a finding.
+
+## When to run it again
+
+Run the full set whenever anything in the loop changes: the model, a tool's API, the harness or framework version, the system prompt, or the set of tools exposed to the agent.
+Tool and harness changes cause drops in reliability without any change to the model, and they arrive more often than model releases.
+Between changes, a scheduled run on a fixed sample catches external tools that changed without notice.
+The task set, the trace and the three measurements stay the same each time, which is what makes one run comparable with the last.

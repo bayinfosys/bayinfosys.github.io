@@ -1,59 +1,99 @@
 ---
-date: 2026-07-26
+date: 2026-10-16
 layout: article
 title: "Agent Frameworks and Harnesses"
-description: "Framework, harness, and SDK get used interchangeably, and the field hasn't settled the vocabulary. A comparison of what LangGraph, CrewAI, the OpenAI Agents SDK, the Claude Agent SDK, and Claude Code actually are, and which of them ties you to one model."
-keywords: ["agent frameworks compared", "langgraph vs crewai", "claude agent sdk", "openai agents sdk", "agent harness vs framework", "claude code agent", "multi-agent orchestration", "mcp agent framework"]
+seo_title: "Agent Frameworks Compared: LangGraph, CrewAI, OpenAI, Claude"
+description: "Agent tools divide by who builds the loop. Frameworks leave it to you, harnesses ship it finished for one domain, and agent SDKs expose a harness as a library. LangGraph, CrewAI, the OpenAI Agents SDK, Google ADK, Microsoft Agent Framework and the Claude Agent SDK compared on that, on model choice and on crash recovery."
+keywords: ["agent frameworks compared", "langgraph vs crewai", "openai agents sdk", "claude agent sdk", "google adk", "microsoft agent framework", "agent harness vs framework", "durable agents"]
 topic: "AI Systems"
-seo_title: "Agent Frameworks vs Harnesses: LangGraph, CrewAI, Claude Agent SDK Compared"
 related:
-  - 54-runfox
-  - 19-rag-strategy
-  - 10-agent-memory
   - 101-what-are-agents
+  - 113-durable-execution
+  - 112-dbos
+  - 44-static-vs-dynamic-planning
   - 103-agent-risks-costs
-  - 104-agent-tasks
   - 105-agent-evaluation
 ---
 
 # Agent Frameworks and Harnesses
 
-Three words get used more or less interchangeably in agent discussions, and they describe genuinely different things. A **framework** gives you building blocks, an orchestration model, state management, tool-calling conventions, and you assemble the loop yourself. A **harness** owns the loop already: tools, approval gates, and context management come built in, tuned for a specific domain, and you drive it rather than construct it. An **SDK**, in the agent context, often means a harness exposed as a library, so you get the pre-built loop but call it from your own code instead of a CLI or an app. Which of these you want depends less on how capable each option is and more on how much of the loop you actually need to control yourself.
+"Framework", "harness" and "SDK" are used almost interchangeably in writing about agents, and the tools they name differ in one respect that matters more than any feature list: who builds the loop.
+An agent runs a loop (act, observe the result, choose the next action), as described in [What Are Agents](/library/101-what-are-agents.html).
+A framework supplies the parts and you assemble the loop.
+A harness ships the loop finished, with tools and approval gates tuned for one kind of work.
+An agent SDK, in current usage, is usually a harness exposed as a library, so the finished loop is called from your own code.
+
+We can sort the current tools by that question first, then by two more: which models each one allows, and what happens to a running task when the process dies.
 
 ## Frameworks: you build the loop
 
-**LangGraph** models an agent as a directed graph with conditional edges between nodes, and its main strength is what that graph structure buys you: built-in checkpointing, time-travel debugging (rewinding to an earlier state and re-running from there), and explicit control over every state transition. It's model-agnostic, working with Anthropic, OpenAI, Gemini, or local models without changing the orchestration code, which makes it the natural choice when a task needs genuinely complex, stateful control flow and the engineering time to build a graph is worth spending. MCP tools are integrated via adapters rather than natively.
+LangGraph models an agent as a graph of nodes joined by edges.
+Conditional edges choose the next node at runtime and cycles are allowed, which is the shape an agent loop needs.
+Its checkpointers save the graph's state to Postgres, SQLite or Redis, so an interrupted run can resume and an earlier state can be rewound and run again.
+It works with any model provider, and it reaches MCP servers through an adapter package.
 
-**CrewAI** takes the opposite starting point: describe agents by role, goal, and backstory, and let the framework handle coordination between them. This role-based pattern is the fastest of the group to prototype in, reads closer to a team charter than to code, and has the largest community of the open-source options. MCP support is native rather than adapter-based, and it has added A2A (agent-to-agent) task delegation, which matters if agents built on different frameworks need to hand work to each other.
+CrewAI describes agents by role, goal and backstory, and coordinates them as a crew.
+The role descriptions read more like a team charter than a program, which makes it quick to sketch a multi-agent design.
+It treats A2A (the agent-to-agent protocol) as a first-class way to delegate: an agent can hand a task to a remote A2A agent, and a CrewAI agent can serve A2A requests from elsewhere.
 
-**The OpenAI Agents SDK** is the thinnest abstraction of the three: a small number of primitives, explicit handoffs between agents, and the fastest path from nothing to a working agent. It shipped OpenAI-first, and now reaches other model providers through a LiteLLM integration, though that path is newer and less proven than the model-agnostic design LangGraph and CrewAI were built with from the start.
+The OpenAI Agents SDK is deliberately small: agents, handoffs between them, guardrails, sessions and tracing, in Python and TypeScript.
+It uses OpenAI's models by default.
+Other providers connect through its LiteLLM extension or any endpoint compatible with the Chat Completions API, though its defaults (the Responses API, tracing to OpenAI's dashboard) lean towards OpenAI's platform.
 
-**Google's Agent Development Kit (ADK)** is built around Gemini but supports other models, and its standout feature is native A2A support with auto-generated Agent Cards, making it the strongest option of the group for an architecture that genuinely needs agents from different vendors talking to each other rather than one team building everything in one framework.
+Google's Agent Development Kit (ADK) is built around Gemini and supports other models, with A2A support for agents that need to call agents built elsewhere.
 
-**AG2** (the community continuation of AutoGen) and **Microsoft's Agent Framework** (which folded AutoGen and Semantic Kernel into one SDK) round out the enterprise end of the list, the latter specifically for teams already committed to the .NET and Azure ecosystem.
+Microsoft Agent Framework succeeds both AutoGen and Semantic Kernel.
+It was built by the same teams, reached version 1.0 in April 2026, and runs in Python and .NET, which suits teams already working in Microsoft's ecosystem.
+AG2, a fork of AutoGen maintained by some of its original authors, continues the older AutoGen design.
 
 ## Harnesses: the loop is already built
 
-A harness is what you get when someone has already made the framework decisions above, for one specific domain, and shipped the result as a finished tool. **Claude Code**, OpenAI's **Codex**, and **Cursor**'s agent mode are the clearest examples: each owns the read-observe-act loop, ships with a fixed tool set (read a file, run a command, edit code), and manages its own approval gates for anything destructive, all tuned specifically for software engineering. Nothing here is being assembled by the person using it. The trade-off for that convenience is scope: a harness built for coding is a poor fit for a task outside that domain, in the way a framework's blank-canvas building blocks are not.
+Claude Code, OpenAI's Codex and Cursor's agent mode are harnesses for software engineering.
+Each owns the loop, ships a fixed set of tools (read a file, run a command, edit code) and asks for approval before anything destructive.
+The person using one directs it and assembles nothing.
+Its tools and prompts assume a code repository, which limits how far it transfers to other work.
 
-Anthropic's own documentation makes the relationship explicit: the **Claude Agent SDK** is described as being built directly on top of "the agent harness that powers Claude Code", exposing that same loop, tool set, and context management as a Python and TypeScript library rather than a CLI. That's the cleanest real-world example of the three-way distinction actually holding: Claude Code is the harness, the Claude Agent SDK is that harness's engine made programmable, and something like LangGraph is a genuine framework, since it makes none of Claude Code's domain-specific decisions for you and leaves the loop itself to be built.
+The Claude Agent SDK shows how the categories relate.
+Anthropic describes it as built on the harness that powers Claude Code, and it exposes that loop, tool set and context management as a Python and TypeScript library (it was previously called the Claude Code SDK).
+Claude Code is the harness, the Agent SDK makes the same harness programmable, and LangGraph is a framework because it makes none of those decisions for you.
 
-## The comparison
+## Model choice
 
-| Tool | Category | Model dependency | MCP support | Best fit |
-|---|---|---|---|---|
-| LangGraph | Framework | Agnostic | Via adapters | Complex, stateful workflows needing checkpointing |
-| CrewAI | Framework | Agnostic | Native | Fast multi-agent prototyping, role-based teams |
-| OpenAI Agents SDK | Framework | OpenAI-first, others via LiteLLM | Native | Fastest path from zero to a working agent |
-| Google ADK | Framework | Gemini-optimised, others supported | Native | Cross-vendor agent-to-agent workflows |
-| Claude Agent SDK | SDK (harness as library) | Claude only | Deepest integration | Coding and computer-use agents, safety-sensitive tasks |
-| Claude Code / Codex / Cursor | Harness | Locked to provider | Varies | Software engineering tasks, no orchestration build needed |
-| runfox (Marigold) | Static-planning engine | Any, including local models | N/A (fixed workflow) | Predictable, self-hosted execution where cost and determinism matter more than runtime flexibility |
+The second question decides how often the first decision has to be revisited.
+LangGraph, CrewAI and AG2 leave the model open, so the orchestration code survives a change of provider.
+The OpenAI Agents SDK and Google ADK favour their own provider's models and accept others.
+The Claude Agent SDK and Claude Code run Claude models only, Codex defaults to OpenAI's models, and Cursor offers models from several providers.
+(Model support changes often, so check each tool's current documentation before committing to it.)
 
-## What this changes about the decision
+| Tool | Category | Models | Notes |
+|---|---|---|---|
+| LangGraph | Framework | Any provider | Graph with cycles; checkpointed state |
+| CrewAI | Framework | Any provider | Role-based agents; A2A delegation |
+| OpenAI Agents SDK | Framework | OpenAI by default; others via LiteLLM or compatible endpoints | Small set of primitives; handoffs |
+| Google ADK | Framework | Gemini by default; others supported | A2A support |
+| Microsoft Agent Framework | Framework | Azure OpenAI, OpenAI and others | Python and .NET; successor to AutoGen and Semantic Kernel |
+| Claude Agent SDK | Harness as a library | Claude only | Claude Code's loop and tools |
+| Claude Code, Codex, Cursor | Harness | Claude only; OpenAI by default; several providers | Software engineering |
 
-Model lock-in is the column worth reading first, because it's the one that determines how much of this decision you're making once versus repeatedly. The OpenAI Agents SDK and the Claude Agent SDK each tie the agent to their own provider's models by design, which is a reasonable trade when the harness's built-in tools (Claude Code's file and shell access, specifically) are the actual reason for choosing it. LangGraph, CrewAI, and AG2 keep that choice open, which matters if cost or capability differences between providers are likely to change which model you want to run against the same orchestration logic. runfox sits furthest from all of them: a fixed, static workflow engine rather than a dynamic agent loop, which trades runtime flexibility for a cost and behaviour profile that's fully known in advance, and one that runs entirely on infrastructure you control rather than a hosted framework calling out to someone else's API.
+## Crash recovery
 
-That cost and control trade-off, what an agent loop actually costs per task and who governs what it's allowed to do, is the subject of the next article in this series.
+None of these categories settles what happens when the process running the loop dies halfway through a task.
+An agent task can run for minutes or wait days for a human approval, and a restart in that window either loses the task or repeats work already paid for, sometimes work with side effects such as a sent email.
 
-(If you're choosing between a framework, a harness, and a fixed workflow for a specific task, [get in touch](/contact.html).)
+LangGraph's checkpointer covers part of this.
+It resumes from the start of the node that was interrupted, so a node that made three model calls and failed on the third repeats all three.
+Durable execution libraries record each step as it completes and replay the work from that record ([Durable Execution vs Workflow Orchestration](/library/113-durable-execution.html) compares the approaches).
+DBOS stores the record as rows in Postgres and packages the pattern for several agent tools, including the OpenAI Agents SDK, Pydantic AI, LlamaIndex and Google ADK, turning each model request and tool call into a recorded step ([What Is DBOS?](/library/112-dbos.html)).
+Temporal gives the same guarantee through a separate service.
+
+Where the sequence of steps is known before the task starts, a declared workflow removes the agent loop altogether.
+runfox (our own library) runs workflows declared in YAML and keeps one record per run, so cost and behaviour are fixed when the workflow is written.
+[Static vs Dynamic Planning](/library/44-static-vs-dynamic-planning.html) covers when that suits.
+(If you are choosing between a framework, a harness and a fixed workflow for a specific task, [get in touch](/contact.html).)
+
+## Choosing
+
+The three questions apply in order.
+How much of the loop you need to control decides the category: a harness when its domain matches the task, a framework when it does not.
+How open the choice of model must stay narrows the frameworks.
+Where progress is recorded decides what sits underneath, and for anything long-running or with side effects that means a checkpointer or a durable execution layer beneath the framework.
