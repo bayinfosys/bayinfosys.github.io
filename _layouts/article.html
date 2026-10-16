@@ -6,8 +6,8 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "{{ page.title | escape }}",
-  "description": "{{ page.description | escape }}",
+  "headline": "{{ page.title | jsonify }}",
+  "description": "{{ page.description | jsonify }}",
   "keywords": "{{ page.keywords | join: ', ' }}",
   "url": "{{ page.url | absolute_url }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
