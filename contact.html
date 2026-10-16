@@ -32,6 +32,10 @@ permalink: /contact.html
           <input type="text" class="form-control" id="name" placeholder="Your name">
         </div>
         <div class="mb-3">
+          <label for="email" class="form-label">e-mail</label>
+          <input type="text" class="form-control" id="email" placeholder="Your email address">
+        </div>
+        <div class="mb-3">
           <label for="organisation" class="form-label">Organisation</label>
           <input type="text" class="form-control" id="organisation" placeholder="Your organisation">
         </div>
@@ -52,6 +56,7 @@ permalink: /contact.html
 <script>
   function handleContact() {
     const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
     const organisation = document.getElementById("organisation").value.trim();
     const message = document.getElementById("message").value.trim();
 
@@ -60,14 +65,16 @@ permalink: /contact.html
       return;
     }
 
-    logger.event("signup", {
+    logger.log("signup", {
       name: name,
+      email: email,
       organisation: organisation,
       message: message
     });
 
     document.getElementById("contact-confirmation").style.display = "block";
     document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
     document.getElementById("organisation").value = "";
     document.getElementById("message").value = "";
   }

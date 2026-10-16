@@ -302,8 +302,8 @@ faq:
 
     let sent = false;
     try {
-      if (typeof logger !== "undefined" && logger && typeof logger.event === "function") {
-        logger.event("sovereign_deployment_enquiry", data);
+      if (typeof logger !== "undefined" && logger && typeof logger.log === "function") {
+        logger.log("sovereign_deployment_enquiry", data);
         sent = true;
       }
     } catch (err) {}
