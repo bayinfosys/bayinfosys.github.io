@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -8,16 +8,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% if page.seo_title %}{{ page.seo_title }} | Bay Information Systems{% elsif page.title %}{{ page.title }} | Bay Information Systems{% else %}Bay Information Systems | AI/ML Consultancy{% endif %}</title>
+  {%- assign site_name = "Bay Information Systems" -%}
+  {%- if page.seo_title -%}
+    {%- assign head_title = page.seo_title -%}
+    {%- assign full_title = page.seo_title | append: " | " | append: site_name -%}
+  {%- elsif page.title -%}
+    {%- assign head_title = page.title -%}
+    {%- assign full_title = page.title | append: " | " | append: site_name -%}
+  {%- else -%}
+    {%- assign head_title = "Bay Information Systems (BayIS)" -%}
+    {%- assign full_title = "Bay Information Systems (BayIS) | Independent AI Consultancy" -%}
+  {%- endif -%}
+  {%- assign default_description = "Bay Information Systems is an independent AI consultancy in Cardiff, writing about and advising on AI that runs on infrastructure you control." -%}
+  {%- assign meta_description = page.description | default: default_description | strip_newlines | strip -%}
+  {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
+  {%- assign og_image = page.image | default: '/img/BayInfoLogo_square.png' | absolute_url -%}
 
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Bay Information Systems offers AI/ML consultancy and engineering services for startups and enterprises.{% endif %}">
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ meta_description | escape }}">
   {% if page.keywords %}
   <meta name="keywords" content="{{ page.keywords | join: ', ' }}">
   {% endif %}
-  <link rel="canonical" href="{{ page.url | prepend: 'https://www.bayis.co.uk' | replace: 'index.html', '' }}">
+  <link rel="canonical" href="{{ canonical }}">
   {% if page.noindex %}
   <meta name="robots" content="noindex, follow">
   {% endif %}
+
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ head_title | escape }}">
+  <meta property="og:description" content="{{ meta_description | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ og_image }}">
+  {% if page.layout == 'article' %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% if page.last_modified_at %}
+  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
+  {% endif %}
+  <meta property="article:author" content="{{ site.author.url }}">
+  {% endif %}
+  <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+
+  {% feed_meta %}
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -38,8 +71,7 @@
 <script>
   const logger = clientlog.createLogger({
     endpoint: "https://api.clientlog.bayis.co.uk/v1/event",
-    project: "bayis/home",
-    options: { debug: true }
+    project: "bayis/home"
   });
 </script>
 
