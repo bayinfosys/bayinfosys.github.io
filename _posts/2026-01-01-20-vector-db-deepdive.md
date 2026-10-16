@@ -2,7 +2,7 @@
 date: 2025-08-07
 layout: article
 title: "Why Are Vector Databases Difficult? A Deep Dive"
-description: "Vector databases are harder than they look. A technical examination of similarity search, indexing trade-offs, and why naive implementations fail at scale."
+description: "Vector databases are harder to run well than they appear. How similarity search and indexing trade speed against accuracy, and why simple implementations degrade at scale."
 keywords: ["vector database", "similarity search", "embeddings", "rag", "ann indexing"]
 topic: "AI Systems"
 seo_title: "How Vector Databases Work: A Technical Deep Dive"

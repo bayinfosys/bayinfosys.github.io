@@ -3,7 +3,7 @@ date: 2025-08-06
 last_modified_at: 2026-07-26
 layout: article
 title: "The Components of RAG"
-description: "RAG is not one architecture but four independent decisions: how you chunk, how you index, how you retrieve, and how you generate. A component breakdown, with the tooling that matches each one."
+description: "Retrieval-augmented generation (RAG) is four independent decisions: how documents are chunked, indexed and retrieved, and how the answer is generated. Each decision, with the tools that serve it."
 keywords: ["rag components", "rag indexing", "rag strategy", "retrieval augmented generation architecture", "vector database", "llm", "enterprise ai"]
 topic: "AI Systems"
 seo_title: "RAG Architecture Explained: Chunking, Indexing, Retrieval, Generation"

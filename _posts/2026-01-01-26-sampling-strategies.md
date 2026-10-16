@@ -2,7 +2,7 @@
 date: 2025-11-05
 layout: article
 title: "Sampling Strategies for Imbalanced Data"
-description: "Imbalanced datasets cause models to ignore the minority class. The sampling strategies that actually work for fraud detection, medical diagnosis, and quality control."
+description: "Imbalanced datasets lead models to ignore the minority class. The sampling strategies for imbalanced data, and how they apply in fraud detection, medical diagnosis and quality control."
 keywords: ["imbalanced data", "sampling strategies", "oversampling", "smote", "class imbalance"]
 topic: "AI Systems"
 seo_title: "How to Handle Imbalanced Training Data: Sampling Strategies"

@@ -2,10 +2,10 @@
 date: 2026-07-26
 layout: article
 title: "Evaluating RAG"
-description: "RAG evaluation is not one number. It is four separate measurements, taken in pipeline order, because a fault at any stage produces the same symptom: a fluent, wrong answer."
+description: "How to evaluate a RAG system with four measurements taken in pipeline order. A fault at any stage produces the same symptom (a fluent, wrong answer), so each stage is measured on its own."
 keywords: ["rag evaluation", "ragas", "rag metrics", "how to evaluate rag", "rag monitoring", "retrieval quality", "hallucination detection rag", "rag drift detection"]
-topic: "AI Systems"
 seo_title: "How to Evaluate a RAG System: Metrics and Drift Detection"
+topic: "AI Systems"
 cta: rag-knowledge-base
 related:
   - 97-what-is-rag

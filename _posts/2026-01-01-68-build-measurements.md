@@ -2,9 +2,9 @@
 layout: article
 date: 2026-05-20
 title: "Don't Build Models, Build Measurements"
-seo_title: "Don't Build Models, Build Measurements: AI Project Evaluation"
-description: "Most AI projects fail before the model is built. The question that determines whether a project is viable is not which model to use, but whether the organisation can define what correct looks like."
+description: "Most AI projects fail before a model is built. A project is viable when the organisation can define what a correct output looks like, and that definition comes before the choice of model."
 keywords: ["machine learning evaluation", "ai project success", "ml metrics", "how to evaluate ai project", "machine learning success criteria", "is my machine learning model good enough", "ai project failure", "machine learning project management"]
+seo_title: "Don't Build Models, Build Measurements: AI Project Evaluation"
 topic: "Product & Strategy"
 cta: ml-measurement
 last_modified_at: 2026-05-20

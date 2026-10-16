@@ -2,16 +2,10 @@
 date: 2026-05-27
 layout: article
 title: "Why Private Inference Is Not Fully Private (Yet)"
-description: "Self-hosted AI solves the data egress problem. It does
-not solve the computation problem. Fully homomorphic encryption is the
-missing piece -- and it explains why 'private inference' is currently
-an architectural approximation rather than a cryptographic guarantee."
-keywords: ["homomorphic encryption", "private inference",
-"fully homomorphic encryption", "fhe machine learning",
-"encrypted inference", "data sovereignty ai", "private ai",
-"confidential computing", "encrypted computation"]
-topic: "Infrastructure"
+description: "Self-hosted AI keeps data inside your network, and the model still computes on it in plain text. Fully homomorphic encryption would close that gap, which is why private inference today is an architectural measure without a cryptographic guarantee."
+keywords: ["homomorphic encryption", "private inference", "fully homomorphic encryption", "fhe machine learning", "encrypted inference", "data sovereignty ai", "private ai", "confidential computing", "encrypted computation"]
 seo_title: "Why Private AI Inference Is Not Fully Private: The FHE Problem"
+topic: "Infrastructure"
 related:
   - 40-private-inference
   - 65-why-private-inference

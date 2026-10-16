@@ -1,9 +1,9 @@
 ---
 layout: article
 title: "Why Recommendation Algorithms Resurface Old Content"
-seo_title: "How Recommendation Algorithms Discover Old Content: Explore-Exploit in Practice"
-description: "Recommendation systems deliberately surface underexplored content to find new audience clusters. Understanding why this happens changes how you think about content distribution."
+description: "Recommendation systems resurface older content on purpose, to test it against new groups of users. How that exploration works, and what it means for anyone distributing content."
 keywords: ["recommendation algorithm", "explore exploit tradeoff", "content distribution", "youtube algorithm", "collaborative filtering", "platform discovery"]
+seo_title: "How Recommendation Algorithms Discover Old Content: Explore-Exploit in Practice"
 topic: "AI Systems"
 date: 2026-06-01
 last_modified_at: 2026-06-01

@@ -3,7 +3,7 @@ date: 2026-04-15
 layout: article
 title: "What Is Private AI Inference?"
 seo_title: "What Is Private AI Inference? Running AI on Your Own Servers"
-description: "Private inference runs AI models on infrastructure you control, so prompts and documents never reach a model provider. How it works, what a private AI server is, and what it costs."
+description: "Data egress stops many AI projects in regulated sectors. Open-weight models deployed inside your own VPC keep prompts and documents within your network boundary, which answers the first question a data protection review asks."
 keywords: ["private inference", "private ai inference", "private ai server", "private ai infrastructure", "self-hosted llm", "on-premise ai", "open weight models", "aws vpc"]
 topic: "Architecture & Deployment"
 cta: private-inference

@@ -2,7 +2,7 @@
 date: 2024-02-09
 layout: article
 title: "What is Docker? A Deep Dive into Containers"
-description: "The Linux primitives behind Docker containers -- namespaces, cgroups, and how they make containers faster than virtual machines."
+description: "How Docker works: the Linux primitives behind containers (chroot, cgroups and mount points), what is inside an image file and its layers, and what changes when a container is deployed to the cloud."
 keywords: ["docker", "containers", "linux", "namespaces", "cgroups", "deployment"]
 topic: "Infrastructure"
 seo_title: "How Docker Works: Containers, Namespaces, and cgroups Explained"

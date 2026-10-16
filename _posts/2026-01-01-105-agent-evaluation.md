@@ -2,10 +2,10 @@
 date: 2026-07-26
 layout: article
 title: "Evaluating Agents"
-description: "Agent evaluation is not one success number. It is three separate measurements, taken in pipeline order, plus a variance check most teams skip: does the agent succeed the same way twice."
+description: "How to evaluate an AI agent: tool-call correctness, planning efficiency and task success, measured separately and in that order, then repeated to check it succeeds the same way twice (pass^k)."
 keywords: ["agent evaluation", "tool calling accuracy", "task success rate", "GAIA benchmark", "SWE-bench", "tau-bench", "agent drift detection", "agent reliability"]
-topic: "AI Systems"
 seo_title: "How to Evaluate an AI Agent: Metrics, Benchmarks, and Drift"
+topic: "AI Systems"
 related:
   - 25-llm-evaluation
   - 61-eval-datasets

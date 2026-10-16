@@ -2,7 +2,7 @@
 date: 2026-07-26
 layout: article
 title: "Data Methods for RAG"
-description: "Chunking is one point on a spectrum of methods for preparing data for retrieval, not the whole spectrum. A working enumeration, from fixed-size splitting through knowledge graphs to retrieving directly from document images."
+description: "Chunking is one of many ways to prepare documents for retrieval. A working list of the methods, from fixed-size splitting through knowledge graphs to retrieving directly from document images."
 keywords: ["rag chunking strategies", "semantic chunking", "contextual retrieval", "late chunking", "graphrag", "image rag", "colpali", "multimodal rag", "document embedding methods"]
 topic: "AI Systems"
 seo_title: "RAG Data Methods: Chunking, Enrichment, and Image Retrieval Explained"

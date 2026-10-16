@@ -2,7 +2,7 @@
 date: 2025-11-05
 layout: article
 title: "The Indirection Problem"
-description: "Indirection -- accessing something through a reference rather than directly -- is a C programming concept. It also explains a surprising number of modern frustrations."
+description: "Indirection (reaching something through a reference) is a C programming idea. It also explains a number of everyday frustrations with modern systems."
 keywords: ["indirection", "software engineering", "programming concepts", "abstraction", "systems thinking"]
 topic: "Product & Strategy"
 seo_title: "What Is Indirection in Programming? A Practical Explanation"

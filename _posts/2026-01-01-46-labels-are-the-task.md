@@ -2,7 +2,7 @@
 date: 2026-04-15
 layout: article
 title: "Task Specification is the Primary Artefact"
-description: "Foundation models changed the cost of the mechanism. They did not change the first question: where are the labels? A labelled dataset is a measurement instrument, not training fuel."
+description: "Foundation models lowered the cost of building an AI system. The first question is still where the labels come from, because a labelled dataset specifies the task and measures the result."
 keywords: ["task specification", "labelled data", "llm evaluation", "evals", "ml pipeline", "foundation models"]
 topic: "AI Systems"
 seo_title: "How to Define Labels for Machine Learning: Task Specification First"

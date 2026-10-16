@@ -1,11 +1,11 @@
 ---
-date: 2026-01-01
+date: 2026-07-26
 layout: article
 title: "Private Inference: Costs"
-description: "Cost claims about self-hosted inference are usually estimates. A full telemetry run across 14 open-weight models on a single consumer GPU replaces the estimate with a number: 5.6 pence in electricity for 1,204 requests."
+description: "What self-hosted LLM inference costs, measured: 14 open-weight models, 1,204 requests and 226 watt-hours on one RTX 3060, or 5.6p of electricity. With two faults the telemetry caught that an estimate would have missed."
 keywords: ["self-hosted inference cost", "open weight models benchmark", "rtx 3060 llm", "local inference cost", "gpu inference power draw", "private ai inference cost"]
-topic: "Infrastructure"
 seo_title: "Self-Hosted LLM Inference Cost: A Measured Benchmark Across 14 Models"
+topic: "Infrastructure"
 related:
   - 64-marigold
   - 40-private-inference
@@ -15,7 +15,7 @@ related:
   - 90-aws-bedrock-costs
 ---
 
-# Self-Hosted Inference, Measured: 14 Models, One GPU, Five Pence
+# Self-Hosted Inference, Measured: 14 Models, One GPU
 
 Most claims about the cost of self-hosted inference are estimates built from a GPU's wattage rating and an assumed utilisation figure. The assumption does most of the work, and it is rarely stated. We ran 14 open-weight instruct models through 1,204 requests on a single RTX 3060, with per-request power and VRAM sampled directly from the worker process, to replace the estimate with a measured number.
 
@@ -27,7 +27,7 @@ Two findings from the same telemetry are worth keeping, because they show what a
 
 (The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html) and on GitHub.)
 
-## The Mariginal Cost of Self-hosting
+## The Marginal Cost of Self-hosting
 
 Five and a half pence for 1,204 requests is not evidence that inference is free. It is evidence that for a defined class of model, the marginal cost of an additional request, once the hardware exists and is idle, approaches the cost of the electricity it draws and very little else. That is the same statement the industry-level figures are making about token prices generally, at a scale where it can actually be checked.
 

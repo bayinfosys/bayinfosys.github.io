@@ -2,10 +2,10 @@
 date: 2026-06-29
 layout: article
 title: "Falling Token Prices and the Cost of Inference You Already Own"
-description: "Token prices are falling industry-wide while volume rises faster than the price drops. A measured benchmark of 14 open-weight models on a single GPU shows what that dynamic looks like at the smallest possible scale: 5.6p in electricity for 1,204 requests."
+description: "Token prices are falling across the industry while usage grows faster than prices fall. What that means for organisations that already own inference hardware, illustrated by a 14-model benchmark on one GPU."
 keywords: ["self-hosted inference cost", "open weight model benchmark", "ai token economics", "token price elasticity", "private inference cost", "rtx 3060 llm benchmark"]
-topic: "Infrastructure"
 seo_title: "Self-Hosted Inference Cost vs the AI Industry's Token Economics"
+topic: "Infrastructure"
 related:
   - 40-private-inference
   - 65-why-private-inference

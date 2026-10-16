@@ -2,11 +2,9 @@
 date: 2026-04-28
 layout: article
 title: "Embedding-Based Relationship Discovery: Finding the Real Network in Your Data"
-seo_title: "Embedding-Based Relationship Discovery with Community Detection in Python"
-description: "Most organisations have a formal model of their customer relationships and
-a real one that differs from it. Embeddings and community detection surface the real
-structure. Here is how the pattern works and where it applies."
+description: "Most organisations hold a formal model of their customer relationships and a real one that differs from it. How embeddings and community detection find the real structure, and where the pattern applies."
 keywords: ["embedding relationship discovery", "community detection", "graph neural networks", "network analysis", "co-purchase network", "clustering", "entity relationships"]
+seo_title: "Embedding-Based Relationship Discovery with Community Detection in Python"
 topic: "AI Systems"
 related:
   - 20-vector-db-deepdive

@@ -2,7 +2,7 @@
 date: 2026-07-26
 layout: article
 title: "RAG Risks and Costs"
-description: "A RAG pipeline sends your documents to a third party twice on every query, not once, and its bill scales with corpus size in a way most budgets never account for. A third risk, permission-blind retrieval, rarely gets named at all."
+description: "A RAG pipeline on a hosted API sends your data to a third party twice per query, at the embedding step and again at generation, and its bill grows with the size of the corpus. A third risk, retrieval that ignores document permissions, is rarely named."
 keywords: ["rag data privacy", "rag security risk", "rag cost", "embedding api cost", "private rag pipeline", "rag access control"]
 topic: "AI Systems"
 seo_title: "RAG Risks: Data Exposure, Cost, and Access Control Explained"

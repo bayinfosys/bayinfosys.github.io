@@ -2,7 +2,7 @@
 date: 2025-11-05
 layout: article
 title: "LLM Evaluation Metrics"
-description: "LLM outputs are probabilistic and context-dependent. A structured approach to evaluating language models in production across multiple dimensions."
+description: "LLM outputs vary between runs and depend on context, so one score cannot describe them. The metrics for evaluating a language model in production, and what each measures."
 keywords: ["llm evaluation", "language model", "ai metrics", "production ai", "model assessment"]
 topic: "AI Systems"
 seo_title: "How to Evaluate an LLM in Production"

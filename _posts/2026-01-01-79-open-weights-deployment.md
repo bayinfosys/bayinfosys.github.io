@@ -2,7 +2,7 @@
 date: 2026-06-14
 layout: article
 title: "Open Weights Mean the Tier Is a Deployment Decision, Not a Lock-In"
-description: "With closed AI APIs, your infrastructure tier is permanent. With open-weight models, local, private, and cloud are the same application at different scales. You choose the tier; the code stays the same."
+description: "With open-weight models, a laptop, a private server and a cloud deployment run the same application at different scales, so the hosting tier can change later without rewriting code."
 keywords: ["open weight models local inference", "ollama local development", "self-hosted llm production", "llm deployment tiers", "private inference vs cloud", "open source llm deployment", "llm infrastructure scaling", "run llm locally", "marigold private inference"]
 topic: "Architecture & Deployment"
 related:

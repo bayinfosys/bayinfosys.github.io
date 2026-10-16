@@ -2,11 +2,8 @@
 date: 2026-05-05
 layout: article
 title: "Context is a Build Step"
-description: "Every approach to context generation -- from basic chunking to knowledge
-compilation -- is an instance of the same pattern. The quality of the build step
-determines what your agent can do at runtime."
-keywords: ["rag", "context engineering", "vector database", "agentic ai",
-"knowledge compilation", "llm", "retrieval", "chunking", "semantic search"]
+description: "Every method of building context for an agent, from basic chunking to knowledge compilation, is a build step run before the query. The quality of that step sets what the agent can do at runtime."
+keywords: ["rag", "context engineering", "vector database", "agentic ai", "knowledge compilation", "llm", "retrieval", "chunking", "semantic search"]
 topic: "AI Systems"
 related:
   - 46-labels-are-the-task

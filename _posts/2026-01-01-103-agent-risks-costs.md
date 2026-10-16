@@ -2,10 +2,10 @@
 date: 2026-07-26
 layout: article
 title: "Agent Risks, Costs, and Governance"
-description: "RAG's main risk is data leaving the building. An agent's main risk is different in kind: it can take the wrong action, not just retrieve the wrong document, and its cost scales with steps rather than tokens."
+description: "An agent acts on what it reads, so it can send, delete or pay for the wrong thing, and its cost grows with the number of steps it takes. Cost ceilings, least-privilege tools and memory injection (MINJA), in turn."
 keywords: ["ai agent risks", "agent cost", "denial of wallet attack", "agent governance", "agent memory corruption", "MINJA", "least privilege ai agents", "agent security"]
-topic: "AI Systems"
 seo_title: "Agent Risks and Costs: Governance, Denial-of-Wallet, and Exposure"
+topic: "AI Systems"
 cta: private-inference
 related:
   - 09-data-risks

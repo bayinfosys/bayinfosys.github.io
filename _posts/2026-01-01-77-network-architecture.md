@@ -2,7 +2,7 @@
 date: 2026-01-01
 layout: article
 title: "Why Model Architecture Matters"
-description: "Every neural network architecture encodes assumptions about the structure of the problem. Those assumptions determine what the model can learn -- not just what it learns from."
+description: "Every neural network architecture builds in assumptions about the structure of its problem, and those assumptions limit what the model can learn from its data."
 keywords: ["neural network architecture", "inductive bias", "convolutional neural network", "transformer", "mixture of experts", "deep learning", "machine learning"]
 topic: "AI Systems"
 seo_title: "Why Model Architecture Matters: CNN, Transformer, and Mixture of Experts"

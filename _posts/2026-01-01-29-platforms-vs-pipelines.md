@@ -2,7 +2,7 @@
 date: 2025-12-04
 layout: article
 title: "Platforms vs Pipelines: Engineering for Compounding Returns"
-description: "AWS, Borg, chaos engineering -- successful organisations build platforms rather than optimise pipelines. The distinction determines whether engineering effort compounds."
+description: "AWS, Borg and chaos engineering are examples of organisations building platforms where others tune individual pipelines. The choice decides whether engineering effort compounds."
 keywords: ["platform engineering", "pipelines", "software architecture", "engineering strategy", "devops"]
 topic: "Architecture & Deployment"
 seo_title: "Platforms vs Pipelines: How Engineering Effort Compounds"

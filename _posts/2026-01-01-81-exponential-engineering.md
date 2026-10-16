@@ -2,10 +2,10 @@
 date: 2026-06-29
 layout: article
 title: "Engineering in the Exponential Age"
-description: "Capability is arriving faster than teams can absorb it. The engineering task becomes assembly, not construction: protocols and interfaces in place of bespoke services."
+description: "Capability is arriving faster than teams can absorb it, so engineering becomes the assembly of protocols and interfaces that already exist."
 keywords: ["software engineering trends", "build vs integrate", "ai engineering skills", "composable systems", "decentralised identity", "engineering in the age of ai", "protocols vs platforms"]
-topic: "Product & Strategy"
 seo_title: "Engineering in the Exponential Age: Assembly Over Construction"
+topic: "Product & Strategy"
 related:
   - 45-fat-protocols-for-ai
   - 42-software-engineering-solved-governance

@@ -2,7 +2,7 @@
 date: 2025-05-12
 layout: article
 title: "SaaS Architecture 101 for Non-CTOs"
-description: "LAMP, JAMstack, microservices, serverless -- what these terms actually mean and how to navigate architecture decisions without a technical co-founder."
+description: "LAMP, JAMstack, microservices and serverless explained for founders without a technical co-founder, and how to make architecture decisions with them."
 keywords: ["saas architecture", "non-technical founder", "cloud architecture", "serverless", "microservices"]
 topic: "Architecture & Deployment"
 seo_title: "SaaS Architecture Explained: LAMP, JAMstack, Microservices, and Serverless"

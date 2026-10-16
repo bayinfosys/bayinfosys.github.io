@@ -3,7 +3,7 @@ date: 2026-07-16
 layout: article
 title: "Generation Speed and the Collapse of Review Delegation"
 seo_title: "AI Video Workflows: Who Approves Content When Anyone Can Generate It"
-description: "Generative video removes the production stage that used to assign taste-authority to a specific role. Review becomes undirected rather than absent, and volume only accelerates a problem that exists at any speed."
+description: "Generative video removes the production stage that gave one role authority over taste. Review then belongs to nobody in particular, and higher volume widens the gap."
 keywords: ["generative video", "content review process", "creative delegation", "AI content workflow", "Nova Reel", "Bedrock video generation", "curation", "team decision making"]
 topic: "Perspectives"
 related:

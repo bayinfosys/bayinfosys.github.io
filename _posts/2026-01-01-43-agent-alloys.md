@@ -2,7 +2,7 @@
 date: 2026-04-15
 layout: article
 title: "Agent Alloys or Persona Leakage?"
-description: "Context bleeds between agents in multi-agent systems. The XBOW experiment suggests that for exploratory tasks, this is a feature rather than a failure mode."
+description: "Context leaks between agents in multi-agent systems. The XBOW experiment suggests that for exploratory tasks the leak improves results."
 keywords: ["multi-agent", "llm agents", "persona leakage", "agent architecture", "ai systems"]
 topic: "AI Systems"
 seo_title: "Multi-Agent Context Bleed: When Shared State Helps and When It Leaks"
