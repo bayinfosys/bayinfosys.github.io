@@ -1,9 +1,12 @@
 ---
+
+
+
 date: 2026-10-19
 layout: article
-title: "Unified Memory Machines for Local AI: DGX Spark, Strix Halo, Mac Studio and Jetson Thor (Late 2026)"
-seo_title: "Unified Memory for Local LLMs: DGX Spark vs Strix Halo vs Mac Studio M5 (2026)"
-description: "Unified memory machines hold 128GB to 512GB of model weights in one box, and memory bandwidth decides how fast they generate. DGX Spark, AMD Strix Halo, Mac Studio M5, Jetson Thor and RTX Spark compared on capacity, bandwidth, software and price, with the arithmetic for choosing between them."
+title: "Unified Memory Machines for Local AI: DGX Spark, Strix Halo, Mac Studio and Jetson Thor"
+seo_title: "Unified Memory for Local LLMs (2026)"
+description: "Unified memory machines hold 128GB to 512GB of model weights. DGX Spark, Strix Halo, Mac Studio M5 and Jetson Thor compared on bandwidth, software and price."
 keywords: ["unified memory llm", "dgx spark alternative", "strix halo llm", "ryzen ai max 395 llm", "mac studio m5 ultra llm", "apple silicon vs gpu for ai inference", "jetson agx thor llm", "local llm 128gb", "memory bandwidth tokens per second", "rtx spark n1x"]
 topic: "Infrastructure"
 related:
@@ -35,13 +38,13 @@ A dense 70B model at 4-bit quantisation reads about 40GB per token. A mixture-of
 
 Measurements bear the ceilings out. ServeTheHome recorded 4.89 tokens per second for Llama 3.3 70B on a Ryzen AI Max+ 395 machine, against a ceiling of about 6, and llama.cpp reports of 52 to 56 tokens per second for gpt-oss-120b on the same chip sit under a ceiling of about 85.
 
-Two consequences follow. Dense 70B models fit on every machine here and run slowly on most of them. Mixture-of-experts models suit unified memory, because they need the capacity and spare the bandwidth. The other half of the work, processing the prompt, is limited by compute instead of bandwidth, and there NVIDIA's chips lead: Phoronix found the GB10 faster than AMD's chip on prompt processing for gpt-oss-120b, with generation speeds roughly level.
+Two consequences follow. Dense 70B models fit on every machine here and run slowly on most of them. Mixture-of-experts models suit unified memory, because they need the capacity and spare the bandwidth. The other half of the work, processing the prompt, is limited by compute instead of bandwidth, and there NVIDIA's chips lead:  [Phoronix](https://www.phoronix.com/review/dell-pro-max-gb10-llama-cpp) found the GB10 faster than AMD's chip on prompt processing for gpt-oss-120b, with generation speeds roughly level.
 
 ## The machines
 
 ### Apple Mac Studio, M5 Max and M5 Ultra
 
-Apple announced the M5 generation Mac Studio on 25 August 2026. The M5 Max takes up to 128GB at 614 GB/s, from $2,499 for the base configuration. The M5 Ultra takes up to 512GB at 1.2 TB/s, which Apple puts at 50% above the M3 Ultra, from $5,499; the 512GB configuration ships in late October. Apple claims prompt processing up to four times faster than the M3 Ultra in LM Studio, and supports clustering up to four machines over Thunderbolt 5 with RDMA.
+[Apple announced](https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/) the M5 generation Mac Studio on 25 August 2026. The M5 Max takes up to 128GB at 614 GB/s, from $2,499 for the base configuration. The M5 Ultra takes up to 512GB at 1.2 TB/s, which Apple puts at 50% above the M3 Ultra, from $5,499; the 512GB configuration ships in late October. Apple claims prompt processing up to four times faster than the M3 Ultra in LM Studio, and supports clustering up to four machines over Thunderbolt 5 with RDMA.
 
 The M5 Ultra has the most bandwidth and the most capacity of any desktop machine in this list. The constraint is the operating system. Metal, MLX and the Metal backends of llama.cpp and Ollama run only on macOS, and Docker on macOS does not expose the GPU to containers, so inference runs as native macOS processes and cannot share an image with a Linux server.
 
@@ -49,7 +52,7 @@ The M5 Ultra has the most bandwidth and the most capacity of any desktop machine
 
 The DGX Spark pairs a 20-core Arm CPU with a Blackwell GPU on the GB10 chip, with 128GB of LPDDR5X at 273 GB/s and ConnectX-7 200GbE networking. It runs CUDA on Arm64 Linux. Acer, ASUS, Dell, Gigabyte, HP, Lenovo and MSI sell their own GB10 machines.
 
-Prices have risen with memory costs. The 128GB Founders Edition launched at $3,999 and now lists at $6,950, and Phoronix priced Dell's 128GB GB10 machine at $6,332. A 64GB version at $4,999 is due from partners on 23 October. Two units link over a single cable to pool memory and bandwidth; NVIDIA reports up to 1.7 times the speed of one unit, short of double because of the network hop.
+Prices have risen with memory costs. The 128GB Founders Edition launched at $3,999 and now [lists at $6,950](https://www.tweaktown.com/news/113885/nvidias-new-dgx-spark-has-half-the-ram-and-costs-more-than-the-original-128gb-model-did-at-launch/index.html), and Phoronix priced Dell's 128GB GB10 machine at $6,332. A 64GB version at $4,999 is due from partners on 23 October. Two units link over a single cable to pool memory and bandwidth; NVIDIA reports up to 1.7 times the speed of one unit, short of double because of the network hop.
 
 The case for a GB10 machine is CUDA. Most inference software targets it first, and prompt processing is faster than on the alternatives. The costs are Arm64 container images (most AI images are built for x86-64) and the bandwidth, which matches AMD's.
 
