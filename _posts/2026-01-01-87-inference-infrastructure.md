@@ -10,10 +10,6 @@ related:
   - 65-why-private-inference
   - 40-private-inference
   - 63-private-inference-stack
-  - 65-why-private-inference
-  - 110-inference-hosting-decision
-  - 111-inference-without-cuda
-  - 113-sizing-inference-deployment
   - 78-gpu-market-2026
 ---
 
