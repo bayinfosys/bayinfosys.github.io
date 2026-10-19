@@ -125,7 +125,7 @@ The entire workflow -- steps, dependencies, and branching logic -- remains plain
 The broader use is any system where business rules are stored as data rather than code.
 A rules engine, a feature flag system, a routing table -- anywhere that JSON Logic already fits, `vars` extends coverage to data contexts that contain arrays.
 
-(The source is at [github.com/bayinfosys/json-logic-path](https://github.com/bayinfosys/json-logic-path) and the package at [pypi.org/project/json-logic-path](https://pypi.org/project/json-logic-path). For questions about rules-as-data architectures or pipeline branching logic, [get in touch](/#contact-us).)
+(The source is at [github.com/bayinfosys/json-logic-path](https://github.com/bayinfosys/json-logic-path) and the package at [pypi.org/project/json-logic-path](https://pypi.org/project/json-logic-path). For questions about rules-as-data architectures or pipeline branching logic, [get in touch](/contact.html).)
 
 ---
 
