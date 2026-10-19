@@ -1,31 +1,99 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://www.bayis.co.uk/#organization",
-  "name": "Bay Information Systems",
-  "alternateName": "Bay Information Systems Ltd",
-  "url": "https://www.bayis.co.uk",
-  "logo": "https://www.bayis.co.uk/img/BayInfoLogo_square.png",
-  "description": "Independent AI consultancy. Data audits, strategy, and implementation oversight for organisations evaluating AI investment.",
-  "foundingDate": "2013",
-  "email": "ed@bayis.co.uk",
-  "founder": { "@id": "https://www.bayis.co.uk/about#edward-grundy" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Cardiff",
-    "addressRegion": "Wales",
-    "addressCountry": "GB"
-  },
-  "identifier": {
-    "@type": "PropertyValue",
-    "propertyID": "Companies House",
-    "value": "08382515"
-  },
-  "sameAs": [
-    "https://uk.linkedin.com/company/bay-information-systems-ml",
-    "https://github.com/bayinfosys",
-    "https://bayinformationsystems.substack.com/"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.bayis.co.uk/#organization",
+      "name": "Bay Information Systems",
+      "alternateName": "Bay Information Systems Ltd",
+      "url": "https://www.bayis.co.uk",
+      "logo": "https://www.bayis.co.uk/img/BayInfoLogo_square.png",
+      "description": "Independent AI consultancy in Cardiff. A free readiness assessment, a one-week roadmap for on-premise and sovereign AI, and ongoing advisory for organisations deciding whether AI will work for them.",
+      "foundingDate": "2013",
+      "email": "ed@bayis.co.uk",
+      "founder": { "@id": "https://www.bayis.co.uk/about.html#edward-grundy" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cardiff",
+        "addressRegion": "Wales",
+        "addressCountry": "GB"
+      },
+      "areaServed": { "@type": "Country", "name": "United Kingdom" },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Companies House",
+        "value": "08382515"
+      },
+      "sameAs": [
+        "https://uk.linkedin.com/company/bay-information-systems-ml",
+        "https://github.com/bayinfosys",
+        "https://bayinformationsystems.substack.com/",
+        "https://find-and-update.company-information.service.gov.uk/company/08382515"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.bayis.co.uk/#marigold",
+      "name": "Marigold",
+      "alternateName": "bayis-marigold",
+      "description": "Open source inference API for open-weight models. Self-hosted on your own hardware, or run as a managed service by Bay Information Systems.",
+      "url": "https://marigold.run",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux",
+      "publisher": { "@id": "https://www.bayis.co.uk/#organization" },
+      "sameAs": [
+        "https://pypi.org/project/bayis-marigold/",
+        "https://github.com/bayinfosys/marigold",
+        "https://github.com/bayinfosys/marigold-examples"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.bayis.co.uk/#runfox",
+      "name": "runfox",
+      "description": "Workflow orchestration for Python. One YAML definition runs in memory, on SQLite, or on SQS and DynamoDB.",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "codeRepository": "https://github.com/bayinfosys/runfox",
+      "url": "https://www.bayis.co.uk/library/54-runfox.html",
+      "publisher": { "@id": "https://www.bayis.co.uk/#organization" },
+      "sameAs": ["https://pypi.org/project/runfox/"]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.bayis.co.uk/#json-logic-path",
+      "name": "json-logic-path",
+      "description": "JSON Logic for Python with a vars operator that resolves JSONPath expressions to lists.",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "codeRepository": "https://github.com/bayinfosys/json-logic-path",
+      "url": "https://www.bayis.co.uk/library/53-json-logic-path.html",
+      "publisher": { "@id": "https://www.bayis.co.uk/#organization" },
+      "sameAs": ["https://pypi.org/project/json-logic-path/"]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.bayis.co.uk/#dynawrap",
+      "name": "dynawrap",
+      "description": "Single-table access patterns for DynamoDB, PostgreSQL and SQLite, declared on the model class.",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "codeRepository": "https://github.com/bayinfosys/aws-dynamodb-wrapper",
+      "url": "https://www.bayis.co.uk/library/51-dynawrap.html",
+      "publisher": { "@id": "https://www.bayis.co.uk/#organization" },
+      "sameAs": ["https://pypi.org/project/dynawrap/"]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.bayis.co.uk/#fastapi-aws",
+      "name": "fastapi-aws",
+      "description": "Generates AWS API Gateway OpenAPI specifications from FastAPI route definitions, with Terraform-ready integration annotations.",
+      "programmingLanguage": "Python",
+      "codeRepository": "https://github.com/bayinfosys/fastapi-aws",
+      "url": "https://www.bayis.co.uk/library/52-fastapi-aws.html",
+      "publisher": { "@id": "https://www.bayis.co.uk/#organization" }
+    }
   ]
 }
 </script>
