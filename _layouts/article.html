@@ -6,28 +6,30 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
+  "@id": {{ page.url | absolute_url | append: "#article" | jsonify }},
+  "mainEntityOfPage": {{ page.url | absolute_url | jsonify }},
   "headline": {{ page.title | jsonify }},
   "description": {{ page.description | jsonify }},
-  "keywords": {{ page.keywords | join: ', ' | jsonify }},
-  "url": "{{ page.url | absolute_url }}",
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Bay Information Systems",
-    "url": "https://www.bayis.co.uk"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "{{ site.author.name }}",
-    "url": "{{ site.author.url }}"
-  }
+  "keywords": {{ page.keywords | join: ", " | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+  "author": { "@id": "https://www.bayis.co.uk/about.html#edward-grundy" },
+  "publisher": { "@id": "https://www.bayis.co.uk/#organization" }
 }
 </script>
 
 <main class="container py-5">
   <article class="container">
-    {{ content }}
+    {% assign parts = content | split: "</h1>" %}
+    {% if parts.size > 1 %}
+      {{ parts[0] }}</h1>
+      {% include byline.html %}
+      {% for part in parts offset: 1 %}{{ part }}{% unless forloop.last %}</h1>{% endunless %}{% endfor %}
+    {% else %}
+      {% include byline.html %}
+      {{ content }}
+    {% endif %}
   </article>
 
   {% include related.html %}

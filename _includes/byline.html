@@ -1,0 +1,4 @@
+<p class="text-muted small mb-4">
+  By <a href="/about.html">{{ site.author.name }}</a>, Bay Information Systems.
+  Published <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>{% if page.last_modified_at %}, updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%-d %B %Y" }}</time>{% endif %}.
+</p>
