@@ -30,8 +30,8 @@ defaults:
       layout: checklist
 
 author:
-  name: "Edward Grundy"
-  url: "https://www.bayis.co.uk/about#edward-grundy"
+  name: Edward Grundy
+  url: https://www.bayis.co.uk/about.html#edward-grundy
 
 exclude:
   - internal_only/
