@@ -6,9 +6,9 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "{{ page.title | jsonify }}",
-  "description": "{{ page.description | jsonify }}",
-  "keywords": "{{ page.keywords | join: ', ' }}",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "keywords": {{ page.keywords | join: ', ' | jsonify }},
   "url": "{{ page.url | absolute_url }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
