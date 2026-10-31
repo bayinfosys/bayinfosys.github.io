@@ -12,6 +12,7 @@ related:
   - 23-business-goals
   - 33-vector-db-filters
   - 85-vlm-datasets
+  - 115-llm-as-a-judge
 ---
 
 # LLM Evaluation Metrics

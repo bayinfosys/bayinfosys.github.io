@@ -12,6 +12,7 @@ related:
   - 23-business-goals
   - 24-cross-validation
   - 109-instrumentation
+  - 115-llm-as-a-judge
 ---
 
 # How to Evaluate an AI Pipeline
