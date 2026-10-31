@@ -1,5 +1,6 @@
 ---
 date: 2026-07-15
+last_modified_at: 2026-10-31
 layout: article
 title: "AI Inference Infrastructure: A Decision Framework"
 seo_title: "AI Inference Infrastructure: Choosing Hosting, GPUs and Serving Software"
@@ -11,29 +12,34 @@ related:
   - 40-private-inference
   - 63-private-inference-stack
   - 78-gpu-market-2026
+  - 95-private-inference-costs
+  - 114-unified-memory-machines-2026
 ---
 
 # AI Inference Infrastructure: A Decision Framework
 
-Getting a model into production raises four largely independent
-decisions: where it runs, what hardware it runs on, how it scales
-past one machine, and what software dispatches requests to it. Teams
-new to the problem tend to research these as one question, which is
-why the advice is usually either too shallow to act on or too deep
-to be relevant yet. Each decision is worth understanding at the level
-that actually determines the next step.
+An inference layer needs four things: somewhere to run (a hosted API, a
+managed service, or servers you control), a GPU with enough memory for
+the model's weights and its key-value cache, a way to spread load across
+machines once one is not enough, and serving software that queues and
+batches requests. The best infrastructure for a given deployment follows
+from three facts: how sensitive the data is, how steady the traffic is,
+and how many users wait on a response at once.
+
+Teams new to the problem often research the four decisions as one
+question. We take them in turn, then map three common workloads onto
+them.
 
 ## Hosting and deployment models
 
 The first decision is who runs the infrastructure: a hosted API, a managed inference service, or self-hosted on infrastructure you control.
 A hosted API (OpenAI, Anthropic, and similar) removes infrastructure work entirely and is the right default when the data involved has no sensitivity constraint and usage is variable enough that dedicated hardware would sit idle.
 A managed inference service runs open-weight models on infrastructure you don't operate but do control.
-Self-hosted inference runs the model on infrastructure inside your own boundary, is the right choice when data cannot leave that boundary at all (see: [why private inference](/library/65-why-private-inference.html))
+Self-hosted inference runs the model on infrastructure inside your own boundary. It is the right choice when data cannot leave that boundary at all (see [why private inference](/library/65-why-private-inference.html)), or when usage is steady enough that dedicated hardware costs less than per-token pricing over time.
 or when usage is consistent enough that dedicated hardware costs less than per-token pricing over time.
 
-None of these is universally correct.
-The decision follows from data sensitivity and usage pattern, in that order, not from which option is newest or best-known.
-[Self-hosted or managed works](/library/65-why-private-inference.html) through that decision on its own, including the contractual position each option puts you in.
+The decision follows from data sensitivity first and usage pattern second.
+[Self-hosted or managed](/library/65-why-private-inference.html) works through that decision on its own, including the contractual position each option puts you in.
 
 ## Hardware: why VRAM is the binding constraint
 
@@ -57,7 +63,6 @@ Networking between GPUs matters once a model or a workload spans more than one m
 InfiniBand's low latency and high bandwidth matter for multi-GPU training but are usually unnecessary for inference-only deployments, where the bottleneck is serving throughput rather than inter-GPU communication.
 Storage matters for model weights and checkpoints, which benefit from fast local disk rather than network storage.
 Access control, authenticating model calls, and dispatching requests, is where most of the operational complexity in enterprise deployment exists.
-Consultants deploying this on a client's premises face a different version of the same problem, covered in [deploying private AI on behalf of a client](/library/112-deploying-private-ai-for-clients.html).
 
 ## Serving software: how requests get dispatched
 
@@ -66,7 +71,7 @@ vLLM has become the default choice for multi-user, production inference, largely
 Ollama and direct HuggingFace `transformers` pipelines are simpler to run and well suited to single-user or low-concurrency use, local development, prototyping, personal deployment, but were not built for multi-user throughput.
 Performance degrades once concurrent load increases.
 
-We've run this comparison directly: [vLLM, Ollama, and Marigold on a single £170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
+We've run this comparison directly: [vLLM, Ollama, and Marigold on a single &pound;170 GPU](https://marigold.run/blog/llm-providers.html) covers the same three options with full telemetry, including the VRAM problem most benchmarks leave out.
 
 ## Matching systems to workload
 
