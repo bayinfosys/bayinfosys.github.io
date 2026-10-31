@@ -2,7 +2,7 @@
 title: "AI Readiness Assessment"
 seo_title: "Free AI Readiness Assessment and Checklist"
 description: "Ten questions, five minutes. Find out where your organisation stands on AI (goals, data, sensitivity, ownership), with guidance on each answer."
-keywords: ["ai readiness assessment", "ai readiness checklist", "data strategy consulting", "is my organisation ready for ai"]
+keywords: ["ai readiness assessment", "ai readiness checklist", "ai readiness assessment questions", "ai readiness assessment template", "data strategy consulting", "is my organisation ready for ai"]
 permalink: /ai-readiness-assessment.html
 redirect_from:
   - /quiz.html
@@ -10,7 +10,7 @@ redirect_from:
 ---
 
 <h1>AI Readiness Assessment</h1>
-<p class="lead mt-3 cl-noprint">AI projects tend to stall on the same three things: an unclear goal, data nobody has checked, and no one placed to judge the technical work. This assessment covers the questions we ask at the start of every engagement, in roughly the order we ask them.</p>
+<p class="lead mt-3 cl-noprint">AI projects tend to stall on the same three things: an unclear goal, data nobody has checked, and no one placed to judge the technical work. Bay Information Systems, an independent AI consultancy in the UK, asks these ten questions at the start of every engagement, in roughly this order.</p>
 
 <section class="cl-noprint mt-5" aria-labelledby="how">
   <h2 id="how">How does the assessment work?</h2>
@@ -20,5 +20,29 @@ redirect_from:
 {% include checklist/questions.html %}
 {% include checklist/results.html %}
 {% include checklist/next.html %}
-{% include checklist/print.html heading="Can I print the AI readiness checklist?" %}
+
+<section class="cl-noprint mt-5" aria-labelledby="covers">
+  <h2 id="covers">What does an AI readiness assessment cover?</h2>
+  <p>An AI readiness assessment checks whether an organisation has what an AI project needs before any money is spent on one. The questions run in a fixed order because each answer limits the next.</p>
+  <p>The goal comes first. A problem with a value on it sets the budget, the scope and the point at which to stop, and without one nothing later in the assessment can be weighed. The data comes second: where it lives, whether anyone knows what it contains, and whether it is sensitive. Sensitivity decides where a model can run, and so which tools are available at all (personal data under UK GDPR, client confidentiality and regulated records each narrow the choice). The people come third: who can judge whether technical work is good, and whether an earlier project stalled. The last questions cover measurement, what happens to the output, and what a year of waiting would cost.</p>
+  <p>Technology has no question of its own. It follows from the answers.</p>
+</section>
+
+<section class="cl-noprint mt-5" aria-labelledby="internal">
+  <h2 id="internal">How do you run an AI readiness assessment internally?</h2>
+  <p>The questions work as a meeting agenda. Answer them for one use case at a time, since a goal that is clear for one team is often vague for another, and bring three people: whoever owns the problem, whoever knows the data, and whoever would build or buy the system. Where they disagree on an answer, write both down.</p>
+  <p>The answers about data need checking against the data itself. "Mostly in one system" remains a claim until someone pulls a sample and counts the gaps, and that check usually takes longer than the meeting. Answers of "not sure" or "we haven't thought about it" are findings in their own right; they mark the work to do before any build. (The printable version below serves as a template for the meeting.)</p>
+</section>
+
+<section class="cl-noprint mt-5" aria-labelledby="audit">
+  <h2 id="audit">How does it differ from an AI audit?</h2>
+  <p>The two terms are used loosely, and some providers sell one under the other's name. On this site, an AI audit examines AI already in use (which tools staff use, what data reaches them, whether a deployed system does what it was bought to do), and a readiness assessment examines a decision that has not yet been made. They meet at the questions on current use and sensitivity: data already pasted into a chat tool is an audit finding and a readiness constraint at once.</p>
+</section>
+
+<section class="cl-noprint mt-5" aria-labelledby="roadmap">
+  <h2 id="roadmap">What does a consultant-led assessment add?</h2>
+  <p>This page gives a score and guidance on each answer. The paid version, an AI roadmap, covers the same ground in more depth: one week, interviews with three key people, a direct look at the data, and independent judgement on any technical claims. It produces a short written roadmap setting out the goal in business terms, what is at stake, a phased plan with a fixed price and a go, adjust or stop decision after each phase, and what not to do. The roadmap costs &pound;8,000, fixed and agreed before work starts (the forms below reach us directly, and the first conversation is free).</p>
+</section>
+
+{% include checklist/print.html heading="Can I print the questions as a template?" %}
 {% include checklist/faq.html %}
