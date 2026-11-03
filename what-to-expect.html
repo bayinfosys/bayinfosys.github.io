@@ -1,0 +1,78 @@
+---
+layout: default
+title: "What to expect"
+seo_title: "Independent AI Consultancy in the UK: What to Expect"
+description: "How Bay Information Systems works: no vendor commissions, published fixed prices, client-owned work, and senior associates for larger engagements. Based in Cardiff, working across the UK."
+keywords: ["independent ai consultancy uk", "independent ai consultant", "vendor neutral ai consultancy", "ai consultancy cardiff", "ai consultancy wales"]
+permalink: /what-to-expect.html
+faq:
+  - q: "Is Bay Information Systems independent of AI vendors?"
+    a: "Yes. Bay takes no commissions, referral fees or reseller margins from Microsoft, OpenAI, Anthropic, Google, AWS or any other vendor, and holds no partner status that rewards recommending one. A roadmap recommends whatever fits the data and the budget, which may be a hosted API."
+  - q: "Who owns the work?"
+    a: "The client owns what is produced for them: code, prompts, evaluation datasets, configuration and documents. Bay's own open-source tools, including Marigold, stay under their open-source licence, so the client can use, change and keep running them without Bay."
+  - q: "Will you tell us not to build something?"
+    a: "Yes. A roadmap can recommend not building, waiting, or buying an existing product, and says why. That conclusion costs the same as any other."
+  - q: "Who does the work?"
+    a: "Edward Grundy, the principal, leads every engagement and is the point of contact throughout. Senior associates from his network join where an engagement needs more people or a specialism, under subcontract to Bay, which stays responsible for their work."
+    more_url: "#who"
+    more_text: "Who does the work"
+  - q: "What happens if Edward is unavailable?"
+    a: "The client holds what it needs to carry on: written deliverables, open-source software, and deployments in its own hardware or cloud account. An associate who knows the engagement can take over day-to-day work."
+    more_url: "#continuity"
+    more_text: "Continuity"
+  - q: "What is Bay's data protection role during an engagement?"
+    a: "Bay usually works from documents and samples the client chooses to share, and acts as a processor for any personal data in them, under a data processing agreement. Where possible the data stays in the client's own systems."
+    more_url: "/library/110-data-processor-or-controller.html"
+    more_text: "Data controller or processor"
+  - q: "What insurance does Bay hold?"
+    a: "Professional indemnity cover of GBP 1M."
+  - q: "Where is Bay based, and do you work on site?"
+    a: "Bay Information Systems Ltd is registered in England and Wales (company 08382515) and based in Cardiff. It works with organisations across the UK, on site in Wales and the South West of England and remotely elsewhere."
+  - q: "What does it cost?"
+    a: "The AI roadmap is GBP 8,000, fixed, for one week. Deployments are quoted at a fixed price from the roadmap. Implementation oversight and ongoing advisory are priced as a monthly retainer."
+---
+
+{% include faq-schema.html faq=page.faq %}
+
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <h1>What to expect from Bay Information Systems</h1>
+      <p class="lead mt-3">Bay Information Systems is an independent AI consultancy in Cardiff that advises UK organisations on AI they control. It takes no commissions or partner fees from AI vendors, publishes its price (a one-week AI roadmap at a fixed &pound;8,000), and brings in senior associates where an engagement needs more people or specialist skills.</p>
+      <p>The answers below cover the questions procurement and due diligence usually ask of a supplier, each short enough to paste into an assessment.</p>
+
+      <section id="who" class="mt-5" aria-labelledby="wte-who">
+        <h2 id="wte-who">Who does the work?</h2>
+        <p>Edward Grundy, the principal, leads every engagement and is the client's point of contact from the first call to handover. He has built and deployed machine learning systems for two decades, for clients including the Bank of England, the Office for National Statistics and Admiral plc.</p>
+        <p>Where an engagement needs more hands, or a specialism he does not cover, Bay brings in associates: senior engineers and specialists from his network, most of whom he has worked with on previous contracts. Their skills include data engineering and pipelines, natural language processing, computer vision, GPU optimisation and design. Associates work under subcontract to Bay and under the same confidentiality terms as the engagement, and the client knows who they are before they start. Bay remains the contracting party and is responsible for their work.</p>
+      </section>
+
+      <section id="continuity" class="mt-5" aria-labelledby="wte-continuity">
+        <h2 id="wte-continuity">What happens if the principal is unavailable?</h2>
+        <p>Continuity rests on things the client already holds. Every engagement produces written deliverables (the roadmap, specifications, handover documentation) that another team can pick up. Deployments use open-source software, Marigold and the standard tools around it, on the client's own hardware or in its own cloud account, so nothing stops running and no licence lapses. Deployments that Bay hosts move into the client's account with the same software and no change to the applications that use them (see <a href="/sovereign-ai.html#sov-options">where the models run</a>). For day-to-day work in progress, an associate who knows the engagement can take over.</p>
+      </section>
+
+      <section class="mt-5" aria-labelledby="wte-steps">
+        <h2 id="wte-steps">How an engagement runs</h2>
+        <ol>
+          <li><strong>A first call.</strong> Free, about 45 minutes. We complete the <a href="/checklists/private-inference.html">private inference checklist</a> or the <a href="/ai-readiness-assessment.html">readiness assessment</a> together, and you keep the results.</li>
+          <li><strong>The AI roadmap.</strong> One week, &pound;8,000 fixed: three interviews with key people, analysis of the data and its constraints, and a written roadmap with a session to walk through it (<a href="/sovereign-ai.html#roadmap">what a roadmap covers</a>).</li>
+          <li><strong>Deployment or oversight.</strong> A fixed-price deployment quoted from the roadmap, or advisory support while your team or a supplier builds, typically two to three days a week over eight to twelve weeks.</li>
+          <li><strong>Ongoing advisory.</strong> Optional: a monthly retainer of two to four days, with a quarterly review of whether the strategy still holds.</li>
+        </ol>
+      </section>
+
+      <section class="mt-5" aria-labelledby="wte-faq">
+        <h2 id="wte-faq">Questions buyers ask</h2>
+        {% for f in page.faq %}
+        <h3 class="h5 mt-4">{{ f.q }}</h3>
+        <p>{{ f.a }}{% if f.more_url %} (<a href="{{ f.more_url }}">{{ f.more_text }}</a>.){% endif %}</p>
+        {% endfor %}
+      </section>
+
+      <p class="mt-5">(To start, use the <a href="/sovereign-ai.html#discuss">enquiry form</a> or email <a href="mailto:ed@bayis.co.uk">ed@bayis.co.uk</a>.)</p>
+
+    </div>
+  </div>
+</main>
