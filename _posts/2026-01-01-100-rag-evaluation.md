@@ -15,6 +15,7 @@ related:
   - 25-llm-evaluation
   - 61-eval-datasets
   - 68-build-measurements
+  - 111-graph-rag
 ---
 
 # Evaluating RAG

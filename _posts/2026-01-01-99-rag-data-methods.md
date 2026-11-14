@@ -14,6 +14,7 @@ related:
   - 62-context-compilation
   - 20-vector-db-deepdive
   - 59-formatting-for-llms
+  - 111-graph-rag
 ---
 
 # Data Methods for RAG

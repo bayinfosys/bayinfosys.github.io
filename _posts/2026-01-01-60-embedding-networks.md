@@ -11,6 +11,7 @@ related:
   - 33-vector-db-filters
   - 49-embedding-is-the-message
   - 76-reheat
+  - 111-graph-rag
 ---
 
 # Embedding-Based Relationship Discovery: Finding the Real Network in Your Data

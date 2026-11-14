@@ -6,6 +6,12 @@ seo_title: "Why AI Systems Talk in Text: Embeddings as a Communication Layer"
 description: "AI communication inherited natural language from human communication. That constraint is not a technical necessity."
 keywords: ["embeddings", "ai communication", "multimodal", "marigold", "llm", "content delivery"]
 topic: "Perspectives"
+related:
+  - 50-content-negotiation
+  - 45-fat-protocols-for-ai
+  - 60-embedding-networks
+  - 59-formatting-for-llms
+  - 20-vector-db-deepdive
 ---
 
 # The Embedding is the Message

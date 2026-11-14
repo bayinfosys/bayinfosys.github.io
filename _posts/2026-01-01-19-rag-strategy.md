@@ -14,6 +14,7 @@ related:
   - 33-vector-db-filters
   - 27-schema-docs
   - 10-agent-memory
+  - 111-graph-rag
 ---
 
 # The Components of RAG

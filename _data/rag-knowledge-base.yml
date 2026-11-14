@@ -111,6 +111,8 @@ questions:
             text: "Data methods for RAG"
           - url: "/library/62-context-compilation.html"
             text: "Context is a build step"
+          - url: "/library/111-graph-rag.html"
+            text: "Graph RAG"
       - label: "Not sure"
         points: 0
         guidance: "Collect twenty real questions and check where each answer lives. The pattern decides the method."
