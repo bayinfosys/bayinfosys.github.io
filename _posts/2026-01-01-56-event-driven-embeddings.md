@@ -12,7 +12,7 @@ related:
   - 20-vector-db-deepdive
   - 33-vector-db-filters
   - 19-rag-strategy
-  - 55-what-is-data-engineering
+  - 55-data-engineering
   - 11-apicache
   - 57-medallion
 ---

@@ -11,7 +11,6 @@ related:
   - 35-faster-horses
   - 28-coding-vs-programming
   - 18-mle-vs-swe
-  - 106-cost-of-investment
 ---
 
 # Capital, Labour, and the Productivity Question

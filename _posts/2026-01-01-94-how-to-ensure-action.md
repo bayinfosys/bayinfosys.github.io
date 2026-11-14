@@ -11,7 +11,6 @@ related:
   - 71-friction-builders
   - 35-faster-horses
   - 23-business-goals
-  - 106-cost-of-investment
 ---
 
 # How to Ensure Action

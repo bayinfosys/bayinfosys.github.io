@@ -10,7 +10,7 @@ related:
   - 40-private-inference
   - 65-why-private-inference
   - 66-open-weights-separate-concerns
-  - 63-private-inference
+  - 63-private-inference-stack
   - 64-marigold
   - 73-ner-and-pii
 ---
