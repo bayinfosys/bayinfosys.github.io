@@ -60,4 +60,4 @@ The facade is where that discipline has to live, if it is going to live anywhere
 If a migration is on the horizon and the code talks to a vendor SDK directly from business logic, that is the first thing to fix.
 The infrastructure move is usually the easy part once it is in place.
 
-(If a migration like this is a live problem in a project you are building, [get in touch](/#contact-us).)
+(If a migration like this is a live problem in a project you are building, [get in touch](/contact.html).)

@@ -153,4 +153,4 @@ The raw results CSV, conversion script, and per-request telemetry are included.
 
 Full benchmark with interactive charts: [marigold.run/blog/vlm-inference-benchmark/](https://marigold.run/blog/vlm-inference-benchmark.html)
 
-(If VLM deployment cost is a live question for your team, [get in touch](/#contact-us).)
+(If VLM deployment cost is a live question for your team, [get in touch](/contact.html).)
