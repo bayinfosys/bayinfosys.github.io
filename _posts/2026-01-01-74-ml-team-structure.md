@@ -5,12 +5,8 @@ title: "How to Structure an ML Team"
 description: "Four roles, four types of competence, and one constraint:
 the team's ceiling is its weakest function. What each role owns, how
 they interact, and what happens when one is absent."
-keywords: ["ml team structure", "machine learning team roles",
-"data scientist vs ml engineer", "ai team structure",
-"machine learning team", "how to build an ml team",
-"machine learning roles and responsibilities", "ml team",
-"ai team roles", "machine learning team size"]
-topic: "AI Strategy"
+keywords: ["ml team structure", "machine learning team roles", "data scientist vs ml engineer", "ai team structure", "machine learning team", "how to build an ml team", "machine learning roles and responsibilities", "ml team", "ai team roles", "machine learning team size"]
+topic: "AI Systems"
 seo_title: "How to Structure an ML Team: Roles, Responsibilities, and What Success Looks Like"
 related:
   - 18-mle-vs-swe
