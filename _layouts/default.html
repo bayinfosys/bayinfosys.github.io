@@ -22,7 +22,16 @@
   {%- assign default_description = "Bay Information Systems is an independent AI consultancy in Cardiff, writing about and advising on AI that runs on infrastructure you control." -%}
   {%- assign meta_description = page.description | default: default_description | strip_newlines | strip -%}
   {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
-  {%- assign og_image = page.image | default: '/img/BayInfoLogo_square.png' | absolute_url -%}
+
+  {%- assign card_path = '/img/cards/' | append: page.slug | append: '.png' -%}
+  {%- assign card_file = site.static_files | where: "path", card_path | first -%}
+  {%- if page.image -%}
+    {%- assign og_image = page.image | absolute_url -%}
+  {%- elsif page.layout == 'article' and card_file -%}
+    {%- assign og_image = card_path | absolute_url -%}
+  {%- else -%}
+    {%- assign og_image = '/img/BayInfoLogo_square.png' | absolute_url -%}
+  {%- endif -%}
 
   <title>{{ full_title }}</title>
   <meta name="description" content="{{ meta_description | escape }}">
