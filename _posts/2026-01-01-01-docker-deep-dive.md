@@ -250,13 +250,13 @@ On extracting the 116Mb layer, you will find the base `debian` operating system 
 I will leave it to you to explore more container images in this way. You might be suprised what secrets people leave in their containers!
 
 
-# Section 3: Deployment Considerations
+## Section 3: Deployment Considerations
 
 Docker has had a massive impact on software distribution and replication. It has made huge contributions to the viability of cloud service providers, software houses to build and deploy to "the cloud", and for these systems to scale as people use them.
 
 However, when deploying containers, there are a few things to bear in mind.
 
-## Platform differences
+### Platform differences
 
 Docker interacts differently with macOS, Windows, and Linux. Typically, cloud providers use linux based host machines for docker containers. Images built on [MacOs](https://pythonspeed.com/articles/docker-build-problems-mac/) and Windows cannot be deployed directly to cloud systems without some configuration.
 
@@ -264,7 +264,7 @@ These issues are generally related to underlying hardware and also affect, Raspb
 
 __Avoid these conflicts by building your containers via a `CI/CD` process in hosted environment such as [GitHub](https://docs.docker.com/build/ci/github-actions/), [Gitlab](https://docs.gitlab.com/ee/user/packages/container_registry/build_and_push_images.html) or something similar.__
 
-## AWS Lambda, Kubernetes, and all that
+### AWS Lambda, Kubernetes, and all that
 
 Once your container is setup and deployed to a cloud environment, the cloud will usually provision host environments to run the container.
 
@@ -279,7 +279,7 @@ There are many options for using `docker` to "stress" your software in a contain
 
 __Replicating these issues are useful for testing and debugging cloud software.__
 
-## Logging
+### Logging
  
 Logged data allows us to discover and review:
 + exact moments transactions failed, weeks after the event
@@ -315,7 +315,7 @@ Log data can contain sensitive information and grow quickly, so remember to cons
 __Having a strategy for logging data in our code, ingesting it on execution, and processing it for insight is a good idea.__
 
 
-# Conclusion
+## Conclusion
 
 This article has described (1) the main Linux tools used to create docker, (2) the contents and format of container images, and (3) touched on deployment of images on cloud providers; hopefully we have demystified the black-box which powers much of software development. At the very least, you should have new terms to research!
 

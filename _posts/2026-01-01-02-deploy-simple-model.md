@@ -29,7 +29,7 @@ In this article, I'll showcase a cost-efficient strategy for deploying a machine
 + __Section 3__ covers the AWS deployment process and integration tactics.
 
 
-## The Technical Objective
+### The Technical Objective
 
 Our goal is to deploy a model that generates text embeddings -- a fundamental yet critical microservice for RAG systems or recommendation engines used in numerous sectors.
 
@@ -42,7 +42,7 @@ By the end of this process, we will have:
 As engineers, it's crucial to stay focused on both the task at hand and the anticipated outcomes.
 
 
-# Section 1: Initial Container Image
+## Section 1: Initial Container Image
 
 To compute an embeddings from text, we require a model takes text as input and produces embeddings. An embedding is a vector (list of numbers) representing the content of the text.
 
@@ -53,7 +53,7 @@ __Note__: the size of a model directly affects computation time; as we are targe
 __Note__: when developing a pipeline, process efficiency outweighs model performance. Go with a fast model to develop the pipeline, and refine for performance later. It is a classic error of misdirection to spend longer choosing the model than developing the pipeline.
 
 
-## Model Caching and Preloading
+### Model Caching and Preloading
 
 Before diving into the server setup, it's crucial to address how we manage the model's deployment efficiently. Running the container without preparation will lead to downloading the model from HuggingFace's servers at runtime, which is not optimal for rapid startup times in a serverless environment.
 
@@ -95,7 +95,7 @@ def model_unload():
 __Note__: The above code has no error handling and uses hardcoded values for brevity. In a production environment, ensure robust error handling and configuration management to enhance reliability and maintainability. We will discuss this in a later article.
 
 
-## FastAPI Wrapper
+### FastAPI Wrapper
 
 We will use [FastAPI](https://fastapi.tiangolo.com/) to orchestrate these stages: loading the model when the server starts, performing inference on a `POST` request, and then exiting when the server stops.
 
@@ -149,7 +149,7 @@ The model will be loaded into the `app.state.model` variable so it is thread-saf
 
 
 
-## Building a container image
+### Building a container image
 
 To put that model and script into a container we need a `Dockerfile` and a `requirements.txt` which describes the project dependencies for the container environment.
 
@@ -200,7 +200,7 @@ Our directory should now look like:
 Then we build this container image with: `docker build -t embedding-server .`
 
 
-## First Run
+### First Run
 
 We run our container image with: `docker run -it --rm -p 8000:8000 embedding-server`.
 
@@ -225,7 +225,7 @@ __Note__: the `Content-Type` header is required, otherwise `curl` will submit th
 Those of you who prefer a UI can try the cool `FastAPI` feature which automatically generates documentation for your API. Two are available at: `http://localhost:8000/docs` and `http://localhost:8000/redoc`.
 
 
-# Section 2: AWS Lambda Container
+## Section 2: AWS Lambda Container
 
 Now we have a model packaged up in a container image, and functioning locally, we should look at deploying to make our tools more available to others.
 
@@ -305,7 +305,7 @@ curl -H "Content-Type: application/json" -d '{"input": "hello, world!"}' http://
 __Note__: The details here are quite important (URL, port) and controlled by the Lambda base image.
 
 
-# Section 3: Deployment to AWS
+## Section 3: Deployment to AWS
 
 __Note__: For the following section I will assume you have Amazon Web Services account and understand `AWS_ACCOUNT_ID` and `AWS_REGION`.
 
@@ -395,7 +395,7 @@ terraform destroy -auto-approve
 ```
 
 
-# Conclusion
+## Conclusion
 
 This article has described (1) deployment of an open source model with [FastAPI](https://fastapi.tiangolo.com/), (2) modification of that container to the AWS Lambda runtime, (3) deployment of that AWS Lambda container image to AWS Lambda.
 
