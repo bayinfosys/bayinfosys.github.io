@@ -1,7 +1,7 @@
 ---
 date: 2026-07-26
 layout: article
-title: "Private Inference: Costs"
+title: "Self-Hosted Inference Measured on 14 Models"
 description: "What self-hosted LLM inference costs, measured: 14 open-weight models, 1,204 requests and 226 watt-hours on one RTX 3060, or 5.6p of electricity. With two faults the telemetry caught that an estimate would have missed."
 keywords: ["self-hosted inference cost", "open weight models benchmark", "rtx 3060 llm", "local inference cost", "gpu inference power draw", "private ai inference cost"]
 seo_title: "Self-Hosted LLM Inference Cost: A Measured Benchmark Across 14 Models"

@@ -13,7 +13,7 @@ related:
   - 91-generative-video-breaks-editorial-control
 ---
 
-# AI Tooling and the Separation Between Coders and Programming
+# AI Tooling and the Separation Between Coding and Programming
 
 The rise of AI-assisted development tools has accelerated a trend that predates them by decades: the separation between writing code and building systems. This separation is not new, but AI tooling makes it more visible and, in some contexts, more problematic.
 
