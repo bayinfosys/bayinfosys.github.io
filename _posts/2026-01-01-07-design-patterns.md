@@ -23,7 +23,7 @@ redirect_from:
 This article sets out the main machine learning design patterns from the point of view of a data practitioner.
 Each pattern is a data task, defined by what the model produces: a category, a number, a ranked list, a label for each word or pixel, a span of text, a group, an anomaly score, or new content.
 For each task we describe how it is usually built and name models that do it.
-(The product goals these tasks combine into, such as assistants, document search and triage, are covered in the companion piece, [AI product goals and the tasks behind them](/library/115-ai-product-goals.html).)
+(The product goals these tasks combine into, such as assistants, document search and triage, are covered in the companion piece, [AI product goals and the tasks behind them](/library/116-ai-product-goals.html).)
 
 The term comes from building architecture by way of software, where a pattern is a recurring answer to a recurring problem, with the materials left to the particular case.
 A classifier is a pattern in that sense; gradient-boosted trees, a logistic regression and a fine-tuned transformer are three ways of building one.
