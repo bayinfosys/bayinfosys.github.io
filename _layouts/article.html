@@ -19,6 +19,7 @@ layout: default
 }
 </script>
 
+
 <main class="container py-5 article-page" data-article="{{ page.slug }}" data-topic="{{ page.topic | escape }}">
   <article>
     {% assign parts = content | split: "</h1>" %}
@@ -32,11 +33,11 @@ layout: default
     {% endif %}
   </article>
 
-  <aside class="article-feedback mt-5" aria-label="Feedback on this article" data-nosnippet>
-    <span class="article-feedback__q">Was this article useful?</span>
-    <button type="button" class="btn btn-sm ms-2" data-vote="like" aria-pressed="false" aria-label="Yes, it was useful"><i class="fa-regular fa-thumbs-up" aria-hidden="true"></i></button>
-    <button type="button" class="btn btn-sm ms-1" data-vote="dislike" aria-pressed="false" aria-label="No, it was not useful"><i class="fa-regular fa-thumbs-down" aria-hidden="true"></i></button>
-    <span class="article-feedback__status text-muted small ms-2" role="status"></span>
+  <aside class="article-feedback" aria-label="Feedback on this article" data-nosnippet>
+    <span>Was this article useful?</span>
+    <button type="button" class="btn btn-sm article-feedback__btn" data-clientlog="article-like" aria-pressed="false" aria-label="Yes, it was useful"><i class="fa-regular fa-thumbs-up" aria-hidden="true"></i></button>
+    <button type="button" class="btn btn-sm article-feedback__btn" data-clientlog="article-dislike" aria-pressed="false" aria-label="No, it was not useful"><i class="fa-regular fa-thumbs-down" aria-hidden="true"></i></button>
+    <span class="article-feedback__status" role="status"></span>
   </aside>
 
   {% include related.html %}
