@@ -1,36 +1,65 @@
 ---
 date: 2026-07-26
+last_modified_at: 2026-11-14
 layout: article
-title: "Self-Hosted Inference Measured on 14 Models"
-description: "What self-hosted LLM inference costs, measured: 14 open-weight models, 1,204 requests and 226 watt-hours on one RTX 3060, or 5.6p of electricity. With two faults the telemetry caught that an estimate would have missed."
-keywords: ["self-hosted inference cost", "open weight models benchmark", "rtx 3060 llm", "local inference cost", "gpu inference power draw", "private ai inference cost"]
+title: "What Self-Hosted LLM Inference Costs: 14 Models Measured on One GPU"
 seo_title: "Self-Hosted LLM Inference Cost: A Measured Benchmark Across 14 Models"
+description: "What self-hosted LLM inference costs, measured: 14 open-weight models, 1,204 requests and 226 watt-hours on one RTX 3060, or 5.6p of electricity. Plus how to work out when owned hardware breaks even against an API."
+keywords: ["self-hosted inference cost", "self-hosted llm cost", "private ai inference cost", "local llm electricity cost", "gpu inference power draw", "llm api vs self-hosted cost", "open weight models benchmark", "rtx 3060 llm"]
 topic: "Infrastructure"
+cta: private-inference
 related:
-  - 64-marigold
+  - 80-falling-token-prices
+  - 117-private-ai-server
   - 40-private-inference
-  - 78-gpu-market-2026
-  - 65-why-private-inference
-  - 82-vlm-benchmarks
+  - 87-inference-infrastructure
   - 90-aws-bedrock-costs
+  - 64-marigold
 ---
 
-# Self-Hosted Inference, Measured: 14 Models, One GPU
+# What Self-Hosted LLM Inference Costs: 14 Models Measured on One GPU
 
-Most claims about the cost of self-hosted inference are estimates built from a GPU's wattage rating and an assumed utilisation figure. The assumption does most of the work, and it is rarely stated. We ran 14 open-weight instruct models through 1,204 requests on a single RTX 3060, with per-request power and VRAM sampled directly from the worker process, to replace the estimate with a measured number.
+Self-hosted inference has two costs: the hardware, paid once, and the electricity each request draws. Most published figures for the second are estimates built from a GPU's rated wattage and an assumed utilisation, and the assumption does most of the work. The benchmark below ran 14 open-weight instruct models through 1,204 requests on a single RTX 3060, sampling power and memory per request from the worker process, to replace the estimate with a measurement. We then set out how that measurement fits into a break-even calculation against an API.
 
 ## What was run
 
-The stack was a single RTX 3060, a Postgres-backed queue, and one worker process (no cloud component anywhere in the path). Each model handled 86 sequential requests across five prompt types: a fixed-prefix set, a structured-output set, and three context lengths, with output capped at 256 tokens. Total electricity drawn across the entire run, all 14 models, all 1,204 requests: 226.4 watt-hours. At the current Ofgem rate, that is 5.6 pence.
+The stack was one RTX 3060, a Postgres-backed queue and one worker process, with no cloud component anywhere in the path. Each model handled 86 sequential requests across five prompt types (a fixed-prefix set, a structured-output set and three context lengths), with output capped at 256 tokens.
 
-Two findings from the same telemetry are worth keeping, because they show what a measured run catches that an estimate cannot. Output length, not parameter count, was the strongest predictor of how long a request took: the two slowest models in the set were not the largest, but the ones that wrote the longest completions. And one model, `dolphin-2.9-llama3-8b`, hit its 256-token cap on all 86 of its requests without exception, a stop-token configuration that had silently stopped working, visible only because the benchmark recorded completion length per request rather than averaging it into a summary statistic.
+Electricity across the whole run, all 14 models and all 1,204 requests: **226.4 watt-hours, or 5.6p** at the Ofgem price cap rate at the time (about 25p per kWh).
 
-(The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html) and on GitHub.)
+(The per-request charts, the comparison of throughput against parameter count, and the raw CSV are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html) and on GitHub.)
 
-## The Marginal Cost of Self-hosting
+## What the telemetry caught
 
-Five and a half pence for 1,204 requests is not evidence that inference is free. It is evidence that for a defined class of model, the marginal cost of an additional request, once the hardware exists and is idle, approaches the cost of the electricity it draws and very little else. That is the same statement the industry-level figures are making about token prices generally, at a scale where it can actually be checked.
+Two findings came from recording every request individually, and an estimate would have produced neither.
 
-The distinction that matters for an organisation deciding how to run inference is not whether the marginal cost is low. By most measures available, it already is, and falling. The distinction is who controls where that marginal cost is paid. A cloud API bills per token at a margin set by the provider, regardless of how cheap the underlying generation has become. Inference run on infrastructure you control, whether a desktop GPU for development or a managed private deployment at production scale, pays the marginal cost directly, with no margin sitting between the electricity meter and the result.
+Output length predicted request time better than parameter count did. The two slowest models in the set were the ones that wrote the longest completions, and neither was the largest. Capping output length is therefore one of the cheaper ways to cut cost per request.
 
-(For the architectural version of this question, what changes when inference runs inside a network boundary you control rather than a provider's, see [Private Inference: Running AI Inside Your Own Infrastructure](/library/40-private-inference.html). [Get in touch](/contact.html) if a benchmark like this one would help scope your own inference costs.)
+One model, `dolphin-2.9-llama3-8b`, hit the 256-token cap on all 86 of its requests. Its stop token had silently stopped working, so it generated until it was cut off. The fault showed up only because completion length was recorded per request; an average would have hidden it inside a summary figure.
+
+## The marginal cost
+
+For this class of model, once the hardware exists and would otherwise sit idle, an extra request costs roughly the electricity it draws and very little else. That is the marginal cost. It says nothing about whether owning the hardware was worth it, which depends on how much of the time it is busy.
+
+A hosted API prices each token with the provider's margin included, however cheap generation becomes underneath. Inference on hardware you control pays the marginal cost directly, which makes the cost structure legible: a meter reading and a hardware invoice. ([Falling token prices](/library/80-falling-token-prices.html) covers how the industry's prices are moving.)
+
+## When owned hardware breaks even
+
+The break-even point compares the hardware cost with the daily saving:
+
+```
+days to break even = hardware cost / (daily API cost at your volume - daily electricity cost)
+```
+
+The daily API cost is your tokens per day multiplied by the API's price per token, for a model of comparable quality on your task. The daily electricity cost is the measured energy per request multiplied by requests per day and your tariff. With the figures above, electricity is close to negligible, so the calculation is driven by volume and by the API price.
+
+An independent study of consumer Blackwell GPUs put the electricity cost of self-hosted inference at $0.001 to $0.04 per million tokens, and found the hardware reaching cost parity with budget-tier cloud APIs within one to four months at 30 million tokens a day ([Private LLM Inference on Consumer Blackwell GPUs](https://arxiv.org/abs/2601.09527)). At low or irregular volume the same arithmetic favours the API, and as a rule self-hosting starts to pay above a few million tokens a day.
+
+Four things move the answer and belong in any real calculation:
+
+- **Utilisation.** The saving accrues only on days the hardware is busy. A server used one hour a day takes many times longer to pay back than the formula's ideal.
+- **Staff time.** Someone installs, patches and monitors the server. On a small deployment, that can outweigh the hardware.
+- **Quality.** The comparison only holds against an API model of similar quality on your task, which needs testing on your own examples ([how to evaluate an AI pipeline](/library/61-eval-datasets.html)).
+- **Hardware life and price.** GPU and memory prices rose through 2026, and a card bought now has a service life of a few years ([what a private AI server is](/library/117-private-ai-server.html)).
+
+Measured electricity removes the guesswork from one side of the calculation, and leaves volume and utilisation to decide the rest. (If a measurement like this would help scope your own inference costs, [get in touch](/contact.html).)

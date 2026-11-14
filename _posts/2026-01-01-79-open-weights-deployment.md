@@ -1,87 +1,86 @@
 ---
 date: 2026-06-14
+last_modified_at: 2026-11-14
 layout: article
-title: "Open Weights Mean the Tier Is a Deployment Decision, Not a Lock-In"
-description: "With open-weight models, a laptop, a private server and a cloud deployment run the same application at different scales, so the hosting tier can change later without rewriting code."
-keywords: ["open weight models local inference", "ollama local development", "self-hosted llm production", "llm deployment tiers", "private inference vs cloud", "open source llm deployment", "llm infrastructure scaling", "run llm locally", "marigold private inference"]
+title: "Open Weights Make the Deployment Tier a Reversible Decision"
+seo_title: "LLM Deployment Tiers: Local, Private, Self-Hosted and Cloud with Open Weights"
+description: "With open-weight models, a laptop, a private deployment, your own GPU servers and rented cloud GPUs run the same application. Each tier has its own reason, and the tier can change later without rewriting code."
+keywords: ["llm deployment tiers", "open weight models deployment", "run llm locally", "self-hosted llm production", "private inference vs cloud", "ollama local development", "llm vendor lock-in", "open source llm deployment"]
 topic: "Architecture & Deployment"
 related:
   - 63-private-inference-stack
   - 40-private-inference
-  - 64-marigold
+  - 117-private-ai-server
+  - 87-inference-infrastructure
   - 66-open-weights-separate-concerns
-  - 65-why-private-inference
-  - 70-training-commodity
+  - 64-marigold
 ---
 
-# Open Weights Mean the Tier Is a Deployment Decision, Not a Lock-In
+# Open Weights Make the Deployment Tier a Reversible Decision
 
-When you build against the OpenAI API, you make a permanent infrastructure decision at the same time. You cannot run GPT-4 locally. You cannot move it into your VPC. You cannot hand it to a client to self-host, deploy it offline, or run it in a tight loop without a network round-trip. The model and the infrastructure are one thing. Whatever tier you are on -- shared cloud, enterprise agreement, whatever -- that is where the model lives. The tier is not a choice you revisit.
+Building on a closed model fixes where the model runs. A closed model can be reached through the provider's API, or through a cloud provider's private networking in a region you choose, but it cannot run on your own hardware, inside a client's network or with no connection at all. Choosing the model chooses the tier.
 
-Open-weight models separate these two decisions. The weights are published. They run on your laptop, on a private AWS instance, on a rented GPU cluster, or on a client's on-premises server. The application calling the model does not change between those environments, because the API surface is the same throughout. What changes is the infrastructure underneath -- and infrastructure decisions are reversible.
+Open-weight models separate the two decisions. The weights are published, so the same model runs on a laptop, on a private deployment, on your own GPU servers or on rented cloud GPUs. The application calling it stays the same throughout, because every tier exposes the same OpenAI-compatible API. Only the infrastructure underneath changes, and infrastructure decisions can be reversed.
 
-This is a more useful framing than "open source vs closed". The practical consequence is that you choose your deployment tier based on what you actually need right now, with the option to change it when that changes.
+We set out the four tiers, the reason each one exists, and what stays the same when an application moves between them.
 
-## What the tiers are
+## The four tiers
 
-Local inference via Ollama is the natural starting point for development. Ollama wraps a quantised model behind an OpenAI-compatible HTTP endpoint on localhost. The application code is identical to production code; the only difference is the base URL. This matters more than it sounds: you are not testing against a mock, a stub, or a smaller proxy model. You are testing against the same weights that will run in production. Behavioural differences between development and production are infrastructure differences, not model differences. That is a significantly narrower debugging surface.
+| Tier | Typical stack | Primary reason | Limit |
+|---|---|---|---|
+| Local | Ollama or llama.cpp on a laptop or workstation | Latency, offline use, a physical data boundary | Throughput; a few concurrent requests |
+| Private managed | A dedicated deployment run for you, such as marigold hosted in an agreed region | Data sovereignty without a GPU operations team | Monthly cost; a supplier in the arrangement |
+| Self-hosted | vLLM or marigold on your own GPU servers or cloud instances | Cost at sustained volume | Operating the GPUs |
+| Cloud rental | Rented H100s, A100s or similar by the hour | Capacity and model sizes no owned hardware covers | Cost at sustained use |
 
-Local inference has reasons beyond development convenience. A model running on the same machine as the application adds no network latency -- relevant for tight loops, real-time annotation, or any workflow where the inference call is on the critical path. It works without a network connection, which matters for edge deployment, air-gapped environments, or applications that need to function on a train. And nothing leaves the machine, which is the strongest possible data boundary: not contractual, not architectural, simply physical.
+**Local.** Ollama wraps a quantised model behind an OpenAI-compatible endpoint on localhost. The application code is the code that will run in production, with a different base URL, and it runs against the same weights production will use. Differences between development and production then come from infrastructure, which narrows debugging considerably. Local inference also adds no network latency, works without a connection (at the edge, in an air-gapped environment, on a train) and keeps the data on one machine, the strongest boundary there is. Its limit is throughput: Ollama handles a few requests in parallel, and a machine without a discrete GPU generates slowly.
 
-The constraint is throughput. Ollama serves one request at a time. On a development machine without a discrete GPU, generation is slow. This is fine for a single developer; it is not fine for concurrent users or bulk processing.
+**Private managed.** A supplier runs the same open-weight models on infrastructure reserved for you, inside a boundary set by contract. The base URL changes and the model identifier may change in format; the request and response shapes do not. For regulated organisations this is often the tier that makes a project possible at all, and it remains the right tier however large the volume grows. ([What private AI inference is](/library/40-private-inference.html) covers who provides it.)
 
-Private managed inference -- a service like [Marigold](https://marigold.run) running the same open-weight models on dedicated GPU infrastructure -- handles that constraint without changing the application. The base URL changes. The model identifier may change slightly in format. The API surface, the request structure, and the response shape are the same. The application does not know it has moved.
+**Self-hosted.** vLLM or a platform such as marigold on your own GPU servers or cloud instances costs more to operate than a managed deployment and less per token at sustained volume. It suits organisations with GPU operations skills and steady load ([what a private AI server is](/library/117-private-ai-server.html), [AI inference infrastructure](/library/87-inference-infrastructure.html)).
 
-Private managed inference has its own reason set that goes beyond throughput. The data boundary is contractual and architectural: your data reaches the inference server and returns; it does not enter a training pipeline, it does not pass through shared infrastructure, and the provider has accepted explicit constraints on what they can do with it. For organisations in regulated sectors -- healthcare, legal, financial services -- this is often the constraint that makes a project viable at all, and it holds regardless of request volume.
+**Cloud rental.** Rented data-centre GPUs cover bursts of demand and models too large for any owned hardware, with the same weights and the same API.
 
-Self-hosted production infrastructure (vLLM on your own GPU instances) sits above that in operational complexity and below it in per-token cost at sustained scale. It is the right tier for organisations with GPU operations capability and volume high enough that the fixed infrastructure cost beats per-request pricing. The same weights, the same API surface.
+## Each tier has its own reason
 
-Cloud GPU rental -- rented H100s, A100s, or equivalent -- covers burst capacity and model sizes that no local hardware can accommodate. Same again.
+Cost is the usual way to choose: local is cheapest, cloud rental most expensive, pick by volume. Each tier's main reason lies elsewhere. Local is for latency and offline use. Private managed is for sovereignty. Self-hosted is for cost at scale. Cloud rental is for capacity on demand.
 
-## Why the tier reason matters
+The reason tells you when the tier should change, and when it should stay put. An organisation can sit at private managed inference permanently because sovereignty is a standing requirement, whatever its volume. If the reason is sovereignty, moving to a cheaper public API at higher volume gives up the property the architecture was built for. If the reason is latency, moving to a managed service adds the network hop that local inference avoided.
 
-The usual way to frame this is cost: local is cheapest, cloud is most expensive, choose based on volume. That framing is correct but incomplete.
-
-Each tier has a primary reason that is not cost. Local is about latency and offline capability. Private managed is about data sovereignty. Self-hosted is about cost at scale. Cloud rental is about capacity on demand. An organisation might sit at private managed inference not because it has outgrown local and not yet reached self-hosted, but because data sovereignty is a permanent requirement regardless of scale. A developer might run locally not because they cannot afford an API call but because they need the application to work on an aeroplane.
-
-Understanding the reason clarifies when the tier should change. If the reason is data sovereignty, moving to a cheaper public API tier at higher volume is not a cost optimisation -- it removes the property the architecture was built around. If the reason is latency, moving to a managed service adds a network hop that the reason for local specifically avoided.
-
-Closed-model providers collapse this. The tier choice is also the data handling choice, the latency choice, and the offline capability choice, all at once, because they are all the same thing: whether your data goes to that provider's servers. With open weights they separate. You can have private managed inference with high throughput. You can have local inference with the same model quality as production. The tier decision and the other decisions come apart, and you can make each one on its own terms.
+With closed models, the tier, the data handling, the latency and the offline capability are one decision, because they all reduce to whether the data goes to the provider's servers. Open weights let each be decided separately: private inference with high throughput, or local development against production-quality weights.
 
 ## What stays the same
 
-The simplest demonstration of this is the code. An application built against Ollama on localhost:
+An application built against Ollama on localhost:
 
 ```python
 from openai import OpenAI
 
 client = OpenAI(
     base_url="http://localhost:11434/v1",
-    api_key="ignored"
+    api_key="ignored",
 )
 
 response = client.chat.completions.create(
     model="llama3.2",
-    messages=[{"role": "user", "content": prompt}]
+    messages=[{"role": "user", "content": prompt}],
 )
 ```
 
-The same application against Marigold in production:
+The same application against a private deployment:
 
 ```python
 client = OpenAI(
-    base_url="https://api.marigold.run/v1",
-    api_key=MARIGOLD_API_KEY
+    base_url="https://inference.internal.example.com/v1",
+    api_key=INFERENCE_API_KEY,
 )
 
 response = client.chat.completions.create(
     model="llama3.2",
-    messages=[{"role": "user", "content": prompt}]
+    messages=[{"role": "user", "content": prompt}],
 )
 ```
 
-Two lines change. The logic, the prompt structure, the response handling, the error handling, the retry behaviour -- none of it changes, because none of it was ever specific to the infrastructure. It was always specific to the model and the task.
+Two lines change. The prompts, the response handling, the error handling and the retries stay as they were, because they were written for the model and the task, and neither has moved. (The serving software behind each tier is compared in [how to self-host an LLM](/library/63-private-inference-stack.html).)
 
-This is what the private inference series on this blog has been building toward. The separation of model from infrastructure is not an architectural nicety. It is the property that makes the tier decision reversible, that makes local and production genuinely equivalent for testing purposes, and that removes the infrastructure tier from the list of permanent early decisions a project has to get right.
-
-The decision you are making when you choose an open-weight model is not "which provider". It is "which tier fits right now" -- with the understanding that the answer is allowed to change.
+Choosing an open-weight model leaves the tier as a decision about the present, open to revision as the reasons change.

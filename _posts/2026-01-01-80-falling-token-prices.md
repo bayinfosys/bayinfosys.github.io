@@ -1,58 +1,45 @@
 ---
 date: 2026-06-29
+last_modified_at: 2026-11-14
 layout: article
 title: "Falling Token Prices and the Cost of Inference You Already Own"
-description: "Token prices are falling across the industry while usage grows faster than prices fall. What that means for organisations that already own inference hardware, illustrated by a 14-model benchmark on one GPU."
-keywords: ["self-hosted inference cost", "open weight model benchmark", "ai token economics", "token price elasticity", "private inference cost", "rtx 3060 llm benchmark"]
-seo_title: "Self-Hosted Inference Cost vs the AI Industry's Token Economics"
+seo_title: "AI Token Prices Are Falling: What It Means for Self-Hosted Inference"
+description: "AI inference prices at a fixed capability fall several-fold a year while usage grows faster. What that does to the break-even for owned hardware, and to what owned hardware can run."
+keywords: ["ai token prices", "llm price per token trend", "falling cost of ai inference", "ai token economics", "llm inference price decline", "self-hosted inference cost", "open weight model efficiency"]
 topic: "Infrastructure"
 related:
+  - 95-private-inference-costs
   - 40-private-inference
-  - 65-why-private-inference
-  - 78-gpu-market-2026
-  - 64-marigold
+  - 117-private-ai-server
   - 90-aws-bedrock-costs
+  - 70-training-commodity
+  - 78-gpu-market-2026
 ---
 
 # Falling Token Prices and the Cost of Inference You Already Own
 
-Google's reported monthly token volume rose roughly fifty-fold between early 2025 and mid-2026, from about 9.7 trillion to over 480 trillion, according to figures Sundar Pichai has given publicly.
-Over a similar period, the blended price per million tokens across the industry fell from around 17 dollars to around 2, by Epoch AI's tracking.
-The two numbers are not independent.
-[Exponential View's analysis](https://intelligence.exponentialview.co/) of the broader market puts the relationship at an elasticity of roughly 1.2 to 1.8: a 10 percent price cut tends to produce 12 to 18 percent more usage.
-Tokens are getting cheaper and the industry is using more of them faster than the price falls, which means total spend on inference keeps growing even as the per-unit cost collapses.
+Google processed 9.7 trillion tokens a month in May 2024, about 480 trillion a year later, and 3.2 quadrillion by May 2026, according to figures Sundar Pichai gave at Google I/O ([Digit](https://www.digit.in/features/general/google-io-2026-sundar-pichai-gave-numbers-to-explain-rapid-ai-adoption.html)). Over the same years the price of reaching a given level of capability fell faster than almost any price in computing. Usage is outrunning the price cuts, so total spending on inference keeps rising while each token gets cheaper.
 
-That is the dynamic at hyperscaler scale, where it is hard to verify directly.
-From outside Google, we cannot audit the 480 trillion figure, and the "cost per token" reported by providers is a blended commercial price, not a measured cost of generation.
-The same dynamic is verifiable at the smallest possible scale, however: a single GPU, a defined set of models, and a meter on the wall.
+For an organisation choosing between an API and its own hardware, those two trends pull in opposite directions. We set out how fast prices are falling, why cost per task can move differently from price per token, and what the trend does to the case for owned inference.
 
-## A measured number, not an estimated one
+## How fast prices are falling
 
-We ran 14 open-weight instruct models through 1,204 requests on a single RTX 3060, with per-request power draw and VRAM sampled directly from the worker process rather than inferred from the card's rated wattage.
-Each model handled 86 sequential requests across five prompt types -- a fixed-prefix set, a structured-output set, and three context lengths -- with output capped at 256 tokens.
-Total electricity drawn across the entire run, all 14 models, all 1,204 requests: 226.4 watt-hours. At the current Ofgem rate, that is 5.6 pence.
+Epoch AI measured the price of reaching fixed benchmark scores and found it falling by between 9 and 900 times a year, depending on the task and the threshold. Reaching GPT-4's level on a set of PhD-level science questions became 40 times cheaper each year ([Epoch AI](https://epoch.ai/blog/llm-inference-price-trends)). A later Epoch analysis put the broad trend at roughly 5 to 10 times a year for reaching a given capability level ([Epoch AI](https://epochai.substack.com/p/how-persistent-is-the-inference-cost)).
 
-Two findings from the same telemetry are worth keeping, because they show what a measured run catches that an estimate cannot.
-Output length, not parameter count, was the strongest predictor of how long a request took: the two slowest models in the set were not the largest, but the ones that wrote the longest completions.
+Three things drive the fall: cheaper hardware per unit of compute, competition between providers, and algorithmic efficiency, meaning smaller or better-trained models reaching a capability that once took a larger one. A study isolating open models, to remove competitive pricing, and dividing out hardware price declines estimated algorithmic progress alone at around three times a year ([Gundlach et al.](https://arxiv.org/abs/2511.23455)).
 
-The full per-request charts, the throughput-against-parameter-count comparison, and the raw CSV behind this run are published on [Marigold's benchmark page](https://marigold.run/blog/self-hosted-inference-benchmark.html).
+## Price per token and cost per task
 
-## What the small number says about the large one
+A falling price per token does not guarantee a falling bill. Reasoning models generate far more tokens per answer than the models they replace, agents make many calls per task, and cheaper tokens invite uses that were not worth paying for before. The price of a fixed capability falls; the cost of the work an organisation actually does can stay level or rise as it asks for more.
 
-Five and a half pence for 1,204 requests is not evidence that inference is free.
-It is evidence that for a defined class of model, the marginal cost of an additional request, once the hardware exists and is idle, approaches the cost of the electricity it draws and very little else.
-That is the same statement the industry-level figures are making about token prices generally, at a scale where it can actually be checked.
+That is the large-scale pattern behind Google's figures, and it is hard to check from outside: the token counts are self-reported, and a provider's price per token is a commercial decision, which need not track its cost of generation. At the smallest scale the cost can be measured directly. On one RTX 3060, 14 open-weight models answered 1,204 requests for 226 watt-hours of electricity, about 5.6p ([what self-hosted inference costs](/library/95-private-inference-costs.html)).
 
-The distinction that matters for an organisation deciding how to run inference is not whether the marginal cost is low.
-By most measures available, it already is, and falling.
-The distinction is who controls where that marginal cost is paid.
-A cloud API bills per token at a margin set by the provider, regardless of how cheap the underlying generation has become.
-Inference run on infrastructure you control -- whether a desktop GPU for development or a managed private deployment at production scale -- pays the marginal cost directly, with no margin sitting between the electricity meter and the result.
+## What falling prices do to owned inference
 
-This is the argument for self-hosting: not that it is dramatically cheaper in absolute terms for every workload, but that the cost structure is legible.
-You can point at 226.4 watt-hours and a meter reading.
-A per-token API price is a commercial decision made somewhere else, and it does not have to track the falling cost of generation at all.
+Falling API prices push out the break-even point for owned hardware. Whatever volume made a GPU server pay for itself last year, a lower API price raises it, because the daily saving shrinks while the hardware cost stays where it was. An organisation that self-hosts purely to save money is betting against a curve that has fallen several-fold every year.
 
-For the architectural version of this question -- what changes when inference runs inside a network boundary you control rather than a provider's -- see [Private Inference: Running AI Inside Your Own Infrastructure](/library/40-private-inference.html).
+The same efficiency gains reach owned hardware by another route. When a smaller open-weight model matches what a larger one could do a year earlier, a GPU already in the rack runs the better model at the same electricity cost. On an API, the gain arrives as a price cut, at the provider's discretion and with its margin. On owned hardware, it arrives as more capability on the same machine, whenever a better model is downloaded.
 
-[Marigold](https://marigold.run) runs the same class of open-weight models on private infrastructure for workloads that have outgrown a single GPU.
+So the cost case for self-hosting weakens over time while the capability of owned hardware grows. The cases that do not depend on price (data that cannot leave the boundary, a model version that changes only when you decide, a cost that reads off a meter) are unaffected by either trend. ([What private AI inference is](/library/40-private-inference.html) covers those.)
+
+Falling token prices make inference cheaper to buy and better to own, and leave the choice between the two to rest on control more than on cost.

@@ -1,133 +1,56 @@
 ---
 date: 2026-05-10
+last_modified_at: 2026-11-14
 layout: article
 title: "Open Weight Models and the Separation of Concerns in AI"
-description: "Vertically integrated AI companies collect data, train models,
-and sell inference. This is a business process error. The organisation that
-understands the task should own the data that defines it."
-keywords: ["open weight models", "open source ai", "model training",
-"private inference", "data sovereignty", "ai strategy",
-"foundation models", "self-hosted llm", "ai commoditisation"]
+description: "The major AI companies collect data, train models and sell inference as one offering. Open-weight models split those into three roles, and leave the organisation that understands the task holding the data that defines it."
+keywords: ["open weight models", "open source ai", "separation of concerns ai", "model training", "ai strategy", "labelled data", "data sovereignty", "foundation models", "ai commoditisation"]
 topic: "Product & Strategy"
 related:
+  - 65-why-private-inference
   - 40-private-inference
-  - 64-marigold
   - 46-labels-are-the-task
   - 61-eval-datasets
-  - 72-private-inference-fhe
   - 70-training-commodity
+  - 64-marigold
 ---
 
 # Open Weight Models and the Separation of Concerns in AI
 
-The major AI companies collect data, train models, and sell inference.
-This is presented as vertical integration -- a strength. It is more
-accurately described as a business process error that compounds
-until it becomes visible in model quality.
+The major AI companies collect data, train models and sell inference as a single offering. The bundle is usually described as vertical integration, and it mixes two kinds of work that pull in different directions.
 
-Data collection is a business process. It requires domain knowledge,
-deliberate labelling strategies, and a precise understanding of what
-the model is being asked to learn. Model training and inference are
-technical processes. They require engineering rigour, infrastructure,
-and optimisation against a defined objective. These are different
-disciplines with different incentives. Organisations that do both
-do neither well.
+Data collection is a business process. It needs domain knowledge, a deliberate labelling strategy and a precise idea of what the model is meant to learn. Training and inference are technical processes: engineering, infrastructure and optimisation against a defined objective. The incentives of the two differ, and an organisation that runs both tends to let the second set the terms of the first.
 
-## The monolithic provider problem
+We set out the problem with the bundle, the three roles that open-weight models separate, and the asset that separation leaves with the organisation that owns the task.
 
-A monolithic provider -- one that collects data, trains models, and
-sells inference as a single commercial offering -- has a structural
-incentive to acquire data at scale. Volume is measurable, defensible,
-and investable. Quality is harder to quantify.
+## The trouble with the bundle
 
-The result is models trained on whatever was available rather than on
-what was needed: a training set shaped by commercial relationships and
-acquisition opportunity rather than by the requirements of any
-particular task.
+A provider that collects data, trains models and sells inference has a structural reason to acquire data at scale. Volume is measurable and investable; fitness for a particular task is harder to show. The training set that results is shaped by what was available to acquire, and only loosely by what any particular task requires.
 
-The domain organisation -- the hospital, the legal firm, the financial
-institution -- holds the knowledge that would make a model genuinely
-useful. It understands what a correct clinical summarisation looks like.
-It knows what distinguishes a sound contractual analysis from a poor one.
-It can identify a compliant recommendation from a non-compliant one.
-The monolithic provider does not have this knowledge and cannot acquire
-it accurately from the outside. The domain organisation does not train
-foundation models and should not need to.
-
-The gap between what a general-purpose model produces and what a domain
-expert requires is not a capability gap but a data gap.
+The knowledge that would make a model useful in a specific domain sits elsewhere. A hospital knows what a correct clinical summary looks like. A law firm knows what separates a sound contractual analysis from a poor one. A financial institution can tell a compliant recommendation from a non-compliant one. A general-purpose provider cannot collect that knowledge accurately from outside, and the domain organisation does not train foundation models and should not need to. The gap between what a general model produces and what a domain expert requires is mostly a gap in data.
 
 ## Three roles, three entities
 
-Open-weight models make the correct separation possible by decoupling
-what the monolithic provider bundles together.
+Open-weight models allow the bundle to come apart into three roles.
 
-The **model trainer** publishes weights trained on declared public
-datasets. Their focus is foundation quality: breadth, coherence,
-instruction-following, reasoning. Llama, Mistral, and Qwen occupy
-this role. The weights are public, fixed, and available to anyone.
+The **model trainer** publishes weights. Its work is foundation quality: breadth, coherence, instruction-following and reasoning. Meta, Mistral and Alibaba's Qwen team fill this role. Their weights are public and fixed, and their training data is described in outline. (Fully open projects such as AI2's OLMo publish the training data as well.)
 
-The **inference provider** runs those weights and exposes them through
-an API. Their focus is operational: latency, availability, cost,
-and -- critically -- the boundary conditions around what enters and
-leaves the system. The inference provider handles requests. It does
-not need content to do its job.
+The **inference provider** runs the weights and exposes them through an API. Its work is operational: latency, availability, cost and the boundary around what enters and leaves the system. It handles requests and has no need to keep their content.
 
-The **domain organisation** owns the task. It understands how correct
-output looks, holds the data that demonstrates it, and accumulates
-the labelled examples to refine the system over time.
-This knowledge stays with the domain organisation and does not flow to
-the model trainer through the inference provider's logs.
+The **domain organisation** owns the task. It knows what correct output looks like, holds the data that shows it, and accumulates the labelled examples that refine the system over time. That knowledge stays with it, and does not reach the model trainer through anyone's logs.
 
-When these three roles are held by three separate entities, the
-conflicts of interest that plague the monolithic model disappear.
-The model trainer has no access to production queries. The inference
-provider has no incentive to retain content. The domain organisation
-retains its data, its task knowledge, and the asset value that
-accumulates from both.
+With the three roles held by separate entities, the conflicts in the bundle fall away. The model trainer never sees production queries. The inference provider has no use for the content it serves. The domain organisation keeps its data, its knowledge of the task, and the value that builds up from both. The inference provider can be the domain organisation itself, running the weights on its own servers ([private inference](/library/40-private-inference.html)).
 
 ## The labelled dataset is the asset
 
-A subscription to a monolithic provider produces no durable asset.
-The domain organisation pays per token, the provider improves its
-model on the resulting data, and the investment compounds for the
-provider rather than for the customer.
+The major providers' business terms now exclude API data from training by default, so a subscriber's data no longer improves the provider's model. It does not improve anything else either. Paying per token for a general model leaves the subscriber with no durable record of what correct output looks like for its task, unless it builds one deliberately. ([Why private inference](/library/65-why-private-inference.html) covers what the terms do and do not promise.)
 
-A labelled dataset is different. It is a formal statement of what
-correct behaviour looks like for a specific task -- accumulated from
-domain expertise, production use, and deliberate correction. It is
-owned, portable, and improvable. When a better foundation model is
-released, the same dataset evaluates it. When a provider changes its
-terms, raises its prices, or discontinues a model, the dataset retains
-its value independently.
+A labelled dataset is that record: a formal statement of correct behaviour for a specific task, accumulated from domain expertise, production use and deliberate correction ([labels are the task](/library/46-labels-are-the-task.html)). It is owned, portable and improvable. When a better foundation model is released, the same dataset evaluates it ([how to evaluate an AI pipeline](/library/61-eval-datasets.html)). When a provider changes its terms, raises its prices or retires a model, the dataset keeps its value.
 
-The organisation that owns its task data owns its model behaviour.
-That is a competitive asset in a way that an API subscription is not.
+An organisation that owns its task data owns the behaviour of whatever model it runs against that data, and can change the model without losing either.
 
-## A complete technical solution
+## The practical case
 
-The argument for open weights is sometimes framed as ideological --
-open versus closed, community versus corporate. That framing obscures
-the practical case.
+Open weights are sometimes argued for as a matter of principle, open against closed. The practical case is narrower and easier to test.
 
-Open weights enable a complete technical solution to the data
-sovereignty problem. The model trainer publishes on declared data.
-The inference provider runs the model without recording submissions.
-The domain organisation applies it to its own data without any of
-that data entering a training pipeline.
-
-The corporate politics and legal complications that surround AI
-adoption in regulated sectors exist almost entirely because the
-monolithic model bundles data collection, training, and inference
-into a single commercial relationship. Separate those concerns and
-most of the complications dissolve.
-
-This is the correct architecture for any organisation that takes
-its data seriously.
-
----
-
-(The [private inference articles](/library/40-private-inference.html)
-cover the data sovereignty case in detail. [Marigold](https://marigold.run)
-is our inference provider -- open-weight models, no content retention,
-no training pipeline.)
+With the roles separated, the model trainer publishes weights, the inference provider runs them without keeping what it serves, and the domain organisation applies them to its own data without any of it entering a training pipeline. Much of the legal and procurement difficulty around AI in regulated sectors comes from the bundle: one commercial relationship that covers data collection, training and inference at once. Separate the three and most of that difficulty becomes a question of where the inference runs, which ordinary infrastructure can answer. (Marigold, Bay Information Systems' open-source inference platform, is one way to run the inference role yourself: [Marigold](/library/64-marigold.html).)
