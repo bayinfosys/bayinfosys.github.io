@@ -1,4 +1,4 @@
-	---
+---
 date: 2026-04-25
 layout: article
 title: "The Facade Pattern Is What Makes a Cloud Migration Survivable"
