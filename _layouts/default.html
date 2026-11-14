@@ -4,6 +4,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://www.clientlog.bayis.co.uk">
+  <link rel="preconnect" href="https://api.clientlog.bayis.co.uk" crossorigin>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,15 +23,18 @@
   {%- assign default_description = "Bay Information Systems is an independent AI consultancy in Cardiff, writing about and advising on AI that runs on infrastructure you control." -%}
   {%- assign meta_description = page.description | default: default_description | strip_newlines | strip -%}
   {%- assign canonical = page.url | replace: 'index.html', '' | absolute_url -%}
-
+  {%- comment -%} Social card: page.image if set, else the article's generated card, else the logo {%- endcomment -%}
   {%- assign card_path = '/img/cards/' | append: page.slug | append: '.png' -%}
   {%- assign card_file = site.static_files | where: "path", card_path | first -%}
   {%- if page.image -%}
     {%- assign og_image = page.image | absolute_url -%}
+    {%- assign large_card = true -%}
   {%- elsif page.layout == 'article' and card_file -%}
     {%- assign og_image = card_path | absolute_url -%}
+    {%- assign large_card = true -%}
   {%- else -%}
     {%- assign og_image = '/img/BayInfoLogo_square.png' | absolute_url -%}
+    {%- assign large_card = false -%}
   {%- endif -%}
 
   <title>{{ full_title }}</title>
@@ -50,6 +54,11 @@
   <meta property="og:description" content="{{ meta_description | escape }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:image" content="{{ og_image }}">
+  {% if large_card %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ head_title | escape }}">
+  {% endif %}
   {% if page.layout == 'article' %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
   {% if page.last_modified_at %}
@@ -57,7 +66,7 @@
   {% endif %}
   <meta property="article:author" content="{{ site.author.url }}">
   {% endif %}
-  <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:card" content="{% if large_card %}summary_large_image{% else %}summary{% endif %}">
 
   {% feed_meta %}
 

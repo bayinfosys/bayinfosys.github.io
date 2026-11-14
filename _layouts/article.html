@@ -19,8 +19,7 @@ layout: default
 }
 </script>
 
-
-<main class="container py-5 article-page" data-article="{{ page.slug }}" data-topic="{{ page.topic | escape }}">
+<main class="article-page container py-5">
   <article>
     {% assign parts = content | split: "</h1>" %}
     {% if parts.size > 1 %}
