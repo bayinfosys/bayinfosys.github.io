@@ -1,173 +1,142 @@
+/* ==========================================================================
+   Bay Information Systems
+   Bootstrap 5.3 supplies the base; this file holds the site's own styles.
+   ========================================================================== */
+
 /* Variables */
 :root {
-    --text: #444;
-    --border: #AAA;
-    --flat-bg: #FFF;
-    --dark-bg: #333; /* Navbar and footer background */
-    --light-bg: #EEE; /* Light text for contrast */
-    --link-hover: #FFF; /* Hover color for links */
+  --text: #444;
+  --border: #AAA;
+  --flat-bg: #FFF;
+  --dark-bg: #333;     /* navbar, footer, dark sections */
+  --light-bg: #EEE;    /* light text on dark, light sections */
+  --link-hover: #FFF;
 }
 
-
-/* Typography */
-body { font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif; }
-h1, h2, h3, h4 { font-family: inherit; }
-
-/* Article reading column */
-.article-page { max-width: 46rem; }
-.article-page article { font-size: 1.125rem; line-height: 1.65; }
-.article-page article h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.25rem); line-height: 1.2; margin-bottom: 0.5rem; }
-.article-page article h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
-.article-page article h3 { font-size: 1.15rem; margin-top: 2rem; }
-.article-page article p,
-.article-page article li { margin-bottom: 1rem; }
-.article-page article img { max-width: 100%; height: auto; }
-.article-page article pre { font-size: 0.85rem; line-height: 1.5; background: #f6f6f6; padding: 1rem; border-radius: 4px; overflow-x: auto; }
-.article-page article :not(pre) > code { font-size: 0.9em; color: inherit; background: #f3f3f3; padding: 0.1em 0.3em; border-radius: 3px; }
-.article-page article table { display: block; overflow-x: auto; font-size: 0.95rem; margin-bottom: 1.5rem; }
-.article-page article th,
-.article-page article td { border-bottom: 1px solid var(--border); padding: 0.4rem 0.75rem; vertical-align: top; }
-.article-page article blockquote { border-left: 3px solid var(--border); padding-left: 1rem; color: #555; }
-.article-page article a { color: inherit; text-decoration-color: #999; text-underline-offset: 2px; }
-.article-page article a:hover { text-decoration-color: currentColor; }
-
-/* Article feedback */
-.article-feedback { margin-top: 3rem; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-.article-feedback__btn { color: var(--text); border: 1px solid var(--border); min-width: 2.75rem; }
-.article-feedback__btn:hover { background: var(--light-bg); color: var(--text); }
-.article-feedback__btn:disabled { opacity: 0.4; }
-.article-feedback__btn.is-chosen { opacity: 1; background: var(--dark-bg); border-color: var(--dark-bg); color: var(--flat-bg); }
-.article-feedback__status { color: #888; font-size: 0.85rem; }
-
-/* Homepage header */
-.home-h1 { color: var(--light-bg); font-size: 1.2rem; font-weight: 400; line-height: 1.5; margin: 1rem 0 0; }
-.home-sub { color: #bbb; font-size: 0.95rem; margin: 0.5rem 0 0; }
-
-/* Navbar Styling */
-.navbar-nav .nav-link { color: var(--light-bg) !important; /* Force light text color */ text-decoration: none; }
-
-.navbar-nav .nav-link:hover { color: var(--link-hover) !important; /* White on hover */ }
-
-.navbar-toggler {
-    border-color: var(--light-bg) !important; /* Light border for burger button */
-    padding: 10px 15px; /* Add more padding */
-    height: 45px; /* Set consistent height */
+/* --------------------------------------------------------------------------
+   Base typography
+   A system serif stack: Charter on Apple devices, Sitka or Cambria on
+   Windows, Georgia as the fallback. No Office-only fonts, so the site
+   looks much the same on every machine.
+   -------------------------------------------------------------------------- */
+body {
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  background-color: var(--flat-bg);
+  color: var(--text);
 }
 
-.navbar-toggler-icon {
-    background-image: none; /* Remove Bootstrap default icon */
-    width: 30px; /* Adjust size for "fatter" appearance */
-    height: 3px; /* Thicker lines for more presence */
-    background-color: var(--light-bg); /* Light color */
-    position: relative;
-    display: inline-block;
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  color: var(--text);
 }
 
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-    content: '';
-    display: inline-block;
-    width: 30px; /* Match width */
-    height: 3px; /* Thicker lines */
-    background-color: var(--light-bg); /* Same light color */
-    position: absolute;
-    left: 0;
+/* --------------------------------------------------------------------------
+   Navbar (Bootstrap dark theme, set by data-bs-theme="dark" in nav.html)
+   -------------------------------------------------------------------------- */
+.navbar {
+  --bs-navbar-color: var(--light-bg);
+  --bs-navbar-hover-color: var(--link-hover);
+  --bs-navbar-active-color: var(--link-hover);
 }
 
-.navbar-toggler-icon::before {
-    top: -8px; /* Position above */
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+footer {
+  background-color: var(--dark-bg);
+  color: var(--flat-bg);
+  text-align: center;
+  padding: 20px;
 }
 
-.navbar-toggler-icon::after {
-    top: 8px; /* Position below */
+footer a {
+  text-decoration: none;
 }
 
-        nav {
-            background-color: var(--dark-bg); /* Dark background */
-        }
+/* --------------------------------------------------------------------------
+   Sections, buttons, cards
+   -------------------------------------------------------------------------- */
+.section-light {
+  background-color: var(--light-bg);
+  color: var(--text);
+  border: 2px solid var(--border);
+}
 
-        nav a {
-            color: var(--light-bg); /* Light text for contrast */
-            text-decoration: none;
-        }
+.section-dark {
+  background-color: var(--dark-bg);
+  color: var(--flat-bg);
+}
 
-        nav a:hover {
-            color: var(--link-hover); /* White on hover */
-        }
+.logo-banner {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+}
 
-        .navbar-toggler {
-            border-color: var(--light-bg); /* Light border for burger button */
-        }
+.btn-custom {
+  background-color: var(--dark-bg);
+  color: var(--flat-bg);
+  border: none;
+}
 
-        .navbar-toggler-icon {
-            background-image: none; /* Remove default Bootstrap icon */
-            color: var(--light-bg); /* Light color for custom icon */
-            font-size: 1.5rem; /* Adjust icon size */
-        }
+.btn-custom:hover {
+  background-color: var(--border);
+  color: var(--dark-bg);
+}
 
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--flat-bg);
-            text-align: center;
-            padding: 20px;
-        }
+.btn-light-custom {
+  background-color: var(--light-bg);
+  color: var(--dark-bg);
+  border: none;
+}
 
-        .btn-custom {
-            background-color: var(--dark-bg);
-            color: var(--flat-bg);
-            border: none;
-        }
-
-        .btn-custom:hover {
-            background-color: var(--border);
-            color: var(--dark-bg);
-        }
-
-        .logo-banner {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-        }
-
-        .section-light {
-            background-color: var(--light-bg);
-            color: var(--text);
-            border: 2px solid var(--border);
-        }
-
-        .section-dark {
-            background-color: var(--dark-bg);
-            color: var(--flat-bg);
-        }
+.btn-light-custom:hover {
+  background-color: var(--flat-bg);
+  color: var(--dark-bg);
+}
 
 .card:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
-    transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
-/* Accordion Button Styles */
-.accordion-button {
-    background-color: var(--light-bg); /* Light background */
-    color: var(--text); /* Dark text */
-    border: 1px solid var(--border); /* Match your border color */
-    box-shadow: none; /* Remove default blue highlight */
+/* Shared form panel (checklists, sovereign AI page) */
+.form-panel {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
 }
 
-.accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem var(--border); /* Custom subtle outline */
-    border-color: var(--border);
+/* --------------------------------------------------------------------------
+   Homepage
+   -------------------------------------------------------------------------- */
+.home-h1 {
+  color: var(--light-bg);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 1rem 0 0;
 }
 
-.accordion-button:not(.collapsed) {
-    background-color: var(--flat-bg); /* Slightly different background when active */
-    color: var(--text);
+.home-sub {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0;
 }
 
-.accordion-button::after {
-    color: var(--text); /* Icon color for toggle */
+.readiness-sample {
+  list-style: none;
+  padding-left: 0;
 }
 
-/* Library page */
+.readiness-sample li {
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   Library page
+   -------------------------------------------------------------------------- */
 .library-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -187,7 +156,6 @@ h1, h2, h3, h4 { font-family: inherit; }
   font-size: 0.875rem;
   margin-right: 1.25rem;
   text-decoration: none;
-  background-color: transparent;
 }
 
 .library-topicnav a:hover {
@@ -217,7 +185,7 @@ h1, h2, h3, h4 { font-family: inherit; }
 
 .library-card:hover {
   border-color: #888;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 
 .library-card--dark {
@@ -230,12 +198,12 @@ h1, h2, h3, h4 { font-family: inherit; }
   box-shadow: none;
 }
 
+/* Description sits directly under the title (no flex-grow on the title) */
 .library-card__title {
   color: var(--text);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
-  flex-grow: 1;
   display: block;
 }
 
@@ -254,62 +222,133 @@ h1, h2, h3, h4 { font-family: inherit; }
   color: #bbb;
 }
 
-/* Sovereign AI page */
-.sov-sector a {
-  font-size: 0.8rem;
-  margin-top: 0.6rem;
+/* --------------------------------------------------------------------------
+   Article pages: one reading column of about 70 characters
+   -------------------------------------------------------------------------- */
+.article-page {
+  max-width: 46rem;
 }
 
-.sov-option {
-  padding: 1.25rem 1.5rem;
+.article-page article {
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.article-page article h1 {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.25rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.article-page article h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-page article h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+}
+
+.article-page article p,
+.article-page article li {
+  margin-bottom: 1rem;
+}
+
+.article-page article img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-page article pre {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: #f6f6f6;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.article-page article :not(pre) > code {
+  font-size: 0.9em;
+  color: inherit;
+  background: #f3f3f3;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* Wide tables scroll inside the column */
+.article-page article table {
+  display: block;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-page article th,
+.article-page article td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  vertical-align: top;
+}
+
+.article-page article blockquote {
   border-left: 3px solid var(--border);
-  margin-top: 1.5rem;
+  padding-left: 1rem;
+  color: #555;
 }
 
-.sov-option h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
+.article-page article a {
+  color: inherit;
+  text-decoration-color: #999;
+  text-underline-offset: 2px;
 }
 
-.sov-meta {
-  font-size: 0.9rem;
-  margin-bottom: 0;
+.article-page article a:hover {
+  text-decoration-color: currentColor;
 }
 
-.sov-table th,
-.sov-table td {
-  font-size: 0.9rem;
+/* Article feedback (thumbs up / down) */
+.article-feedback {
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.sov-table caption {
-  caption-side: top;
+.article-feedback__btn {
+  color: var(--text);
+  border: 1px solid var(--border);
+  min-width: 2.75rem;
+}
+
+.article-feedback__btn:hover {
+  background: var(--light-bg);
+  color: var(--text);
+}
+
+.article-feedback__btn:disabled {
+  opacity: 0.4;
+}
+
+.article-feedback__btn.is-chosen {
+  opacity: 1;
+  background: var(--dark-bg);
+  border-color: var(--dark-bg);
+  color: var(--flat-bg);
+}
+
+.article-feedback__status {
   color: #888;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
-/* Homepage readiness block */
-.btn-light-custom {
-  background-color: var(--light-bg);
-  color: var(--dark-bg);
-  border: none;
-}
-
-.btn-light-custom:hover {
-  background-color: var(--flat-bg);
-  color: var(--dark-bg);
-}
-
-.readiness-sample {
-  list-style: none;
-  padding-left: 0;
-}
-
-.readiness-sample li {
-  font-style: italic;
-  margin-top: 0.4rem;
-}
-
-/* Checklists */
+/* --------------------------------------------------------------------------
+   Checklists
+   -------------------------------------------------------------------------- */
 .cl-q {
   margin-top: 2.5rem;
 }
@@ -317,6 +356,16 @@ h1, h2, h3, h4 { font-family: inherit; }
 .cl-q__title {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.cl-group {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 3rem 0 0;
 }
 
 .cl-options {
@@ -421,17 +470,49 @@ h1, h2, h3, h4 { font-family: inherit; }
   display: none;
 }
 
-/* Shared form panel (checklists, sovereign AI page) */
-.form-panel {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.25rem;
+/* --------------------------------------------------------------------------
+   Sovereign AI page
+   -------------------------------------------------------------------------- */
+.sov-sector a {
+  font-size: 0.8rem;
+  margin-top: 0.6rem;
 }
 
+.sov-option {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--border);
+  margin-top: 1.5rem;
+}
+
+.sov-option h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.sov-meta {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.sov-table th,
+.sov-table td {
+  font-size: 0.9rem;
+}
+
+.sov-table caption {
+  caption-side: top;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   Print
+   -------------------------------------------------------------------------- */
 @media print {
   nav,
   footer,
-  .cl-noprint {
+  .cl-noprint,
+  .article-feedback {
     display: none !important;
   }
 
@@ -447,14 +528,4 @@ h1, h2, h3, h4 { font-family: inherit; }
     color: inherit;
     text-decoration: none;
   }
-}
-
-.cl-group {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #888;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.4rem;
-  margin: 3rem 0 0;
 }
