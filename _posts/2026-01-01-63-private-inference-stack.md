@@ -1,67 +1,38 @@
 ---
 date: 2026-05-07
+last_modified_at: 2026-11-14
 layout: article
-title: "The Private Inference Stack: A Field Guide"
+title: "How to Self-Host an LLM: llama.cpp, Ollama, vLLM or a Managed Endpoint"
 seo_title: "Self-Hosted LLMs: llama.cpp, Ollama, vLLM or a Managed Endpoint?"
-description: "How to self-host an LLM, layer by layer: llama.cpp and Ollama for development, vLLM for concurrent production traffic, and when a managed private endpoint (Hugging Face, Baseten, SageMaker) is the better choice."
-
-keywords: ["private inference", "ollama", "vllm", "pytorch", "huggingface", "self-hosted llm", "inference stack", "open-weight models"]
+description: "How to self-host an LLM, layer by layer: llama.cpp and Ollama for development, vLLM for concurrent traffic, a platform for several applications on one GPU, or a managed private endpoint."
+keywords: ["self hosted llm", "how to self host an llm", "self-hosted llm", "ollama vs vllm", "llama.cpp", "vllm", "local llm server", "private llm", "open-weight models"]
 topic: "Architecture & Deployment"
 related:
   - 40-private-inference
+  - 117-private-ai-server
   - 87-inference-infrastructure
-  - 02-deploy-simple-model
-  - 04-cost-of-ml
-  - 32-training-llm
+  - 64-marigold
+  - 78-gpu-market-2026
   - 72-private-inference-fhe
 ---
 
-# The Private Inference Stack: A Field Guide
+# How to Self-Host an LLM: llama.cpp, Ollama, vLLM or a Managed Endpoint
 
-Running an AI model privately means choosing where in the
-stack to operate. The options range from raw framework code through
-purpose-built inference servers to fully managed private API services.
-Each layer trades control for convenience, and each has a natural home
-in a particular kind of project.
+Self-hosting an LLM means choosing a layer of the stack to work at. The layers run from raw framework code, through inference servers that run on a laptop or a GPU server, to managed services that host open-weight models inside a boundary you define. Each layer trades control for convenience, and each has a natural home in a particular kind of project.
 
-## A brief history of the framework layer
+| Layer | Tools | Concurrent users | Hardware | Best for |
+|---|---|---|---|---|
+| 1. Framework code | PyTorch and Hugging Face `transformers` | You build it | Any GPU | Research, fine-tuning, access to model internals |
+| 2. Local inference server | llama.cpp, Ollama | A few | Laptop, workstation, CPU or GPU; quantised GGUF models | Development, prototypes, single-user tools |
+| 3. Production inference server | vLLM | Many | GPU server with room for weights and KV cache | APIs with concurrent users, bulk processing |
+| 3a. Self-hosted platform | marigold | Queued, shared across applications | One or more GPU hosts | Several applications and model types on the same GPUs |
+| 4. Managed private endpoint | Hugging Face Inference Endpoints, Baseten, AWS SageMaker | Many | Supplier's dedicated infrastructure | Sovereignty requirements without a GPU operations team |
 
-Before the current tooling existed, running a model meant working directly
-with one of several deep learning frameworks.
+All of these build on PyTorch, which absorbed or outlasted the earlier frameworks (Caffe, TensorFlow's static graphs, MXNet), and most draw their weights from Hugging Face Hub. That shared base is why application code moves between layers with little change.
 
-**Caffe**, released in 2013, was one of the
-first frameworks to gain broad adoption. It was fast on image tasks,
-written in C++, and distributed pre-trained weights through a Model Zoo --
-a convention that every subsequent tool would borrow. Facebook extended
-it as Caffe2 before eventually folding it into PyTorch.
+## Layer 1: Framework code
 
-**TensorFlow** arrived from Google Brain in 2015. The initial design used
-static computation graphs. Deployment was efficient but development was awkward.
-Keras, written by Francois Chollet, became the dominant high-level interface over
-TensorFlow, eventually absorbed as its official API in TensorFlow 2.0.
-TensorFlow remains in production use, particularly within Google, but share of new projects has fallen sharply.
-
-**PyTorch**, released by Facebook's AI Research lab in 2016, used dynamic
-computation graphs -- more intuitive and easier to debug.
-Research communities adopted it quickly and it now dominates both academic work
-and a substantial share of production systems.
-
-**MXNet**, backed by Amazon and donated to the Apache Software Foundation,
-competed for several years and was integrated into AWS infrastructure. It
-retired in September 2023 after development activity effectively ceased.
-Amazon shifted its own tooling to PyTorch.
-
-The framework consolidation matters because the current tools are all
-built on top of PyTorch, and the weight distribution ecosystem that
-emerged -- HuggingFace Hub -- is the source most of them draw from.
-
-## Layer 1: Raw framework code
-
-The lowest layer is direct use of PyTorch with the HuggingFace
-`transformers` library. HuggingFace Hub hosts model weights from most
-major open-weight families (Llama, Mistral, Qwen, Falcon, and many
-others) alongside the code to load and run them. A few lines of Python
-loads a model and runs inference:
+The lowest layer is direct use of PyTorch with the Hugging Face `transformers` library. Hugging Face Hub hosts weights from most open-weight families (Llama, Mistral, Qwen and many others) alongside the code to load and run them. A few lines of Python load a model and run inference:
 
 ```python
 from transformers import pipeline
@@ -69,104 +40,40 @@ pipe = pipeline("text-generation", model="meta-llama/Llama-3.2-3B-Instruct")
 result = pipe("Summarise the following document:")
 ```
 
-This layer gives you complete control: arbitrary model surgery,
-custom sampling strategies, direct access to logits and attention weights,
-integration with training pipelines. It also gives you complete
-responsibility: batching, memory management, concurrency, and serving
-are all your problems. This is the right layer for researchers, for
-fine-tuning workflows, and for anything that requires access to model
-internals.
+This layer gives complete control: custom sampling, direct access to logits and attention weights, integration with training pipelines. It also gives complete responsibility. Batching, memory management, concurrency and serving are all yours to build. It is the right layer for researchers, for fine-tuning, and for anything that needs the model's internals.
 
-## Layer 2: Ollama
+## Layer 2: llama.cpp and Ollama
 
-Ollama wraps llama.cpp, a C++ inference library that runs models in GGUF
-format. GGUF is a quantised weight format: the model weights are
-compressed and stored in a structure that allows efficient loading and
-fast inference, often without a GPU. A Llama 8B model that requires
-around 16GB of GPU memory in full precision fits in 5-6GB in 4-bit
-quantised GGUF.
+llama.cpp is a C++ inference library that runs models in GGUF format. GGUF stores quantised weights in a structure that loads quickly and runs efficiently, often without a GPU. A Llama 8B model that needs around 16GB of GPU memory at full precision fits in 5 to 6GB as a 4-bit GGUF.
 
-Ollama distributes models from its own library (ollama.com/library),
-which re-packages models from HuggingFace into GGUF format. Installation
-is a single command; pulling a model is `ollama pull llama3.2`. It
-exposes an OpenAI-compatible HTTP API on localhost, so application code
-written against the OpenAI SDK works against Ollama without changes.
+Ollama wraps llama.cpp and distributes models from its own library, repackaged from Hugging Face. Installation is one command, and pulling a model is `ollama pull llama3.2`. It exposes an OpenAI-compatible HTTP API on localhost, so code written against the OpenAI SDK runs against Ollama unchanged.
 
-The appropriate use is local development and low-volume deployment.
-Ollama serves one request at a time without batching. At any meaningful
-request volume that ceiling becomes a bottleneck. It is the right tool
-for a developer working on a prototype, a single-user application, or
-a workflow being tested before a production decision has been made.
+This layer suits local development and low-volume deployment. Ollama handles a few requests in parallel (the number is configurable), and it was built for one person's machine: throughput falls away as concurrent load grows. It is the right tool for a developer building a prototype, a single-user application, or a workflow under test before a production decision.
 
 ## Layer 3: vLLM
 
-vLLM is a production inference server. It loads models directly from
-HuggingFace Hub in standard PyTorch format and serves them via an
-OpenAI-compatible API. The central technical contribution is
-PagedAttention: a memory management approach for the key-value cache
-that allows the server to handle many concurrent requests efficiently
-on the same GPU. Combined with continuous batching -- processing requests
-as they arrive rather than waiting to fill a fixed batch -- vLLM
-sustains substantially higher throughput than llama.cpp-based servers
-on the same hardware.
+vLLM is a production inference server. It loads models from Hugging Face Hub in standard PyTorch format and serves them through an OpenAI-compatible API. Its central contribution is PagedAttention, a way of managing the key-value cache that lets one GPU hold many concurrent requests efficiently. With continuous batching (adding requests to the running batch as they arrive), vLLM sustains much higher throughput than llama.cpp-based servers on the same hardware.
 
-The tradeoff is operational. vLLM is a service that requires deployment,
-monitoring, and maintenance. It expects a GPU with sufficient VRAM for
-the model weights in full or bfloat16 precision -- the quantisation
-efficiency of GGUF is not its focus. GPU instances on AWS (g4dn, g5, p4)
-or equivalent are the natural home.
+The cost is operational. vLLM is a service to deploy, monitor and maintain, and it expects a GPU with room for the model's weights at full or bfloat16 precision plus the cache. GPU instances on AWS (g5, p4) or a private AI server are its natural home. ([What a private AI server is](/library/117-private-ai-server.html) covers the hardware.)
 
-The practical boundary between Ollama and vLLM is workload. Development
-and testing sit comfortably on Ollama. A production service handling
-concurrent users, a pipeline processing documents in bulk, or an
-application with latency requirements at scale warrants vLLM. Application
-code typically moves between them without changes, because both expose
-the same API surface.
+The boundary between Ollama and vLLM is workload. Development and testing sit comfortably on Ollama. A production service with concurrent users, a pipeline processing documents in bulk, or an application with latency targets at scale warrants vLLM. Application code moves between them without changes, because both expose the same API.
 
-Marigold packages this same self-hosted layer with typed pipeline definitions and a declarative workflow engine on top, for teams that want the orchestration a managed service would normally provide without handing the inference itself to one. See our [Marigold](https://marigold.run) platform for more options.
+### A platform over the serving layer: marigold
 
-## Layer 4: Managed private inference services
+[marigold](/library/64-marigold.html), Bay Information Systems' open-source platform, sits over this layer for teams running more than one application or model type on the same hardware. Requests join a queue in Postgres, each worker loads one model at a time and serves whichever model has the deepest queue, and adding a GPU host adds a worker. Models are declared per application and downloaded once into a shared cache, and the platform covers embeddings, image, speech and evaluation models as well as text generation, composed into typed pipelines. It exposes OpenAI-compatible chat and embedding endpoints. For one chat model under heavy concurrent load, vLLM serves more users per GPU.
 
-Above the self-hosted layer, a range of managed services host open-weight
-models on GPU infrastructure and expose them via API. They split into two
-meaningfully different categories.
+## Layer 4: Managed private endpoints
 
-**API inference providers** -- Together AI, Groq, Cerebras, DeepInfra,
-Fireworks AI -- serve open-weight models over a shared API. Your data
-passes through their servers, but because the underlying models are
-public weights, the claim "we do not train on your data" is auditable
-in a way it is not with closed-model providers: you can run the same
-Llama or Qwen weights locally and verify that outputs match the API.
-These providers compete on infrastructure speed rather than model
-exclusivity, and they are appropriate for organisations that want API
-convenience with the option to migrate to self-hosted later. They are
-not appropriate where the constraint is data egress itself.
+Above the self-hosted layers, managed services host open-weight models on GPU infrastructure and expose them through an API. They divide into two categories, separated by where the data goes.
 
-**Private deployment services** -- HuggingFace Inference Endpoints with
-private networking, Baseten with region-locked HIPAA and SOC 2 Type II
-certified deployments, Scaleway for EU-only data residency -- run
-inference on dedicated infrastructure within a defined boundary. Your
-data does not share infrastructure with other customers and does not
-leave the agreed region. The provider's compliance posture substitutes
-for your own, which is useful for organisations without a GPU operations
-capability but with genuine data sovereignty requirements. The cloud
-providers offer equivalent options: AWS SageMaker with private VPC
-endpoints, Azure AI in a managed VNet.
+**API inference providers** (Together AI, Groq, Cerebras, DeepInfra, Fireworks AI) serve open-weight models over a shared API. Your data passes through their servers. Because the models are public weights, the claim that they do not train on your data is checkable: the same weights run locally should give matching outputs. These providers compete on speed, and they suit organisations that want API convenience with the option of moving to self-hosting later. They do not suit work where the constraint is data egress itself.
 
-The simplest way to distinguish the two categories: with an API inference
-provider, your data travels to their infrastructure. With a private
-deployment service, your data stays within a boundary you have
-contractually defined. For regulated sectors, that distinction is
-usually determinative.
+**Private deployment services** (Hugging Face Inference Endpoints with private networking, Baseten with region-locked HIPAA and SOC 2 Type II deployments, Scaleway for EU-only residency) run inference on dedicated infrastructure within a defined boundary. Your data shares no infrastructure with other customers and stays in the agreed region. The provider's compliance posture stands in for your own, which helps organisations with real sovereignty requirements and no GPU operations team. The cloud providers offer equivalents: AWS SageMaker with private VPC endpoints, Azure AI in a managed VNet.
+
+With an API inference provider, your data travels to their infrastructure. With a private deployment service, it stays within a boundary set by contract. For regulated sectors, that distinction usually decides the matter. ([What private AI inference is](/library/40-private-inference.html) sets out the boundary and who provides it.)
 
 ## Choosing a layer
 
-The choice follows from context rather than preference. A developer
-testing locally uses Ollama. A production system with concurrent users
-and volume runs vLLM. An organisation with data sovereignty requirements
-and no GPU operations team uses a managed private provider.
+The choice follows from context. A developer testing locally uses Ollama. A production system with concurrent users runs vLLM. Several applications sharing one GPU, or pipelines that mix model types, suit a platform such as marigold. An organisation with sovereignty requirements and no GPU operations team uses a managed private endpoint.
 
-Most production systems pass through more than one layer: Ollama in
-development, vLLM or a managed service in production, with the same
-application code throughout because the API surface is consistent. The
-transition between layers is an operational decision.
+Most production systems pass through more than one layer: Ollama in development, vLLM, a platform or a managed service in production, with the same application code throughout because the API is the same. Moving between layers is an operational decision, which leaves the application free to follow the workload. (Sizing the hardware for any of them is covered in [AI inference infrastructure](/library/87-inference-infrastructure.html).)
